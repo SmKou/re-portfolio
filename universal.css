@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+}
+
+*::-webkit-scrollbar { display: none }
+
+:root {
+    --uni-white: #fff;
+    --uni-off-white: #eee;
+    --uni-light: #ccc;
+    --uni-mid: #888;
+    --uni-off-black: #222;
+    --uni-black: #000;
+}
+
+html { font-size: 62.5% }
+
+body {
+    position: relative;
+    margin: 0;
+    font-size: 1.5em;
+    line-height: 1;
+}
+
+a { text-decoration: none }
