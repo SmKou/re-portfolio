@@ -48,7 +48,7 @@ Note: Do not merge from main or checkout the gh-pages branch
 
 **versions**
 - index
-- conic gradient background on iframe screen not consistent
+- conic gradient background on iframe screen not consistent (use old tv img)
 - v0, v1, v2, v3, v4
 
 ## License

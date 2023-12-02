@@ -19,7 +19,7 @@ article {
     height: 80%;
     border-radius: 5%;
     background: #bdbbb2;
-    box-shadow: 0 4px 8px black inset;
+    box-shadow: 4px 16px 16px var(--uni-black) inset, -2px -4px 8px var(--uni-off-white) inset;
     overflow: hidden;
 }
 
@@ -155,14 +155,14 @@ aside .controls {
     article {
         width: 80%;
         height: 100vh;
-        background: conic-gradient(from 45deg, 
+        /* background: conic-gradient(from 45deg, 
         #5c5b54 5deg,#908e80 70deg, 
         #d0d0ca 75deg, 
         #76756a 80deg, #9a988a, #76756a 190deg, 
         #d0d0ca 195deg, 
         #a6a294 200deg, #aeaa9b 250deg, 
         #5c5b54 255deg, 
-        #6f6f65 260deg, #85837a, #6f6f65 355deg);
+        #6f6f65 260deg, #85837a, #6f6f65 355deg); */
     }
     
     aside {
@@ -190,7 +190,7 @@ aside .controls {
     article {
         width: 100%;
         height: 80vh;
-        background: conic-gradient(from 45deg, 
+        /* background: conic-gradient(from 45deg, 
         #908e80 5deg, 
         #d0d0ca 90deg, 
         #76756a 95deg, #9a988a, #76756a 175deg, 
@@ -198,7 +198,7 @@ aside .controls {
         #a6a294 185deg, #aeaa9b 265deg, 
         #5c5b54 270deg, 
         #6f6f65 275deg, #85837a, #6f6f65 355deg, 
-        #5c5b54 360deg);
+        #5c5b54 360deg); */
     }
 
     aside {

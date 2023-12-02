@@ -1,6 +1,6 @@
-const versions = [ './v0/', './v1/', './v2/', './v3/', './v4/' ]
-const statuses = [ false, false, false, false, false ]
-let version = 0
+const versions = [ 'v0/', 'v1/', 'v2/', 'v3/', 'v4/' ]
+const statuses = [ false, false, false, false, true ]
+let version = versions.length - 1
 
 const ui = {
     controls: {
@@ -11,6 +11,8 @@ const ui = {
     },
     frame: document.getElementById('version-view')
 }
+
+ui.frame.setAttribute('src', versions[version])
 
 ui.controls.prev.addEventListener('click', () => {
     version--
