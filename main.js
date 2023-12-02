@@ -1,5 +1,3 @@
-import portfolio from './portfolio.js'
-
 const ui = {
     path: [],
     aside: {
