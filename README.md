@@ -30,7 +30,7 @@ Features resume and profile
 
 ## Complete Setup
 
-Use for CSS minification: [Minify](https://minify-css.com/)
+Use for CSS minification: [Toptal](https://www.toptal.com/developers/cssminifier)
 Use for JS minification: [Minify](https://minify-js.com/)
 Use for image compression: [Optimizilla](https://imagecompressor.com/)
 
