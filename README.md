@@ -30,6 +30,10 @@ Features resume and profile
 
 ## Complete Setup
 
+Use for CSS minification: [Minify](https://minify-css.com/)
+Use for JS minification: [Minify](https://minify-js.com/)
+Use for image compression: [Optimizilla](https://imagecompressor.com/)
+
 Deploy to Github Pages from subdirectory
 ```bash
 git subtree push --prefix app origin gh-pages
