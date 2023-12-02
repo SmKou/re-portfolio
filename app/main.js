@@ -1,4 +1,3 @@
-import './style.css'
 import { setupCounter } from './counter.js'
 
 const javascriptLogo = './javascript.svg'
