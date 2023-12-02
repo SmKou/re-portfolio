@@ -1,4 +1,4 @@
-import { portfolio } from './portfolio.js'
+import portfolio from './portfolio.js'
 
 const ui = {
     path: [],
