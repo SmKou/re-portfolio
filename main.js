@@ -19,7 +19,10 @@ const getError = (error, term = '') => 'error: ' + (term ? term + ': ' : '') + e
 const getNode = (path = ui.path.slice(), node = portfolio) => {
     let shift
     while(shift = path.shift())
-        node = node[shift]
+        if (node.hasOwnProperty(shift))
+            node = node[shift]
+        else
+            return false
     return node
 }
 
@@ -37,6 +40,10 @@ const addLine = (output, isCmd = false) => {
     ui.section.append(line)
 }
 
+const messages = {
+    'cnet': 'All C#/.Net projects are not likely to be completed.'
+}
+
 const cmd = {
     cd: {
         help: [
@@ -44,9 +51,12 @@ const cmd = {
             'format: cd [<path>] | cd [..]',
             'args: path <prop/prop/...>'
         ],
-        error: ['no such property', 'cannot cd into property value'],
+        error: [
+            'no such property', 
+            'cannot cd into property value'
+        ],
         do: function(args) {
-            let subs = args[0].slice(1).split('/')
+            let subs = args[0].slice().split('/')
             let sub
             while(sub = subs.shift())
                 if (sub === '.')
@@ -83,13 +93,95 @@ const cmd = {
         help: [
             'do: get count of subentities',
             'format: count <path> <terms>',
-            'args: path <prop/prop/...>, (search) terms <term,term,...> | <term=value,term,...>'
+            'args: path <prop/prop/...>[/], (search) terms <term=value,term,...>',
+            'warning: uses strict equivalence and string.includes for term=value'
         ],
-        error: ['subentities do not contain term'],
+        error: [
+            'invalid path',
+            'cannot be counted'
+        ],
         do: function(args) { 
-            addLine(getError('not implemented yet', 'count')) 
+            let path, terms
+            for (const arg of args)
+                if (arg.includes('/'))
+                    path = arg.split('/')
+                else if (arg.includes(','))
+                    terms = arg.split(',')
+                else 
+                    if (getNode(ui.path.slice().concat(arg)))
+                        path = [arg]
+                    else
+                        terms = [arg]
 
-            /* count | count <path> | count <terms> | count <path> <terms> */
+            const subs = ui.path.slice().concat(path)
+            const node = getNode(subs)
+
+            if (!node) {
+                addLine(getError(this.error(0)))
+                return false
+            }
+
+            if (typeof node !== 'object') {
+                addLine('value: ' + node)
+                addLine(getError(this.error[1]))
+                return false
+            }
+
+            if (node.type !== 'dir' && node.type !== 'vers') {
+                addLine(getError(this.error[1]))
+                return false
+            }
+            
+            if (terms) {
+                const search = {}
+                for (let i = 0; i < terms.length; ++i)
+                    if (terms[i].includes('=')) {
+                        const t = terms[i].split('=')
+                        search[t[0]] = { val: t[1], count: 0 }
+                    } else
+                        search[terms[i]] = { val: '', count: 0 }
+
+                const entities = Object.keys(node).filter(key => key !== 'type' && key !== 'href')
+                for (const entity of entities) {
+                    for (const term of Object.keys(search))
+                        if (entities[entity].hasOwnProperty(term)) {
+                            if (search[term].val) {
+                                if (search[term].val === entity[term] 
+                                    || (
+                                        (typeof entity[term] === 'string' || Array.isArray(entity[term])) 
+                                        && entity[term].includes(search[term].val)
+                                    ))
+                                        search[term].count++
+                            }
+                            else
+                                search[term].count++
+                        }
+                }
+
+                const title = subs[subs.length - 1]
+                const p = document.createElement('p')
+                p.append(document.createTextNode(title + ':'))
+                ui.section.append(p)
+
+                const props = Object.keys(search)
+                for (const prop of props) {
+                    const p = document.createElement('p')
+                    p.append(document.createTextNode('No. of ' + (search[prop].val ? `${prop}=${search[prop].val}` : prop) + ': ' + search[prop].count))
+                    ui.section.append(p)
+                }
+            } 
+            else {
+                const title = subs[subs.length - 1]
+                const props = Object.keys(node).filter(key => key !== 'type' && key !== 'href')
+
+                const p = document.createElement('p')
+                p.append(document.createTextNode('No. of ' + title + ': ' + props.length))
+                ui.section.append(p)
+
+                const p2 = document.createElement('p')
+                p2.append(document.createTextNode('Every entity in ' + title + ' has ' + props.join(', ')))
+                ui.section.append(p2)
+            }
         }
     },
     descript: {
@@ -98,48 +190,52 @@ const cmd = {
             'format: descript <path> <[now]>',
             'args: path <prop/prop/...>, now = description of status'
         ],
-        error: ['no description','no such property'],
+        error: [
+            'invalid path',
+            'no such property'
+        ],
         do: function(args) {
-            addLine(getError('not implemented yet', 'descript'))
+            let now, path
+            for (const arg of args)
+                if (arg === 'now')
+                    now = true
+                else
+                    if (arg.includes('/'))
+                        path = arg.split('/')
+                    else
+                        path = [arg]
 
-            /* descript | descript <path> | descript now | descript <path> now */
+            const subs = ui.path.slice().concat(path)
+            const node = getNode(subs)
 
-            // const hasNow = args.includes('now')
-            // const path = () => {
-            //     if (hasNow && args.length !== 1)
-            //         return args.filter(val !== 'now')[0].slice(1).split('/')
-            //     else if (args && args.length === 1)
-            //         if (args[0][0] === '/')
-            //             return args.slice(1).split('/')
-            //         else {
-            //             addLine(getError('not a proper path'))
-            //             return false
-            //         }
-            //     else
-            //         return ''
-            // }
-            // const subs = path()
-            // const node = subs ? getNode(ui.path.slice().concat(subs)) : getNode()
+            if (!node) {
+                addLine(getError(this.error[0]))
+                return false
+            }
 
-            // if (!node) {
-            //     addLine(getError(this.error[1]))
-            //     return false
-            // }
+            if (typeof node !== 'object') {
+                addLine('value: ' + node)
+                addLine(getError(this.error[1]))
+            }
 
-            // if (typeof node !== 'object') {
-            //     addLine(node)
-            //     return false
-            // }
+            const prop = now ? 'now' : 'description'
+            if (node.hasOwnProperty(prop)) {
+                let text = ''
+                if (now && typeof node[prop] === 'object') {
+                    if (node[prop].hasOwnProperty('message'))
+                        text += messages[node[prop].message]
 
-            // if (hasNow)
-            //     if (node.hasOwnProperty('now'))
-            //         addLine('status: ' + node.now)
-            //     else
-            //         addLine('status: no description on status')
-            // else if (node.hasOwnProperty('description'))
-            //     addLine('description: ' + node.description)
-            // else
-            //     addLine(getError(this.error[0]))
+                    if (node[prop].hasOwnProperty('additional'))
+                        text += node[prop].additional
+                }
+                else
+                    text = Array.isArray(node[prop]) ?
+                        node[prop][0] + (node[prop].length > 1 ? '...' : '')
+                        : node[prop]
+                addLine(prop + ': ' + text)
+            }
+            else
+                addLine(getError(this.error[1]))
         }
     },
     find: {
@@ -148,7 +244,94 @@ const cmd = {
             'format: find <path> <terms>',
             'args: path <prop/prop/...>, terms <term=value,term,...>'
         ],
+        error: [
+            'invalid path',
+            'cannot be searched',
+            'not found'
+        ],
         do: function(args) { 
+            let path, terms
+            for (const arg of args)
+                if (arg.includes('/'))
+                    path = args.split('/')
+                else if (arg.includes(','))
+                    terms = arg.split(',')
+                else
+                    if (getNode(ui.path.slice().concat(arg)))
+                        path = [arg]
+                    else
+                        terms = [arg]
+
+            const subs = ui.path.slice().concat(path)
+            const node = getNode(subs)
+
+            if (!node) {
+                addLine(getError(this.error[0]))
+                return false
+            }
+
+            switch (true) {
+                case typeof node !== 'object':
+                    addLine('value: ' + node)
+                case node.type !== 'dir' && node.type !== 'vers':
+                    addLine(getError(this.error[1]))
+                    return false
+            }
+
+            if (terms) {
+                const search = {}
+                for (let i = 0; i < terms.length; ++i) {
+                    const t = terms[i].includes('=') ?
+                        terms[i].split('=')
+                        : terms[i]
+                    search[t] = {
+                        val: Array.isArray(t) ? t[0] : '',
+                        props: []
+                    }
+                }
+
+                const entities = Object.keys(node).filter(key => key !== 'type' && key !== 'href')
+                const keys = Object.keys(search)
+                for (const entity of entities) {
+                    for (const term of keys)
+                        if (entities[entity].hasOwnProperty(term)) {
+                            if (search[term].val) {
+                                if (search[term].val === entity[term]
+                                    || (
+                                        (typeof entity[term] === 'string' || Array.isArray(entity[term]))
+                                        && entity[term].includes(search[term].val)
+                                    ))
+                                        search[term].props.push(entity)
+                            }
+                            else
+                                search[term].props.push(entity)
+                        }
+                }
+
+                const title = subs[subs.length - 1]
+                const p = document.createElement('p')
+                p.append(document.createTextNode(title + ':'))
+                ui.section.append(p)
+
+                const props = Object.keys(search)
+                for (const prop of props) {
+                    const p = document.createElement('p')
+                    p.append(document.createTextNode((search[prop].val ? `${prop}=${search[prop].val}` : prop) + ': ' + search[prop].props.join(', ')))
+                }
+            }
+            else {
+                const title = subs[subs.length - 1]
+                const props = Object.keys(node).filter(key => key !== 'type' && key !== 'href')
+
+                const p = document.createElement('p')
+                p.append(document.createTextNode('Find in: ' + props.join(', ')))
+                ui.section.append(p)
+
+                const p2 = document.createElement('p')
+                p2.append(document.createTextNode('Every entity in ' + title + ' has ' + props.join(', ')))
+                ui.section.append(p2)
+            }
+
             addLine(getError('not implemented yet', 'find')) 
         }
     },
@@ -162,22 +345,10 @@ const cmd = {
             'not a link',
             'more than one link available'
         ],
-        do: function(args) { 
+        do: function(args) {
             addLine(getError('not implemented yet', 'go')) 
 
             /* go | go <path> | go <property> | go <path> <property> */
-
-            // const subs = args && args.length ? args[0].slice(1).split('/') : ''
-            // const node = subs ? getNode(ui.path.slice().concat(subs)) : getNode()
-
-            // const hrefs = {}
-            // Object.keys(node).forEach(key => {
-            //     if (node[key].includes('http'))
-            //         hrefs[key] = node[key]
-
-            //     if (key === 'source')
-            //         hrefs[key] = portfolio[sources][node[key]].href
-            // })
         }
     },
     help: {
@@ -451,10 +622,6 @@ document.querySelectorAll('aside button').forEach(btn =>
 )
 
 /* ------------------------------------------------------------------- Input */
-
-const messages = {
-    'cnet': 'All C#/.Net projects are not likely to be completed.'
-}
 
 ui.input.addEventListener('change', e => {
     const value = e.target.value
