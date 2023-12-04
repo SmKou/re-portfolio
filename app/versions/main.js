@@ -53,9 +53,11 @@ const getHttpHost = () => {
 }
 
 ui.controls.link.addEventListener('click', () => {
-    window.location.href = getHttpHost() + 'versions/' + version[version]
+    const href = getHttpHost() + 'versions/' + versions[version]
+    window.location.href = href
 })
 
 ui.controls.home.addEventListener('click', () => {
-    window.location.href = getHttpHost()
+    const href = getHttpHost()
+    window.location.href = href
 })
