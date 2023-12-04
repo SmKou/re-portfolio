@@ -29,8 +29,6 @@ const initBg = () => {
     }
 
     bg.style.gridTemplateColumns = `repeat(${x}, 1fr)`
-
-    console.log(x, y, width, height, bg.childNodes.length)
 }
 
 const initPortraits = () => {
