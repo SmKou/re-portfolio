@@ -45,11 +45,13 @@ Note: Do not merge from main or checkout the gh-pages branch
 **Homepage**
 - commands: count, go, more, search, 
 - command: stat on type='qna'
+- add functionality to view versions page
 
 **versions**
-- index
-- conic gradient background on iframe screen not consistent (use old tv img)
-- v0, v1, v2, v3, v4
+- link button appends undefined to url
+- commands given path vs cd => command
+- multi-arg commands
+- v0, v1, v2, v3
 
 ## License
 

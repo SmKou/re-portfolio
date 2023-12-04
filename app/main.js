@@ -1,5 +1,6 @@
 const ui = {
     path: [],
+    host: (window.location.host === 'localhost:5173' ? 'http://' : 'https://') + window.location.host,
     aside: {
         toggle: document.getElementById('toggle-aside'),
         state: true,
@@ -38,10 +39,14 @@ const addLine = (output, isCmd = false) => {
 
 const cmd = {
     cd: {
-        help: 'change path',
+        help: [
+            'do: change path',
+            'format: cd [<path>] | cd [..]',
+            'args: path [/]<prop/prop/...>'
+        ],
         error: ['no such property', 'cannot cd into property value'],
         do: function(args) {
-            let subs = args[0].split('/')
+            let subs = args[0].slice(1).split('/')
             let sub
             while(sub = subs.shift())
                 if (sub === '.')
@@ -58,7 +63,7 @@ const cmd = {
 
                     if (typeof node[sub] !== 'object') {
                         addLine(getError(this.error[1]))
-                        addLine('use <stat> instead')
+                        addLine('use: stat <path>')
                         return false
                     }
 
@@ -67,50 +72,121 @@ const cmd = {
         }
     },
     clear: {
-        help: 'Clear console',
+        help: [
+            'do: clear console',
+            'format: clear',
+            'args: none'
+        ],
         do: function(args) { ui.section.innerHTML = '' }
     },
     count: {
-        help: 'Get count of subentities with search term in properties',
+        help: [
+            'do: get count of subentities',
+            'format: count <path> <terms>',
+            'args: path [/]<prop/prop/...>, (search) terms <term,term,...> | <term=value,term,...>'
+        ],
         error: ['subentities do not contain term'],
-        do: function(args) { addLine(getError('not implemented yet', 'count')) }
+        do: function(args) { 
+            addLine(getError('not implemented yet', 'count')) 
+
+            /* count | count <path> | count <terms> | count <path> <terms> */
+        }
     },
     descript: {
-        help: 'View a statement or description, use <descript> <now> for viewing status if available',
+        help: [
+            'do: view a statement or description',
+            'format: descript <path> <[now]>',
+            'args: path [/]<prop/prop/...>, now = description of status'
+        ],
         error: ['no description','no such property'],
         do: function(args) {
-            const node = args.length ? getNode(ui.path.slice().concat(args)) : getNode()
+            addLine(getError('not implemented yet', 'descript'))
 
-            if (!node) {
-                addLine(getError(this.error[1]))
-                return false
-            }
+            /* descript | descript <path> | descript now | descript <path> now */
 
-            if (typeof node !== 'object') {
-                addLine(node)
-                return false
-            }
+            // const hasNow = args.includes('now')
+            // const path = () => {
+            //     if (hasNow && args.length !== 1)
+            //         return args.filter(val !== 'now')[0].slice(1).split('/')
+            //     else if (args && args.length === 1)
+            //         if (args[0][0] === '/')
+            //             return args.slice(1).split('/')
+            //         else {
+            //             addLine(getError('not a proper path'))
+            //             return false
+            //         }
+            //     else
+            //         return ''
+            // }
+            // const subs = path()
+            // const node = subs ? getNode(ui.path.slice().concat(subs)) : getNode()
 
-            if (node.hasOwnProperty('description'))
-                addLine('description: ' + node.description)
-            else
-                addLine(getError(this.error[0]))
+            // if (!node) {
+            //     addLine(getError(this.error[1]))
+            //     return false
+            // }
+
+            // if (typeof node !== 'object') {
+            //     addLine(node)
+            //     return false
+            // }
+
+            // if (hasNow)
+            //     if (node.hasOwnProperty('now'))
+            //         addLine('status: ' + node.now)
+            //     else
+            //         addLine('status: no description on status')
+            // else if (node.hasOwnProperty('description'))
+            //     addLine('description: ' + node.description)
+            // else
+            //     addLine(getError(this.error[0]))
         }
     },
     go: {
-        help: 'Follow a link, opens in new tab according to link attributes, use <go> in an entity or specify the entity with <go> [prop]',
-        error: ['not a link'],
-        do: function(args) { addLine(getError('not implemented yet', 'go')) }
+        help: [
+            'do: follow a link',
+            'format: go <path> <property>',
+            'args: path [/]<prop/prop/...>, property'
+        ],
+        error: [
+            'not a link',
+            'more than one link available'
+        ],
+        do: function(args) { 
+            addLine(getError('not implemented yet', 'go')) 
+
+            /* go | go <path> | go <property> | go <path> <property> */
+
+            // const subs = args && args.length ? args[0].slice(1).split('/') : ''
+            // const node = subs ? getNode(ui.path.slice().concat(subs)) : getNode()
+
+            // const hrefs = {}
+            // Object.keys(node).forEach(key => {
+            //     if (node[key].includes('http'))
+            //         hrefs[key] = node[key]
+
+            //     if (key === 'source')
+            //         hrefs[key] = portfolio[sources][node[key]].href
+            // })
+        }
     },
     help: {
-        help: 'Use <help> to get a list of commands and their uses, or <help> [command] to see what a command does',
+        help: [
+            'do: list of commands or command information',
+            'format: help <command>',
+            'args: name of command'
+        ],
         error: ['command not found'],
         do: function(args) {
             if (!args.length) {
                 for (const key of Object.keys(cmd)) {
                     const p = document.createElement('p')
-                    p.append(document.createTextNode(key + ': ' + cmd[key].help))
+                    p.append(document.createTextNode('command: ' + key))
                     ui.section.append(p)
+
+                    const props = cmd[key].help
+                    for (const prop of props)
+                        addLine(prop)
                 }
                 return true
             }
@@ -120,18 +196,27 @@ const cmd = {
                 addLine(getBashError(key, this.error[0]))
             else {
                 addLine(`help ${key}`, true)
-                addLine(cmd[key].help)
+                const props = cmd[key].help
+                for (const prop of props)
+                    addLine(prop)
             }
         }
     },
     ls: {
-        help: 'View list of properties in current path, use <ls> <help> to see list of commands',
+        help: [
+            'do: view list of properties in current path',
+            'format: ls <path> | ls [help]',
+            'args: path [/]<prop/prop/...>'
+        ],
         error: ['cannot use on an entity'],
         do: function(args) {
+            const hasHelp = args.includes('help')
+            
+            const subs = args ? args[0] !== 'help' ? args[0].split('/') : [] : []
             const node = !args.length ? getNode()
                 : args && args[0] === 'help' ? cmd
-                : getNode(ui.path.slice().concat(args))
-            const props = Object.keys(node).filter(key => key !== 'type')
+                : getNode(ui.path.slice().concat(subs))
+            const props = Object.keys(node).filter(key => key !== 'type' && key !== 'href')
 
             if (typeof node !== 'object') {
                 addLine(getError(this.error[0]))
@@ -141,12 +226,23 @@ const cmd = {
 
             if (args && args[0] === 'help')
                 addLine(props.join(' '))
-            else if (node.type === 'vers')
+            else if (node.type === 'vers') {
+                const title = ui.path.length ? ui.path[ui.path.length - 1] : 'versions'
+                const p = document.createElement('p')
+                const a = document.createElement('a')
+                a.href = ui.host + node.href
+                a.append(document.createTextNode(title))
+                p.append(document.createTextNode('See '))
+                p.append(a)
+                ui.section.append(p)
+                addLine('use <go> to follow link or click the link')
+
                 for (const key of props) {
                     const p = document.createElement('p')
                     p.append(document.createTextNode(key + ': ' + node[key].title))
                     ui.section.append(p)
                 }
+            }
             else if (node.type === 'src')
                 for (const key of props) {
                     const p = document.createElement('p')
@@ -174,7 +270,9 @@ const cmd = {
     },
     more: {
         help: 'When you see an ellipsis at the end of a line (...), use <more> to read the rest, specify property as needed with <more> [prop]',
-        do: function(args) { addLine(getError('not implemented yet', 'more')) }
+        do: function(args) { 
+            addLine(getError('not implemented yet', 'more')) 
+        }
     },
     pwd: {
         help: 'Get current path',
@@ -188,7 +286,8 @@ const cmd = {
         help: 'View information on entity, i.e. project, experience, education, or question',
         error: ['cannot retrieve information on list of entities'],
         do: function(args) {
-            const node = args.length ? getNode(ui.path.slice().concat(args)) : getNode()
+            const subs = args && args.length ? args[0].split('/') : []
+            const node = args ? getNode(ui.path.slice().concat(subs)) : getNode()
 
             if (node.type === 'dir') {
                 addLine(getError(this.error[0]))
@@ -203,7 +302,9 @@ const cmd = {
 
             const props = Object.keys(node).filter(key => key !== 'type')
             const makeParagraphs = n => {
+                console.log(n)
                 const arr = new Array(n)
+                console.log(arr)
                 for (let i = 0; i < n.length; ++i)
                     arr[i] = document.createElement('p')
                 return arr
@@ -218,6 +319,7 @@ const cmd = {
                         const a = document.createElement('a')
                         a.href = node.href
                         a.append(document.createTextNode(node.title))
+                        p.append(document.createTextNode('Title: '))
                         p.append(a)
                         ui.section.append(p)
                         addLine('use <go> to follow links in entities')
@@ -253,6 +355,7 @@ const cmd = {
                     }
 
                     paragraphs = makeParagraphs(4)
+                    console.log(paragraphs)
 
                     paragraphs[0].append(document.createTextNode(`${title} (${node.year}) `))
                     if (aView) {

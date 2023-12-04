@@ -30,10 +30,17 @@ ui.controls.next.addEventListener('click', () => {
         frame.src = versions[version]
 })
 
+// deployed: https://smkou.github.io/re-portfolio/versions/v4/
+const getHttpHost = () => {
+    const host = window.location.host
+    const http = host === 'localhost:5173' ? 'http://' : 'https://'
+    return http + host + '/'
+}
+
 ui.controls.link.addEventListener('click', () => {
-    window.location.href = './' + version[version]
+    window.location.href = getHttpHost() + 'versions/' + version[version]
 })
 
 ui.controls.home.addEventListener('click', () => {
-    window.location.href = '../'
+    window.location.href = getHttpHost()
 })

@@ -2,38 +2,39 @@ const portfolio = {
     type: 'dir',
     versions: {
         type: 'vers',
+        href: 'versions/',
         v0: {
             type: 'ver',
             title: 'Profile',
-            href: 'versions/v0',
+            href: 'versions/v0/',
             description: 'Re-Portfolio 2015-2017 featuring block colors and styling, consists of portraits and personality',
             status: true
         },
         v1: {
             type: 'ver',
             title: 'Design Index',
-            href: 'versions/v1',
+            href: 'versions/v1/',
             description: 'Re-Portfolio 2018-2019 featuring designer backgrounds using block styling, consists of css colors, shapes, and fonts',
             status: false
         },
         v2: {
             type: 'ver',
             title: 'Slideshow',
-            href: 'versions/v2',
+            href: 'versions/v2/',
             description: 'Re-Portfolio 2020 featuring slideshow, consists of notes on identity',
             status: false
         },
         v3: {
             type: 'ver',
             title: 'Unique Page Slideshow',
-            href: 'versions/v3',
+            href: 'versions/v3/',
             description: 'Re-Portfolio 2021-2022 featuring slideshow with magazine, newspaper, documentation designs, consists of introduction, profile, projects, and resources',
             status: false
         },
         v4: {
             type: 'ver',
             title: 'Epicodus',
-            href: 'versions/v4',
+            href: 'versions/v4/',
             description: 'Re-Portfolio 2023 featuring resume and profile',
             status: true
         }
@@ -558,28 +559,18 @@ const portfolio = {
         type: 'qna',
         'q1': {
             type: 'q',
-            q: 'Why are levels and difficulty not indicated?',
+            q: 'What does each status mean?',
             a: [
-                'I always have the urge to label projects and prototypes by a level and difficulty, but a personal project can never match the requirements of an enterprise project in part because an individual, single team or small business could not afford the services and hardware needed for fulfilling the requirements. There is also no need to complicate smaller or simpler projects, yet this seems to be customary due to a notion of how things should be done or what is easier.', 
-                'Often, what is considered easier is actually abstracted, it is not structurally nor conceptually easier, and should custom modifications be desired or particular issues occur, increasing degrees of abstraction means more points of potential error. Even if the proportion remains relatively the same as levels of abstraction are added, the number still grows as each level of abstraction adds more points to consider and keep track of. Not to mention with adoption of the abstraction being the entry point for many web developers, this usually means to them that the simplest or easiest is the same point as where they started.',
-                'But what matters to a business, first and foremost, is time of delivery and for that, a developer using what they are familiar with is going to be the best. As in most things, we do not go by what is actually best or the most of a factor like effectiveness, efficiency, sustainable or so, business and economics are measured by time, money and resources, availability, demand and window of opportunity. When it comes to development, the pitfall of the developer mentality is innovation, modern approaches and security, and growth. However, just as the factors of business are not relevant with the efficacy of a system, the drive and comfort of developers is not relevant with the structural complexity and integrity of the system they are responsible for.',
-                'I can rant on and on, but this is a broad-sweeping oversimplification of the situation, which is ironic, and rather than professional experience, my notions are based on observation and assessment of the psychology of individuals and groups I have seen, heard, interacted with and read about. And because my notions are derived from the observable psychology, as with any simplification to the point of reductionism, everything is in part an exception, given circumstances, perspective and perception. So back to point: to account for levels of abstraction implemented in the tools and frameworks used in web development, labeling something as beginner requires a spectrum of assessment based on as many factors as technologies involved and the levels of abstraction inherently included.'
+                'For every project, whether in a team or on my own, and whether the project is a feature, app or api, there are four tasks to do before I will label it as complete: code, test, review, and deploy.',
+                'Code refers to programming and implementation of specs or fulfillment of tasks. This often includes unit testing and ui testing (LT Browser). If there are explicit tasks to run tests, such as for integration or user testing, then test is separate from code. Review usually pertains to a code review, refactoring and rewrites. After the review, which on a team project would result in a merged pull request, the last step is deployment. Once deployed, a project is considered complete.',
+                'I frequently revisit old projects and update them, and so I tend to keep notes on them. To see these details on their current status, specify <now> after the <descript> command. Even if a project is labeled as complete, it may be ongoing or due for a revision.'
             ]
         },
         'q2': {
             type: 'q',
-            q: 'What does each status mean?',
-            a: [
-                'For every project, whether in a team or on my own, and whether the project is a feature, app or api, there are four tasks to do before I will label it as complete: code, test, review, and deploy.',
-                'Code refers to programming and implementation of specs or fulfillment of tasks. This often includes unit testing and ui testing (LT Browser). If there are explicit tasks to run tests, such as for integration or user testing, then test is separate from code. ',
-                'I frequently revisit old projects and update them, and so I tend to keep notes on them. To see these details on their current status, specify <now> after the <descript> command. Even if a project is labeled as complete, it may be ongoing or due for a revision.'
-            ]
-        },
-        'q3': {
-            type: 'q',
             q: 'Why is the year of some projects -1?',
             a: [
-                'Rather than list a future year as I do not know when I will get to work on a project, I list the year as -1. However, you may notice the status and the year do not match on some projects, particularly my old ones coming from academics. If I have not worked on a project before, meaning I did not at least reach the task of review on it, then I do not consider it as having worked on it at all yet, no matter that I have designs and nodes. But if I did work on it, the project will have the last year it was updated or worked on.'
+                'Rather than list a future year as I do not know when I will get to work on a project, I list the year as -1. However, you may notice the status and the year do not match on some projects, particularly my old ones coming from academics. If I have not worked on a project before, meaning I did not at least reach the task of testing on it, then I do not consider it as having worked on it at all yet, no matter that I have designs and nodes. But if I did work on it, the project will have the last year it was updated or worked on.'
             ]
         }
     }
