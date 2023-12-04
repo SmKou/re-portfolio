@@ -15,13 +15,31 @@ article {
 }
 
 .screen {
+    position: relative;
     width: 80%;
     height: 80%;
     border-radius: 5%;
     background: #bdbbb2;
-    box-shadow: 4px 16px 16px var(--uni-black) inset, -2px -4px 8px var(--uni-off-white) inset;
+    box-shadow: 4px 16px 16px var(--uni-black) inset, -4px -8px 16px var(--uni-off-white) inset;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
 }
+
+.message {
+    position: absolute;
+    bottom: 2.4rem;
+    width: 65%;
+    padding: 1.2rem;
+    display: none;
+}
+
+.message p { 
+    font-size: 2.4rem;
+    text-align: center;
+}
+
+.message.view { display: block }
 
 #version-view {
     width: 100%;
