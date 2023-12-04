@@ -326,7 +326,7 @@ const portfolio = {
             inspect: '',
             keywords: ['Java','AR','Adobe Illustrator','capstone'],
             status: 'code',
-            now: 'Requires redesign and reassessment of core idea for implementation, use '
+            now: 'Requires redesign and reassessment of core idea for implementation'
         },
         'responsive-web': {
             type: 'proj',
