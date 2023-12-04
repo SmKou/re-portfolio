@@ -42,7 +42,7 @@ const cmd = {
         help: [
             'do: change path',
             'format: cd [<path>] | cd [..]',
-            'args: path [/]<prop/prop/...>'
+            'args: path <prop/prop/...>'
         ],
         error: ['no such property', 'cannot cd into property value'],
         do: function(args) {
@@ -83,7 +83,7 @@ const cmd = {
         help: [
             'do: get count of subentities',
             'format: count <path> <terms>',
-            'args: path [/]<prop/prop/...>, (search) terms <term,term,...> | <term=value,term,...>'
+            'args: path <prop/prop/...>, (search) terms <term,term,...> | <term=value,term,...>'
         ],
         error: ['subentities do not contain term'],
         do: function(args) { 
@@ -96,7 +96,7 @@ const cmd = {
         help: [
             'do: view a statement or description',
             'format: descript <path> <[now]>',
-            'args: path [/]<prop/prop/...>, now = description of status'
+            'args: path <prop/prop/...>, now = description of status'
         ],
         error: ['no description','no such property'],
         do: function(args) {
@@ -142,11 +142,21 @@ const cmd = {
             //     addLine(getError(this.error[0]))
         }
     },
+    find: {
+        help: [ 
+            'do: get list of subentities',
+            'format: find <path> <terms>',
+            'args: path <prop/prop/...>, terms <term=value,term,...>'
+        ],
+        do: function(args) { 
+            addLine(getError('not implemented yet', 'find')) 
+        }
+    },
     go: {
         help: [
             'do: follow a link',
             'format: go <path> <property>',
-            'args: path [/]<prop/prop/...>, property'
+            'args: path <prop/prop/...>, property'
         ],
         error: [
             'not a link',
@@ -206,12 +216,12 @@ const cmd = {
         help: [
             'do: view list of properties in current path',
             'format: ls <path> | ls [help]',
-            'args: path [/]<prop/prop/...>'
+            'args: path <prop/prop/...>'
         ],
         error: ['cannot use on an entity'],
         do: function(args) {
             const hasHelp = args.includes('help')
-            
+
             const subs = args ? args[0] !== 'help' ? args[0].split('/') : [] : []
             const node = !args.length ? getNode()
                 : args && args[0] === 'help' ? cmd
@@ -269,21 +279,29 @@ const cmd = {
         }
     },
     more: {
-        help: 'When you see an ellipsis at the end of a line (...), use <more> to read the rest, specify property as needed with <more> [prop]',
+        help: [
+            'do: read more on value presented with ellipsis (...)',
+            'format: more <path> <property>',
+            'args: path <prop/prop/...>, property'
+        ],
         do: function(args) { 
             addLine(getError('not implemented yet', 'more')) 
         }
     },
     pwd: {
-        help: 'Get current path',
+        help: [
+            'do: get current path',
+            'format: pwd',
+            'args: none'
+        ],
         do: function(args) { addLine(getPath()) }
     },
-    search: {
-        help: 'Get list of subentities containing search term in properties',
-        do: function(args) { addLine(getError('not implemented yet', 'search')) }
-    },
     stat: {
-        help: 'View information on entity, i.e. project, experience, education, or question',
+        help: [
+            'do: view entity information',
+            'format: stat <path>',
+            'args: path <prop/prop/...>'
+        ],
         error: ['cannot retrieve information on list of entities'],
         do: function(args) {
             const subs = args && args.length ? args[0].split('/') : []
