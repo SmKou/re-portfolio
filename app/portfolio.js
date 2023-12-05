@@ -1,6 +1,11 @@
 const portfolio = {
     type: 'dir',
     versions: versions,
+    art: {
+        title: 'Artworks',
+        href: 'art/',
+        description: 'I cannot meditate in the traditional sense due in part to my C-PTSD, so drawing acts as a sort of substitute. Rather than clarity and relaxation, drawing provides insight and allows for a nuance of expression when words fail as they often do for me when it comes to self-perception and sensation.'
+    },
     projects: {
         type: 'dir',
         'first-page': {
