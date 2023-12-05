@@ -12,19 +12,23 @@ Showcase portfolio: view on [Github Pages](smkou.github.io/re-portfolio)
 2015 - 2017
 Features block colors and styling, consists of portraits and personality
 
-**v1: Design Index**
+**v1: Magazine**
+2015-2022
+Features writings
+
+**v2: Design Index**
 2018 - 2019
 Features designer backgrounds using block styling, consists of css colors, shapes, and fonts
 
-**v2: ID Slideshow**
-2020
-Features slideshow, consists of notes on identity
+**v3: Slideshow**
+2020 - 2022
+Features slideshows, consists of four: 1. notes on identity, 2. magazine, newspaper, documentation designs, 3. shows, 4. shows with backgrounds
 
-**v3: Unique Page Slideshow**
+**v4: People Pages**
 2021 - 2022
-Features slideshow with magazine, newspaper, documentation designs, consists of introduction, profile, projects, and resources
+Features pages based on people's clothing
 
-**v4: Epicodus**
+**v5: Epicodus**
 2023
 Features resume and profile
 
