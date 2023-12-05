@@ -1,6 +1,5 @@
-const versions = [ 'v0/', 'v1/', 'v2/', 'v3/', 'v4/' ]
-const statuses = [ true, false, false, false, true ]
-let version = versions.length - 1
+const props = Object.keys(versions).filter(key => key.includes('v'))
+let version = 0
 
 const ui = {
     controls: {
@@ -13,16 +12,18 @@ const ui = {
     message: document.querySelector('.message')
 }
 
-ui.frame.setAttribute('src', versions[version])
+const path = () => versions[props[version]].href
+
+ui.frame.setAttribute('src', path())
 
 ui.controls.prev.addEventListener('click', () => {
     version--
     if (version < 0)
-        version = versions.length - 1
+        version = props.length - 1
 
-    if (statuses[version]) {
+    if (versions[props[version]].status) {
         ui.message.classList.remove('view')
-        ui.frame.src = versions[version]
+        ui.frame.src = path()
     }
     else {
         ui.message.classList.add('view')
@@ -32,12 +33,12 @@ ui.controls.prev.addEventListener('click', () => {
 
 ui.controls.next.addEventListener('click', () => {
     version++
-    if (version > versions.length - 1)
+    if (version > props.length - 1)
         version = 0
 
-    if (statuses[version]) {
+    if (versions[props[version]].status) {
         ui.message.classList.remove('view')
-        ui.frame.src = versions[version]
+        ui.frame.src = path()
     }
     else {
         ui.message.classList.add('view')
@@ -53,7 +54,7 @@ const getHttpHost = () => {
 }
 
 ui.controls.link.addEventListener('click', () => {
-    const href = getHttpHost() + 'versions/' + versions[version]
+    const href = getHttpHost() + versions.href + path()
     window.location.href = href
 })
 
