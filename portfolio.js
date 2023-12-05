@@ -1,44 +1,6 @@
 const portfolio = {
     type: 'dir',
-    versions: {
-        type: 'vers',
-        href: 'versions/',
-        v0: {
-            type: 'ver',
-            title: 'Profile',
-            href: 'versions/v0/',
-            description: 'Re-Portfolio 2015-2017 featuring block colors and styling, consists of portraits and personality',
-            status: true
-        },
-        v1: {
-            type: 'ver',
-            title: 'Design Index',
-            href: 'versions/v1/',
-            description: 'Re-Portfolio 2018-2019 featuring designer backgrounds using block styling, consists of css colors, shapes, and fonts',
-            status: false
-        },
-        v2: {
-            type: 'ver',
-            title: 'Slideshow',
-            href: 'versions/v2/',
-            description: 'Re-Portfolio 2020 featuring slideshow, consists of notes on identity',
-            status: false
-        },
-        v3: {
-            type: 'ver',
-            title: 'Unique Page Slideshow',
-            href: 'versions/v3/',
-            description: 'Re-Portfolio 2021-2022 featuring slideshow with magazine, newspaper, documentation designs, consists of introduction, profile, projects, and resources',
-            status: false
-        },
-        v4: {
-            type: 'ver',
-            title: 'Epicodus',
-            href: 'versions/v4/',
-            description: 'Re-Portfolio 2023 featuring resume and profile',
-            status: true
-        }
-    },
+    versions: versions,
     projects: {
         type: 'dir',
         'first-page': {
