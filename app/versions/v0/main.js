@@ -8,6 +8,19 @@ const app = {
     timeout: ''
 }
 
+const color = () => Math.floor(Math.random() * 255)
+const baseColor = Math.floor(Math.random() * 3)
+const getColor = () => {
+    const colors = new Array(3)
+    for (let i = 0; i < colors.length; ++i)
+    if (i === baseColor)
+        colors[i] = Math.floor(Math.random() * 50) + 160
+    else
+        colors[i] = color()
+    return colors
+}
+
+
 const initBg = () => {
     app.timeout = ''
     const width = document.getElementById('portraits').offsetWidth
@@ -21,10 +34,11 @@ const initBg = () => {
     while (Math.abs(Math.floor(height / y) - 32) > 10)
         y++
 
-    const color = () => Math.floor(Math.random() * 255)
+    
     for (let i = 0; i < x * y; ++i) {
         const block = document.createElement('div')
-        block.style.background = `rgb(${color()}, ${color()}, 200)`
+        const [r,g,b] = getColor()
+        block.style.background = `rgb(${r}, ${g}, ${b})`
         bg.append(block)
     }
 
