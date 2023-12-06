@@ -11,10 +11,98 @@
     <link rel="stylesheet" href="../../universal.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <header></header>
+<body class="html">
+    <header>
+        <div class="title">
+            <h1>
+                <span class="html">Handbook</span>
+                <span class="css">Design Index</span>
+            </h1>
+            <h3><button id="set-html">HTML</button> & <button id="set-css">CSS</button></h3>
+        </div>
+        <nav>
+            <div class="html">
+                <a href="#intro">Introduction</a>
+                <a href="#beginner-html">Beginner's HTML</a>
+                <a href="#semantics">Semantic HTML</a>
+                <a href="#accessibility">Accessibility</a>
+            </div>
+            <div class="css">
+                <a href="#colors">Colors</a>
+                <a href="#fonts">Fonts & Font Pairs</a>
+                <a href="#shapes">Shapes</a>
+                <a href="#layouts">Layouts</a>
+            </div>
+        </nav>
+    </header>
     <main>
-        <section id="background"></section>
+        <section id="intro">
+            <h2>Introduction</h2>
+            <div class="content">
+                <p>In the past, this was a handbook I was working on while reviewing my html and css. Here, I will give a brief introduction to those that are not familiar with how websites, the internet, or programming work, presuming that one is either getting into web development or would like to understand it a bit more. If you just want to continue to the following content, skip to the <a href="#beginner-html">next section</a> or click CSS above to switch to the css content.</p>
+                <hr>
+                <details>
+                    <summary>Programming User Interfaces for the Web only consists of HTML, CSS, and JS</summary>
+                    <div class="passages">
+                        <p>First, programming is writing a collection of documents that provide instructions to computers on how to run a program. Programs are written in programs. A web app is a program that runs on a browser, which runs on an OS. Though we distinguish between hardware (physical parts of a computer) and software (programs on a computer), most programmers, or maybe half depending on one's perception of robotics, hardware, and embedded systems, do not program the computer itself anymore. What they program is software at differing levels of abstraction.</p>
+                        <p><strong>Abstraction</strong></p>
+                        <p>Everything you see or interact with on a computer, whether the device is a mobile, tablet, desktop or watch, is a program, but when we program, we do not reprogram everything from scratch. Though this isn't the point of abstraction, one way to look at it is that abstraction allows us to reduce the amount of work in developing a program. Think of it like the work of a painter. In the past, painters had to prepare their own canvases and paints, as well as collecting the pieces and assembling them, but now, painters can buy premixed paints and gessoed canvases, so that all they need to do is take a brush and put paint to canvas. When we talk about abstractions in programming, we're talking about points in the process of developing a given program. There are <strong>layers</strong> of abstraction, which refers to how far along we develop, and then <strong>levels</strong> of abstraction which refers to the number of layers.</p>
+                        <p>For programmers, <strong>layers of abstraction</strong> consist of collections of documents others have written, so that a programmer can just write the documents for their given application, whether it's a digital product, interface for a service, and so on. Depending on what you're working on and at what level of abstraction you're programming for will determine how many collections you'll be programming with, with the awareness and assumption that they are there. Abstraction can also be lateral in the sense of tools and libraries one uses to develop their program. For example, there are libraries for styling websites and web apps, so that in developing a program for a website or web app, one can just import this library, write a document for how to use the elements and rules in the library, and then focus on the actual functionality of what one is programming.</p>
+                        <p><strong>So why does this matter?</strong></p>
+                        <p>When people get into programming and do not follow a formal course, or do not delve into how programs and systems work, it can seem overwhelming and confusing, especially with web development. Web development is a unique case. It is not like software programming because of its relationship with the internet and so the complications and further abstractions that brings to developing for it. The internet is an electrical system setup around the world made of routers, servers and wired cables. You can read about it in <a href="https://www.nytimes.com/interactive/2019/03/10/technology/internet-cables-oceans.html" target="_blank">this article</a> from the NY Times or on <a href="https://en.wikipedia.org/wiki/History_of_the_Internet" target="_blank">Wikipedia</a>. Here is a <a href="https://www.submarinecablemap.com/" target="_blank">map of all internet cables</a> running under the sea. First getting into web development, html and css are pretty straightforward and opening these documents in a browser, you can see how the browser follows the detailed instructions.</p>
+                        <p><strong>But html and css are heavily abstracted these days in web development.</strong> Even those who are doing simple websites and web apps for small businesses may use levels of abstraction that aren't necessarily needed. What I'm talking about is the use of frameworks like React, Vue.js, and Svelte(Kit). The reasoning is that it makes it easier for the developer, or so-called better developer experience, but <strong>when it comes to web development, performance cannot be secondary to service</strong>. If a website does not load fast enough or a web app does not administer changes in real-time, it will not matter what the service is or if it is easy to use and navigate. What is easy or more intuitive to a developer does not relate to or mean ease of use and performance for the user, but as a developer, it becomes all too easy to fall into this trap of only seeing the documents you're writing on the machine you're developing on, which the specs of are usually not the norm for most users, and then relating your experience to the potential performance and service a user will experience, depending on the varying specs of their machine, whether that is the newest or an old iPhone, an office computer, or Chromebook.</p>
+                        <p><strong>So what are you learning?</strong></p>
+                        <p>When it comes to web development, what a user interacts with in a browser is a user interface and this interface always consists of html, css, and js documents that are sent to a user's machine so that the browser can render the pages or views and respond to user interactions locally. This is not the same as a software program or a mobile app, otherwise known as native apps. When a native app is installed, the app's documents are stored in the given machine and registered, so that when a thumbnail is clicked or a command is entered to run the program, the machine can find where the code is stored and run the program. Before, the difference between a native app and a web app was that data for a native app was stored on the machine. Most often, a cloud, or the cloud in a cloud service, is just a warehouses of servers that a company keeps for storing and managing data, whether the data is statistical information, documents, or other files. What separates a native app from a web app nowadays is that a web app is a program that requires a browser to be run. Though some web apps can act and look like native apps, it's easy to find out what program is running them and see that it's the browser.</p>
+                        <p>No matter what programming language is used for the program running on a website's or web app's server, as noted above, the user interface of a website or web app always consists of html, css and js.</p>
+                        <p><strong>HTML:</strong> HyperText Markup Language</p>
+                        <p><strong>CSS:</strong> Cascading StyleSheets</p>
+                        <p><strong>JS:</strong> JavaScript</p>
+                        <p>The reason I mentioned abstraction is because as I've mentioned before, a lot of web development today abstracts from html, css, and even JavaScript, but no matter what frameworks, tools or libraries you end up using, the final product for the user interface can only be a collection of html, css, and js documents as those are what the browser uses to run a program. The browser does not make use of other languages. For instance, HTML is not the only markup language there is, just as JavaScript is not the only programming language, but these are the languages of the browser and so the languages of the web.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary>Development of Re-Portfolio</summary>
+                    <div class="passages">
+                        <p><strong>No web-related abstractions</strong><br>This website of mine, Re-Portfolio, is an example of just using html, css, and js. I scaffolded the project with Vite and chose vanilla js, so that while developing, I could use a development server. Though I could do without it and just render my pages in the browser using filepaths, the development server provides hot reloading and allows me to write relative urls without stating the root page. Without a development server, I would have to modify my html in the gh-pages branch that Github Pages are rendered from to remove index.html from anchors navigating into directories.
+                        <p><strong>No compilation</strong><br>Since I'm using html, css and js, I don't require my code to be compiled. If I were using a separate server to manage my content, it may be tempting to use another language, or even a superset like Typescript, but while having a separate server to keep track of data, even without a database, would ensure that the information across different pages were consistent, since the content isn't consistent here, this would end up being more complex. The content isn't the same on every page. The formatting and presentation isn't even the same for the content that is the same, and I don't need to update the content of older pages as the point is to show them as older. As such, I can just have the html pages hold the content.</p>
+                        <p><strong>No asset bundling</strong><br>If you're familiar with web development, you may think of asset bundling and compression. These are standard for optimizing performance. However, asset bundling only works if the style and interactions of pages or views on a website or web app are consistent with one another, and that is usually, if not the vast majority of the time, the case. But if you haven't noticed by now, every page on this website is unique to the rest. What interactions exist on a page are written solely for that page, as with styles. An asset bundler would thus reproduce my current file structure. I compress my files when I need to, such as images and longer js files, that's it.</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+        <section id="beginner-html">
+            <h2>Beginner's HTML</h2>
+            <div class="content">
+                <dl>
+                    <dt>Tag</dt>
+                    <dd>A tag is an html element denoted by </dd>
+                </dl>
+            </div>
+        </section>
+        <section id="semantics">
+            <h2>Semantic HTML</h2>
+            <div class="content"></div>
+        </section>
+        <section id="accessibility">
+            <h2>Accessibility</h2>
+            <div class="content"></div>
+        </section>
+        <section id="colors">
+            <h2>Colors</h2>
+            <div class="content"></div>
+        </section>
+        <section id="fonts">
+            <h2>Fonts & Font Pairs</h2>
+            <div class="content"></div>
+        </section>
+        <section id="shapes">
+            <h2>Shapes</h2>
+            <div class="content"></div>
+        </section>
+        <section id="layouts">
+            <h2>Layouts</h2>
+            <div class="content"></div>
+        </section>
     </main>
 </body>
 </html>
