@@ -7,7 +7,7 @@
     <title>v1: Design Index</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=League+Spartan:wght@200;400;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=League+Spartan:wght@200;400;700&family=Red+Hat+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../universal.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -18,7 +18,7 @@
                 <span class="html">Handbook</span>
                 <span class="css">Design Index</span>
             </h1>
-            <h3><button id="set-html">HTML</button> & <button id="set-css">CSS</button></h3>
+            <h3><button class="set-html">HTML</button> & <button class="set-css">CSS</button></h3>
         </div>
         <nav>
             <div class="html">
@@ -40,6 +40,7 @@
             <h2>Introduction</h2>
             <div class="content">
                 <p>In the past, this was a handbook I was working on while reviewing my html and css. Here, I will give a brief introduction to those that are not familiar with how websites, the internet, or programming work, presuming that one is either getting into web development or would like to understand it a bit more. If you just want to continue to the following content, skip to the <a href="#beginner-html">next section</a> or click CSS above to switch to the css content.</p>
+                <p>For references, I suggest <a href="https://developer.mozilla.org/en-US/" target="_blank">MDN Web Docs</a> and <a href="https://css-tricks.com/" target="_blank">CSS Tricks</a>. For code snippets, I prefer <a href="https://www.w3schools.com/" target="_blank">W3Schools</a> to CodePen or StackOverflow when possible.</p>
                 <hr>
                 <details>
                     <summary>Programming User Interfaces for the Web only consists of HTML, CSS, and JS</summary>
@@ -75,7 +76,222 @@
             <div class="content">
                 <dl>
                     <dt>Tag</dt>
-                    <dd>A tag is an html element denoted by </dd>
+                    <dd>An html element</dd>
+                    <dd>Here is an example of an image element nested in a body element: 
+                        <div class="code">
+                            <p>&lt;body&gt;</p>
+                                <div class="indented">
+                                    <p>&lt;img/&gt;</p>
+                                </div>
+                            <p>&lt;/body&gt;</p>
+                        </div>
+                    </dd>
+                    <dd>Most elements have an opening and closing tag like the body element show above. Elements by img with only one tag are closed self-enclosing tags. An element with a self-enclosing tag cannot have nested content.</dd>
+                    <dd>Nesting elements allows us to create layouts and relationships between elements, such as positioning the img element inside the body element.</dd>
+
+                    <dt>Document type</dt>
+                    <dd>The first line in every html document should be: <span class="code">&lt;!DOCTYPE html&gt;</span>.</dd>
+
+                    <dt>HTML Document Structure</dt>
+                    <dd>Standard template for html document:
+                        <div class="code">
+                            &lt;!DOCTYPE html&gt;
+                            <p>&lt;html&gt;</p>
+                                <div class="indented">
+                                    <p>&lt;head&gt;</p>
+                                        <div class="indented">
+                                            <p>&lt;meta charset="utf-8"&gt;</p>
+                                        </div>
+                                        <div class="indented">
+                                            <p>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+                                        </div>
+                                        <div class="indented">
+                                            <p>&lt;title&gt;Document Title&lt;/title&gt;</p>
+                                        </div>
+                                    <p>&lt;/head&gt;</p>
+                                </div>
+                                <div class="indented">
+                                    <p>&lt;body&gt;&lt;/body&gt;</p>
+                                </div>
+                            &lt;/html&gt;
+                        </div>
+                    </dd>
+                    <dd>Browsers can accept:
+                        <div class="code">
+                            <p>&lt;body&gt;&lt;/body&gt;</p>
+                        </div>
+                    </dd>
+                    <dd>The internet and so browsers and html, css, and js were founded on
+                        <ul>
+                            <li><strong>Robustness Principle</strong>, otherwise known as <strong>Postel's Law</strong>: "Be conservative in what you send, be liberal in what you accept."</li>
+                            <li><strong>Backwards Compability</strong>: Interoperability with older legacy systems ensuring that older browsers and websites still work, or that a current website or web app can work on an older browser or machine</li>
+                        </ul>
+                        <!---->
+                    </dd>
+
+                    <dt>Comments</dt>
+                    <dd>Writing comments in code can be used to toggle a line or set of lines to see the effect when removed and to explain what a line or lines of code are for or why they were needed contrary to expectations.</dd>
+                    <dd>HTML:
+                        <div class="code">
+                            <p>&lt;!-- Here is a comment --&gt;</p>
+                        </div>
+                    </dd>
+                    <dd>CSS:
+                        <div class="code">
+                            <p>/* Here is a comment */</p>
+                        </div>
+                    </dd>
+                    <dd>JS:
+                        <div class="code">
+                            <p>// Here is a single-line comment</p>
+                            <p>/* Here is a multi-line comment */</p>
+                        </div>
+                    </dd>
+
+                    <dt>Heading</dt>
+                    <dd>In HTML, there are three elements that can easily be confused to someone unfamiliar with html or document structure: head, header, and heading.
+                        <ul>
+                            <li><strong>head</strong>: The portion of an html document providing metadata on a page, such as charset and title.</li>
+                            <li><strong>header</strong>: The header of a webpage.</li>
+                            <li><strong>heading</strong>: An series of elements denoting titles and subtitles of a page and the articles and sections it contains.</li>
+                        </ul>
+                    </dd>
+                    <dd>Examples of headings:
+                        <ol>
+                            <li><strong>h1</strong>: <h1>Heading 1</h1></li>
+                            <li><strong>h2</strong>: <h2>Heading 2</h2></li>
+                            <li><strong>h3</strong>: <h3>Heading 3</h3></li>
+                            <li><strong>h4</strong>: <h4>Heading 4</h4></li>
+                            <li><strong>h5</strong>: <h5>Heading 5</h5></li>
+                            <li><strong>h6</strong>: <h6>Heading 6</h6></li>
+                        </ol>
+                    </dd>
+                    <dd>Every page should only have one h1 element, seen as the title of the page itself. The title specified in the head of a document is not displayed on the page. As metadata, it is the text seen on tabs in a browser.</dd>
+
+                    <dt>Anchors</dt>
+                    <dd>The world wide web was founded on the very notion of sharing and linking documents with hyperlinks, which in html documents are referred to as anchors: <span class="code">&lt;a&gt;&lt;/a&gt;</span>. When clicked, anchors change the address or url. An anchor that sends you to another page or website is an external link, while an anchor that sends you to another article or section in the same page is an internal link.</dd>
+                    <dd>Go to <a href="https://www.disney.com/" target="_blank">Disney</a> with 
+                        <div class="code">
+                            <p>&lt;a href="https://www.disney.com/"&gt;Disney&lt;/a&gt;</p>
+                        </div>
+                    </dd>
+                    <dd>Open it in another tab using:
+                        <div class="code">
+                            <p>&lt;a href="https://www.disney.com/" target="_blank" &gt;Disney&lt;/a&gt;</p>
+                        </div>
+                    </dd>
+                    <dd>On this page, navigate to the <a href="#intro">Introduction</a> with
+                        <div class="code">
+                            <p>&lt;a href="#intro"&gt;Introduction&lt;/a&gt;</p>
+                        </div>
+                    </dd>
+
+                    <dt>Lists</dt>
+                    <dd>There are three kinds of lists:</dd>
+                    <dd>Unordered list:
+                        <div class="code">
+                            <p>&lt;ul&gt;</p>
+                                <div class="indented">
+                                    <p>&lt;li&gt;List item uses bullet point&lt;/li&gt;</p>
+                                </div>
+                            <p>&lt;/ul&gt;</p>
+                        </div>
+                        <ul>
+                            <li>List item uses bullet point</li>
+                            <li>List item 2</li>
+                            <li>List item 3</li>
+                        </ul>
+                    </dd>
+                    <dd>Ordered list:
+                        <div class="code">
+                            <p>&lt;ol&gt;</p>
+                                <div class="indented">
+                                    <p>&lt;li&gt;List item uses alphanumeric marker: 123 vs abc&lt;/li&gt;</p>
+                                </div>
+                            <p>&lt;/ol&gt;</p>
+                        </div>
+                        <ol>
+                            <li>List item uses alphanumeric marker: 123 vs abc</li>
+                            <li>List item 2</li>
+                            <li>List item 3</li>
+                        </ol>
+                    </dd>
+                    <dd>Dictionary list:
+                        <div class="code">
+                            <p>&lt;dl&gt;</p>
+                                <div class="indented">
+                                    <p>&lt;dt&gt;Term&lt;/dt&gt;</p>
+                                    <p>&lt;dd&gt;Definition&lt;/dd&gt;</p>
+                                </div>
+                            <p>&lt;/dl&gt;</p>
+                        </div>
+                        <dl>
+                            <dt>Term 1</dt>
+                            <dd>Definition 1</dd>
+                            <dt>Term 2</dt>
+                            <dd>Definition 2</dd>
+                            <dt>Term 3</dt>
+                            <dd>Definition 3</dd>
+                            <dd>Definition 4</dd>
+                        </dl>
+                    </dd>
+
+                    <dt>Media</dt>
+                    <dd>On websites and web apps, media consists of images, videos, audio, and iframes. HTML5 came out in 2008 with native support for these media, and yet how these elements are handled can differ. Images may or may not be wrapped in a figure element, which provides support for captions, and iframes are considered high-risk as they can be used for XSS (cross-site scripting) attacks.</dd>
+                    <dd>Add an image to a page with
+                        <div class="code">
+                            <p>&lt;img src="https://www.wifemamafoodie.com/wp-content/uploads/2018/09/Burst-Tomato-Pasta-Vegan-with-Gluten-Free-Option-1170x617.jpg" alt="Beautiful noodles from Wife Mama Foodie"&gt;</p>
+                        </div>
+                        <img src="https://www.wifemamafoodie.com/wp-content/uploads/2018/09/Burst-Tomato-Pasta-Vegan-with-Gluten-Free-Option-1170x617.jpg" alt="Beautiful noodles from Wife Mama Foodie" />
+                    </dd>
+                    <dd>Wrap it in a picture element to ensure support or provide fallback images
+                        <div class="code">
+                            <p>&lt;picture&gt;</p>
+                            <div class="indented">
+                                <p>&lt;source srcset="image-1.png, image-2.png" media="(orientation:portrait)" /&gt;</p>
+                                <p>&lt;img src="https://www.wifemamafoodie.com/wp-content/uploads/2018/09/Burst-Tomato-Pasta-Vegan-with-Gluten-Free-Option-1170x617.jpg" alt="Beautiful noodles from Wife Mama Foodie"&gt;</p>
+                            </div>
+                            <p>&lt;/picture&gt;</p>
+                        </div>
+                        <picture>
+                            <img src="https://www.wifemamafoodie.com/wp-content/uploads/2018/09/Burst-Tomato-Pasta-Vegan-with-Gluten-Free-Option-1170x617.jpg" alt="Beautiful noodles from Wife Mama Foodie" />
+                        </picture>
+                        <p>To read more on this, go to <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture" target="_blank">MDN</a>. I haven't used this element at all, so I plan to read more as well in case it helps with <a href="#accessibility">Accessibility</a>.</p>
+                    </dd>
+                    <dd>Alternative or used to wrap an image
+                        <div class="code">
+                            <p>&lt;figure&gt;</p>
+                            <div class="indented">
+                                <p>&lt;img src="https://www.wifemamafoodie.com/wp-content/uploads/2018/09/Burst-Tomato-Pasta-Vegan-with-Gluten-Free-Option-1170x617.jpg" alt="Beautiful noodles from Wife Mama Foodie"&gt;</p>
+                                <p>&lt;figcaption&gt;Burst Tomato Pasta&lt;figcaption&gt;</p>
+                            </div>
+                            <p>&lt;/figure&gt;</p>
+                        </div>
+                        <figure>
+                            <img src="https://www.wifemamafoodie.com/wp-content/uploads/2018/09/Burst-Tomato-Pasta-Vegan-with-Gluten-Free-Option-1170x617.jpg" alt="Beautiful noodles from Wife Mama Foodie" />
+                            <figcaption>Burst Tomato Pasta</figcaption>
+                        </figure>
+                    </dd>
+                    <dd>Add audio to a page with
+                        <div class="code">
+                            <p>&lt;audio controls src="https://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3" &gt;&lt;/audio&gt;</p>
+                        </div>
+                        <audio controls src="https://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3"></audio>
+                        <p>Taken from <a href="https://simpleguics2pygame.readthedocs.io/en/latest/_static/links/snd_links.html" target="_blank">here</a><br><strong>Read:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaStream" target="_blank">Media Stream</a></p>
+                    </dd>
+                    <dd>Add video to a page with
+                        <div class="code">
+                            <p>&lt;video&gt;</p>
+                            <div class="indented">
+                                <p>&lt;source src="https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4" /&gt;</p>
+                            </div>
+                            <p>&lt;/video&gt;</p>
+                        </div>
+                        <video controls height="150">
+                            <source src="https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4">
+                          </video>
+                    </dd>
+                    <dd>Iframes can be used for viewing webpages or embedding other websites into the given webpage. There are so many problems with using iframes, not only for users but also for businesses that in practice, it's recommended to avoid using them without proper precautions.</dd>
                 </dl>
             </div>
         </section>
@@ -104,5 +320,16 @@
             <div class="content"></div>
         </section>
     </main>
+    <footer>
+        <div>
+            <button class="set-html">HTML</button>
+            <button class="set-css">CSS</button>
+        </div>
+        <div>
+            <a href="../../">Home</a>
+            <a href="../">Versions</a>
+            <a href="#">TOP</a>
+        </div>
+    </footer>
 </body>
 </html>
