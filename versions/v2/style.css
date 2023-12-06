@@ -12,6 +12,8 @@ body {
     font-size: 1.6rem;
 }
 
+p, li { line-height: 1.2 }
+
 header {
     padding-bottom: 3rem;
     color: var(--light-color-gray);
@@ -59,8 +61,8 @@ header button:hover {
     color: var(--light-accent-color);
 }
 
-.html #set-html,
-.css #set-css { pointer-events: none }
+.html .set-html,
+.css .set-css { pointer-events: none }
 
 nav {
     width: 100%;
@@ -100,19 +102,67 @@ main {
     align-items: center;
 }
 
-/* .html #colors,
+.html #colors,
 .html #fonts,
-.html #shapes
+.html #shapes,
 .html #layouts { display: none }
 
 .css #intro,
 .css #beginner-html,
 .css #semantics,
-.css #accessibility { display: none } */
+.css #accessibility { display: none }
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 1.2rem 0;
+    background: var(--dark-color-purple);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer div {
+    display: flex;
+    align-items: center;
+}
+
+footer a { margin-right: 1.2rem }
+
+footer button {
+    margin-left: 1.2rem;
+    border: 0;
+    background: transparent;
+    text-transform: uppercase;
+}
+
+footer a,
+footer button { 
+    padding: 0.5rem 0 0.1rem 0;
+    border-top: 0.1rem solid var(--light-color-purple);
+    border-bottom: 0.1rem solid var(--light-color-purple);
+    color: var(--light-color-purple);
+    font-family: 'League Spartan';
+    font-size: 1.6rem;
+}
+
+footer a:hover,
+footer button:hover {
+    border-top-color: var(--dark-accent-color);
+    border-bottom-color: var(--dark-accent-color);
+    color: var(--light-accent-color);
+}
 
 section {
     width: 100%;
     max-width: 84rem;
+}
+
+.html section#intro h2,
+.css section#colors h2 { 
+    margin-top: 0;
+    border-top: 0.1rem solid var(--light-color-gray);
 }
 
 h2 {
@@ -151,3 +201,65 @@ details .passages {
     padding: 1.2rem;
     text-align: justify;
 }
+
+dt {
+    margin-top: 2rem;
+    font-family: 'League Spartan';
+    font-weight: bold;
+    font-size: 1.9rem;
+    line-height: 1.2;
+}
+
+dt:first-of-type { margin-top: 0 }
+dd { margin-bottom: 1.6rem }
+dt + dd { margin-top: 1.2rem }
+
+dd img {
+    width: 100%;
+    height: auto;
+}
+
+dd audio,
+dd video { margin-top: 1.2rem }
+
+.code {
+    background: #f2f4f4;
+    font-family: 'Red Hat Mono', monospace;
+    font-size: 1.4rem;
+    overflow-wrap: break-word;
+}
+
+.code p { margin: 0.8rem 0 }
+
+div.code {
+    width: 100%;
+    padding: 1.2rem 1.8rem;
+    border-radius: 0.6rem;
+}
+
+.indented { padding-left: 2rem }
+
+span.code { padding: 0.2rem 0.6rem }
+
+li { margin-bottom: 0.8rem }
+
+li h1,
+li h2,
+li h3,
+li h4,
+li h5,
+li h6 { 
+    margin: 1.2rem 0;
+    padding-left: 2.4rem;
+    color: var(--uni-black);
+    background: transparent;
+    font-family: 'Bebas Neue';
+    text-align: left;
+}
+
+li h1 { font-size: 4.8rem }
+li h2 { font-size: 3.2rem }
+li h3 { font-size: 2.56rem }
+li h4 { font-size: 2.18rem }
+li h5 { font-size: 1.8rem }
+li h6 { font-size: 1.6rem }
