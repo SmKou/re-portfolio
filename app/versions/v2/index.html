@@ -73,9 +73,21 @@
         </section>
         <section id="beginner-html">
             <h2>Beginner's HTML</h2>
+            <nav>
+                <div class="a-wrapper"><a href="#tag">Tag</a></div>
+                <div class="a-wrapper"><a href="#doc-type">Document Type</a></div>
+                <div class="a-wrapper"><a href="#doc-structure">HTML Document structure</a></div>
+                <div class="a-wrapper"><a href="#comments">Comments</a></div>
+                <div class="a-wrapper"><a href="#heading">Heading</a></div>
+                <div class="a-wrapper"><a href="#anchors">Anchors</a></div>
+                <div class="a-wrapper"><a href="#lists">Lists</a></div>
+                <div class="a-wrapper"><a href="#media">Media</a></div>
+                <div class="a-wrapper"><a href="#table">Table</a></div>
+                <div class="a-wrapper"><a href="#form">Form</a></div>
+            </nav>
             <div class="content">
                 <dl>
-                    <dt>Tag</dt>
+                    <dt id="tag">Tag</dt>
                     <dd>An html element</dd>
                     <dd>Here is an example of an image element nested in a body element: 
                         <div class="code">
@@ -89,10 +101,10 @@
                     <dd>Most elements have an opening and closing tag like the body element shown above. Elements by img with only one tag are closed self-enclosing tags. An element with a self-enclosing tag cannot have nested content.</dd>
                     <dd>Nesting elements allows us to create layouts and relationships between elements, such as positioning the img element inside the body element.</dd>
 
-                    <dt>Document type</dt>
+                    <dt id="doc-type">Document type</dt>
                     <dd>The first line in every html document should be: <span class="code">&lt;!DOCTYPE html&gt;</span>.</dd>
 
-                    <dt>HTML Document Structure</dt>
+                    <dt id="doc-structure">HTML Document structure</dt>
                     <dd>Standard template for html document:
                         <div class="code">
                             &lt;!DOCTYPE html&gt;
@@ -126,10 +138,9 @@
                             <li><strong>Robustness Principle</strong>, otherwise known as <strong>Postel's Law</strong>: "Be conservative in what you send, be liberal in what you accept."</li>
                             <li><strong>Backwards Compability</strong>: Interoperability with older legacy systems ensuring that older browsers and websites still work, or that a current website or web app can work on an older browser or machine</li>
                         </ul>
-                        <!---->
                     </dd>
 
-                    <dt>Comments</dt>
+                    <dt id="comments">Comments</dt>
                     <dd>Writing comments in code can be used to toggle a line or set of lines to see the effect when removed and to explain what a line or lines of code are for or why they were needed contrary to expectations.</dd>
                     <dd><strong>HTML:</strong>
                         <div class="code">
@@ -148,7 +159,7 @@
                         </div>
                     </dd>
 
-                    <dt>Heading</dt>
+                    <dt id="heading">Heading</dt>
                     <dd>In HTML, there are three elements that can easily be confused to someone unfamiliar with html or document structure: head, header, and heading.
                         <ul>
                             <li><strong>head</strong>: The portion of an html document providing metadata on a page, such as charset and title.</li>
@@ -168,7 +179,7 @@
                     </dd>
                     <dd>Every page should only have one h1 element, seen as the title of the page itself. The title specified in the head of a document is not displayed on the page. As metadata, it is the text seen on tabs in a browser.</dd>
 
-                    <dt>Anchors</dt>
+                    <dt id="anchors">Anchors</dt>
                     <dd>The world wide web was founded on the very notion of sharing and linking documents with hyperlinks, which in html documents are referred to as anchors: <span class="code">&lt;a&gt;&lt;/a&gt;</span>. When clicked, anchors change the address or url. An anchor that sends you to another page or website is an external link, while an anchor that sends you to another article or section in the same page is an internal link.</dd>
                     <dd>Go to <a href="https://www.disney.com/" target="_blank">Disney</a> with 
                         <div class="code">
@@ -186,7 +197,7 @@
                         </div>
                     </dd>
 
-                    <dt>Lists</dt>
+                    <dt id="lists">Lists</dt>
                     <dd>There are three kinds of lists:</dd>
                     <dd><strong>Unordered list</strong>
                         <div class="code">
@@ -236,7 +247,7 @@
                         </dl>
                     </dd>
 
-                    <dt>Media</dt>
+                    <dt id="media">Media</dt>
                     <dd>On websites and web apps, media consists of images, videos, audio, and iframes. HTML5 came out in 2008 with native support for these media, and yet how these elements are handled can differ. Images may or may not be wrapped in a figure element, which provides support for captions, and iframes are considered high-risk as they can be used for XSS (cross-site scripting) attacks.</dd>
                     <dd><strong>Image</strong>
                         <div class="code">
@@ -319,7 +330,7 @@
                         </iframe>
                     </dd>
 
-                    <dt>Table</dt>
+                    <dt id="table">Table</dt>
                     <dd>The original concept of a table was a grid for displaying information, but while grids are now created using css and properties of columns and rows, tables are created using html and elements of rows and heading and data cells.
                         <div class="code">
                             <p>&lt;table&gt;</p>
@@ -565,7 +576,7 @@
                         </table>
                     </dd>
 
-                    <dt>Form</dt>
+                    <dt id="form">Form</dt>
                     <dd>Form elements are used for collecting information and input from the user, which can then be submitted for processing either locally or by a server. If processing requires computations or the results entail changes to the page or view, the data should be sent to a server. JavaScript may be a programming language and for programming in the browser, but it is not efficient for computations and memory-intensive or data-intensive operations. As a rule of thumb, only use JavaScript for handling interactions, browser storage and page population if not following <a href="https://htmx.org/essays/hateoas/" target="_blank">HATEOAS</a>.</dd>
                     <dd>When a form is submitted, the data is contained in a collection. Depending how you access the data, this collection may either be a map, meaning that it consists of key-value pairs with the key being the name of an element representing a question, such as name="username" or name="pet". The value is thus the value of the user's answers indicated by the inputs.</dd>
                     <dd>Read more on <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input" target="_blank">input</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form" target="_blank">form</a>.</dd>
@@ -800,11 +811,167 @@
         </section>
         <section id="semantics">
             <h2>Semantic HTML</h2>
-            <div class="content"></div>
+            <div class="content">
+                <p><strong>Article:</strong> <a href="https://www.semrush.com/blog/semantic-html5-guide/" target="_blank">What Is It and How to Use It?</a></p>
+                <dl>
+                    <dt>Semantic structure</dt>
+                    <dd>Sample:
+                        <div class="code">
+                            &lt;!DOCTYPE html&gt;
+                            <p>&lt;html&gt;</p>
+                            <div class="indented">
+                                <p>&lt;head&gt;</p>
+                                <p>...</p>
+                                <p>&lt;/head&gt;</p>
+                            </div>
+                            <div class="indented">
+                                <p>&lt;body&gt;</p>
+                                <div class="indented">
+                                    <p>&lt;header&gt;</p>
+                                    <div class="indented">
+                                        <p>&lt;h1&gt;Page Title&lt;/h1&gt;</p>
+                                        <p>&lt;nav&gt;</p>
+                                        <div class="indented">
+                                            <p>&lt;a href="../"&gt;Home&lt;/a&gt;</p>
+                                            <p>&lt;a href="about/"&gt;About&lt;/a&gt;</p>
+                                            <p>&lt;a href="contact/"&gt;Contact&lt;/a&gt;</p>
+                                        </div>
+                                        <p>&lt;/nav&gt;</p>
+                                    </div>
+                                    <p>&lt;/header&gt;</p>
+                                    <p>&lt;main&gt;</p>
+                                    <div class="indented">
+                                        <p>&lt;article&gt;</p>
+                                        <div class="indented">
+                                            <p>&lt;h2&gt;Article 1&lt;/h2&gt;</p>
+                                            <p>&lt;section&gt;</p>
+                                            <div class="indented">
+                                                <p>&lt;h3&gt;Section 1&lt;/h3&gt;</p>
+                                                <p>&lt;p&gt;Paragraph 1a&lt;/p&gt;</p>
+                                                <p>&lt;p&gt;Paragraph 1b&lt;/p&gt;</p>
+                                            </div>
+                                            <p>&lt;/section&gt;</p>
+                                            <p>&lt;section&gt;</p>
+                                            <div class="indented">
+                                                <p>&lt;h3&gt;Section 2&lt;/h3&gt;</p>
+                                                <p>&lt;p&gt;Paragraph 2&lt;/p&gt;</p>
+                                            </div>
+                                            <p>&lt;/section&gt;</p>
+                                        </div>
+                                        <p>&lt;/article&gt;</p>
+                                        <div class="indented">
+                                            <p>&lt;h2&gt;Article 1&lt;/h2&gt;</p>
+                                            <p>&lt;p&gt;Paragraph 1a&lt;/p&gt;</p>
+                                            <p>&lt;p&gt;Paragraph 1b&lt;/p&gt;</p>
+                                            <p>&lt;p&gt;Paragraph 1c&lt;/p&gt;</p>
+                                        </div>
+                                        <p>&lt;article&gt;</p>
+                                        <div class="indented">
+                                        </div>
+                                        <p>&lt;/article&gt;</p>
+                                    </div>
+                                    <p>&lt;/main&gt;</p>
+                                    <p>&lt;footer&gt;</p>
+                                    <div class="indented">
+                                        <p>&lt;p&gt;Web site|app (c) 2023 &lt;a href="company.com"&gt;Company&lt;/a&gt;&lt;/p&gt;</p>
+                                    </div>
+                                    <p>&lt;/footer&gt;</p>
+                                </div>
+                                <p>&lt;/body&gt;</p>
+                            </div>
+                            &lt;/html&gt;
+                        </div>
+                    </dd>
+
+                    <dt>Div: Division</dt>
+                    <dd>A generic block element for creating sections, even purely aesthetic elements that can be used in
+                    prototyping layouts.</dd>
+                    <dd><code>&lt;div&gt;...&lt;/div&gt;</code></dd>
+
+                    <dt>Span</dt>
+                    <dd>A generic inline element, often to create divisions or sections within a block like text or in galleries.
+                    </dd>
+                    <dd><code>&lt;span&gt;...&lt;/span&gt;</code></dd>
+
+                    <dt>Article</dt>
+                    <dd>A selt-contained composition in a document, page, application or website intended to be independently
+                    distributed or resused, such as a forum post, newspaper article, blog entry, product card, a widget or gadget,
+                    etc.</dd>
+                    <dd><code>&lt;article&gt;...&lt;/article&gt;</code></dd>
+
+                    <dt>Aside</dt>
+                    <dd>A portion of a document, section or article, in which the content is indirectly related to the main content.
+                    These are often seen as sidebars, call-out boxes and fun facts.</dd>
+                    <dd><code>&lt;aside&gt;...&lt;/aside&gt;</code></dd>
+
+                    <dt>Nav: Navigation</dt>
+                    <dd>A portion of a document or page that provides navigation links in the current document or to other
+                    documents. Most often, these are seen as menus, table of contents and indexes.</dd>
+                    <dd><code>&lt;nav&gt;...&lt;/nav&gt;</code></dd>
+
+                    <dt>Header</dt>
+                    <dd>A section for introductory content, often introductory or navigational aids, but not to be confused with the
+                    Navigation (nav). Sometimes this section may include a logo, search form, author name and so on.</dd>
+                    <dd><code>&lt;header&gt;...&lt;/header&gt;</code></dd>
+
+                    <dt>Main</dt>
+                    <dd>This section is the main, or dominant, content of a document or article, consisting of what directly relates
+                    to or expands upon the central topic.It can also be the section of the central functionality of an
+                    application.</dd>
+                    <dd><code>&lt;main&gt;...&lt;/main&gt;</code></dd>
+
+                    <dt>Section</dt>
+                    <dd>A generic standalone portion of a full document or page like a chapter. Every section should have a heading,
+                    include subsections. However, use headings as part of distinguishing how the sections relate to one another in
+                    the document or page.</dd>
+                    <dd><code>&lt;section&gt;...&lt;/section&gt;</code></dd>
+
+                    <dt>Figure</dt>
+                    <dd>Self-contained content with an optional caption, used for reference or support like video and diagrams.</dd>
+                    <dd><code>&lt;figure&gt;...&lt;/figure&gt;</code></dd>
+                    <dd>Include <code>&lt;figcaption&gt;...&lt;/figcaption&gt;</code> to add a caption, label or legend</dd>
+
+                    <dt>Pre: Preformatted</dt>
+                    <dd>Some text, such as in form poetry, requires whitespaces to be displayed as written to maintain the original
+                    look and feel. The default font is monospaced.</dd>
+                    <dd><code>&lt;pre&gt;...&lt;/pre&gt;</code></dd>
+
+                    <dt>Code</dt>
+                    <dd>For distinguishing code, typically in tutorials and hypertext documents like this handbook, this element
+                    uses a monospaced font by default and has been used for code segments shown here. However, if writing html
+                    code, in order for that code not to be processed like regular code, there are shortcodes needed. For instance,
+                    "&lt;" is written with an ampersand, lt and semicolon, while "&gt;" is written with an ampersand, gt and
+                    semicolon.</dd>
+                    <dd><code>&lt;code&gt;...&lt;/code&gt;</code></dd>
+
+                    <dt>Footer</dt>
+                    <dd>A section that often contains information about an author, copyright data or links to next and previous
+                    articles, or to related documents.</dd>
+                    <dd><code>&lt;footer&gt;...&lt;/footer&gt;</code></dd>
+
+                    <dt>More Elements</dt>
+                    <dd>Refer <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">HTML Elements</a> on MDN</dd>
+                </dl>
+            </div>
         </section>
         <section id="accessibility">
             <h2>Accessibility</h2>
-            <div class="content"></div>
+            <section>
+                <div class="content">
+                    <p>Read about <a href="https://www.w3.org/WAI/fundamentals/accessibility-intro/" target="_blank">Web Accessibility</a>.</p>
+                    <p>How to make a website or web app accessible:</p>
+                    <ul>
+                        <li>DreamHost: <a href="https://www.dreamhost.com/blog/make-your-website-accessible/" target="_blank">How to Design an Accessible Website</a></li>
+                        <li>HubSpot: <a href="https://blog.hubspot.com/website/web-accessibility" target="_blank">Web Accessibility</a></li>
+                        <li>Web Accessibility in Mind (WebAIM): <a href="https://webaim.org/" target="_blank">Training and Resources</a></li>
+                    </ul>
+                    <p>Get certified:</p>
+                    <ul>
+                        <li>CPACC: <a href="https://www.accessibilityassociation.org/s/certified-professional" target="_blank">Certified Professional in Accessibility Core Competencies</a></li>
+                        <li>WAS: <a href="https://www.accessibilityassociation.org/s/wascertification" target="_blank">Web Accessibility Specialist</a></li>
+                    </ul>
+                </div>
+            </section>
         </section>
         <section id="colors">
             <h2>Colors</h2>
