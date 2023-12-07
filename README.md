@@ -72,6 +72,6 @@ Note: Do not merge from main or checkout the gh-pages branch
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/) [License](./LICENSE)
+Re-Portfolio © 2023 by Stella Marie is licensed under CC BY-NC-ND 4.0 
 
 Copyright (c) 2023 Sm Kou
