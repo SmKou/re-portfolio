@@ -10,6 +10,7 @@ body {
     background: var(--uni-off-black);
     font-family: 'Cutive Mono';
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -115,3 +116,23 @@ aside button {
     width: 1.7rem;
     transform: rotate(-45deg) translate(0.4rem);
 }
+
+footer {
+    border-top: 0.1rem solid var(--hacker-green);
+    background: var(--uni-black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer p {
+    width: 100%;
+    max-width: 84rem;
+    text-align: center;
+}
+
+footer img { margin: 0 0.6rem }
+footer img:first-of-type { margin-left: 1.2rem }
+
+footer a { color: var(--hacker-green) }
+footer a:hover { text-decoration: underline }
