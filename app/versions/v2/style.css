@@ -119,8 +119,8 @@ article {
     max-width: 84rem;
 }
 
-.html section#intro h2,
-.css section#colors h2 { 
+.html #intro h2,
+.css #beginner-css h2 { 
     margin-top: 0;
     border-top: 0.1rem solid var(--light-color-gray);
 }
