@@ -80,9 +80,9 @@
                     <dd>Here is an example of an image element nested in a body element: 
                         <div class="code">
                             <p>&lt;body&gt;</p>
-                                <div class="indented">
-                                    <p>&lt;img/&gt;</p>
-                                </div>
+                            <div class="indented">
+                                <p>&lt;img/&gt;</p>
+                            </div>
                             <p>&lt;/body&gt;</p>
                         </div>
                     </dd>
@@ -97,22 +97,22 @@
                         <div class="code">
                             &lt;!DOCTYPE html&gt;
                             <p>&lt;html&gt;</p>
+                            <div class="indented">
+                                <p>&lt;head&gt;</p>
                                 <div class="indented">
-                                    <p>&lt;head&gt;</p>
-                                        <div class="indented">
-                                            <p>&lt;meta charset="utf-8"&gt;</p>
-                                        </div>
-                                        <div class="indented">
-                                            <p>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-                                        </div>
-                                        <div class="indented">
-                                            <p>&lt;title&gt;Document Title&lt;/title&gt;</p>
-                                        </div>
-                                    <p>&lt;/head&gt;</p>
+                                    <p>&lt;meta charset="utf-8"&gt;</p>
                                 </div>
                                 <div class="indented">
-                                    <p>&lt;body&gt;&lt;/body&gt;</p>
+                                    <p>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
                                 </div>
+                                <div class="indented">
+                                    <p>&lt;title&gt;Document Title&lt;/title&gt;</p>
+                                </div>
+                                <p>&lt;/head&gt;</p>
+                            </div>
+                            <div class="indented">
+                                <p>&lt;body&gt;&lt;/body&gt;</p>
+                            </div>
                             &lt;/html&gt;
                         </div>
                     </dd>
@@ -131,17 +131,17 @@
 
                     <dt>Comments</dt>
                     <dd>Writing comments in code can be used to toggle a line or set of lines to see the effect when removed and to explain what a line or lines of code are for or why they were needed contrary to expectations.</dd>
-                    <dd>HTML:
+                    <dd><strong>HTML:</strong>
                         <div class="code">
                             <p>&lt;!-- Here is a comment --&gt;</p>
                         </div>
                     </dd>
-                    <dd>CSS:
+                    <dd><strong>CSS:</strong>
                         <div class="code">
                             <p>/* Here is a comment */</p>
                         </div>
                     </dd>
-                    <dd>JS:
+                    <dd><strong>JS:</strong>
                         <div class="code">
                             <p>// Here is a single-line comment</p>
                             <p>/* Here is a multi-line comment */</p>
@@ -188,12 +188,12 @@
 
                     <dt>Lists</dt>
                     <dd>There are three kinds of lists:</dd>
-                    <dd>Unordered list:
+                    <dd><strong>Unordered list</strong>
                         <div class="code">
                             <p>&lt;ul&gt;</p>
-                                <div class="indented">
-                                    <p>&lt;li&gt;List item uses bullet point&lt;/li&gt;</p>
-                                </div>
+                            <div class="indented">
+                                <p>&lt;li&gt;List item uses bullet point&lt;/li&gt;</p>
+                            </div>
                             <p>&lt;/ul&gt;</p>
                         </div>
                         <ul>
@@ -202,12 +202,12 @@
                             <li>List item 3</li>
                         </ul>
                     </dd>
-                    <dd>Ordered list:
+                    <dd><strong>Ordered list</strong>
                         <div class="code">
                             <p>&lt;ol&gt;</p>
-                                <div class="indented">
-                                    <p>&lt;li&gt;List item uses alphanumeric marker: 123 vs abc&lt;/li&gt;</p>
-                                </div>
+                            <div class="indented">
+                                <p>&lt;li&gt;List item uses alphanumeric marker: 123 vs abc&lt;/li&gt;</p>
+                            </div>
                             <p>&lt;/ol&gt;</p>
                         </div>
                         <ol>
@@ -216,13 +216,13 @@
                             <li>List item 3</li>
                         </ol>
                     </dd>
-                    <dd>Dictionary list:
+                    <dd><strong>Dictionary list</strong>
                         <div class="code">
                             <p>&lt;dl&gt;</p>
-                                <div class="indented">
-                                    <p>&lt;dt&gt;Term&lt;/dt&gt;</p>
-                                    <p>&lt;dd&gt;Definition&lt;/dd&gt;</p>
-                                </div>
+                            <div class="indented">
+                                <p>&lt;dt&gt;Term&lt;/dt&gt;</p>
+                                <p>&lt;dd&gt;Definition&lt;/dd&gt;</p>
+                            </div>
                             <p>&lt;/dl&gt;</p>
                         </div>
                         <dl>
@@ -238,7 +238,7 @@
 
                     <dt>Media</dt>
                     <dd>On websites and web apps, media consists of images, videos, audio, and iframes. HTML5 came out in 2008 with native support for these media, and yet how these elements are handled can differ. Images may or may not be wrapped in a figure element, which provides support for captions, and iframes are considered high-risk as they can be used for XSS (cross-site scripting) attacks.</dd>
-                    <dd>Add an image to a page with
+                    <dd><strong>Image</strong>
                         <div class="code">
                             <p>&lt;img src="https://www.wifemamafoodie.com/wp-content/uploads/2018/09/Burst-Tomato-Pasta-Vegan-with-Gluten-Free-Option-1170x617.jpg" alt="Beautiful noodles from Wife Mama Foodie"&gt;</p>
                         </div>
@@ -272,14 +272,14 @@
                             <figcaption>Burst Tomato Pasta</figcaption>
                         </figure>
                     </dd>
-                    <dd>Add audio to a page with
+                    <dd><strong>Audio</strong>
                         <div class="code">
                             <p>&lt;audio controls src="https://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3" &gt;&lt;/audio&gt;</p>
                         </div>
                         <audio controls src="https://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3"></audio>
                         <p>Taken from <a href="https://simpleguics2pygame.readthedocs.io/en/latest/_static/links/snd_links.html" target="_blank">here</a><br><strong>Read:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaStream" target="_blank">Media Stream</a></p>
                     </dd>
-                    <dd>Add video to a page with
+                    <dd><strong>Video</strong>
                         <div class="code">
                             <p>&lt;video&gt;</p>
                             <div class="indented">
@@ -291,12 +291,509 @@
                             <source src="https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4">
                           </video>
                     </dd>
-                    <dd>Iframes can be used for viewing webpages or embedding other websites into the given webpage. There are so many problems and concerns with using iframes, not only for users but also for businesses that in practice, it's recommended to avoid using them without proper precautions, legal and in code.</dd>
+                    <dd><strong>Iframe</strong><br>Iframes can be used for viewing webpages or embedding other websites into the given webpage. There are so many problems and concerns with using iframes, not only for users but also for businesses that in practice, it's recommended to avoid using them.</dd>
+                    <dd>One major concern with iframes are <a href="https://owasp.org/www-community/attacks/Clickjacking" target="_blank">click-jacking attacks</a>. In a click-jacking attack, an iframe can be used to render a website and then adding additional layers with buttons over the rendered website, a user can be tricked into clicking a link or button to steal their information. To avoid click-jacking attacks, if you can program your server or this may already be provided, one would use <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options" target="_blank">X-Frame-Options</a> in response headers. When your browser follows a url, that url is often a page in a directory on a server. The server receives the request for the page and sends the page back in a response. The structure of requests and responses are like emails or html docs with headers specifying metadata and a body for providing content. Anchors, forms and iframes are able to make requests to servers like browsers do, but when the server sends its response, it can denote in the response header whether to allow rendering in an iframe using X-Frame-Options. If in the response header, it is specified that it is not allowed, an error will appear in the iframe: [host] refused to connect.</dd>
+                    <dd>If a site you're working on receives personal information like logins, banking details and social security numbers, make sure your server never allows rendering in an iframe. However, if iframes are needed for the service you're providing, such as in page or view previews, you can specify SAMEORIGIN for the value of X-Frame-Options, so that iframes from your website or web app are the only ones that can render what assets you need.</dd>
                     <dd>Add iframe showing another website
-                        <div class="code"></div>
+                        <div class="code">
+                            <p>&lt;iframe title="Kou.d Blue" src="https://smkou.github.io/re-portfolio/" width="100%" height="450"&gt;</p>
+                            <div class="indented">
+                                <p>Iframe not supported</p>
+                            </div>
+                            <p>&lt;/iframe&gt;</p>
+                        </div>
+                        <iframe title="Kou.d Blue" src="https://smkou.github.io/re-portfolio/" width="100%" height="450">
+                            Iframe not supported
+                        </iframe>
                     </dd>
                     <dd>Add iframe showing another page in website
-                        <div class="code"></div>
+                        <div class="code">
+                            <p>&lt;iframe title="Re-Portfolio Versions" src="../" width="100%" height="450"&gt;</p>
+                            <div class="indented">
+                                <p>Iframe not supported</p>
+                            </div>
+                            <p>&lt;/iframe&gt;</p>
+                        </div>
+                        <iframe title="Re-Portfolio Versions" src="../" width="100%" height="450">
+                            Iframe not supported
+                        </iframe>
+                    </dd>
+
+                    <dt>Table</dt>
+                    <dd>The original concept of a table was a grid for displaying information, but while grids are now created using css and properties of columns and rows, tables are created using html and elements of rows and heading and data cells.
+                        <div class="code">
+                            <p>&lt;table&gt;</p>
+                            <div class="indented">
+                                <p>&lt;tr&gt;</p>
+                                <div class="indented">
+                                    <p>&lt;th&gt;Star Sign&lt;/th&gt;</p>
+                                    <p>&lt;td&gt;Aquarius&lt;/td&gt;</p>
+                                </div>
+                                <p>&lt;/tr&gt;</p>
+                                <p>&lt;tr&gt;</p>
+                                <div class="indented">
+                                    <p>&lt;th&gt;Favorite Dish&lt;/th&gt;</p>
+                                    <p>&lt;td&gt;Dinuguan&lt;/td&gt;</p>
+                                </div>
+                                <p>&lt;/tr&gt;</p>
+                            </div>
+                            <p>&lt;/table&gt;</p>
+                        </div>
+                        <table>
+                            <tr>
+                                <th>Star Sign</th>
+                                <td>Aquarius</td>
+                            </tr>
+                            <tr>
+                                <th>Favorite Dish</th>
+                                <td>Dinuguan</td>
+                            </tr>
+                        </table>
+                    </dd>
+                    <dd>More complex tables can be split into three sections: table header (thead), table body (tbody), and table footer (tfoot). By default, even if you write out a table as shown above, a tbody element will be added by the browser to wrap around the rows when rendering the page, otherwise these sections of a table are to be explicitly written.
+                        <div class="code">
+                            <p>&lt;table&gt;</p>
+                            <div class="indented">
+                                <p>&lt;thead&gt;</p>
+                                <div class="indented">
+                                    <p>&lt;tr&gt;</p>
+                                    <div class="indented">
+                                        <p>&lt;th&gt;Store&lt;/th&gt;</p>
+                                        <p>&lt;td&gt;2XXX&lt;/td&gt;</p>
+                                        <p>&lt;th&gt;Date&lt;/th&gt;</p>
+                                        <p>&lt;td&gt;12/5/23&lt;/td&gt;</p>
+                                    </div>
+                                    <p>&lt;/tr&gt;</p>
+                                </div>
+                                <div class="indented">
+                                    <p>&lt;tr&gt;</p>
+                                    <div class="indented">
+                                        <p>&lt;th&gt;Ticket&lt;/th&gt;</p>
+                                        <p>&lt;td&gt;5XXX&lt;/td&gt;</p>
+                                        <p>&lt;th&gt;Salesperson&lt;/th&gt;</p>
+                                        <p>&lt;td&gt;8XXXX&lt;/td&gt;</p>
+                                    </div>
+                                    <p>&lt;/tr&gt;</p>
+                                </div>
+                                <p>&lt;/thead&gt;</p>
+                            </div>
+                            <div class="indented">
+                                <p>&lt;tbody&gt;</p>
+                                <div class="indented">
+                                    <p>&lt;tr&gt;</p>
+                                    <div class="indented">
+                                        <p>&lt;th&gt;Item&lt;/th&gt;</p>
+                                        <p>&lt;th&gt;Qty&lt;/th&gt;</p>
+                                        <p>&lt;th&gt;SP Price&lt;/th&gt;</p>
+                                        <p>&lt;th&gt;Col Price&lt;/th&gt;</p>
+                                    </div>
+                                    <p>&lt;/tr&gt;</p>
+                                </div>
+                                <div class="indented">
+                                    <p>&lt;tr&gt;</p>
+                                    <div class="indented">
+                                        <p>&lt;td&gt;Blending stumps&lt;/td&gt;</p>
+                                        <p>&lt;td&gt;1/4in 3Pk&lt;/td&gt;</p>
+                                        <p>&lt;td&gt;2.8&lt;/td&gt;</p>
+                                        <p>&lt;td&gt;2.8&lt;/td&gt;</p>
+                                    </div>
+                                    <p>&lt;/tr&gt;</p>
+                                </div>
+                                <div class="indented">
+                                    <p>&lt;tr&gt;</p>
+                                    <div class="indented">
+                                        <p>&lt;td&gt;Drawing kit 24ct&lt;/td&gt;</p>
+                                        <p>&lt;td&gt;24pc Pk&lt;/td&gt;</p>
+                                        <p>&lt;td&gt;16.19&lt;/td&gt;</p>
+                                        <p>&lt;td&gt;16.19&lt;/td&gt;</p>
+                                    </div>
+                                    <p>&lt;/tr&gt;</p>
+                                </div>
+                                <div class="indented">
+                                    <p>&lt;tr&gt;</p>
+                                    <div class="indented">
+                                        <p>&lt;td&gt;PrismaColor Pencil&lt;/td&gt;</p>
+                                        <p>&lt;td&gt;1pc x5&lt;/td&gt;</p>
+                                        <p>&lt;td&gt;1.85&lt;/td&gt;</p>
+                                        <p>&lt;td&gt;9.25&lt;/td&gt;</p>
+                                    </div>
+                                    <p>&lt;/tr&gt;</p>
+                                </div>
+                                <p>&lt;/tbody&gt;</p>
+                            </div>
+                            <div class="indented">
+                                <p>&lt;tfoot&gt;</p>
+                                <div class="indented">
+                                    <p>&lt;tr&gt;</p>
+                                    <div class="indented">
+                                        <p>&lt;td&gt;&lt;/td&gt;</p>
+                                        <p>&lt;td&gt;&lt;/td&gt;</p>
+                                        <p>&lt;td&gt;Final Sub Total&lt;/td&gt;</p>
+                                        <p>&lt;td&gt;28.24&lt;/td&gt;</p>
+                                    </div>
+                                    <p>&lt;/tr&gt;</p>
+                                </div>
+                                <div class="indented">
+                                    <p>&lt;tr&gt;</p>
+                                    <div class="indented">
+                                        <p>&lt;td&gt;&lt;/td&gt;</p>
+                                        <p>&lt;td&gt;&lt;/td&gt;</p>
+                                        <p>&lt;td&gt;Tax 10.25%&lt;/td&gt;</p>
+                                        <p>&lt;td&gt;2.89&lt;/td&gt;</p>
+                                    </div>
+                                    <p>&lt;/tr&gt;</p>
+                                </div>
+                                <div class="indented">
+                                    <p>&lt;tr&gt;</p>
+                                    <div class="indented">
+                                        <p>&lt;td&gt;&lt;/td&gt;</p>
+                                        <p>&lt;td&gt;&lt;/td&gt;</p>
+                                        <p>&lt;th&gt;Total&lt;/th&gt;</p>
+                                        <p>&lt;td&gt;31.13&lt;/td&gt;</p>
+                                    </div>
+                                    <p>&lt;/tr&gt;</p>
+                                </div>
+                                <p>&lt;/tfoot&gt;</p>
+                            </div>
+                            <div class="indented">
+                                <p>&lt;tr&gt;</p>
+                                    <div class="indented">
+                                        <p>&lt;th&gt;Star Sign&lt;/th&gt;</p>
+                                        <p>&lt;td&gt;Aquarius&lt;/td&gt;</p>
+                                    </div>
+                                <p>&lt;/tr&gt;</p>
+                                <p>&lt;tr&gt;</p>
+                                    <div class="indented">
+                                        <p>&lt;th&gt;Favorite Dish&lt;/th&gt;</p>
+                                        <p>&lt;td&gt;Dinuguan&lt;/td&gt;</p>
+                                    </div>
+                                <p>&lt;/tr&gt;</p>
+                            </div>
+                            <p>&lt;/table&gt;</p>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Store</th>
+                                    <td>2XXX</td>
+                                    <th>Date</th>
+                                    <td>12/5/23</td>
+                                </tr>
+                                <tr>
+                                    <th>Ticket</th>
+                                    <td>5XXX</td>
+                                    <th>Salesperson</th>
+                                    <td>8XXXX</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Qty</th>
+                                    <th>SP Price</th>
+                                    <th>Col Price</th>
+                                </tr>
+                                <tr>
+                                    <td>Blending stumps</td>
+                                    <td>1/4in 3Pk</td>
+                                    <td>2.8</td>
+                                    <td>2.8</td>
+                                </tr>
+                                <tr>
+                                    <td>Drawing kit 24ct</td>
+                                    <td>24pc Pk</td>
+                                    <td>16.19</td>
+                                    <td>16.19</td>
+                                </tr>
+                                <tr>
+                                    <td>PrismaColor Pencil</td>
+                                    <td>1pc x5</td>
+                                    <td>1.85</td>
+                                    <td>9.25</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td>Final Sub Total</td>
+                                    <td>28.24</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td>Tax 10.25%</td>
+                                    <td>2.89</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <th>Total</th>
+                                    <td>31.13</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </dd>
+                    <dd>Use colspan for a cell to span multiple columns and rowspan for a cell to span multiple rows
+                        <div class="code">
+                            <p>&lt;table&gt;</p>
+                            <div class="indented">
+                                <p>&lt;tr&gt;</p>
+                                <div class="indented">
+                                    <p>&lt;td colspan="2"&gt;Spans 2 columns&lt;/td&gt;</p>
+                                    <p>&lt;td rowspan="2"&gt;Spans 2 rows&lt;/td&gt;</p>
+                                </div>
+                                <p>&lt;/tr&gt;</p>
+                                <p>&lt;tr&gt;</p>
+                                <div class="indented">
+                                    <p>&lt;td&gt;Data cell&lt;/td&gt;</p>
+                                    <p>&lt;td&gt;Data cell&lt;/td&gt;</p>
+                                </div>
+                                <p>&lt;/tr&gt;</p>
+                            </div>
+                            <p>&lt;/table&gt;</p>
+                        </div>
+                        <table>
+                            <tr>
+                                <td colspan="2" class="col2">Spans 2 columns</td>
+                                <td rowspan="2" class="row2">Spans 2 rows</td>
+                            </tr>
+                            <tr>
+                                <td>Data cell</td>
+                                <td>Data cell</td>
+                            </tr>
+                        </table>
+                    </dd>
+
+                    <dt>Form</dt>
+                    <dd>Form elements are used for collecting information and input from the user, which can then be submitted for processing either locally or by a server. If processing requires computations or the results entail changes to the page or view, the data should be sent to a server. JavaScript may be a programming language and for programming in the browser, but it is not efficient for computations and memory-intensive or data-intensive operations. As a rule of thumb, only use JavaScript for handling interactions, browser storage and page population if not following <a href="https://htmx.org/essays/hateoas/" target="_blank">HATEOAS</a>.</dd>
+                    <dd>When a form is submitted, the data is contained in a collection. Depending how you access the data, this collection may either be a map, meaning that it consists of key-value pairs with the key being the name of an element representing a question, such as name="username" or name="pet". The value is thus the value of the user's answers indicated by the inputs.</dd>
+                    <dd>Read more on <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input" target="_blank">input</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form" target="_blank">form</a>.</dd>
+                    <dd><strong>Input hidden</strong><br>include a value to submit in a form not set by user but may be connected to user, such as the id of the item they selected to modify
+                        <div class="code">
+                            <p>&lt;input type="hidden" name="product-id" value="123" /&gt;</p>
+                        </div>
+                        <input type="hidden" name="product-id" value="123" />
+                    </dd>
+                    <dd><strong>Input text</strong> (default: no type attribute or type="text")
+                        <div class="code">
+                            <p>&lt;input placeholder="Enter some text here" /&gt;</p>
+                        </div>
+                        <input placeholder="Enter some text here" />
+                    </dd>
+                    <dd><strong>Textarea</strong> larger entry field for longer texts
+                        <div class="code">
+                            <p>&lt;textarea placeholder="Enter some long text here"&gt;</p>
+                            <p>&lt;/textarea&gt;</p>
+                        </div>
+                        <textarea placeholder="Enter some long text here"></textarea>
+                    </dd>
+                    <dd>Specify rows (rows="") and columns (cols="") in textarea:
+                        <div class="code">
+                            <p>&lt;textarea rows="10" placeholder="Enter some even longer text now like a paragraph or why not a whole book?? Test me."&gt;</p>
+                            <p>&lt;/textarea&gt;</p>
+                        </div>
+                        <textarea rows="10" placeholder="Enter some even longer text now like a paragraph or why not a whole book?? Test me."></textarea>
+                    </dd>
+                    <dd><strong>Input search</strong>
+                        <div class="code">
+                            <p>&lt;input type="search" placeholder="Enter a search string" /&gt;</p>
+                        </div>
+                        <input type="search" placeholder="Enter a search string" />
+                    </dd>
+                    <dd><strong>Input button</strong>
+                        <div class="code">
+                            <p>&lt;input type="button" value="Input Button" /&gt;</p>
+                            <p>&lt;button&gt;Button Element&lt;/button&gt;</p>
+                            <p>&lt;input type="submit" value="Submit Button" /&gt;</p>
+                            <p>&lt;input type="image" src="" alt="Image Submit" /&gt;</p>
+                            <p>&lt;input type="reset" value="Reset Button" /&gt;</p>
+                        </div>
+                        <input type="button" value="Input Button" />
+                        <button>Button Element</button>
+                        <input type="submit" value="Submit Button" />
+                        <input type="image" src="" alt="Image Submit" />
+                        <input type="reset" value="Reset Button" />
+                    </dd>
+                    <dd><strong>Input checkbox</strong> select multiple values for one question
+                        <div class="code">
+                            <p>&lt;label for="separate-checkbox-input"&gt;Text for Following checkbox input&lt;/label&gt;</p>
+                            <p>&lt;input id="separate-checkbox-input" type="checkbox" /&gt;</p>
+                            <p>&lt;label for="nested-checkbox-input"&gt;Text for Nested checkbox input</p>
+                            <div class="indented">
+                                <p>&lt;input id="nested-checkbox-input" type="checkbox" /&gt;</p>
+                            </div>
+                            <p>&lt;/label&gt;</p>
+                        </div>
+                        <div class="row">
+                            <label for="separate-checkbox-input">Text for Following checkbox input</label>
+                            <input id="separate-checkbox-input" type="checkbox" />
+                        </div>
+                        <label class="row" for="nested-checkbox-input">Text for Nested checkbox input
+                            <input id="nested-checkbox-input" type="checkbox" />
+                        </label>
+                    </dd>
+                    <dd><strong>Input radio (button)</strong> select one value for a question
+                        <div class="code">
+                            <p>&lt;label for="separate-radio-input"&gt;Text for Following radio input&lt;/label&gt;</p>
+                            <p>&lt;input id="separate-radio-input" type="radio" /&gt;</p>
+                            <p>&lt;label for="nested-radio-input"&gt;Text for Nested radio input</p>
+                            <div class="indented">
+                                <p>&lt;input id="nested-radio-input" type="radio" /&gt;</p>
+                            </div>
+                            <p>&lt;/label&gt;</p>
+                        </div>
+                        <div class="row">
+                            <label for="separate-radio-input">Text for Following radio input</label>
+                            <input id="separate-radio-input" type="radio" />
+                        </div>
+                        <label class="row" for="nested-radio-input">Text for Nested radio input
+                            <input id="nested-radio-input" type="radio" />
+                        </label>
+                    </dd>
+                    <dd><strong>Fieldset</strong> use for grouping answers
+                        <div class="code">
+                            <p>&lt;fieldset&gt;</p>
+                            <div class="indented">
+                                <p>&lt;legend&gt;What pets do you have?&lt;/legend&gt;</p>
+                                <p>&lt;label for="cat"&gt;</p>
+                                <div class="indented">
+                                    <p>&lt;input id="cat" type="checkbox" value="cat" /&gt; Cat</p>
+                                </div>
+                                <p>&lt;/label&gt;</p>
+                                <p>&lt;label for="dog"&gt;</p>
+                                <div class="indented">
+                                    <p>&lt;input id="dog" type="checkbox" value="dog" /&gt; Dog</p>
+                                </div>
+                                <p>&lt;/label&gt;</p>
+                                <p>&lt;label for="bird"&gt;</p>
+                                <div class="indented">
+                                    <p>&lt;input id="bird" type="checkbox" value="bird" /&gt; Bird</p>
+                                </div>
+                                <p>&lt;/label&gt;</p>
+                            </div>
+                            <p>&lt;/fieldset&gt;</p>
+                            <p>&lt;fieldset&gt;</p>
+                            <div class="indented">
+                                <p>&lt;legend&gt;How many pets do you have?&lt;/legend&gt;</p>
+                                <p>&lt;label for="pet-0"&gt;</p>
+                                <div class="indented">
+                                    <p>&lt;input id="pet-0" type="radio" value="0" /&gt; None</p>
+                                </div>
+                                <p>&lt;/label&gt;</p>
+                                <p>&lt;label for="pet-1"&gt;</p>
+                                <div class="indented">
+                                    <p>&lt;input id="pet-1" type="radio" value="1" /&gt; 1</p>
+                                </div>
+                                <p>&lt;/label&gt;</p>
+                                <p>&lt;label for="pet-2"&gt;</p>
+                                <div class="indented">
+                                    <p>&lt;input id="pet-2" type="radio" value="2" /&gt; 2</p>
+                                </div>
+                                <p>&lt;/label&gt;</p>
+                                <p>&lt;label for="pet-3"&gt;</p>
+                                <div class="indented">
+                                    <p>&lt;input id="pet-3" type="radio" value="3" /&gt; 3</p>
+                                </div>
+                                <p>&lt;/label&gt;</p>
+                                <p>&lt;label for="pet-4"&gt;</p>
+                                <div class="indented">
+                                    <p>&lt;input id="pet-4" type="radio" value="4" /&gt; 4+</p>
+                                </div>
+                                <p>&lt;/label&gt;</p>
+                            </div>
+                            <p>&lt;/fieldset&gt;</p>
+                        </div>
+                        <fieldset>
+                            <legend>What pets do you have?</legend>
+                            <label for="cat">
+                                <input id="cat" type="checkbox" value="cat"> Cat
+                            </label>
+                            <label for="dog">
+                                <input id="dog" type="checkbox" value="dog"> Dog
+                            </label>
+                            <label for="bird">
+                                <input id="bird" type="checkbox" value="bird"> Bird
+                            </label>
+                        </fieldset>
+                        <fieldset>
+                            <legend>How many pets do you have?</legend>
+                            <label for="pet-0">
+                                <input id="pet-0" type="radio" value="0" /> None
+                            </label>
+                            <label for="pet-1">
+                                <input id="pet-1" type="radio" value="1" /> 1
+                            </label>
+                            <label for="pet-2">
+                                <input id="pet-2" type="radio" value="2" /> 2
+                            </label>
+                            <label for="pet-3">
+                                <input id="pet-3" type="radio" value="3" /> 3
+                            </label>
+                            <label for="pet-4">
+                                <input id="pet-4" type="radio" value="4" /> 4+
+                            </label>
+                        </fieldset>
+                    </dd>
+                    <dd><strong>Select</strong> select one or multiple values from a list of options
+                        <div class="code">
+                            <p>&lt;label&gt;</p>
+                        </div>
+                        <div class="select">
+                            <label for="country-select">Select a Country</label>
+                            <select id="country-select">
+                                <option value="ro">Romania</option>
+                                <option value="us">United States</option>
+                                <option value="uk">United Kingdom</option>
+                                <option value="au">Australia</option>
+                            </select>
+                        </div>
+                    </dd>
+                    <dd><strong>Input color</strong>
+                        <div class="code">
+                            <p>&lt;input type="color" /&gt;</p>
+                        </div>
+                        <input type="color" />
+                    </dd>
+                    <dd><strong>Input date</strong>
+                        <div class="code">
+                            <p>&lt;input type="date" /&gt;</p>
+                            <p>&lt;input type="datetime-local" /&gt;</p>
+                            <p>&lt;input type="time" /&gt;</p>
+                            <p>&lt;input type="week" /&gt;</p>
+                            <p>&lt;input type="month" /&gt;</p>
+                        </div>
+                        <input type="date" />
+                        <input type="datetime-local" />
+                        <input type="time" />
+                        <input type="week" />
+                        <input type="month" />
+                    </dd>
+                    <dd><strong>Input for User Information</strong>
+                        <div class="code">
+                            <p>&lt;input type="tel" placeholder="Enter a phone number" /&gt;</p>
+                            <p>&lt;input type="email" placeholder="Enter an email address" /&gt;</p>
+                            <p>&lt;input type="password" placeholder="Enter a password" /&gt;</p>
+                        </div>
+                        <input type="tel" placeholder="Enter a phone number" />
+                        <input type="email" placeholder="Enter an email address" />
+                        <input type="password" placeholder="Enter a password" />
+                    </dd>
+                    <dd><strong>Input file and url</strong>
+                        <div class="code">
+                            <p>&lt;input type="file" /&gt;</p>
+                            <p>&lt;input type="url" /&gt;</p>
+                        </div>
+                        <input type="file" />
+                        <input type="url" />
+                    </dd>
+                    <dd><strong>Input range and number</strong>
+                        <div class="code">
+                            <p>&lt;input type="number" placeholder="0" min="0" max="32" /&gt;</p>
+                            <p>&lt;input type="range" min="0" max="32" /&gt;</p>
+                        </div>
+                        <input type="number" placeholder="0" min="0" max="32" />
+                        <input type="range" min="0" max="32" />
                     </dd>
                 </dl>
             </div>
@@ -325,6 +822,7 @@
             <h2>Layouts</h2>
             <div class="content"></div>
         </section>
+        <div id="bottom"></div>
     </main>
     <footer>
         <div>
@@ -335,6 +833,7 @@
             <a href="../../">Home</a>
             <a href="../">Versions</a>
             <a href="#">TOP</a>
+            <a href="#bottom">BOTTOM</a>
         </div>
     </footer>
 </body>
