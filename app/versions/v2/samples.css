@@ -18,7 +18,7 @@
 }
 
 code {
-    white-space: pre-line;
+    white-space: pre-wrap;
     font-family: 'Red Hat Mono';
     font-size: 1.6rem;
     line-height: 1.2;
@@ -161,3 +161,488 @@ code {
 .named-color-2, .lightsalmon { background-color: lightsalmon }
 .named-color-3, .moccasin { background-color: moccasin }
 .named-color-4, .thistle { background-color: thistle }
+
+/* -------------------------------------------------------------------------- SHAPES */
+
+#shapes .two-columns { grid-template-columns: 1fr 18rem }
+
+@media (width < 36rem) {
+    #shapes .two-columns { grid-template-columns: 1fr }
+}
+
+#shapes pre { 
+    padding-left: 1.2rem;
+    background: #F2F4F4;
+}
+
+.lightcoral { background-color: lightcoral }
+.lightseagreen { background-color: lightseagreen }
+.lightslategray { background-color: lightslategray }
+.khaki { background-color: khaki }
+
+.label {
+    position: relative;
+}
+
+.square {
+    width: 16rem;
+    height: 16rem;
+}
+.rectangle-horizontal {
+    width: 16rem;
+    height: 12rem;
+}
+.rectangle-vertical {
+    width: 12rem;
+    height: 16rem;
+}
+
+.circle {
+    width: 16rem;
+    height: 16rem;
+    border-radius: 50%;
+}
+.oval-horizontal {
+    width: 16rem;
+    height: 12rem;
+    border-radius: 50%;
+}
+.oval-vertical {
+    width: 12rem;
+    height: 16rem;
+    border-radius: 50%;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+}
+.triangle-point-up {
+    border-left: 8rem solid transparent;
+    border-right: 8rem solid transparent;
+    border-bottom: 16rem solid moccasin;
+}
+.triangle-point-up .label { top: 12rem }
+.triangle-point-down {
+    border-left: 8rem solid transparent;
+    border-right: 8rem solid transparent;
+    border-top: 16rem solid moccasin;
+}
+.triangle-point-down .label { bottom: 12rem }
+.triangle-point-left {
+    border-top: 8rem solid transparent;
+    border-bottom: 8rem solid transparent;
+    border-right: 16rem solid moccasin;
+}
+.triangle-point-left .label { left: 10rem }
+.triangle-point-right {
+    border-top: 8rem solid transparent;
+    border-bottom: 8rem solid transparent;
+    border-left: 16rem solid moccasin;
+}
+.triangle-point-right .label { right: 10rem }
+.triangle-top-left {
+    border-bottom: 16rem solid transparent;
+    border-left: 16rem solid moccasin;
+}
+.triangle-top-left .label {
+    top: 6rem;
+    right: 12rem;
+}
+.triangle-top-right {
+    border-bottom: 16rem solid transparent;
+    border-right: 16rem solid moccasin;
+}
+.triangle-top-right .label {
+    top: 6rem;
+    left: 12rem;
+}
+.triangle-bottom-left {
+    border-top: 16rem solid transparent;
+    border-left: 16rem solid moccasin;
+}
+.triangle-bottom-left .label {
+    bottom: 4rem;
+    right: 11rem;
+}
+.triangle-bottom-right {
+    border-top: 16rem solid transparent;
+    border-right: 16rem solid moccasin;
+}
+.triangle-bottom-right .label {
+    bottom: 4rem;
+    left: 11rem;
+}
+
+.trapezoid-shortside-up {
+    width: 16rem;
+    height: 0;
+    border-left: 4rem solid transparent;
+    border-right: 4rem solid transparent;
+    border-bottom: 8rem solid moccasin;
+}
+.trapezoid-shortside-up .label { top: 5rem }
+.trapezoid-shortside-down {
+    width: 16rem;
+    height: 0;
+    border-left: 4rem solid transparent;
+    border-right: 4rem solid transparent;
+    border-top: 8rem solid moccasin;
+}
+.trapezoid-shortside-down .label { bottom: 5rem }
+.trapezoid-shortside-left {
+    width: 0;
+    height: 16rem;
+    border-top: 4rem solid transparent;
+    border-bottom: 4rem solid transparent;
+    border-right: 8rem solid moccasin;
+}
+.trapezoid-shortside-left .label {
+    left: 5rem;
+    transform: rotate(0.75turn);
+}
+.trapezoid-shortside-right {
+    width: 0;
+    height: 16rem;
+    border-top: 4rem solid transparent;
+    border-bottom: 4rem solid transparent;
+    border-left: 8rem solid moccasin;
+}
+.trapezoid-shortside-right .label {
+    right: 5rem;
+    transform: rotate(0.25turn);
+}
+
+.parallelogram-wide-point-left {
+    width: 16rem;
+    height: 10.4rem;
+    transform: skew(20deg);
+}
+.parallelogram-wide-point-left .label { transform: skew(-20deg) }
+.parallelogram-wide-point-right {
+    width: 16rem;
+    height: 10.4rem;
+    transform: skew(-20deg);
+}
+.parallelogram-wide-point-right .label { transform: skew(20deg) }
+.parallelogram-tall-point-left {
+    width: 10.4rem;
+    height: 16rem;
+    transform: skew(20deg);
+}
+.parallelogram-tall-point-left .label { transform: skew(-20deg) }
+.parallelogram-tall-point-right {
+    width: 10.4rem;
+    height: 16rem;
+    transform: skew(-20deg);
+}
+.parallelogram-tall-point-right .label { transform: skew(20deg) }
+
+.pentagon-point-up {
+    position: relative;
+    box-sizing: content-box;
+    width: 8.64rem;
+    border-width: 8rem 2.88rem 0;
+    border-style: solid;
+    border-color: lightseagreen transparent;
+}
+.pentagon-point-up::before {
+    position: absolute;
+    width: 0;
+    height: 0;
+    bottom: 10rem;
+    border-width: 0 7.2rem 5.6rem;
+    border-style: solid;
+    border-color: transparent transparent lightseagreen;
+    content: "";
+}
+.pentagon-point-up .label { bottom: 7.5rem }
+.pentagon-point-down {
+    position: relative;
+    box-sizing: content-box;
+    width: 8.64rem;
+    bottom: 7.5rem;
+    border-width: 0 2.88rem 8rem;
+    border-style: solid;
+    border-color: lightseagreen transparent;
+}
+.pentagon-point-down::before {
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 10rem;
+    border-width: 5.6rem 7.2rem 0;
+    border-style: solid;
+    border-color: lightseagreen transparent transparent;
+    content: "";
+}
+.pentagon-point-down .label { top: 7.5rem }
+.pentagon-point-left {
+    position: relative;
+    box-sizing: content-box;
+    height: 8.64rem;
+    border-width: 2.88rem 0 2.88rem 8rem;
+    border-style: solid;
+    border-color: transparent lightseagreen;
+}
+.pentagon-point-left::before {
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: -2.88rem;
+    right: 18.6rem;
+    border-width: 7.2rem 5.6rem 7.2rem 0;
+    border-style: solid;
+    border-color: transparent lightseagreen transparent transparent;
+    content: "";
+}
+.pentagon-point-left .label { right: 11.8rem }
+.pentagon-point-right {
+    position: relative;
+    box-sizing: content-box;
+    height: 8.64rem;
+    border-width: 2.88rem 8rem 2.88rem 0;
+    border-style: solid;
+    border-color: transparent lightseagreen;
+}
+.pentagon-point-right::before {
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: -2.88rem;
+    left: 18.6rem;
+    border-width: 7.2rem 0 7.2rem 5.6rem;
+    border-style: solid;
+    border-color: transparent transparent transparent lightseagreen;
+    content: "";
+}
+.pentagon-point-right .label { left: 11.8rem }
+
+.hexagon-vertical {
+    width: 16rem;
+    height: 9.24rem;
+}
+.hexagon-vertical::before {
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: -4.5rem;
+    left: 25.1rem;
+    border-left: 8rem solid transparent;
+    border-right: 8rem solid transparent;
+    border-bottom: 4.6rem solid lightseagreen;
+    content: "";
+}
+.hexagon-vertical::after {
+    position: absolute;
+    bottom: -4.5rem;
+    left: 25.1rem;
+    width: 0;
+    height: 0;
+    border-left: 8rem solid transparent;
+    border-right: 8rem solid transparent;
+    border-top: 4.6rem solid lightseagreen;
+    content: "";
+}
+
+.hexagon-horizontal {
+    width: 9.24rem;
+    height: 16rem;
+}
+.hexagon-horizontal::before {
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 0;
+    left: 23.85rem;
+    border-top: 8rem solid transparent;
+    border-bottom: 8rem solid transparent;
+    border-right: 4.6rem solid lightseagreen;
+    content: "";
+}
+.hexagon-horizontal::after {
+    position: absolute;
+    top: 0;
+    right: 23.8rem;
+    width: 0;
+    height: 0;
+    border-top: 8rem solid transparent;
+    border-bottom: 8rem solid transparent;
+    border-left: 4.6rem solid lightseagreen;
+    content: "";
+}
+.hexagon-horizontal .label { z-index: 10 }
+
+.octagon {
+    width: 16rem;
+    height: 16rem;
+}
+.octagon::before {
+    position: absolute;
+    top: 0;
+    left: 25rem;
+    width: 6.8rem;
+    height: 0;
+    border-bottom: 4.64rem solid lightseagreen;
+    border-left: 4.64rem solid var(--light-color-gray);
+    border-right: 4.64rem solid var(--light-color-gray);
+    content: "";
+}
+.octagon::after {
+    position: absolute;
+    bottom: 0;
+    left: 25rem;
+    width: 6.8rem;
+    height: 0;
+    border-top: 4.64rem solid lightseagreen;
+    border-left: 4.64rem solid var(--light-color-gray);
+    border-right: 4.64rem solid var(--light-color-gray);
+    content: "";
+}
+
+.octagon-2 {
+    width: 16rem;
+    height: 6rem;
+    transform: translateY(8.2rem);
+}
+.octagon-2::before {
+    position: absolute;
+    width: 6.6rem;
+    height: 0;
+    bottom: 6rem;
+    border-left: 4.8rem solid transparent;
+    border-right: 4.8rem solid transparent;
+    border-bottom: 5rem solid lightseagreen;
+    content: "";
+}
+.octagon-2::after {
+    position: absolute;
+    width: 6.6rem;
+    height: 0;
+    top: 6rem;
+    border-left: 4.8rem solid transparent;
+    border-right: 4.8rem solid transparent;
+    border-top: 5rem solid lightseagreen;
+    content: "";
+}
+
+.reverse-corner {
+    position: relative;
+    width: 16rem;
+    height: 16rem;
+    overflow: hidden;
+}
+.reverse-corner-top-left::before {
+    position: absolute;
+    width: 16rem;
+    height: 16rem;
+    top: 0;
+    left: 0;
+    box-shadow: -8rem -8rem 0 0 thistle;
+    border-radius: 50%;
+    display: block;
+    content: "";
+}
+.reverse-corner-top-right::before {
+    position: absolute;
+    width: 16rem;
+    height: 16rem;
+    top: 0;
+    left: 0;
+    box-shadow: 8rem -8rem 0 0 thistle;
+    border-radius: 50%;
+    display: block;
+    content: "";
+}
+.reverse-corner-bottom-left::before {
+    position: absolute;
+    width: 16rem;
+    height: 16rem;
+    top: 0;
+    left: 0;
+    box-shadow: -8rem 8rem 0 0 thistle;
+    border-radius: 50%;
+    display: block;
+    content: "";
+}
+.reverse-corner-bottom-right::before {
+    position: absolute;
+    width: 16rem;
+    height: 16rem;
+    top: 0;
+    left: 0;
+    box-shadow: 8rem 8rem 0 0 thistle;
+    border-radius: 50%;
+    display: block;
+    content: "";
+}
+
+.diamond-square {
+    position: relative;
+    width: 0;
+    height: 0;
+    top: -8rem;
+    border: 8rem solid transparent;
+    border-bottom-color: lightslategray;
+}
+.diamond-square::after {
+    position: absolute;
+    top: 8rem;
+    left: -8rem;
+    border: 8rem solid transparent;
+    border-top-color: lightslategray;
+    content: "";
+}
+.diamond-square .label { 
+    top: 8rem;
+    z-index: 10;
+}
+
+.diamond-cut {
+    box-sizing: content-box;
+    position: relative;
+    margin: 3.2rem 0 8rem 0;
+    width: 8rem;
+    height: 0;
+    border-width: 0 4rem 4rem 4rem;
+    border-style: solid;
+    border-color: transparent transparent lightslategray transparent;
+}
+.diamond-cut::after {
+    position: absolute;
+    top: 4rem;
+    left: -4rem;
+    width: 0;
+    height: 0;
+    border-width: 11.2rem 8rem 0 8rem;
+    border-style: solid;
+    border-color: lightslategray transparent transparent transparent;
+    content: "";
+}
+.diamond-cut .label {
+    top: 4.6rem;
+    z-index: 10;
+}
+
+.diamond-vertical {
+    position: relative;
+    width: 0;
+    height: 0;
+    top: -8rem;
+    border: 8rem solid transparent;
+    border-bottom: 11.2rem solid lightslategray;
+}
+.diamond-vertical::after {
+    position: absolute;
+    top: 11.2rem;
+    left: -8rem;
+    width: 0;
+    height: 0;
+    border: 8rem solid transparent;
+    border-top: 11.2rem solid lightslategray;
+    content: "";
+}
+.diamond-vertical .label {
+    top: 11.4rem;
+    z-index: 10;
+}

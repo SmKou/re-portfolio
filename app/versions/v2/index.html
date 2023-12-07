@@ -1264,10 +1264,143 @@
         </article>
         <article id="shapes">
             <h2>Shapes</h2>
-            <nav>
-                <div class="a-wrapper"><a href="#"></a></div>
-            </nav>
-            <section class="content"></section>
+            <section class="content">
+                <p>Many shapes made with CSS are the combinations and transformations of simpler, more basic shapes like circles, triangles and squares. To create these combinations takes knowing how absolute and relative positioning can be used together. In CSS, the position of an element can be static, relative, absolute, fixed or sticky.</p>
+<pre>
+<code>
+div {
+    position: relative;
+    top: 15px;
+}
+
+div::after {
+    position: absolute;
+    top: 30px;
+    content: "";
+}
+</code>
+</pre>
+                <dl>
+                    <dt>Static</dt>
+                    <dd>This is the default position for elements, where they follow the order they're given according to the html, or the natural flow of the document.</dd>
+
+                    <dt>Relative</dt>
+                    <dd>With a relative position, an element is moved left, right, up (top) or down (bottom) from its original position in the flow of the document. The value given for any of the four properties can be a relative (em and rem) or absolute measure (in, mm and px). The below example would move div elements up by 15px from their natural positions.</dd>
+
+                    <dt>Absolute</dt>
+                    <dd>Absolute position is for an element to be removed from the flow of the document and designated no space. The element is positioned relative to its closest positioned ancestor, meaning an ancestor that has a value of relative, fixed or sticky for its position property. If there is none, they will be positioned relative to the
+                    initial <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block">containing block</a>. When using the properties, top, right, bottom and left, instead of moving in these directions by a given distance, the element will be distance from the top, right, bottom or left sides of the element it is positioned
+                    relative to.</dd>
+
+                    <dt>Fixed</dt>
+                    <dd>A fixed position is similar to an absolute position but is relative to the viewport or page window in the browser, unless it has an ancestor with a transform, perspective or filter property that has a value other than none, then it will be positioned relative to this ancestor, treating it as the containing block. The use
+                    of top, right, bottom and left will be the same as with absolute.</dd>
+
+                    <dt>Sticky</dt>
+                    <dd>Refer to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position">CSS Positions</a> from MDN. This value for positioning is pretty much static, then fixed upon scrolling down.</dd>
+                </dl>
+                <details>
+                    <summary>Square and Rectangle</summary>
+                    <div class="passages">
+                        <div class="two-columns">
+<pre>
+<code>
+.square {
+    background-color: lightcoral;
+    width: 16rem;
+    height: 16rem;
+}
+</code>
+</pre>
+                            <div class="container">
+                                <div class="tile square lightcoral">Square</div>
+                            </div>
+                        </div> <!-- Square -->
+                        <div class="two-columns">
+<pre>
+<code>
+.rectangle-horizontal {
+    background-color: lightcoral;
+    width: 16rem;
+    height: 12rem;
+}
+</code>
+</pre>
+                            <div class="container">
+                                <div class="tile rectangle-horizontal lightcoral">Horizontal<br>Rectangle</div>
+                            </div>
+                        </div> <!-- Rectangle horizontal -->
+                        <div class="two-columns">
+<pre>
+<code>
+.rectangle-vertical {
+    background-color: lightcoral;
+    width: 12rem;
+    height: 16rem;
+}
+</code>
+</pre>
+                            <div class="container">
+                                <div class="tile rectangle-vertical lightcoral">Vertical<br>Rectangle</div>
+                            </div>
+                        </div> <!-- Rectangle vertical-->
+                    </div>
+                </details>
+                <details>
+                    <summary>Circle and Oval</summary>
+                    <div class="passages">
+                        <div class="two-columns"></div> <!-- Circle -->
+                        <div class="two-columns"></div> <!-- Oval horizontal -->
+                        <div class="two-columns"></div> <!-- Oval vertical -->
+                    </div>
+                </details>
+                <details id="triangle">
+                    <summary>Triangle</summary>
+                    <div class="passages">
+                        <div class="two-columns"></div> <!-- Triangle -->
+                        <div class="two-columns"></div> <!-- Triangle -->
+                        <div class="two-columns"></div> <!-- Triangle -->
+                        <div class="two-columns"></div> <!-- Triangle -->
+                        <div class="two-columns"></div> <!-- Triangle -->
+                        <div class="two-columns"></div> <!-- Triangle -->
+                        <div class="two-columns"></div> <!-- Triangle -->
+                        <div class="two-columns"></div> <!-- Triangle -->
+                        <a class="top-details" href="#triangle">Top of Section</a>
+                    </div>
+                </details>
+                <details>
+                    <summary>Trapezoid</summary>
+                    <div class="passages">
+                        <div class="two-columns"></div> <!-- Trapezoid -->
+                        <div class="two-columns"></div> <!-- Trapezoid -->
+                        <div class="two-columns"></div> <!-- Trapezoid -->
+                        <div class="two-columns"></div> <!-- Trapezoid -->
+                    </div>
+                </details>
+                <details>
+                    <summary>Parallelogram</summary>
+                    <div class="passages">
+                        <div class="two-columns"></div> <!-- Parallelogram-->
+                        <div class="two-columns"></div> <!-- Parallelogram-->
+                        <div class="two-columns"></div> <!-- Parallelogram-->
+                        <div class="two-columns"></div> <!-- Parallelogram-->
+                    </div>
+                </details>
+                <details id="polygon">
+                    <summary>Polygon</summary>
+                    <div class="passages">
+                        <div class="two-columns"></div> <!-- Polygon -->
+                        <div class="two-columns"></div> <!-- Polygon -->
+                        <div class="two-columns"></div> <!-- Polygon -->
+                        <div class="two-columns"></div> <!-- Polygon -->
+                        <div class="two-columns"></div> <!-- Polygon -->
+                        <div class="two-columns"></div> <!-- Polygon -->
+                        <div class="two-columns"></div> <!-- Polygon -->
+                        <div class="two-columns"></div> <!-- Polygon -->
+                        <a class="top-details" href="#polygon">Top of Section</a>
+                    </div>
+                </details>
+            </section>
         </article>
         <article id="layouts">
             <h2>Layouts</h2>
