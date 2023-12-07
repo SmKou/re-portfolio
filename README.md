@@ -72,6 +72,10 @@ Note: Do not merge from main or checkout the gh-pages branch
 
 ## License
 
-Re-Portfolio © 2023 by Stella Marie is licensed under CC BY-NC-ND 4.0 
+Re-Portfolio © 2023 by Stella Marie (Sm Kou) is licensed under CC BY-NC-ND 4.0 
 
-Copyright (c) 2023 Sm Kou
+Re-Portfolio is licensed under a
+Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
+
+[License](https://creativecommons.org/licenses/by-nc-nd/4.0/)
+[Legal Code](https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.en)
