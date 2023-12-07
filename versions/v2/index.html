@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="../../icon.png" />
@@ -7,10 +8,13 @@
     <title>v1: Design Index</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=League+Spartan:wght@200;400;700&family=Red+Hat+Mono&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=League+Spartan:wght@200;400;700&family=Red+Hat+Mono&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="../../universal.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="html">
     <header>
         <div class="title">
@@ -28,6 +32,7 @@
                 <a href="#accessibility">Accessibility</a>
             </div>
             <div class="css">
+                <a href="#beginner-css">Beginner's CSS</a>
                 <a href="#colors">Colors</a>
                 <a href="#fonts">Fonts & Font Pairs</a>
                 <a href="#shapes">Shapes</a>
@@ -36,42 +41,141 @@
         </nav>
     </header>
     <main>
-        <section id="intro">
+        <article id="intro">
             <h2>Introduction</h2>
-            <div class="content">
-                <p>In the past, this was a handbook I was working on while reviewing my html and css. Here, I will give a brief introduction to those that are not familiar with how websites, the internet, or programming work, presuming that one is either getting into web development or would like to understand it a bit more. If you just want to continue to the following content, skip to the <a href="#beginner-html">next section</a> or click CSS above to switch to the css content.</p>
-                <p>For references, I suggest <a href="https://developer.mozilla.org/en-US/" target="_blank">MDN Web Docs</a> and <a href="https://css-tricks.com/" target="_blank">CSS Tricks</a>. For code snippets, I prefer <a href="https://www.w3schools.com/" target="_blank">W3Schools</a> to CodePen or StackOverflow when possible.</p>
+            <section class="content">
+                <p>In the past, this was a handbook I was working on while reviewing my html and css. Here, I will give
+                    a brief introduction to those that are not familiar with how websites, the internet, or programming
+                    work, presuming that one is either getting into web development or would like to understand it a bit
+                    more. If you just want to continue to the following content, skip to the <a
+                        href="#beginner-html">next section</a> or click CSS above to switch to the css content.</p>
+                <p>For references, I suggest <a href="https://developer.mozilla.org/en-US/" target="_blank">MDN Web
+                        Docs</a> and <a href="https://css-tricks.com/" target="_blank">CSS Tricks</a>. For code
+                    snippets, I prefer <a href="https://www.w3schools.com/" target="_blank">W3Schools</a> to CodePen or
+                    StackOverflow when possible.</p>
                 <hr>
                 <details>
                     <summary>Programming User Interfaces for the Web only consists of HTML, CSS, and JS</summary>
                     <div class="passages">
-                        <p>First, programming is writing a collection of documents that provide instructions to computers on how to run a program. Programs are written in programs. A web app is a program that runs on a browser, which runs on an OS. Though we distinguish between hardware (physical parts of a computer) and software (programs on a computer), most programmers, or maybe half depending on one's perception of robotics, hardware, and embedded systems, do not program the computer itself anymore. What they program is software at differing levels of abstraction.</p>
+                        <p>First, programming is writing a collection of documents that provide instructions to
+                            computers on how to run a program. Programs are written in programs. A web app is a program
+                            that runs on a browser, which runs on an OS. Though we distinguish between hardware
+                            (physical parts of a computer) and software (programs on a computer), most programmers, or
+                            maybe half depending on one's perception of robotics, hardware, and embedded systems, do not
+                            program the computer itself anymore. What they program is software at differing levels of
+                            abstraction.</p>
                         <p><strong>Abstraction</strong></p>
-                        <p>Everything you see or interact with on a computer, whether the device is a mobile, tablet, desktop or watch, is a program, but when we program, we do not reprogram everything from scratch. Though this isn't the point of abstraction, one way to look at it is that abstraction allows us to reduce the amount of work in developing a program. Think of it like the work of a painter. In the past, painters had to prepare their own canvases and paints, as well as collecting the pieces and assembling them, but now, painters can buy premixed paints and gessoed canvases, so that all they need to do is take a brush and put paint to canvas. When we talk about abstractions in programming, we're talking about points in the process of developing a given program. There are <strong>layers</strong> of abstraction, which refers to how far along we develop, and then <strong>levels</strong> of abstraction which refers to the number of layers.</p>
-                        <p>For programmers, <strong>layers of abstraction</strong> consist of collections of documents others have written, so that a programmer can just write the documents for their given application, whether it's a digital product, interface for a service, and so on. Depending on what you're working on and at what level of abstraction you're programming for will determine how many collections you'll be programming with, with the awareness and assumption that they are there. Abstraction can also be lateral in the sense of tools and libraries one uses to develop their program. For example, there are libraries for styling websites and web apps, so that in developing a program for a website or web app, one can just import this library, write a document for how to use the elements and rules in the library, and then focus on the actual functionality of what one is programming.</p>
+                        <p>Everything you see or interact with on a computer, whether the device is a mobile, tablet,
+                            desktop or watch, is a program, but when we program, we do not reprogram everything from
+                            scratch. Though this isn't the point of abstraction, one way to look at it is that
+                            abstraction allows us to reduce the amount of work in developing a program. Think of it like
+                            the work of a painter. In the past, painters had to prepare their own canvases and paints,
+                            as well as collecting the pieces and assembling them, but now, painters can buy premixed
+                            paints and gessoed canvases, so that all they need to do is take a brush and put paint to
+                            canvas. When we talk about abstractions in programming, we're talking about points in the
+                            process of developing a given program. There are <strong>layers</strong> of abstraction,
+                            which refers to how far along we develop, and then <strong>levels</strong> of abstraction
+                            which refers to the number of layers.</p>
+                        <p>For programmers, <strong>layers of abstraction</strong> consist of collections of documents
+                            others have written, so that a programmer can just write the documents for their given
+                            application, whether it's a digital product, interface for a service, and so on. Depending
+                            on what you're working on and at what level of abstraction you're programming for will
+                            determine how many collections you'll be programming with, with the awareness and assumption
+                            that they are there. Abstraction can also be lateral in the sense of tools and libraries one
+                            uses to develop their program. For example, there are libraries for styling websites and web
+                            apps, so that in developing a program for a website or web app, one can just import this
+                            library, write a document for how to use the elements and rules in the library, and then
+                            focus on the actual functionality of what one is programming.</p>
                         <p><strong>So why does this matter?</strong></p>
-                        <p>When people get into programming and do not follow a formal course, or do not delve into how programs and systems work, it can seem overwhelming and confusing, especially with web development. Web development is a unique case. It is not like software programming because of its relationship with the internet and so the complications and further abstractions that brings to developing for it. The internet is an electrical system setup around the world made of routers, servers and wired cables. You can read about it in <a href="https://www.nytimes.com/interactive/2019/03/10/technology/internet-cables-oceans.html" target="_blank">this article</a> from the NY Times or on <a href="https://en.wikipedia.org/wiki/History_of_the_Internet" target="_blank">Wikipedia</a>. Here is a <a href="https://www.submarinecablemap.com/" target="_blank">map of all internet cables</a> running under the sea. First getting into web development, html and css are pretty straightforward and opening these documents in a browser, you can see how the browser follows the detailed instructions.</p>
-                        <p><strong>But html and css are heavily abstracted these days in web development.</strong> Even those who are doing simple websites and web apps for small businesses may use levels of abstraction that aren't necessarily needed. What I'm talking about is the use of frameworks like React, Vue.js, and Svelte(Kit). The reasoning is that it makes it easier for the developer, or so-called better developer experience, but <strong>when it comes to web development, performance cannot be secondary to service</strong>. If a website does not load fast enough or a web app does not administer changes in real-time, it will not matter what the service is or if it is easy to use and navigate. What is easy or more intuitive to a developer does not relate to or mean ease of use and performance for the user, but as a developer, it becomes all too easy to fall into this trap of only seeing the documents you're writing on the machine you're developing on, which the specs of are usually not the norm for most users, and then relating your experience to the potential performance and service a user will experience, depending on the varying specs of their machine, whether that is the newest or an old iPhone, an office computer, or Chromebook.</p>
+                        <p>When people get into programming and do not follow a formal course, or do not delve into how
+                            programs and systems work, it can seem overwhelming and confusing, especially with web
+                            development. Web development is a unique case. It is not like software programming because
+                            of its relationship with the internet and so the complications and further abstractions that
+                            brings to developing for it. The internet is an electrical system setup around the world
+                            made of routers, servers and wired cables. You can read about it in <a
+                                href="https://www.nytimes.com/interactive/2019/03/10/technology/internet-cables-oceans.html"
+                                target="_blank">this article</a> from the NY Times or on <a
+                                href="https://en.wikipedia.org/wiki/History_of_the_Internet"
+                                target="_blank">Wikipedia</a>. Here is a <a href="https://www.submarinecablemap.com/"
+                                target="_blank">map of all internet cables</a> running under the sea. First getting into
+                            web development, html and css are pretty straightforward and opening these documents in a
+                            browser, you can see how the browser follows the detailed instructions.</p>
+                        <p><strong>But html and css are heavily abstracted these days in web development.</strong> Even
+                            those who are doing simple websites and web apps for small businesses may use levels of
+                            abstraction that aren't necessarily needed. What I'm talking about is the use of frameworks
+                            like React, Vue.js, and Svelte(Kit). The reasoning is that it makes it easier for the
+                            developer, or so-called better developer experience, but <strong>when it comes to web
+                                development, performance cannot be secondary to service</strong>. If a website does not
+                            load fast enough or a web app does not administer changes in real-time, it will not matter
+                            what the service is or if it is easy to use and navigate. What is easy or more intuitive to
+                            a developer does not relate to or mean ease of use and performance for the user, but as a
+                            developer, it becomes all too easy to fall into this trap of only seeing the documents
+                            you're writing on the machine you're developing on, which the specs of are usually not the
+                            norm for most users, and then relating your experience to the potential performance and
+                            service a user will experience, depending on the varying specs of their machine, whether
+                            that is the newest or an old iPhone, an office computer, or Chromebook.</p>
                         <p><strong>So what are you learning?</strong></p>
-                        <p>When it comes to web development, what a user interacts with in a browser is a user interface and this interface always consists of html, css, and js documents that are sent to a user's machine so that the browser can render the pages or views and respond to user interactions locally. This is not the same as a software program or a mobile app, otherwise known as native apps. When a native app is installed, the app's documents are stored in the given machine and registered, so that when a thumbnail is clicked or a command is entered to run the program, the machine can find where the code is stored and run the program. Before, the difference between a native app and a web app was that data for a native app was stored on the machine. Most often, a cloud, or the cloud in a cloud service, is just a warehouses of servers that a company keeps for storing and managing data, whether the data is statistical information, documents, or other files. What separates a native app from a web app nowadays is that a web app is a program that requires a browser to be run. Though some web apps can act and look like native apps, it's easy to find out what program is running them and see that it's the browser.</p>
-                        <p>No matter what programming language is used for the program running on a website's or web app's server, as noted above, the user interface of a website or web app always consists of html, css and js.</p>
+                        <p>When it comes to web development, what a user interacts with in a browser is a user interface
+                            and this interface always consists of html, css, and js documents that are sent to a user's
+                            machine so that the browser can render the pages or views and respond to user interactions
+                            locally. This is not the same as a software program or a mobile app, otherwise known as
+                            native apps. When a native app is installed, the app's documents are stored in the given
+                            machine and registered, so that when a thumbnail is clicked or a command is entered to run
+                            the program, the machine can find where the code is stored and run the program. Before, the
+                            difference between a native app and a web app was that data for a native app was stored on
+                            the machine. Most often, a cloud, or the cloud in a cloud service, is just a warehouses of
+                            servers that a company keeps for storing and managing data, whether the data is statistical
+                            information, documents, or other files. What separates a native app from a web app nowadays
+                            is that a web app is a program that requires a browser to be run. Though some web apps can
+                            act and look like native apps, it's easy to find out what program is running them and see
+                            that it's the browser.</p>
+                        <p>No matter what programming language is used for the program running on a website's or web
+                            app's server, as noted above, the user interface of a website or web app always consists of
+                            html, css and js.</p>
                         <p><strong>HTML:</strong> HyperText Markup Language</p>
                         <p><strong>CSS:</strong> Cascading StyleSheets</p>
                         <p><strong>JS:</strong> JavaScript</p>
-                        <p>The reason I mentioned abstraction is because as I've mentioned before, a lot of web development today abstracts from html, css, and even JavaScript, but no matter what frameworks, tools or libraries you end up using, the final product for the user interface can only be a collection of html, css, and js documents as those are what the browser uses to run a program. The browser does not make use of other languages. For instance, HTML is not the only markup language there is, just as JavaScript is not the only programming language, but these are the languages of the browser and so the languages of the web.</p>
+                        <p>The reason I mentioned abstraction is because as I've mentioned before, a lot of web
+                            development today abstracts from html, css, and even JavaScript, but no matter what
+                            frameworks, tools or libraries you end up using, the final product for the user interface
+                            can only be a collection of html, css, and js documents as those are what the browser uses
+                            to run a program. The browser does not make use of other languages. For instance, HTML is
+                            not the only markup language there is, just as JavaScript is not the only programming
+                            language, but these are the languages of the browser and so the languages of the web.</p>
                     </div>
                 </details>
                 <details>
                     <summary>Development of Re-Portfolio</summary>
                     <div class="passages">
-                        <p><strong>No web-related abstractions</strong><br>This website of mine, Re-Portfolio, is an example of just using html, css, and js. I scaffolded the project with Vite and chose vanilla js, so that while developing, I could use a development server. Though I could do without it and just render my pages in the browser using filepaths, the development server provides hot reloading and allows me to write relative urls without stating the root page. Without a development server, I would have to modify my html in the gh-pages branch that the website is rendered from to remove index.html from anchors navigating into directories.
-                        <p><strong>No compilation</strong><br>Since I'm using html, css and js, I don't require my code to be compiled. If I were using a separate server to manage my content, it may be tempting to use another language, or even a superset like Typescript, to be consistent between frontend and backend, but while having a separate server to keep track of data, even without a database, would ensure that the information across different pages were consistent, since the content isn't consistent here, this would end up being more complex. The content isn't the same on every page. For the content that is, the formatting and presentation aren't, and I don't need to update the content of older pages as the point is to show them as older. As such, I can just have the html pages hold the content.</p>
-                        <p><strong>No asset bundling</strong><br>If you're familiar with web development, you may think of asset bundling and compression. These are standard for optimizing performance. However, asset bundling only works if the style and interactions of pages or views on a website or web app are consistent with one another, and that is usually, if not the vast majority of the time, the case. But if you haven't noticed by now, every page on this website is unique to the rest. What interactions exist on a page are written solely for that page, as with styles. An asset bundler would thus reproduce my current file structure. I compress my files when I need to, such as images and longer js files, that's it.</p>
+                        <p><strong>No web-related abstractions</strong><br>This website of mine, Re-Portfolio, is an
+                            example of just using html, css, and js. I scaffolded the project with Vite and chose
+                            vanilla js, so that while developing, I could use a development server. Though I could do
+                            without it and just render my pages in the browser using filepaths, the development server
+                            provides hot reloading and allows me to write relative urls without stating the root page.
+                            Without a development server, I would have to modify my html in the gh-pages branch that the
+                            website is rendered from to remove index.html from anchors navigating into directories.
+                        <p><strong>No compilation</strong><br>Since I'm using html, css and js, I don't require my code
+                            to be compiled. If I were using a separate server to manage my content, it may be tempting
+                            to use another language, or even a superset like Typescript, to be consistent between
+                            frontend and backend, but while having a separate server to keep track of data, even without
+                            a database, would ensure that the information across different pages were consistent, since
+                            the content isn't consistent here, this would end up being more complex. The content isn't
+                            the same on every page. For the content that is, the formatting and presentation aren't, and
+                            I don't need to update the content of older pages as the point is to show them as older. As
+                            such, I can just have the html pages hold the content.</p>
+                        <p><strong>No asset bundling</strong><br>If you're familiar with web development, you may think
+                            of asset bundling and compression. These are standard for optimizing performance. However,
+                            asset bundling only works if the style and interactions of pages or views on a website or
+                            web app are consistent with one another, and that is usually, if not the vast majority of
+                            the time, the case. But if you haven't noticed by now, every page on this website is unique
+                            to the rest. What interactions exist on a page are written solely for that page, as with
+                            styles. An asset bundler would thus reproduce my current file structure. I compress my files
+                            when I need to, such as images and longer js files, that's it.</p>
                     </div>
                 </details>
-            </div>
-        </section>
-        <section id="beginner-html">
+            </section>
+        </article>
+        <article id="beginner-html">
             <h2>Beginner's HTML</h2>
             <nav>
                 <div class="a-wrapper"><a href="#tag">Tag</a></div>
@@ -85,11 +189,11 @@
                 <div class="a-wrapper"><a href="#table">Table</a></div>
                 <div class="a-wrapper"><a href="#form">Form</a></div>
             </nav>
-            <div class="content">
+            <section class="content">
                 <dl>
                     <dt id="tag">Tag</dt>
                     <dd>An html element</dd>
-                    <dd>Here is an example of an image element nested in a body element: 
+                    <dd>Here is an example of an image element nested in a body element:
                         <div class="code">
                             <p>&lt;body&gt;</p>
                             <div class="indented">
@@ -98,11 +202,15 @@
                             <p>&lt;/body&gt;</p>
                         </div>
                     </dd>
-                    <dd>Most elements have an opening and closing tag like the body element shown above. Elements by img with only one tag are closed self-enclosing tags. An element with a self-enclosing tag cannot have nested content.</dd>
-                    <dd>Nesting elements allows us to create layouts and relationships between elements, such as positioning the img element inside the body element.</dd>
+                    <dd>Most elements have an opening and closing tag like the body element shown above. Elements by img
+                        with only one tag are closed self-enclosing tags. An element with a self-enclosing tag cannot
+                        have nested content.</dd>
+                    <dd>Nesting elements allows us to create layouts and relationships between elements, such as
+                        positioning the img element inside the body element.</dd>
 
                     <dt id="doc-type">Document type</dt>
-                    <dd>The first line in every html document should be: <span class="code">&lt;!DOCTYPE html&gt;</span>.</dd>
+                    <dd>The first line in every html document should be: <span class="code">&lt;!DOCTYPE
+                            html&gt;</span>.</dd>
 
                     <dt id="doc-structure">HTML Document structure</dt>
                     <dd>Standard template for html document:
@@ -113,35 +221,50 @@
                                 <p>&lt;head&gt;</p>
                                 <div class="indented">
                                     <p>&lt;meta charset="utf-8"&gt;</p>
-                                </div>
-                                <div class="indented">
                                     <p>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-                                </div>
-                                <div class="indented">
                                     <p>&lt;title&gt;Document Title&lt;/title&gt;</p>
+                                    <p>&lt;link rel="stylesheet" href="style.css"&gt;</p>
                                 </div>
                                 <p>&lt;/head&gt;</p>
                             </div>
                             <div class="indented">
-                                <p>&lt;body&gt;&lt;/body&gt;</p>
+                                <p>&lt;body&gt;</p>
+                                <div class="indented">
+                                    <p>&lt;script src="main.js"&gt;&lt;script&gt;</p>
+                                </div>
+                                <p>&lt;/body&gt;</p>
                             </div>
                             &lt;/html&gt;
                         </div>
                     </dd>
                     <dd>Browsers can accept:
                         <div class="code">
-                            <p>&lt;body&gt;&lt;/body&gt;</p>
+                            <p>&lt;style&gt;CSS style rules...&lt;/style&gt;</p>
+                            <p>&lt;body&gt;</p>
+                            <div class="indented">
+                                <p>&lt;script&gt;</p>
+                                <div class="indented">
+                                    <p>JavaScript code here...</p>
+                                </div>
+                                <p>&lt;/script&gt;</p>
+                            </div>
+                            <p>&lt;/body&gt;</p>
                         </div>
                     </dd>
                     <dd>The internet and so browsers and html, css, and js were founded on
                         <ul>
-                            <li><strong>Robustness Principle</strong>, otherwise known as <strong>Postel's Law</strong>: "Be conservative in what you send, be liberal in what you accept."</li>
-                            <li><strong>Backwards Compability</strong>: Interoperability with older legacy systems ensuring that older browsers and websites still work, or that a current website or web app can work on an older browser or machine</li>
+                            <li><strong>Robustness Principle</strong>, otherwise known as <strong>Postel's Law</strong>:
+                                "Be conservative in what you send, be liberal in what you accept."</li>
+                            <li><strong>Backwards Compability</strong>: Interoperability with older legacy systems
+                                ensuring that older browsers and websites still work, or that a current website or web
+                                app can work on an older browser or machine</li>
                         </ul>
                     </dd>
 
                     <dt id="comments">Comments</dt>
-                    <dd>Writing comments in code can be used to toggle a line or set of lines to see the effect when removed and to explain what a line or lines of code are for or why they were needed contrary to expectations.</dd>
+                    <dd>Writing comments in code can be used to toggle a line or set of lines to see the effect when
+                        removed and to explain what a line or lines of code are for or why they were needed contrary to
+                        expectations.</dd>
                     <dd><strong>HTML:</strong>
                         <div class="code">
                             <p>&lt;!-- Here is a comment --&gt;</p>
@@ -160,28 +283,43 @@
                     </dd>
 
                     <dt id="heading">Heading</dt>
-                    <dd>In HTML, there are three elements that can easily be confused to someone unfamiliar with html or document structure: head, header, and heading.
+                    <dd>In HTML, there are three elements that can easily be confused to someone unfamiliar with html or
+                        document structure: head, header, and heading.
                         <ul>
-                            <li><strong>head</strong>: The portion of an html document providing metadata on a page, such as charset and title.</li>
+                            <li><strong>head</strong>: The portion of an html document providing metadata on a page,
+                                such as charset and title.</li>
                             <li><strong>header</strong>: The header of a webpage.</li>
-                            <li><strong>heading</strong>: An series of elements denoting titles and subtitles of a page and the articles and sections it contains.</li>
+                            <li><strong>heading</strong>: An series of elements denoting titles and subtitles of a page
+                                and the articles and sections it contains.</li>
                         </ul>
                     </dd>
                     <dd>Examples of headings:
                         <ol>
-                            <li><strong>h1</strong>: <h1>Heading 1</h1></li>
-                            <li><strong>h2</strong>: <h2>Heading 2</h2></li>
-                            <li><strong>h3</strong>: <h3>Heading 3</h3></li>
-                            <li><strong>h4</strong>: <h4>Heading 4</h4></li>
-                            <li><strong>h5</strong>: <h5>Heading 5</h5></li>
-                            <li><strong>h6</strong>: <h6>Heading 6</h6></li>
+                            <li><strong>h1</strong>: <h1>Heading 1</h1>
+                            </li>
+                            <li><strong>h2</strong>: <h2>Heading 2</h2>
+                            </li>
+                            <li><strong>h3</strong>: <h3>Heading 3</h3>
+                            </li>
+                            <li><strong>h4</strong>: <h4>Heading 4</h4>
+                            </li>
+                            <li><strong>h5</strong>: <h5>Heading 5</h5>
+                            </li>
+                            <li><strong>h6</strong>: <h6>Heading 6</h6>
+                            </li>
                         </ol>
                     </dd>
-                    <dd>Every page should only have one h1 element, seen as the title of the page itself. The title specified in the head of a document is not displayed on the page. As metadata, it is the text seen on tabs in a browser.</dd>
+                    <dd>Every page should only have one h1 element, seen as the title of the page itself. The title
+                        specified in the head of a document is not displayed on the page. As metadata, it is the text
+                        seen on tabs in a browser.</dd>
 
                     <dt id="anchors">Anchors</dt>
-                    <dd>The world wide web was founded on the very notion of sharing and linking documents with hyperlinks, which in html documents are referred to as anchors: <span class="code">&lt;a&gt;&lt;/a&gt;</span>. When clicked, anchors change the address or url. An anchor that sends you to another page or website is an external link, while an anchor that sends you to another article or section in the same page is an internal link.</dd>
-                    <dd>Go to <a href="https://www.disney.com/" target="_blank">Disney</a> with 
+                    <dd>The world wide web was founded on the very notion of sharing and linking documents with
+                        hyperlinks, which in html documents are referred to as anchors: <span
+                            class="code">&lt;a&gt;&lt;/a&gt;</span>. When clicked, anchors change the address or url. An
+                        anchor that sends you to another page or website is an external link, while an anchor that sends
+                        you to another article or section in the same page is an internal link.</dd>
+                    <dd>Go to <a href="https://www.disney.com/" target="_blank">Disney</a> with
                         <div class="code">
                             <p>&lt;a href="https://www.disney.com/"&gt;Disney&lt;/a&gt;</p>
                         </div>
@@ -248,72 +386,120 @@
                     </dd>
 
                     <dt id="media">Media</dt>
-                    <dd>On websites and web apps, media consists of images, videos, audio, and iframes. HTML5 came out in 2008 with native support for these media, and yet how these elements are handled can differ. Images may or may not be wrapped in a figure element, which provides support for captions, and iframes are considered high-risk as they can be used for XSS (cross-site scripting) attacks.</dd>
+                    <dd>On websites and web apps, media consists of images, videos, audio, and iframes. HTML5 came out
+                        in 2008 with native support for these media, and yet how these elements are handled can differ.
+                        Images may or may not be wrapped in a figure element, which provides support for captions, and
+                        iframes are considered high-risk as they can be used for XSS (cross-site scripting) attacks.
+                    </dd>
                     <dd><strong>Image</strong>
                         <div class="code">
-                            <p>&lt;img src="https://www.wifemamafoodie.com/wp-content/uploads/2018/09/Burst-Tomato-Pasta-Vegan-with-Gluten-Free-Option-1170x617.jpg" alt="Beautiful noodles from Wife Mama Foodie"&gt;</p>
+                            <p>&lt;img
+                                src="https://www.wifemamafoodie.com/wp-content/uploads/2018/09/Burst-Tomato-Pasta-Vegan-with-Gluten-Free-Option-1170x617.jpg"
+                                alt="Beautiful noodles from Wife Mama Foodie"&gt;</p>
                         </div>
-                        <img src="https://www.wifemamafoodie.com/wp-content/uploads/2018/09/Burst-Tomato-Pasta-Vegan-with-Gluten-Free-Option-1170x617.jpg" alt="Beautiful noodles from Wife Mama Foodie" />
+                        <img src="https://www.wifemamafoodie.com/wp-content/uploads/2018/09/Burst-Tomato-Pasta-Vegan-with-Gluten-Free-Option-1170x617.jpg"
+                            alt="Beautiful noodles from Wife Mama Foodie" />
                     </dd>
                     <dd>Wrap it in a picture element to ensure support or provide fallback images
                         <div class="code">
                             <p>&lt;picture&gt;</p>
                             <div class="indented">
                                 <p>&lt;source srcset="image-1.png, image-2.png" media="(orientation:portrait)" /&gt;</p>
-                                <p>&lt;img src="https://www.wifemamafoodie.com/wp-content/uploads/2018/09/Burst-Tomato-Pasta-Vegan-with-Gluten-Free-Option-1170x617.jpg" alt="Beautiful noodles from Wife Mama Foodie"&gt;</p>
+                                <p>&lt;img
+                                    src="https://www.wifemamafoodie.com/wp-content/uploads/2018/09/Burst-Tomato-Pasta-Vegan-with-Gluten-Free-Option-1170x617.jpg"
+                                    alt="Beautiful noodles from Wife Mama Foodie"&gt;</p>
                             </div>
                             <p>&lt;/picture&gt;</p>
                         </div>
                         <picture>
-                            <img src="https://www.wifemamafoodie.com/wp-content/uploads/2018/09/Burst-Tomato-Pasta-Vegan-with-Gluten-Free-Option-1170x617.jpg" alt="Beautiful noodles from Wife Mama Foodie" />
+                            <img src="https://www.wifemamafoodie.com/wp-content/uploads/2018/09/Burst-Tomato-Pasta-Vegan-with-Gluten-Free-Option-1170x617.jpg"
+                                alt="Beautiful noodles from Wife Mama Foodie" />
                         </picture>
-                        <p>To read more on this, go to <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture" target="_blank">MDN</a>. I haven't used this element at all, so I plan to read more as well in case it helps with <a href="#accessibility">Accessibility</a>.</p>
+                        <p>To read more on this, go to <a
+                                href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture"
+                                target="_blank">MDN</a>. I haven't used this element at all, so I plan to read more as
+                            well in case it helps with <a href="#accessibility">Accessibility</a>.</p>
                     </dd>
                     <dd>Alternative or used to wrap an image
                         <div class="code">
                             <p>&lt;figure&gt;</p>
                             <div class="indented">
-                                <p>&lt;img src="https://www.wifemamafoodie.com/wp-content/uploads/2018/09/Burst-Tomato-Pasta-Vegan-with-Gluten-Free-Option-1170x617.jpg" alt="Beautiful noodles from Wife Mama Foodie"&gt;</p>
+                                <p>&lt;img
+                                    src="https://www.wifemamafoodie.com/wp-content/uploads/2018/09/Burst-Tomato-Pasta-Vegan-with-Gluten-Free-Option-1170x617.jpg"
+                                    alt="Beautiful noodles from Wife Mama Foodie"&gt;</p>
                                 <p>&lt;figcaption&gt;Burst Tomato Pasta&lt;figcaption&gt;</p>
                             </div>
                             <p>&lt;/figure&gt;</p>
                         </div>
                         <figure>
-                            <img src="https://www.wifemamafoodie.com/wp-content/uploads/2018/09/Burst-Tomato-Pasta-Vegan-with-Gluten-Free-Option-1170x617.jpg" alt="Beautiful noodles from Wife Mama Foodie" />
+                            <img src="https://www.wifemamafoodie.com/wp-content/uploads/2018/09/Burst-Tomato-Pasta-Vegan-with-Gluten-Free-Option-1170x617.jpg"
+                                alt="Beautiful noodles from Wife Mama Foodie" />
                             <figcaption>Burst Tomato Pasta</figcaption>
                         </figure>
                     </dd>
                     <dd><strong>Audio</strong>
                         <div class="code">
-                            <p>&lt;audio controls src="https://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3" &gt;&lt;/audio&gt;</p>
+                            <p>&lt;audio controls
+                                src="https://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3"
+                                &gt;&lt;/audio&gt;</p>
                         </div>
-                        <audio controls src="https://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3"></audio>
-                        <p>Taken from <a href="https://simpleguics2pygame.readthedocs.io/en/latest/_static/links/snd_links.html" target="_blank">here</a><br><strong>Read:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaStream" target="_blank">Media Stream</a></p>
+                        <audio controls
+                            src="https://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3"></audio>
+                        <p>Taken from <a
+                                href="https://simpleguics2pygame.readthedocs.io/en/latest/_static/links/snd_links.html"
+                                target="_blank">here</a><br><strong>Read:</strong> <a
+                                href="https://developer.mozilla.org/en-US/docs/Web/API/MediaStream"
+                                target="_blank">Media Stream</a></p>
                     </dd>
                     <dd><strong>Video</strong>
                         <div class="code">
                             <p>&lt;video&gt;</p>
                             <div class="indented">
-                                <p>&lt;source src="https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4" /&gt;</p>
+                                <p>&lt;source
+                                    src="https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4"
+                                    /&gt;</p>
                             </div>
                             <p>&lt;/video&gt;</p>
                         </div>
                         <video controls height="150">
-                            <source src="https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4">
-                          </video>
+                            <source
+                                src="https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4">
+                        </video>
                     </dd>
-                    <dd><strong>Iframe</strong><br>Iframes can be used for viewing webpages or embedding other websites into the given webpage. There are so many problems and concerns with using iframes, not only for users but also for businesses that in practice, it's recommended to avoid using them.</dd>
-                    <dd>One major concern with iframes are <a href="https://owasp.org/www-community/attacks/Clickjacking" target="_blank">click-jacking attacks</a>. In a click-jacking attack, an iframe can be used to render a website and then adding additional layers with buttons over the rendered website, a user can be tricked into clicking a link or button to steal their information. To avoid click-jacking attacks, if you can program your server or this may already be provided, one would use <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options" target="_blank">X-Frame-Options</a> in response headers. When your browser follows a url, that url is often a page in a directory on a server. The server receives the request for the page and sends the page back in a response. The structure of requests and responses are like emails or html docs with headers specifying metadata and a body for providing content. Anchors, forms and iframes are able to make requests to servers like browsers do, but when the server sends its response, it can denote in the response header whether to allow rendering in an iframe using X-Frame-Options. If in the response header, it is specified that it is not allowed, an error will appear in the iframe: [host] refused to connect.</dd>
-                    <dd>If a site you're working on receives personal information like logins, banking details and social security numbers, make sure your server never allows rendering in an iframe. However, if iframes are needed for the service you're providing, such as in page or view previews, you can specify SAMEORIGIN for the value of X-Frame-Options, so that iframes from your website or web app are the only ones that can render what assets you need.</dd>
+                    <dd><strong>Iframe</strong><br>Iframes can be used for viewing webpages or embedding other websites
+                        into the given webpage. There are so many problems and concerns with using iframes, not only for
+                        users but also for businesses that in practice, it's recommended to avoid using them.</dd>
+                    <dd>One major concern with iframes are <a
+                            href="https://owasp.org/www-community/attacks/Clickjacking" target="_blank">click-jacking
+                            attacks</a>. In a click-jacking attack, an iframe can be used to render a website and then
+                        adding additional layers with buttons over the rendered website, a user can be tricked into
+                        clicking a link or button to steal their information. To avoid click-jacking attacks, if you can
+                        program your server or this may already be provided, one would use <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options"
+                            target="_blank">X-Frame-Options</a> in response headers. When your browser follows a url,
+                        that url is often a page in a directory on a server. The server receives the request for the
+                        page and sends the page back in a response. The structure of requests and responses are like
+                        emails or html docs with headers specifying metadata and a body for providing content. Anchors,
+                        forms and iframes are able to make requests to servers like browsers do, but when the server
+                        sends its response, it can denote in the response header whether to allow rendering in an iframe
+                        using X-Frame-Options. If in the response header, it is specified that it is not allowed, an
+                        error will appear in the iframe: [host] refused to connect.</dd>
+                    <dd>If a site you're working on receives personal information like logins, banking details and
+                        social security numbers, make sure your server never allows rendering in an iframe. However, if
+                        iframes are needed for the service you're providing, such as in page or view previews, you can
+                        specify SAMEORIGIN for the value of X-Frame-Options, so that iframes from your website or web
+                        app are the only ones that can render what assets you need.</dd>
                     <dd>Add iframe showing another website
                         <div class="code">
-                            <p>&lt;iframe title="Kou.d Blue" src="https://smkou.github.io/re-portfolio/" width="100%" height="450"&gt;</p>
+                            <p>&lt;iframe title="Kou.d Blue" src="https://smkou.github.io/re-portfolio/" width="100%"
+                                height="450"&gt;</p>
                             <div class="indented">
                                 <p>Iframe not supported</p>
                             </div>
                             <p>&lt;/iframe&gt;</p>
                         </div>
-                        <iframe title="Kou.d Blue" src="https://smkou.github.io/re-portfolio/" width="100%" height="450">
+                        <iframe title="Kou.d Blue" src="https://smkou.github.io/re-portfolio/" width="100%"
+                            height="450">
                             Iframe not supported
                         </iframe>
                     </dd>
@@ -331,7 +517,9 @@
                     </dd>
 
                     <dt id="table">Table</dt>
-                    <dd>The original concept of a table was a grid for displaying information, but while grids are now created using css and properties of columns and rows, tables are created using html and elements of rows and heading and data cells.
+                    <dd>The original concept of a table was a grid for displaying information, but while grids are now
+                        created using css and properties of columns and rows, tables are created using html and elements
+                        of rows and heading and data cells.
                         <div class="code">
                             <p>&lt;table&gt;</p>
                             <div class="indented">
@@ -361,7 +549,10 @@
                             </tr>
                         </table>
                     </dd>
-                    <dd>More complex tables can be split into three sections: table header (thead), table body (tbody), and table footer (tfoot). By default, even if you write out a table as shown above, a tbody element will be added by the browser to wrap around the rows when rendering the page, otherwise these sections of a table are to be explicitly written.
+                    <dd>More complex tables can be split into three sections: table header (thead), table body (tbody),
+                        and table footer (tfoot). By default, even if you write out a table as shown above, a tbody
+                        element will be added by the browser to wrap around the rows when rendering the page, otherwise
+                        these sections of a table are to be explicitly written.
                         <div class="code">
                             <p>&lt;table&gt;</p>
                             <div class="indented">
@@ -468,16 +659,16 @@
                             </div>
                             <div class="indented">
                                 <p>&lt;tr&gt;</p>
-                                    <div class="indented">
-                                        <p>&lt;th&gt;Star Sign&lt;/th&gt;</p>
-                                        <p>&lt;td&gt;Aquarius&lt;/td&gt;</p>
-                                    </div>
+                                <div class="indented">
+                                    <p>&lt;th&gt;Star Sign&lt;/th&gt;</p>
+                                    <p>&lt;td&gt;Aquarius&lt;/td&gt;</p>
+                                </div>
                                 <p>&lt;/tr&gt;</p>
                                 <p>&lt;tr&gt;</p>
-                                    <div class="indented">
-                                        <p>&lt;th&gt;Favorite Dish&lt;/th&gt;</p>
-                                        <p>&lt;td&gt;Dinuguan&lt;/td&gt;</p>
-                                    </div>
+                                <div class="indented">
+                                    <p>&lt;th&gt;Favorite Dish&lt;/th&gt;</p>
+                                    <p>&lt;td&gt;Dinuguan&lt;/td&gt;</p>
+                                </div>
                                 <p>&lt;/tr&gt;</p>
                             </div>
                             <p>&lt;/table&gt;</p>
@@ -577,10 +768,23 @@
                     </dd>
 
                     <dt id="form">Form</dt>
-                    <dd>Form elements are used for collecting information and input from the user, which can then be submitted for processing either locally or by a server. If processing requires computations or the results entail changes to the page or view, the data should be sent to a server. JavaScript may be a programming language and for programming in the browser, but it is not efficient for computations and memory-intensive or data-intensive operations. As a rule of thumb, only use JavaScript for handling interactions, browser storage and page population if not following <a href="https://htmx.org/essays/hateoas/" target="_blank">HATEOAS</a>.</dd>
-                    <dd>When a form is submitted, the data is contained in a collection. Depending how you access the data, this collection may either be a map, meaning that it consists of key-value pairs with the key being the name of an element representing a question, such as name="username" or name="pet". The value is thus the value of the user's answers indicated by the inputs.</dd>
-                    <dd>Read more on <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input" target="_blank">input</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form" target="_blank">form</a>.</dd>
-                    <dd><strong>Input hidden</strong><br>include a value to submit in a form not set by user but may be connected to user, such as the id of the item they selected to modify
+                    <dd>Form elements are used for collecting information and input from the user, which can then be
+                        submitted for processing either locally or by a server. If processing requires computations or
+                        the results entail changes to the page or view, the data should be sent to a server. JavaScript
+                        may be a programming language and for programming in the browser, but it is not efficient for
+                        computations and memory-intensive or data-intensive operations. As a rule of thumb, only use
+                        JavaScript for handling interactions, browser storage and page population if not following <a
+                            href="https://htmx.org/essays/hateoas/" target="_blank">HATEOAS</a>.</dd>
+                    <dd>When a form is submitted, the data is contained in a collection. Depending how you access the
+                        data, this collection may either be a map, meaning that it consists of key-value pairs with the
+                        key being the name of an element representing a question, such as name="username" or name="pet".
+                        The value is thus the value of the user's answers indicated by the inputs.</dd>
+                    <dd>Read more on <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"
+                            target="_blank">input</a> and <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form"
+                            target="_blank">form</a>.</dd>
+                    <dd><strong>Input hidden</strong><br>include a value to submit in a form not set by user but may be
+                        connected to user, such as the id of the item they selected to modify
                         <div class="code">
                             <p>&lt;input type="hidden" name="product-id" value="123" /&gt;</p>
                         </div>
@@ -601,10 +805,12 @@
                     </dd>
                     <dd>Specify rows (rows="") and columns (cols="") in textarea:
                         <div class="code">
-                            <p>&lt;textarea rows="10" placeholder="Enter some even longer text now like a paragraph or why not a whole book?? Test me."&gt;</p>
+                            <p>&lt;textarea rows="10" placeholder="Enter some even longer text now like a paragraph or
+                                why not a whole book?? Test me."&gt;</p>
                             <p>&lt;/textarea&gt;</p>
                         </div>
-                        <textarea rows="10" placeholder="Enter some even longer text now like a paragraph or why not a whole book?? Test me."></textarea>
+                        <textarea rows="10"
+                            placeholder="Enter some even longer text now like a paragraph or why not a whole book?? Test me."></textarea>
                     </dd>
                     <dd><strong>Input search</strong>
                         <div class="code">
@@ -628,7 +834,8 @@
                     </dd>
                     <dd><strong>Input checkbox</strong> select multiple values for one question
                         <div class="code">
-                            <p>&lt;label for="separate-checkbox-input"&gt;Text for Following checkbox input&lt;/label&gt;</p>
+                            <p>&lt;label for="separate-checkbox-input"&gt;Text for Following checkbox
+                                input&lt;/label&gt;</p>
                             <p>&lt;input id="separate-checkbox-input" type="checkbox" /&gt;</p>
                             <p>&lt;label for="nested-checkbox-input"&gt;Text for Nested checkbox input</p>
                             <div class="indented">
@@ -807,12 +1014,13 @@
                         <input type="range" min="0" max="32" />
                     </dd>
                 </dl>
-            </div>
-        </section>
-        <section id="semantics">
+            </section>
+        </article>
+        <article id="semantics">
             <h2>Semantic HTML</h2>
-            <div class="content">
-                <p><strong>Article:</strong> <a href="https://www.semrush.com/blog/semantic-html5-guide/" target="_blank">What Is It and How to Use It?</a></p>
+            <section class="content">
+                <p><strong>Article:</strong> <a href="https://www.semrush.com/blog/semantic-html5-guide/"
+                        target="_blank">What Is It and How to Use It?</a></p>
                 <dl>
                     <dt>Semantic structure</dt>
                     <dd>Sample:
@@ -873,7 +1081,8 @@
                                     <p>&lt;/main&gt;</p>
                                     <p>&lt;footer&gt;</p>
                                     <div class="indented">
-                                        <p>&lt;p&gt;Web site|app (c) 2023 &lt;a href="company.com"&gt;Company&lt;/a&gt;&lt;/p&gt;</p>
+                                        <p>&lt;p&gt;Web site|app (c) 2023 &lt;a
+                                            href="company.com"&gt;Company&lt;/a&gt;&lt;/p&gt;</p>
                                     </div>
                                     <p>&lt;/footer&gt;</p>
                                 </div>
@@ -884,111 +1093,205 @@
                     </dd>
 
                     <dt>Div: Division</dt>
-                    <dd>A generic block element for creating sections, even purely aesthetic elements that can be used in
-                    prototyping layouts.</dd>
+                    <dd>A generic block element for creating sections, even purely aesthetic elements that can be used
+                        in
+                        prototyping layouts.</dd>
                     <dd><code>&lt;div&gt;...&lt;/div&gt;</code></dd>
 
                     <dt>Span</dt>
-                    <dd>A generic inline element, often to create divisions or sections within a block like text or in galleries.
+                    <dd>A generic inline element, often to create divisions or sections within a block like text or in
+                        galleries.
                     </dd>
                     <dd><code>&lt;span&gt;...&lt;/span&gt;</code></dd>
 
                     <dt>Article</dt>
-                    <dd>A selt-contained composition in a document, page, application or website intended to be independently
-                    distributed or resused, such as a forum post, newspaper article, blog entry, product card, a widget or gadget,
-                    etc.</dd>
+                    <dd>A selt-contained composition in a document, page, application or website intended to be
+                        independently
+                        distributed or resused, such as a forum post, newspaper article, blog entry, product card, a
+                        widget or gadget,
+                        etc.</dd>
                     <dd><code>&lt;article&gt;...&lt;/article&gt;</code></dd>
 
                     <dt>Aside</dt>
-                    <dd>A portion of a document, section or article, in which the content is indirectly related to the main content.
-                    These are often seen as sidebars, call-out boxes and fun facts.</dd>
+                    <dd>A portion of a document, section or article, in which the content is indirectly related to the
+                        main content.
+                        These are often seen as sidebars, call-out boxes and fun facts.</dd>
                     <dd><code>&lt;aside&gt;...&lt;/aside&gt;</code></dd>
 
                     <dt>Nav: Navigation</dt>
-                    <dd>A portion of a document or page that provides navigation links in the current document or to other
-                    documents. Most often, these are seen as menus, table of contents and indexes.</dd>
+                    <dd>A portion of a document or page that provides navigation links in the current document or to
+                        other
+                        documents. Most often, these are seen as menus, table of contents and indexes.</dd>
                     <dd><code>&lt;nav&gt;...&lt;/nav&gt;</code></dd>
 
                     <dt>Header</dt>
-                    <dd>A section for introductory content, often introductory or navigational aids, but not to be confused with the
-                    Navigation (nav). Sometimes this section may include a logo, search form, author name and so on.</dd>
+                    <dd>A section for introductory content, often introductory or navigational aids, but not to be
+                        confused with the
+                        Navigation (nav). Sometimes this section may include a logo, search form, author name and so on.
+                    </dd>
                     <dd><code>&lt;header&gt;...&lt;/header&gt;</code></dd>
 
                     <dt>Main</dt>
-                    <dd>This section is the main, or dominant, content of a document or article, consisting of what directly relates
-                    to or expands upon the central topic.It can also be the section of the central functionality of an
-                    application.</dd>
+                    <dd>This section is the main, or dominant, content of a document or article, consisting of what
+                        directly relates
+                        to or expands upon the central topic.It can also be the section of the central functionality of
+                        an
+                        application.</dd>
                     <dd><code>&lt;main&gt;...&lt;/main&gt;</code></dd>
 
                     <dt>Section</dt>
-                    <dd>A generic standalone portion of a full document or page like a chapter. Every section should have a heading,
-                    include subsections. However, use headings as part of distinguishing how the sections relate to one another in
-                    the document or page.</dd>
+                    <dd>A generic standalone portion of a full document or page like a chapter. Every section should
+                        have a heading,
+                        include subsections. However, use headings as part of distinguishing how the sections relate to
+                        one another in
+                        the document or page.</dd>
                     <dd><code>&lt;section&gt;...&lt;/section&gt;</code></dd>
 
                     <dt>Figure</dt>
-                    <dd>Self-contained content with an optional caption, used for reference or support like video and diagrams.</dd>
+                    <dd>Self-contained content with an optional caption, used for reference or support like video and
+                        diagrams.</dd>
                     <dd><code>&lt;figure&gt;...&lt;/figure&gt;</code></dd>
-                    <dd>Include <code>&lt;figcaption&gt;...&lt;/figcaption&gt;</code> to add a caption, label or legend</dd>
+                    <dd>Include <code>&lt;figcaption&gt;...&lt;/figcaption&gt;</code> to add a caption, label or legend
+                    </dd>
 
                     <dt>Pre: Preformatted</dt>
-                    <dd>Some text, such as in form poetry, requires whitespaces to be displayed as written to maintain the original
-                    look and feel. The default font is monospaced.</dd>
+                    <dd>Some text, such as in form poetry, requires whitespaces to be displayed as written to maintain
+                        the original
+                        look and feel. The default font is monospaced.</dd>
                     <dd><code>&lt;pre&gt;...&lt;/pre&gt;</code></dd>
 
                     <dt>Code</dt>
-                    <dd>For distinguishing code, typically in tutorials and hypertext documents like this handbook, this element
-                    uses a monospaced font by default and has been used for code segments shown here. However, if writing html
-                    code, in order for that code not to be processed like regular code, there are shortcodes needed. For instance,
-                    "&lt;" is written with an ampersand, lt and semicolon, while "&gt;" is written with an ampersand, gt and
-                    semicolon.</dd>
+                    <dd>For distinguishing code, typically in tutorials and hypertext documents like this handbook, this
+                        element
+                        uses a monospaced font by default and has been used for code segments shown here. However, if
+                        writing html
+                        code, in order for that code not to be processed like regular code, there are shortcodes needed.
+                        For instance,
+                        "&lt;" is written with an ampersand, lt and semicolon, while "&gt;" is written with an
+                        ampersand, gt and
+                        semicolon.</dd>
                     <dd><code>&lt;code&gt;...&lt;/code&gt;</code></dd>
 
                     <dt>Footer</dt>
-                    <dd>A section that often contains information about an author, copyright data or links to next and previous
-                    articles, or to related documents.</dd>
+                    <dd>A section that often contains information about an author, copyright data or links to next and
+                        previous
+                        articles, or to related documents.</dd>
                     <dd><code>&lt;footer&gt;...&lt;/footer&gt;</code></dd>
 
                     <dt>More Elements</dt>
-                    <dd>Refer <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">HTML Elements</a> on MDN</dd>
+                    <dd>Refer <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">HTML Elements</a> on
+                        MDN</dd>
                 </dl>
-            </div>
-        </section>
-        <section id="accessibility">
+            </section>
+        </article>
+        <article id="accessibility">
             <h2>Accessibility</h2>
             <section>
                 <div class="content">
-                    <p>Read about <a href="https://www.w3.org/WAI/fundamentals/accessibility-intro/" target="_blank">Web Accessibility</a>.</p>
+                    <p>Read about <a href="https://www.w3.org/WAI/fundamentals/accessibility-intro/" target="_blank">Web
+                            Accessibility</a>.</p>
                     <p>How to make a website or web app accessible:</p>
                     <ul>
-                        <li>DreamHost: <a href="https://www.dreamhost.com/blog/make-your-website-accessible/" target="_blank">How to Design an Accessible Website</a></li>
-                        <li>HubSpot: <a href="https://blog.hubspot.com/website/web-accessibility" target="_blank">Web Accessibility</a></li>
-                        <li>Web Accessibility in Mind (WebAIM): <a href="https://webaim.org/" target="_blank">Training and Resources</a></li>
+                        <li>DreamHost: <a href="https://www.dreamhost.com/blog/make-your-website-accessible/"
+                                target="_blank">How to Design an Accessible Website</a></li>
+                        <li>HubSpot: <a href="https://blog.hubspot.com/website/web-accessibility" target="_blank">Web
+                                Accessibility</a></li>
+                        <li>Web Accessibility in Mind (WebAIM): <a href="https://webaim.org/" target="_blank">Training
+                                and Resources</a></li>
                     </ul>
                     <p>Get certified:</p>
                     <ul>
-                        <li>CPACC: <a href="https://www.accessibilityassociation.org/s/certified-professional" target="_blank">Certified Professional in Accessibility Core Competencies</a></li>
-                        <li>WAS: <a href="https://www.accessibilityassociation.org/s/wascertification" target="_blank">Web Accessibility Specialist</a></li>
+                        <li>CPACC: <a href="https://www.accessibilityassociation.org/s/certified-professional"
+                                target="_blank">Certified Professional in Accessibility Core Competencies</a></li>
+                        <li>WAS: <a href="https://www.accessibilityassociation.org/s/wascertification"
+                                target="_blank">Web Accessibility Specialist</a></li>
                     </ul>
                 </div>
             </section>
-        </section>
-        <section id="colors">
+        </article>
+        <article id="beginner-css">
+            <h2>Beginner's CSS</h2>
+            <section class="content">
+                <dl>
+                    <dt>Format</dt>
+                    <dd><div class="code">h1 { color: white; background-color: black; }</div></dd>
+
+                    <dt>Ways to Embed Styles</dt>
+                    <dd>
+                        <ol>
+                            <li>Inline style <span class="code">&lt;p style="color: blue;"&gt;Paragraph&lt;/p&gt;</span></li>
+                            <li>Style block <span class="code">&lt;style&gt; p { color: blue; background-color: slategray; } &lt;/style&gt;</span></li>
+                            <li>External stylesheet <span class="code">&lt;link rel="stylesheet" href="./css/stylesheet.css"&gt;</span></li>
+                        </ol>
+                    </dd>
+
+                    <dt>Selectors</dt>
+                    <dd><strong>Note:</strong> Selectors can be grouped into a list using commas.</dd>
+                    <dd><strong>Universal: *</strong> is used to style all elements, regardless of hierarchy or order</dd>
+                    <dd><strong>Type</strong> is based on tags, such as h1 and input</dd>
+                    <dd><strong>Class: .class-name</strong> is to provide the same styling rules to various elements, or to apply multiple sets of styling rules to the a single element, which will apply in succession with the latest applying should the sets contain values for the same properties.</dd>
+                    <dd><strong>ID: #id-name</strong> is for styling a single element, regardless of class or type.</dd>
+                    <dd><strong>Attribute: [attr], [attr=value], type[attr=value]</strong> is for styling elements that have the same attribute, share the same value to an attribute, or elements of a specified type that share the same value to an attribute. Use the following symbols for refining how a match is found:
+                        <ul>
+                            <li>type[attr*="match-val"] or type[attr~="match-val"]: the value of the attribute <u>contains</u> the match value, such as the url of an href. The former is for at least one occurence of the match value, whereas the latter is an occurence within a list</li>
+                            <li>type[attr|="match-val"]: is also for contains but for the exact match value, beginning with and followed by a hyphen.</li>
+                            <li>type[attr^="match-val"]: the value of the attribute <u>begins with</u> the match value</li>
+                            <li>type[attr$="match-val]: the value of the attribute <u>ends with</u> the match value</li>
+                            <li>Refer <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors">Selectors</a> on MDN</li>
+                        </ul>
+                    </dd>
+                    <dd><strong>Descendant: A B</strong> is for identifying an element B inside an element A</dd>
+                    <dd><strong>Child: A > B</strong> is for identifying an element B that is a direct child of element A</dd>
+                    <dd><strong>General sibling: A ~ B</strong> is for identifying an element B that follows an element A that has the same parent</dd>
+                    <dd><strong>Adjacent sibling: A + B</strong> is for identifying an element B that immediately follows the element A</dd>
+                    <dd><strong>Column: A || B</strong> is for identifying elements, or nodes, belonging to a column</dd>
+
+                    <dt>Pseudo classes and elements</dt>
+                    <dd><strong>Hover: [type]:hover</strong> is for styling a type of element when hovered</dd>
+                    <dd><strong>Active: [type]:active</strong> is for styling an element that has been activated by the user, such as being clicked on</dd>
+                    <dd><strong>Focus: [type]:focus</strong> is for styling an element that has focus, such as drawing attention to errors</dd>
+                    <dd><strong>For links:</strong>
+                        <ul>
+                            <li>a:link - links that have not been visited</li>
+                            <li>a:visited - links that have been visited</li>
+                            <li>a:local-link - links where the absolute URL is the same as the target URL, such as
+                                internal links</li>
+                        </ul>
+                    </dd>
+                    <dd>Refer the full list of <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes">Pseudo Classes</a> from MDN, as well as <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements">Pseudo Elements</a>. The most useful pseudo classes I know of are tree-structural (:nth-child | :nth-of-type is the nth occurence, :first-child | :first-of-type is the first occurence, :last-child | :last-of-type is the last occurence) and for pseudo elements, the ::before and ::after used in shapes.</dd>
+
+                    <dt>Formatting CSS</dt>
+                </dl>
+            </section>
+        </article>
+        <article id="colors">
             <h2>Colors</h2>
-            <div class="content"></div>
-        </section>
-        <section id="fonts">
+            <nav>
+                <div class="a-wrapper"><a href="#"></a></div>
+            </nav>
+            <section class="content"></section>
+        </article>
+        <article id="fonts">
             <h2>Fonts & Font Pairs</h2>
-            <div class="content"></div>
-        </section>
-        <section id="shapes">
+            <nav>
+                <div class="a-wrapper"><a href="#"></a></div>
+            </nav>
+            <section class="content"></section>
+        </article>
+        <article id="shapes">
             <h2>Shapes</h2>
-            <div class="content"></div>
-        </section>
-        <section id="layouts">
+            <nav>
+                <div class="a-wrapper"><a href="#"></a></div>
+            </nav>
+            <section class="content"></section>
+        </article>
+        <article id="layouts">
             <h2>Layouts</h2>
-            <div class="content"></div>
-        </section>
+            <nav>
+                <div class="a-wrapper"><a href="#"></a></div>
+            </nav>
+            <section class="content"></section>
+        </article>
         <div id="bottom"></div>
     </main>
     <footer>
@@ -1004,4 +1307,5 @@
         </div>
     </footer>
 </body>
+
 </html>

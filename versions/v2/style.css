@@ -103,6 +103,7 @@ main {
     align-items: center;
 }
 
+.html #beginner-css,
 .html #colors,
 .html #fonts,
 .html #shapes,
@@ -113,7 +114,7 @@ main {
 .css #semantics,
 .css #accessibility { display: none }
 
-section {
+article {
     width: 100%;
     max-width: 84rem;
 }
@@ -133,14 +134,14 @@ h2 {
     text-align: center;
 }
 
-section nav {
+article nav {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
 }
 
-section nav a {
+article nav a {
     border-top-color: var(--light-accent-color);
     border-bottom-color: var(--light-accent-color);
     color: var(--light-accent-color);
@@ -152,11 +153,11 @@ section nav a:hover {
     color: var(--dark-accent-color);
 }
 
-section dd a,
-section p a { color: var(--light-accent-color) }
+article dd a,
+article p a { color: var(--light-accent-color) }
 
-section dd a:hover,
-section p a:hover { color: var(--dark-accent-color) }
+article dd a:hover,
+article p a:hover { color: var(--dark-accent-color) }
 
 .content {
     padding: 0 2rem;
