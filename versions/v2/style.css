@@ -214,13 +214,35 @@ dt:first-of-type { margin-top: 0 }
 dd { margin-bottom: 1.6rem }
 dt + dd { margin-top: 1.2rem }
 
+dd audio,
+dd video,
+dd table,
+dd label,
+dd textarea { margin-top: 1.2rem }
+
+dd label { 
+    margin-top: 0;
+    display: block;
+}
+
+dd .row {
+    margin-top: 1.2rem;
+    display: flex;
+    align-items: center;
+}
+dd .row input { 
+    width: auto;
+    margin: 0;
+    margin-left: 0.6rem;
+}
+
 dd img {
     width: 100%;
     height: auto;
 }
 
-dd audio,
-dd video { margin-top: 1.2rem }
+dd input,
+dd button { width: 100% }
 
 .code {
     background: #f2f4f4;
@@ -263,3 +285,55 @@ li h3 { font-size: 2.56rem }
 li h4 { font-size: 2.18rem }
 li h5 { font-size: 1.8rem }
 li h6 { font-size: 1.6rem }
+
+table tr {
+    border-top: 0.1rem solid var(--uni-black);
+    border-bottom: 0.1rem solid var(--uni-black);
+}
+
+table th { background: #EAEDED }
+
+table th,
+table td { 
+    padding: 0.6rem;
+    padding-top: 0.9rem;
+    text-align: left;
+}
+
+.col2 { background: #f006 }
+.row2 { background: #f0f6 }
+
+fieldset {
+    margin: 2rem 0;
+    padding: 2.4rem;
+    border-radius: 1.2rem;
+    display: flex;
+}
+
+fieldset legend {
+    padding: 0.6rem 0.8rem 0.4rem 0.8rem;
+    border-radius: 0.4rem;
+    color: var(--light-color-purple);
+    background: var(--dark-color-purple);
+}
+
+fieldset label {
+    padding: 0.8rem;
+    line-height: 1;
+    display: flex;
+    align-items: flex-start;
+}
+
+fieldset label input {
+    margin: 0 0.8rem;
+    padding: 1.2rem 0.8rem;
+}
+
+.select {
+    margin-top: 1.2rem;
+    width: 100%;
+    display: flex;
+}
+
+.select label { width: 16rem }
+.select select { width: 100% }
