@@ -42,18 +42,11 @@
         <article id="intro">
             <h2>Introduction</h2>
             <section class="content">
-                <p>In the past, this was a handbook I was working on while reviewing my html and css. Here, I will give
-                    a brief introduction to those that are not familiar with how websites, the internet, or programming
-                    work, presuming that one is either getting into web development or would like to understand it a bit
-                    more. If you just want to continue to the following content, skip to the <a
-                        href="#beginner-html">next section</a> or click CSS above to switch to the css content.</p>
-                <p>For references, I suggest <a href="https://developer.mozilla.org/en-US/" target="_blank">MDN Web
-                        Docs</a> and <a href="https://css-tricks.com/" target="_blank">CSS Tricks</a>. For code
-                    snippets, I prefer <a href="https://www.w3schools.com/" target="_blank">W3Schools</a> to CodePen or
-                    StackOverflow when possible.</p>
+                <p>In the past, this was a handbook I was working on while reviewing my html and css. Here, I will give a brief introduction to those that are not familiar with how websites, the internet, or programming work, presuming that one is either getting into web development or would like to understand it a bit more. If you just want to continue to the following content, skip to the <a href="#beginner-html">next section</a> or click CSS above to switch to the css content.</p>
+                <p>For references, I suggest <a href="https://developer.mozilla.org/en-US/" target="_blank">MDN Web Docs</a> and <a href="https://css-tricks.com/" target="_blank">CSS Tricks</a>. For code snippets, I prefer <a href="https://www.w3schools.com/" target="_blank">W3Schools</a> to CodePen or StackOverflow when possible.</p>
                 <hr>
                 <details>
-                    <summary>Programming User Interfaces for the Web only consists of HTML, CSS, and JS</summary>
+                    <summary>Programming User Interfaces for the Web only consist of HTML, CSS, and JS</summary>
                     <div class="passages">
                         <p>First, programming is writing a collection of documents that provide instructions to
                             computers on how to run a program. Programs are written in programs. A web app is a program
@@ -175,23 +168,12 @@
         </article>
         <article id="beginner-html">
             <h2>Beginner's HTML</h2>
-            <nav>
-                <div class="a-wrapper"><a href="#tag">Tag</a></div>
-                <div class="a-wrapper"><a href="#doc-type">Document Type</a></div>
-                <div class="a-wrapper"><a href="#doc-structure">HTML Document structure</a></div>
-                <div class="a-wrapper"><a href="#comments">Comments</a></div>
-                <div class="a-wrapper"><a href="#heading">Heading</a></div>
-                <div class="a-wrapper"><a href="#anchors">Anchors</a></div>
-                <div class="a-wrapper"><a href="#lists">Lists</a></div>
-                <div class="a-wrapper"><a href="#media">Media</a></div>
-                <div class="a-wrapper"><a href="#table">Table</a></div>
-                <div class="a-wrapper"><a href="#form">Form</a></div>
-            </nav>
             <section class="content">
-                <dl>
-                    <dt id="tag">Tag</dt>
-                    <dd>An html element</dd>
-                    <dd>Here is an example of an image element nested in a body element:
+                <details>
+                    <summary>Tag</summary>
+                    <div class="passages">
+                        <p>An html element</p>
+                        <p>Here is an example of an image element nested in a body element:</p>
                         <div class="code">
                             <p>&lt;body&gt;</p>
                             <div class="indented">
@@ -199,19 +181,20 @@
                             </div>
                             <p>&lt;/body&gt;</p>
                         </div>
-                    </dd>
-                    <dd>Most elements have an opening and closing tag like the body element shown above. Elements by img
-                        with only one tag are closed self-enclosing tags. An element with a self-enclosing tag cannot
-                        have nested content.</dd>
-                    <dd>Nesting elements allows us to create layouts and relationships between elements, such as
-                        positioning the img element inside the body element.</dd>
-
-                    <dt id="doc-type">Document type</dt>
-                    <dd>The first line in every html document should be: <span class="code">&lt;!DOCTYPE
-                            html&gt;</span>.</dd>
-
-                    <dt id="doc-structure">HTML Document structure</dt>
-                    <dd>Standard template for html document:
+                        <p>Most elements have an opening and closing tag like the body element shown above. Elements by img with only one tag are closed self-enclosing tags. An element with a self-enclosing tag cannot have nested content.</p>
+                        <p>Nesting elements allows us to create layouts and relationships between elements, such as positioning the img element inside the body element.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary>Document type</summary>
+                    <div class="passages">
+                        <p>The first line in every html document should be: <span class="code">&lt;!DOCTYPE html&gt;</span>.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary>HTML Document structure</summary>
+                    <div class="passages">
+                        <p>Standard template for html document:</p>
                         <div class="code">
                             &lt;!DOCTYPE html&gt;
                             <p>&lt;html&gt;</p>
@@ -234,8 +217,7 @@
                             </div>
                             &lt;/html&gt;
                         </div>
-                    </dd>
-                    <dd>Browsers can accept:
+                        <p>Browsers can accept:</p>
                         <div class="code">
                             <p>&lt;style&gt;CSS style rules...&lt;/style&gt;</p>
                             <p>&lt;body&gt;</p>
@@ -248,8 +230,7 @@
                             </div>
                             <p>&lt;/body&gt;</p>
                         </div>
-                    </dd>
-                    <dd>The internet and so browsers and html, css, and js were founded on
+                        <p>The principles of the internet, browsers and so html, css, and js:</p>
                         <ul>
                             <li><strong>Robustness Principle</strong>, otherwise known as <strong>Postel's Law</strong>:
                                 "Be conservative in what you send, be liberal in what you accept."</li>
@@ -257,32 +238,31 @@
                                 ensuring that older browsers and websites still work, or that a current website or web
                                 app can work on an older browser or machine</li>
                         </ul>
-                    </dd>
-
-                    <dt id="comments">Comments</dt>
-                    <dd>Writing comments in code can be used to toggle a line or set of lines to see the effect when
-                        removed and to explain what a line or lines of code are for or why they were needed contrary to
-                        expectations.</dd>
-                    <dd><strong>HTML:</strong>
+                    </div>
+                </details>
+                <details>
+                    <summary>Comments</summary>
+                    <div class="passages">
+                        <p>Writing comments in code can be used to toggle a line or set of lines to see the effect when removed and to explain what a line or lines of code are for or why they were needed contrary to expectations.</p>
+                        <p><strong>HTML:</strong></p>
                         <div class="code">
                             <p>&lt;!-- Here is a comment --&gt;</p>
                         </div>
-                    </dd>
-                    <dd><strong>CSS:</strong>
+                        <p><strong>CSS:</strong></p>
                         <div class="code">
                             <p>/* Here is a comment */</p>
                         </div>
-                    </dd>
-                    <dd><strong>JS:</strong>
+                        <p><strong>JS:</strong></p>
                         <div class="code">
                             <p>// Here is a single-line comment</p>
                             <p>/* Here is a multi-line comment */</p>
                         </div>
-                    </dd>
-
-                    <dt id="heading">Heading</dt>
-                    <dd>In HTML, there are three elements that can easily be confused to someone unfamiliar with html or
-                        document structure: head, header, and heading.
+                    </div>
+                </details>
+                <details>
+                    <summary>Heading</summary>
+                    <div class="passages">
+                        <p>In HTML, there are three elements that can easily be confused to someone unfamiliar with html or document structure: head, header, and heading.</p>
                         <ul>
                             <li><strong>head</strong>: The portion of an html document providing metadata on a page,
                                 such as charset and title.</li>
@@ -290,8 +270,7 @@
                             <li><strong>heading</strong>: An series of elements denoting titles and subtitles of a page
                                 and the articles and sections it contains.</li>
                         </ul>
-                    </dd>
-                    <dd>Examples of headings:
+                        <p>Example of headings:</p>
                         <ol>
                             <li><strong>h1</strong>: <h1>Heading 1</h1>
                             </li>
@@ -306,36 +285,32 @@
                             <li><strong>h6</strong>: <h6>Heading 6</h6>
                             </li>
                         </ol>
-                    </dd>
-                    <dd>Every page should only have one h1 element, seen as the title of the page itself. The title
-                        specified in the head of a document is not displayed on the page. As metadata, it is the text
-                        seen on tabs in a browser.</dd>
-
-                    <dt id="anchors">Anchors</dt>
-                    <dd>The world wide web was founded on the very notion of sharing and linking documents with
-                        hyperlinks, which in html documents are referred to as anchors: <span
-                            class="code">&lt;a&gt;&lt;/a&gt;</span>. When clicked, anchors change the address or url. An
-                        anchor that sends you to another page or website is an external link, while an anchor that sends
-                        you to another article or section in the same page is an internal link.</dd>
-                    <dd>Go to <a href="https://www.disney.com/" target="_blank">Disney</a> with
+                        <p>Every page should only have one h1 element, seen as the title of the page itself. The title specified in the head of a document is not displayed on the page. As metadata, it is the text seen on tabs in a browser.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary>Anchors</summary>
+                    <div class="passages">
+                        <p>The world wide web was founded on the very notion of sharing and linking documents with hyperlinks, which in html documents are referred to as anchors: <span class="code">&lt;a&gt;&lt;/a&gt;</span>. When clicked, anchors change the address or url. An anchor that sends you to another page or website is an external link, while an anchor that sends you to another article or section in the same page is an internal link.</p>
+                        <p>Example: Go to <a href="https://www.disney.com/" target="_blank">Disney</a></p>
                         <div class="code">
                             <p>&lt;a href="https://www.disney.com/"&gt;Disney&lt;/a&gt;</p>
                         </div>
-                    </dd>
-                    <dd>Open it in another tab using:
+                        <p>Open it in another tab</p>
                         <div class="code">
                             <p>&lt;a href="https://www.disney.com/" target="_blank" &gt;Disney&lt;/a&gt;</p>
                         </div>
-                    </dd>
-                    <dd>On this page, navigate to the <a href="#intro">Introduction</a> with
+                        <p>Example: Navigate to the <a href="#intro">Introduction</a> on this page</p>
                         <div class="code">
                             <p>&lt;a href="#intro"&gt;Introduction&lt;/a&gt;</p>
                         </div>
-                    </dd>
-
-                    <dt id="lists">Lists</dt>
-                    <dd>There are three kinds of lists:</dd>
-                    <dd><strong>Unordered list</strong>
+                    </div>
+                </details>
+                <details>
+                    <summary>Lists</summary>
+                    <div class="passages">
+                        <p>There are three kinds of lists:</p>
+                        <p><strong>Unordered list</strong></p>
                         <div class="code">
                             <p>&lt;ul&gt;</p>
                             <div class="indented">
@@ -348,8 +323,7 @@
                             <li>List item 2</li>
                             <li>List item 3</li>
                         </ul>
-                    </dd>
-                    <dd><strong>Ordered list</strong>
+                        <p><strong>Ordered list</strong></p>
                         <div class="code">
                             <p>&lt;ol&gt;</p>
                             <div class="indented">
@@ -362,8 +336,7 @@
                             <li>List item 2</li>
                             <li>List item 3</li>
                         </ol>
-                    </dd>
-                    <dd><strong>Dictionary list</strong>
+                        <p><strong>Dictionary list</strong></p>
                         <div class="code">
                             <p>&lt;dl&gt;</p>
                             <div class="indented">
@@ -381,143 +354,78 @@
                             <dd>Definition 3</dd>
                             <dd>Definition 4</dd>
                         </dl>
-                    </dd>
-
-                    <dt id="media">Media</dt>
-                    <dd>On websites and web apps, media consists of images, videos, audio, and iframes. HTML5 came out
-                        in 2008 with native support for these media, and yet how these elements are handled can differ.
-                        Images may or may not be wrapped in a figure element, which provides support for captions, and
-                        iframes are considered high-risk as they can be used for XSS (cross-site scripting) attacks.
-                    </dd>
-                    <dd><strong>Image</strong>
+                    </div>
+                </details>
+                <details>
+                    <summary>Media</summary>
+                    <div class="passages">
+                        <p>On websites and web apps, media consists of images, videos, audio, and iframes. HTML5 came out in 2008 with native support for these media, and yet how these elements are handled can differ. Images may or may not be wrapped in a picture or figure element and iframes are considered high-risk as they can be used for XSS (cross-site scripting) and moreso click-jacking attacks.</p>
+                        <p><strong>Image</strong></p>
                         <div class="code">
-                            <p>&lt;img
-                                src="https://www.wifemamafoodie.com/wp-content/uploads/2018/09/Burst-Tomato-Pasta-Vegan-with-Gluten-Free-Option-1170x617.jpg"
-                                alt="Beautiful noodles from Wife Mama Foodie"&gt;</p>
+                            <p>&lt;img src="https://www.wifemamafoodie.com/wp-content/uploads/2018/09/Burst-Tomato-Pasta-Vegan-with-Gluten-Free-Option-1170x617.jpg" alt="Beautiful noodles from Wife Mama Foodie"&gt;</p>
                         </div>
-                        <img src="https://www.wifemamafoodie.com/wp-content/uploads/2018/09/Burst-Tomato-Pasta-Vegan-with-Gluten-Free-Option-1170x617.jpg"
-                            alt="Beautiful noodles from Wife Mama Foodie" />
-                    </dd>
-                    <dd>Wrap it in a picture element to ensure support or provide fallback images
+                        <img src="https://www.wifemamafoodie.com/wp-content/uploads/2018/09/Burst-Tomato-Pasta-Vegan-with-Gluten-Free-Option-1170x617.jpg" alt="Beautiful noodles from Wife Mama Foodie" />
+                        <p>Wrap it in a picture element to ensure support or provide fallback images</p>
                         <div class="code">
                             <p>&lt;picture&gt;</p>
                             <div class="indented">
                                 <p>&lt;source srcset="image-1.png, image-2.png" media="(orientation:portrait)" /&gt;</p>
-                                <p>&lt;img
-                                    src="https://www.wifemamafoodie.com/wp-content/uploads/2018/09/Burst-Tomato-Pasta-Vegan-with-Gluten-Free-Option-1170x617.jpg"
-                                    alt="Beautiful noodles from Wife Mama Foodie"&gt;</p>
+                                <p>&lt;img src="https://www.wifemamafoodie.com/wp-content/uploads/2018/09/Burst-Tomato-Pasta-Vegan-with-Gluten-Free-Option-1170x617.jpg" alt="Beautiful noodles from Wife Mama Foodie"&gt;</p>
                             </div>
                             <p>&lt;/picture&gt;</p>
                         </div>
                         <picture>
-                            <img src="https://www.wifemamafoodie.com/wp-content/uploads/2018/09/Burst-Tomato-Pasta-Vegan-with-Gluten-Free-Option-1170x617.jpg"
-                                alt="Beautiful noodles from Wife Mama Foodie" />
+                            <img src="https://www.wifemamafoodie.com/wp-content/uploads/2018/09/Burst-Tomato-Pasta-Vegan-with-Gluten-Free-Option-1170x617.jpg" alt="Beautiful noodles from Wife Mama Foodie" />
                         </picture>
-                        <p>To read more on this, go to <a
-                                href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture"
-                                target="_blank">MDN</a>. I haven't used this element at all, so I plan to read more as
-                            well in case it helps with <a href="#accessibility">Accessibility</a>.</p>
-                    </dd>
-                    <dd>Alternative or used to wrap an image
+                        <p>To read more on this, go to <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture" target="_blank">MDN</a>. I haven't used this element at all, so I plan to read more as well in case it helps with <ahref="#accessibility">Accessibility</a>.</p>
+                        <p>Wrap in figure to add figcaption</p>
                         <div class="code">
                             <p>&lt;figure&gt;</p>
                             <div class="indented">
-                                <p>&lt;img
-                                    src="https://www.wifemamafoodie.com/wp-content/uploads/2018/09/Burst-Tomato-Pasta-Vegan-with-Gluten-Free-Option-1170x617.jpg"
-                                    alt="Beautiful noodles from Wife Mama Foodie"&gt;</p>
+                                <p>&lt;img src="https://www.wifemamafoodie.com/wp-content/uploads/2018/09/Burst-Tomato-Pasta-Vegan-with-Gluten-Free-Option-1170x617.jpg" alt="Beautiful noodles from Wife Mama Foodie"&gt;</p>
                                 <p>&lt;figcaption&gt;Burst Tomato Pasta&lt;figcaption&gt;</p>
                             </div>
                             <p>&lt;/figure&gt;</p>
                         </div>
                         <figure>
-                            <img src="https://www.wifemamafoodie.com/wp-content/uploads/2018/09/Burst-Tomato-Pasta-Vegan-with-Gluten-Free-Option-1170x617.jpg"
-                                alt="Beautiful noodles from Wife Mama Foodie" />
+                            <img src="https://www.wifemamafoodie.com/wp-content/uploads/2018/09/Burst-Tomato-Pasta-Vegan-with-Gluten-Free-Option-1170x617.jpg" alt="Beautiful noodles from Wife Mama Foodie" />
                             <figcaption>Burst Tomato Pasta</figcaption>
                         </figure>
-                    </dd>
-                    <dd><strong>Audio</strong>
+                        <p><strong>Audio</strong><br>Taken from <a href="https://simpleguics2pygame.readthedocs.io/en/latest/_static/links/snd_links.html" target="_blank">here</a><br><strong>Read:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaStream" target="_blank">Media Stream</a></p>
                         <div class="code">
-                            <p>&lt;audio controls
-                                src="https://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3"
-                                &gt;&lt;/audio&gt;</p>
+                            <p>&lt;audio controls src="https://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3"&gt;&lt;/audio&gt;</p>
                         </div>
-                        <audio controls
-                            src="https://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3"></audio>
-                        <p>Taken from <a
-                                href="https://simpleguics2pygame.readthedocs.io/en/latest/_static/links/snd_links.html"
-                                target="_blank">here</a><br><strong>Read:</strong> <a
-                                href="https://developer.mozilla.org/en-US/docs/Web/API/MediaStream"
-                                target="_blank">Media Stream</a></p>
-                    </dd>
-                    <dd><strong>Video</strong>
+                        <audio controls src="https://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3"></audio>
+                        <p><strong>Video</strong></p>
                         <div class="code">
                             <p>&lt;video&gt;</p>
                             <div class="indented">
-                                <p>&lt;source
-                                    src="https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4"
-                                    /&gt;</p>
+                                <p>&lt;source src="https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4" /&gt;</p>
                             </div>
                             <p>&lt;/video&gt;</p>
                         </div>
                         <video controls height="150">
-                            <source
-                                src="https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4">
+                            <source src="https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4">
                         </video>
-                    </dd>
-                    <dd><strong>Iframe</strong><br>Iframes can be used for viewing webpages or embedding other websites
-                        into the given webpage. There are so many problems and concerns with using iframes, not only for
-                        users but also for businesses that in practice, it's recommended to avoid using them.</dd>
-                    <dd>One major concern with iframes are <a
-                            href="https://owasp.org/www-community/attacks/Clickjacking" target="_blank">click-jacking
-                            attacks</a>. In a click-jacking attack, an iframe can be used to render a website and then
-                        adding additional layers with buttons over the rendered website, a user can be tricked into
-                        clicking a link or button to steal their information. To avoid click-jacking attacks, if you can
-                        program your server or this may already be provided, one would use <a
-                            href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options"
-                            target="_blank">X-Frame-Options</a> in response headers. When your browser follows a url,
-                        that url is often a page in a directory on a server. The server receives the request for the
-                        page and sends the page back in a response. The structure of requests and responses are like
-                        emails or html docs with headers specifying metadata and a body for providing content. Anchors,
-                        forms and iframes are able to make requests to servers like browsers do, but when the server
-                        sends its response, it can denote in the response header whether to allow rendering in an iframe
-                        using X-Frame-Options. If in the response header, it is specified that it is not allowed, an
-                        error will appear in the iframe: [host] refused to connect.</dd>
-                    <dd>If a site you're working on receives personal information like logins, banking details and
-                        social security numbers, make sure your server never allows rendering in an iframe. However, if
-                        iframes are needed for the service you're providing, such as in page or view previews, you can
-                        specify SAMEORIGIN for the value of X-Frame-Options, so that iframes from your website or web
-                        app are the only ones that can render what assets you need.</dd>
-                    <dd>Add iframe showing another website
+                        <p><strong>Iframe</strong><br>Iframes can be used for viewing webpages or embedding other websites into the given webpage. There are so many problems and concerns with using iframes, not only for users but also for businesses that in practice, it's recommended to avoid using them.</p>
+                        <p>One major concern with iframes are <a href="https://owasp.org/www-community/attacks/Clickjacking" target="_blank">click-jacking attacks</a>. In a click-jacking attack, an iframe can be used to render a website and then adding additional layers with buttons over the rendered website, a user can be tricked into clicking a link or button to steal their information. To avoid click-jacking attacks, if you can program your server or this may already be provided, one would use <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options" target="_blank">X-Frame-Options</a> in response headers. When your browser follows a url, that url is often a page in a directory on a server. The server receives the request for the page and sends the page back in a response. The structure of requests and responses are like emails or html docs with headers specifying metadata and a body for providing content. Anchors, forms and iframes are able to make requests to servers like browsers do, but when the server sends its response, it can denote in the response header whether to allow rendering in an iframe using X-Frame-Options. If in the response header, it is specified that it is not allowed, an error will appear in the iframe: [host] refused to connect.</p>
+                        <p>If a site you're working on receives personal information like logins, banking details and social security numbers, make sure your server never allows rendering in an iframe. However, if iframes are needed for the service you're providing, such as in page or view previews for editors, you can specify SAMEORIGIN for the value of X-Frame-Options, so that iframes from your website or web app are the only ones that can render what assets you need.</p>
+                        <p>Add iframe showing another website</p>
                         <div class="code">
-                            <p>&lt;iframe title="Kou.d Blue" src="https://smkou.github.io/re-portfolio/" width="100%"
-                                height="450"&gt;</p>
-                            <div class="indented">
-                                <p>Iframe not supported</p>
-                            </div>
-                            <p>&lt;/iframe&gt;</p>
+                            <p>&lt;iframe title="Kou.d Blue" src="https://smkou.github.io/re-portfolio/" width="100%" height="450"&gt;&lt;/iframe&gt;</p>
                         </div>
-                        <iframe title="Kou.d Blue" src="https://smkou.github.io/re-portfolio/" width="100%"
-                            height="450">
-                            Iframe not supported
-                        </iframe>
-                    </dd>
-                    <dd>Add iframe showing another page in website
+                        <iframe title="Kou.d Blue" src="https://smkou.github.io/re-portfolio/" width="100%" height="450"></iframe>
+                        <p>Add iframe showing another page in website</p>
                         <div class="code">
-                            <p>&lt;iframe title="Re-Portfolio Versions" src="../" width="100%" height="450"&gt;</p>
-                            <div class="indented">
-                                <p>Iframe not supported</p>
-                            </div>
-                            <p>&lt;/iframe&gt;</p>
+                            <p>&lt;iframe title="Re-Portfolio Versions" src="../" width="100%" height="450"&gt;&lt;/iframe&gt;</p>
                         </div>
-                        <iframe title="Re-Portfolio Versions" src="../" width="100%" height="450">
-                            Iframe not supported
-                        </iframe>
-                    </dd>
-
-                    <dt id="table">Table</dt>
-                    <dd>The original concept of a table was a grid for displaying information, but while grids are now
-                        created using css and properties of columns and rows, tables are created using html and elements
-                        of rows and heading and data cells.
+                        <iframe title="Re-Portfolio Versions" src="../" width="100%" height="450"></iframe>
+                    </div>
+                </details>
+                <details>
+                    <summary>Table</summary>
+                    <div class="passages">
+                        <p>The original concept of a table was a grid for displaying information, but while grids are now created using css and properties of columns and rows, tables are created using html and elements of rows and heading and data cells.</p>
                         <div class="code">
                             <p>&lt;table&gt;</p>
                             <div class="indented">
@@ -546,11 +454,7 @@
                                 <td>Dinuguan</td>
                             </tr>
                         </table>
-                    </dd>
-                    <dd>More complex tables can be split into three sections: table header (thead), table body (tbody),
-                        and table footer (tfoot). By default, even if you write out a table as shown above, a tbody
-                        element will be added by the browser to wrap around the rows when rendering the page, otherwise
-                        these sections of a table are to be explicitly written.
+                        <p>More complex tables can be split into three sections: table header (thead), table body (tbody), and table footer (tfoot). By default, even if you write out a table as shown above, a tbody element will be added by the browser to wrap around the rows when rendering the page, otherwise these sections of a table are to be explicitly written.</p>
                         <div class="code">
                             <p>&lt;table&gt;</p>
                             <div class="indented">
@@ -733,8 +637,7 @@
                                 </tr>
                             </tfoot>
                         </table>
-                    </dd>
-                    <dd>Use colspan for a cell to span multiple columns and rowspan for a cell to span multiple rows
+                        <p>Use colspan for a cell to span multiple columns and rowspan for a cell to span multiple rows:</p>
                         <div class="code">
                             <p>&lt;table&gt;</p>
                             <div class="indented">
@@ -763,60 +666,42 @@
                                 <td>Data cell</td>
                             </tr>
                         </table>
-                    </dd>
-
-                    <dt id="form">Form</dt>
-                    <dd>Form elements are used for collecting information and input from the user, which can then be
-                        submitted for processing either locally or by a server. If processing requires computations or
-                        the results entail changes to the page or view, the data should be sent to a server. JavaScript
-                        may be a programming language and for programming in the browser, but it is not efficient for
-                        computations and memory-intensive or data-intensive operations. As a rule of thumb, only use
-                        JavaScript for handling interactions, browser storage and page population if not following <a
-                            href="https://htmx.org/essays/hateoas/" target="_blank">HATEOAS</a>.</dd>
-                    <dd>When a form is submitted, the data is contained in a collection. Depending how you access the
-                        data, this collection may either be a map, meaning that it consists of key-value pairs with the
-                        key being the name of an element representing a question, such as name="username" or name="pet".
-                        The value is thus the value of the user's answers indicated by the inputs.</dd>
-                    <dd>Read more on <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"
-                            target="_blank">input</a> and <a
-                            href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form"
-                            target="_blank">form</a>.</dd>
-                    <dd><strong>Input hidden</strong><br>include a value to submit in a form not set by user but may be
-                        connected to user, such as the id of the item they selected to modify
+                    </div>
+                </details>
+                <details>
+                    <summary>Form</summary>
+                    <div class="passages">
+                        <p>Form elements are used for collecting information and input from the user, which can then be submitted for processing either locally or by a server. If processing requires computations or the results entail changes to the page or view, the data should be sent to a server. JavaScript may be a programming language and for programming in the browser, but it is not efficient for computations and memory-intensive or data-intensive operations. As a rule of thumb, only use JavaScript for handling interactions, browser storage and page population if not following <a href="https://htmx.org/essays/hateoas/" target="_blank">HATEOAS</a>.</p>
+                        <p>When a form is submitted, the data is contained in a collection. Depending how you access the data, this collection may either be a map, meaning that it consists of key-value pairs with the key being the name of an element representing a question, such as name="username" or name="pet". The value is thus the value of the user's answers indicated by the inputs.</p>
+                        <p>Read more on <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input" target="_blank">input</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form" target="_blank">form</a>.</p>
+                        <p><strong>Input hidden</strong><br>include a value to submit in a form not set by user but may be connected to user, such as the id of the item they selected to modify:</p>
                         <div class="code">
                             <p>&lt;input type="hidden" name="product-id" value="123" /&gt;</p>
                         </div>
                         <input type="hidden" name="product-id" value="123" />
-                    </dd>
-                    <dd><strong>Input text</strong> (default: no type attribute or type="text")
+                        <p><strong>Input text</strong> (default: no type attribute or type="text")</p>
                         <div class="code">
                             <p>&lt;input placeholder="Enter some text here" /&gt;</p>
                         </div>
                         <input placeholder="Enter some text here" />
-                    </dd>
-                    <dd><strong>Textarea</strong> larger entry field for longer texts
+                        <p><strong>Textarea</strong> larger entry field for longer texts</p>
                         <div class="code">
                             <p>&lt;textarea placeholder="Enter some long text here"&gt;</p>
                             <p>&lt;/textarea&gt;</p>
                         </div>
                         <textarea placeholder="Enter some long text here"></textarea>
-                    </dd>
-                    <dd>Specify rows (rows="") and columns (cols="") in textarea:
+                        <p>Specify rows (rows="") and columns (cols="") in textarea:</p>
                         <div class="code">
-                            <p>&lt;textarea rows="10" placeholder="Enter some even longer text now like a paragraph or
-                                why not a whole book?? Test me."&gt;</p>
+                            <p>&lt;textarea rows="10" style="width: 100%" placeholder="Enter some even longer text now like a paragraph or why not a whole book?? Test me."&gt;</p>
                             <p>&lt;/textarea&gt;</p>
                         </div>
-                        <textarea rows="10"
-                            placeholder="Enter some even longer text now like a paragraph or why not a whole book?? Test me."></textarea>
-                    </dd>
-                    <dd><strong>Input search</strong>
+                        <textarea rows="10" style="width: 100%" placeholder="Enter some even longer text now like a paragraph or why not a whole book?? Test me."></textarea>
+                        <p><strong>Input search</strong></p>
                         <div class="code">
                             <p>&lt;input type="search" placeholder="Enter a search string" /&gt;</p>
                         </div>
                         <input type="search" placeholder="Enter a search string" />
-                    </dd>
-                    <dd><strong>Input button</strong>
+                        <p><strong>Input button</strong></p>
                         <div class="code">
                             <p>&lt;input type="button" value="Input Button" /&gt;</p>
                             <p>&lt;button&gt;Button Element&lt;/button&gt;</p>
@@ -829,8 +714,7 @@
                         <input type="submit" value="Submit Button" />
                         <input type="image" src="" alt="Image Submit" />
                         <input type="reset" value="Reset Button" />
-                    </dd>
-                    <dd><strong>Input checkbox</strong> select multiple values for one question
+                        <p><strong>Input checkbox</strong> select multiple values for one question</p>
                         <div class="code">
                             <p>&lt;label for="separate-checkbox-input"&gt;Text for Following checkbox
                                 input&lt;/label&gt;</p>
@@ -848,8 +732,7 @@
                         <label class="row" for="nested-checkbox-input">Text for Nested checkbox input
                             <input id="nested-checkbox-input" type="checkbox" />
                         </label>
-                    </dd>
-                    <dd><strong>Input radio (button)</strong> select one value for a question
+                        <p><strong>Input radio (button)</strong> select one value for a question</p>
                         <div class="code">
                             <p>&lt;label for="separate-radio-input"&gt;Text for Following radio input&lt;/label&gt;</p>
                             <p>&lt;input id="separate-radio-input" type="radio" /&gt;</p>
@@ -866,8 +749,7 @@
                         <label class="row" for="nested-radio-input">Text for Nested radio input
                             <input id="nested-radio-input" type="radio" />
                         </label>
-                    </dd>
-                    <dd><strong>Fieldset</strong> use for grouping answers
+                        <p><strong>Fieldset</strong> use for grouping answers</p>
                         <div class="code">
                             <p>&lt;fieldset&gt;</p>
                             <div class="indented">
@@ -950,8 +832,7 @@
                                 <input id="pet-4" type="radio" value="4" /> 4+
                             </label>
                         </fieldset>
-                    </dd>
-                    <dd><strong>Select</strong> select one or multiple values from a list of options
+                        <p><strong>Select</strong> select one or multiple values from a list of options</p>
                         <div class="code">
                             <p>&lt;label&gt;</p>
                         </div>
@@ -964,14 +845,12 @@
                                 <option value="au">Australia</option>
                             </select>
                         </div>
-                    </dd>
-                    <dd><strong>Input color</strong>
+                        <p><strong>Input color</strong></p>
                         <div class="code">
                             <p>&lt;input type="color" /&gt;</p>
                         </div>
                         <input type="color" />
-                    </dd>
-                    <dd><strong>Input date</strong>
+                        <p><strong>Input date and time</strong></p>
                         <div class="code">
                             <p>&lt;input type="date" /&gt;</p>
                             <p>&lt;input type="datetime-local" /&gt;</p>
@@ -984,8 +863,7 @@
                         <input type="time" />
                         <input type="week" />
                         <input type="month" />
-                    </dd>
-                    <dd><strong>Input for User Information</strong>
+                        <p><strong>Input for User Information</strong></p>
                         <div class="code">
                             <p>&lt;input type="tel" placeholder="Enter a phone number" /&gt;</p>
                             <p>&lt;input type="email" placeholder="Enter an email address" /&gt;</p>
@@ -994,34 +872,30 @@
                         <input type="tel" placeholder="Enter a phone number" />
                         <input type="email" placeholder="Enter an email address" />
                         <input type="password" placeholder="Enter a password" />
-                    </dd>
-                    <dd><strong>Input file and url</strong>
+                        <p><strong>Input file and url</strong></p>
                         <div class="code">
                             <p>&lt;input type="file" /&gt;</p>
                             <p>&lt;input type="url" /&gt;</p>
                         </div>
                         <input type="file" />
                         <input type="url" />
-                    </dd>
-                    <dd><strong>Input range and number</strong>
+                        <p><strong>Input range and number</strong></p>
                         <div class="code">
                             <p>&lt;input type="number" placeholder="0" min="0" max="32" /&gt;</p>
                             <p>&lt;input type="range" min="0" max="32" /&gt;</p>
                         </div>
                         <input type="number" placeholder="0" min="0" max="32" />
                         <input type="range" min="0" max="32" />
-                    </dd>
-                </dl>
+                    </div>
+                </details>
             </section>
         </article>
         <article id="semantics">
             <h2>Semantic HTML</h2>
             <section class="content">
-                <p><strong>Article:</strong> <a href="https://www.semrush.com/blog/semantic-html5-guide/"
-                        target="_blank">What Is It and How to Use It?</a></p>
-                <dl>
-                    <dt>Semantic structure</dt>
-                    <dd>Sample:
+                <details>
+                    <summary>Semantic structure</summary>
+                    <div class="passages">
                         <div class="code">
                             &lt;!DOCTYPE html&gt;
                             <p>&lt;html&gt;</p>
@@ -1088,8 +962,10 @@
                             </div>
                             &lt;/html&gt;
                         </div>
-                    </dd>
-
+                    </div>
+                </details>
+                <p><strong>Article:</strong> <a href="https://www.semrush.com/blog/semantic-html5-guide/" target="_blank">What Is It and How to Use It?</a></p>
+                <dl class="semantic-dl">
                     <dt>Div: Division</dt>
                     <dd>A generic block element for creating sections, even purely aesthetic elements that can be used
                         in
@@ -1204,6 +1080,7 @@
                         <li>WAS: <a href="https://www.accessibilityassociation.org/s/wascertification"
                                 target="_blank">Web Accessibility Specialist</a></li>
                     </ul>
+                    <p>Take a course: <a href="https://dequeuniversity.com/" target="_blank">Dequeu University</a></p>
                 </div>
             </section>
         </article>

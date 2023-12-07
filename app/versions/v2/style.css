@@ -134,30 +134,13 @@ h2 {
     text-align: center;
 }
 
-article nav {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-}
+p a,
+li a,
+dd a { color: var(--light-accent-color) }
 
-article nav a {
-    border-top-color: var(--light-accent-color);
-    border-bottom-color: var(--light-accent-color);
-    color: var(--light-accent-color);
-}
-
-section nav a:hover {
-    border-top-color: var(--dark-accent-color);
-    border-bottom-color: var(--dark-accent-color);
-    color: var(--dark-accent-color);
-}
-
-article dd a,
-article p a { color: var(--light-accent-color) }
-
-article dd a:hover,
-article p a:hover { color: var(--dark-accent-color) }
+p a:hover,
+li a:hover,
+dd a:hover { color: var(--dark-accent-color) }
 
 .content {
     padding: 0 2rem;
@@ -189,51 +172,45 @@ details .passages {
 
 dt {
     margin-top: 2rem;
-    padding-top: 0.6rem;
-    border-top: 0.1rem solid var(--dark-color-purple);
-    border-bottom: 0.1rem solid var(--dark-color-purple);
     font-family: 'League Spartan';
     font-weight: bold;
     font-size: 1.9rem;
     line-height: 1.2;
 }
 
-dt:first-of-type { margin-top: 0 }
-dd { 
-    margin-left: 0;
-    margin-bottom: 1.6rem;
+audio,
+video,
+table,
+label,
+textarea { 
+    margin-top: 1.2rem;
+    margin-bottom: 1.2rem;
 }
-dt + dd { margin-top: 1.2rem }
 
-dd audio,
-dd video,
-dd table,
-dd label,
-dd textarea { margin-top: 1.2rem }
-
-dd label { 
+label { 
     margin-top: 0;
     display: block;
 }
 
-dd .row {
+.row {
     margin-top: 1.2rem;
     display: flex;
     align-items: center;
 }
-dd .row input { 
+
+.row input { 
     width: auto;
     margin: 0;
     margin-left: 0.6rem;
 }
 
-dd img {
+img {
     width: 100%;
     height: auto;
 }
 
-dd input,
-dd button { width: 100% }
+.passages input,
+.passages button { width: 100% }
 
 .code {
     background: #f2f4f4;
@@ -329,6 +306,16 @@ fieldset label input {
 .select label { width: 16rem }
 .select select { width: 100% }
 
+.semantic-dl dt {
+    padding-top: 0.6rem;
+    border-top: 0.1rem solid var(--dark-color-purple);
+    border-bottom: 0.1rem solid var(--dark-color-purple);
+}
+
+.semantic-dl dd {
+    margin-top: 2rem;
+    margin-left: 0;
+}
 
 footer {
     position: fixed;
