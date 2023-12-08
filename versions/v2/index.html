@@ -1015,14 +1015,16 @@
                             <li>External stylesheet <span class="code">&lt;link rel="stylesheet" href="./css/stylesheet.css"&gt;</span></li>
                         </ol>
                     </dd>
-
-                    <dt>Selectors</dt>
-                    <dd><strong>Note:</strong> Selectors can be grouped into a list using commas.</dd>
-                    <dd><strong>Universal: *</strong> is used to style all elements, regardless of hierarchy or order</dd>
-                    <dd><strong>Type</strong> is based on tags, such as h1 and input</dd>
-                    <dd><strong>Class: .class-name</strong> is to provide the same styling rules to various elements, or to apply multiple sets of styling rules to the a single element, which will apply in succession with the latest applying should the sets contain values for the same properties.</dd>
-                    <dd><strong>ID: #id-name</strong> is for styling a single element, regardless of class or type.</dd>
-                    <dd><strong>Attribute: [attr], [attr=value], type[attr=value]</strong> is for styling elements that have the same attribute, share the same value to an attribute, or elements of a specified type that share the same value to an attribute. Use the following symbols for refining how a match is found:
+                </dl>
+                <details>
+                    <summary>Selectors</summary>
+                    <div class="passages">
+                        <p>Note: Selectors can be grouped into a list using commas</p>
+                        <p><strong>Universal: *</strong> is used to style all elements, regardless of hierarchy or order</p>
+                        <p><strong>Type</strong> is based on tags, such as h1 and input</p>
+                        <p><strong>Class: .class-name</strong> is to provide the same styling rules to various elements, or to apply multiple sets of styling rules to the a single element, which will apply in succession with the latest applying should the sets contain values for the same properties.</p>
+                        <p><strong>ID: #id-name</strong> is for styling a single element, regardless of class or type.</p>
+                        <p><strong>Attribute: [attr], [attr=value], type[attr=value]</strong> is for styling elements that have the same attribute, share the same value to an attribute, or elements of a specified type that share the same value to an attribute. Use the following symbols for refining how a match is found:</p>
                         <ul>
                             <li>type[attr*="match-val"] or type[attr~="match-val"]: the value of the attribute <u>contains</u> the match value, such as the url of an href. The former is for at least one occurence of the match value, whereas the latter is an occurence within a list</li>
                             <li>type[attr|="match-val"]: is also for contains but for the exact match value, beginning with and followed by a hyphen.</li>
@@ -1030,27 +1032,28 @@
                             <li>type[attr$="match-val]: the value of the attribute <u>ends with</u> the match value</li>
                             <li>Refer <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors">Selectors</a> on MDN</li>
                         </ul>
-                    </dd>
-                    <dd><strong>Descendant: A B</strong> is for identifying an element B inside an element A</dd>
-                    <dd><strong>Child: A > B</strong> is for identifying an element B that is a direct child of element A</dd>
-                    <dd><strong>General sibling: A ~ B</strong> is for identifying an element B that follows an element A that has the same parent</dd>
-                    <dd><strong>Adjacent sibling: A + B</strong> is for identifying an element B that immediately follows the element A</dd>
-                    <dd><strong>Column: A || B</strong> is for identifying elements, or nodes, belonging to a column</dd>
-
-                    <dt>Pseudo classes and elements</dt>
-                    <dd><strong>Hover: [type]:hover</strong> is for styling a type of element when hovered</dd>
-                    <dd><strong>Active: [type]:active</strong> is for styling an element that has been activated by the user, such as being clicked on</dd>
-                    <dd><strong>Focus: [type]:focus</strong> is for styling an element that has focus, such as drawing attention to errors</dd>
-                    <dd><strong>For links:</strong>
+                        <p><strong>Descendant: A B</strong> is for identifying an element B inside an element A</p>
+                        <p><strong>Child: A > B</strong> is for identifying an element B that is a direct child of element A</p>
+                        <p><strong>General sibling: A ~ B</strong> is for identifying an element B that follows an element A that has the same parent</p>
+                        <p><strong>Adjacent sibling: A + B</strong> is for identifying an element B that immediately follows the element A</p>
+                        <p><strong>Column: A || B</strong> is for identifying elements, or nodes, belonging to a column</p>
+                    </div>
+                </details>
+                <details>
+                    <summary>Pseudo Classes and Elements</summary>
+                    <div class="passages">
+                        <p><strong>Hover: [type]:hover</strong> is for styling a type of element when hovered</p>
+                        <p><strong>Active: [type]:active</strong> is for styling an element that has been activated by the user, such as being clicked on</p>
+                        <p><strong>Focus: [type]:focus</strong> is for styling an element that has focus, such as drawing attention to errors</p>
+                        <p><strong>For links:</strong></p>
                         <ul>
                             <li>a:link - links that have not been visited</li>
                             <li>a:visited - links that have been visited</li>
-                            <li>a:local-link - links where the absolute URL is the same as the target URL, such as
-                                internal links</li>
+                            <li>a:local-link - links where the absolute URL is the same as the target URL, such as internal links</li>
                         </ul>
-                    </dd>
-                    <dd>Refer the full list of <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes">Pseudo Classes</a> from MDN, as well as <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements">Pseudo Elements</a>. The most useful pseudo classes I know of are tree-structural (:nth-child | :nth-of-type is the nth occurence, :first-child | :first-of-type is the first occurence, :last-child | :last-of-type is the last occurence) and for pseudo elements, the ::before and ::after used in shapes.</dd>
-                </dl>
+                        <p>Refer the full list of <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes">Pseudo Classes</a> from MDN, as well as <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements">Pseudo Elements</a>. The most useful pseudo classes I know of are tree-structural (:nth-child | :nth-of-type is the nth occurence, :first-child | :first-of-type is the first occurence, :last-child | :last-of-type is the last occurence) and for pseudo elements, the ::before and ::after used in shapes.</p>
+                    </div>
+                </details>
             </section>
         </article>
         <article id="colors">
@@ -1176,14 +1179,12 @@
                     <div class="passages">
                         <div class="text-tile">
                             <p><strong>HSL</strong> stands for Hue Saturation and Lightness. Hues are colors and denoted with a range from 0 to 359. Referring to the color wheel, it would be the same as degrees on the circle. 0 is red, 90 is violet, 180 is green and 270 is amber. As noted, saturation and lightness are ranges of 0 to 100%. Saturation is how faded a color is, or rather how present a color is, in which at 0%, the color is completely faded, making it gray. Lightness is the color from black at 0% to white at 100%. The familiar hues of colors that we know are fully saturated and half lightness.</p>
-<pre>
-<code>
-.hsl-1 { background-color: hsl(40, 100%, 50%) }
-.hsl-2 { background-color: hsl(30, 100%, 50%) }
-.hsl-3 { background-color: hsl(40, 50%, 50%) }
-.hsl-4 { background-color: hsl(40, 100%, 90%) }
-</code>
-</pre>
+                            <div class="code">
+                                <p>.hsl-1 { background-color: hsl(40, 100%, 50%) }</p>
+                                <p>.hsl-2 { background-color: hsl(30, 100%, 50%) }</p>
+                                <p>.hsl-3 { background-color: hsl(40, 50%, 50%) }</p>
+                                <p>.hsl-4 { background-color: hsl(40, 100%, 90%) }</p>
+                            </div>
                             <div class="two-columns">
                                 <span class="tile sample-bar hsl-1">Amber 1: H-40 S-100% L-50%</span>
                                 <span class="tile sample-bar hsl-2">Amber 2: H-30 S-100% L-50%</span>
@@ -1193,17 +1194,15 @@
                         </div> <!-- HSL -->
                         <div class="text-tile">
                             <p><strong>RGB</strong> stands for Red Green Blue. This is an additive color model, where amounts of each color are added together to make any of the twelve on the color wheel. The range for each is 0 to 255 with 0 being none and 255 being the full hue. While it may seem counterintuitive, red and green make yellow, red and blue is magenta, and gray is equal amounts of all three.</p>
-<pre>
-<code>
-.rgb-1 { background-color: rgb(255, 0, 0) }
-.rgb-2 { background-color: rgb(255, 255, 0) }
-.rgb-3 { background-color: rgb(0, 255, 0) }
-.rgb-4 { background-color: rgb(0, 255, 255) }
-.rgb-5 { background-color: rgb(0, 0, 255) }
-.rgb-6 { background-color: rgb(255, 0, 255) }
-.rgb-7 { background-color: rgb(150, 150, 150) }
-</code>
-</pre>
+                            <div class="code">
+                                <p>.rgb-1 { background-color: rgb(255, 0, 0) }</p>
+                                <p>.rgb-2 { background-color: rgb(255, 255, 0) }</p>
+                                <p>.rgb-3 { background-color: rgb(0, 255, 0) }</p>
+                                <p>.rgb-4 { background-color: rgb(0, 255, 255) }</p>
+                                <p>.rgb-5 { background-color: rgb(0, 0, 255) }</p>
+                                <p>.rgb-6 { background-color: rgb(255, 0, 255) }</p>
+                                <p>.rgb-7 { background-color: rgb(150, 150, 150) }</p>
+                            </div>
                             <div class="two-columns">
                                 <span class="tile sample-bar rgb-1">1. Red</span>
                                 <span class="tile sample-bar rgb-2">2. Yellow = red + green</span>
@@ -1217,14 +1216,12 @@
                         <div class="text-tile">
                             <p><strong>Hexacode</strong> is the same as RGB, except that it's written as a 6-digit code. Each digit ranges from 0-9 and a-f (16). Every pair corresponds to a value of red, green and blue. In these pairs, you can make 256 combinations: 16 x 16. White is #FFFFFF, or rgb(255, 255, 255), and black is #000000, or rgb (0, 0, 0). Don't ever forget to write a hashtag before the code, otherwise the value will not be processed as a color.</p>
                             <p><strong>Alpha value</strong> is for the opacity of a color. An alpha value can be added to hsl, rgb and hexacode by adding a fourth value and using hsla, rgba and an octacode (or 8-digit code) instead. For hsl and rgb, the alpha value ranges from 0 to 1 with 0 being fully transparent and 1 being opaque, or no transparency.</p>
-<pre>
-<code>
-.alpha-example { background-color: rgb(0, 120, 180) }
-.alpha-1 { background-color: hsla(120, 100%, 50%, 0.5) }
-.alpha-2 { background-color: rgba(0, 255, 0, 0.5) }
-.alpha-3 { background-color: #00FF0080 }
-</code>
-</pre>
+                            <div class="code">
+                                <p>.alpha-example { background-color: rgb(0, 120, 180) }</p>
+                                <p>.alpha-1 { background-color: hsla(120, 100%, 50%, 0.5) }</p>
+                                <p>.alpha-2 { background-color: rgba(0, 255, 0, 0.5) }</p>
+                                <p>.alpha-3 { background-color: #00FF0080 }</p>
+                            </div>
                             <div class="two-columns alpha-example">
                                 <span class="tile sample-bar alpha-1">1. HSLA</span>
                                 <span class="tile sample-bar alpha-2">2. RGB</span>
@@ -1235,14 +1232,12 @@
                         <div class="text-tile">
                             <p><strong>Named colors</strong> are words for colors predefined in html and css. You can what shades and tints are named at <a href="https://htmlcolorcodes.com/color-names/">HTML Color Codes</a>, which is where the colors below were taken from. There may be more colors at <a href="https://www.eggradients.com/color-names">EG Gradients</a> or at <a href="https://digitalsynopsis.com/design/color-thesaurus-correct-names-of-shades/">Digital Synopsis</a>, but they're not all named colors.</p>
                             <p>It's not exactly possible to change the opacity of named colors. Though there is a property known as opacity, this affects the transparency of the element overall, not just its fill colors, but then, one can hardly tell the difference, when they function the same way.<br><strong>Example:</strong> <code>div { opacity: 0.5 }</code></p>
-<pre>
-<code>
-.named-color-1 { background-color: seashell }
-.named-color-2 { background-color: lightsalmon }
-.named-color-3 { background-color: moccasin }
-.named-color-4 { background-color: thistle}
-</code>
-</pre>
+                            <div class="code">
+                                <p>.named-color-1 { background-color: seashell }</p>
+                                <p>.named-color-2 { background-color: lightsalmon }</p>
+                                <p>.named-color-3 { background-color: moccasin }</p>
+                                <p>.named-color-4 { background-color: thistle }</p>
+                            </div>
                             <div class="two-columns">
                                 <span class="tile sample-bar named-color-1">Seashell</span>
                                 <span class="tile sample-bar named-color-2">Light Salmon</span>
@@ -1266,20 +1261,22 @@
             <h2>Shapes</h2>
             <section class="content">
                 <p>Many shapes made with CSS are the combinations and transformations of simpler, more basic shapes like circles, triangles and squares. To create these combinations takes knowing how absolute and relative positioning can be used together. In CSS, the position of an element can be static, relative, absolute, fixed or sticky.</p>
-<pre>
-<code>
-div {
-    position: relative;
-    top: 15px;
-}
-
-div::after {
-    position: absolute;
-    top: 30px;
-    content: "";
-}
-</code>
-</pre>
+                <div class="code">
+                    <p>div {</p>
+                    <div class="indented">
+                        <p>position: relative;</p>
+                        <p>top: 15px;</p>
+                    </div>
+                    <p>}</p>
+                    <br>
+                    <p>div::after {</p>
+                    <div class="indented">
+                        <p>position: absolute;</p>
+                        <p>top: 30px;</p>
+                        <p>content: "";</p>
+                    </div>
+                    <p>}</p>
+                </div>
                 <dl>
                     <dt>Static</dt>
                     <dd>This is the default position for elements, where they follow the order they're given according to the html, or the natural flow of the document.</dd>
@@ -1303,43 +1300,43 @@ div::after {
                     <summary>Square and Rectangle</summary>
                     <div class="passages">
                         <div class="two-columns">
-<pre>
-<code>
-.square {
-    background-color: lightcoral;
-    width: 16rem;
-    height: 16rem;
-}
-</code>
-</pre>
+                            <div class="code">
+                                <p>.square {</p>
+                                <div class="indented">
+                                    <p>background-color: lightcoral</p>
+                                    <p>width: 16rem;</p>
+                                    <p>height: 16rem;</p>
+                                </div>
+                                <p>}</p>
+                            </div>
                             <div class="container">
                                 <div class="tile square lightcoral">Square</div>
                             </div>
                         </div> <!-- Square -->
                         <div class="two-columns">
-<pre>
-<code>
-.rectangle-horizontal {
-    background-color: lightcoral;
-    width: 16rem;
-    height: 12rem;
-}
-</code>
-</pre>
+                            <div class="code">
+                                <p>.rectangle-horizontal {</p>
+                                <div class="indented">
+                                    <p>background-color: lightcoral;</p>
+                                    <p>width: 16rem;</p>
+                                    <p>height: 12rem;</p>
+                                </div>
+                                <p>}</p>
+                            </div>
                             <div class="container">
                                 <div class="tile rectangle-horizontal lightcoral">Horizontal<br>Rectangle</div>
                             </div>
                         </div> <!-- Rectangle horizontal -->
                         <div class="two-columns">
-<pre>
-<code>
-.rectangle-vertical {
-    background-color: lightcoral;
-    width: 12rem;
-    height: 16rem;
-}
-</code>
-</pre>
+                            <div class="code">
+                                <p>.rectangle-vertical {</p>
+                                <div class="indented">
+                                    <p>background-color: lightcoral;</p>
+                                    <p>width: 12rem;</p>
+                                    <p>height: 16rem;</p>
+                                </div>
+                                <p>}</p>
+                            </div>
                             <div class="container">
                                 <div class="tile rectangle-vertical lightcoral">Vertical<br>Rectangle</div>
                             </div>
@@ -1349,41 +1346,283 @@ div::after {
                 <details>
                     <summary>Circle and Oval</summary>
                     <div class="passages">
-                        <div class="two-columns"></div> <!-- Circle -->
-                        <div class="two-columns"></div> <!-- Oval horizontal -->
-                        <div class="two-columns"></div> <!-- Oval vertical -->
+                        <div class="two-columns">
+                            <div class="code">
+                                <p>.circle {</p>
+                                <div class="indented">
+                                    <p>background-color: lightcoral;</p>
+                                    <p>width: 16rem;</p>
+                                    <p>height: 16rem;</p>
+                                    <p>border-radius: 50%;</p>
+                                </div>
+                                <p>}</p>
+                            </div>
+                            <div class="container">
+                                <div class="tile circle lightcoral">Circle</div>
+                            </div>
+                        </div> <!-- Circle -->
+                        <div class="two-columns">
+                            <div class="code">
+                                <p>.oval-horizontal {</p>
+                                <div class="indented">
+                                    <p>background-color: lightcoral;</p>
+                                    <p>width: 16rem;</p>
+                                    <p>height: 12rem;</p>
+                                    <p>border-radius: 50%;</p>
+                                </div>
+                                <p>}</p>
+                            </div>
+                            <div class="container">
+                                <div class="tile oval-horizontal lightcoral">Horizontal<br>Oval</div>
+                            </div>
+                        </div> <!-- Oval horizontal -->
+                        <div class="two-columns">
+                            <div class="code">
+                                <p>.oval-vertical {</p>
+                                <div class="indented">
+                                    <p>background-color: lightcoral;</p>
+                                    <p>width: 12rem;</p>
+                                    <p>height: 16rem;</p>
+                                    <p>border-radius: 50%;</p>
+                                </div>
+                                <p>}</p>
+                            </div>
+                            <div class="container">
+                                <div class="tile oval-vertical lightcoral">Vertical<br>Oval</div>
+                            </div>
+                        </div> <!-- Oval vertical -->
                     </div>
                 </details>
                 <details id="triangle">
                     <summary>Triangle</summary>
                     <div class="passages">
-                        <div class="two-columns"></div> <!-- Triangle -->
-                        <div class="two-columns"></div> <!-- Triangle -->
-                        <div class="two-columns"></div> <!-- Triangle -->
-                        <div class="two-columns"></div> <!-- Triangle -->
-                        <div class="two-columns"></div> <!-- Triangle -->
-                        <div class="two-columns"></div> <!-- Triangle -->
-                        <div class="two-columns"></div> <!-- Triangle -->
-                        <div class="two-columns"></div> <!-- Triangle -->
+                        <div class="two-columns">
+                            <div class="code">
+                                <p>.triangle-point-up {</p>
+                                <div class="indented">
+                                    <p>width: 0;</p>
+                                    <p>height: 0;</p>
+                                    <p>border-left: 8rem solid transparent;</p>
+                                    <p>border-right: 8rem solid transparent;</p>
+                                    <p>border-bottom: 16rem solid moccasin;</p>
+                                </div>
+                                <p>}</p>
+                            </div>
+                            <div class="container">
+                                <div class="tile triangle triangle-point-up">
+                                    <span class="label">Triangle</span>
+                                </div>
+                            </div>
+                        </div> <!-- Triangle point up -->
+                        <div class="two-columns">
+                            <div class="code">
+                                <p>.triangle-point-down {</p>
+                                <div class="indented">
+                                    <p>width: 0;</p>
+                                    <p>height: 0;</p>
+                                    <p>border-left: 8rem solid transparent;</p>
+                                    <p>border-right: 8rem solid transparent;</p>
+                                    <p>border-top: 16rem solid moccasin;</p>
+                                </div>
+                                <p>}</p>
+                            </div>
+                            <div class="container">
+                                <div class="tile triangle triangle-point-down">
+                                    <span class="label">Triangle</span>
+                                </div>
+                            </div>
+                        </div> <!-- Triangle point down -->
+                        <div class="two-columns">
+                            <div class="code">
+                                <p>.triangle-point-left {</p>
+                                <div class="indented">
+                                    <p>width: 0;</p>
+                                    <p>height: 0;</p>
+                                    <p>border-top: 8rem solid transparent;</p>
+                                    <p>border-bottom: 8rem solid transparent;</p>
+                                    <p>border-right: 16rem solid moccasin;</p>
+                                </div>
+                                <p>}</p>
+                            </div>
+                            <div class="container">
+                                <div class="tile triangle triangle-point-left">
+                                    <span class="label">Triangle</span>
+                                </div>
+                            </div>
+                        </div> <!-- Triangle point left -->
+                        <div class="two-columns">
+                            <div class="code">
+                                <p>.triangle-point-right {</p>
+                                <div class="indented">
+                                    <p>width: 0;</p>
+                                    <p>height: 0;</p>
+                                    <p>border-top: 8rem solid transparent;</p>
+                                    <p>border-bottom: 8rem solid transparent;</p>
+                                    <p>border-left: 16rem solid moccasin;</p>
+                                </div>
+                                <p>}</p>
+                            </div>
+                            <div class="container">
+                                <div class="tile triangle triangle-point-right">
+                                    <span class="label">Triangle</span>
+                                </div>
+                            </div>
+                        </div> <!-- Triangle point right -->
+                        <div class="two-columns">
+                            <div class="code">
+                                <p>.triangle-top-left {</p>
+                                <div class="indented">
+                                    <p>width: 0;</p>
+                                    <p>height: 0;</p>
+                                    <p>border-bottom: 16rem solid transparent;</p>
+                                    <p>border-left: 16rem solid moccasin;</p>
+                                </div>
+                                <p>}</p>
+                            </div>
+                            <div class="container">
+                                <div class="tile triangle triangle-top-left">
+                                    <span class="label">Top<br>Left</span>
+                                </div>
+                            </div>
+                        </div> <!-- Triangle top left -->
+                        <div class="two-columns">
+                            <div class="code">
+                                <p>.triangle-top-right {</p>
+                                <div class="indented">
+                                    <p>width: 0;</p>
+                                    <p>height: 0;</p>
+                                    <p>border-bottom: 16rem solid transparent;</p>
+                                    <p>border-right: 16rem solid moccasin;</p>
+                                </div>
+                                <p>}</p>
+                            </div>
+                            <div class="container">
+                                <div class="tile triangle triangle-top-right">
+                                    <span class="label">Top<br>Right</span>
+                                </div>
+                            </div>
+                        </div> <!-- Triangle top right -->
+                        <div class="two-columns">
+                            <div class="code">
+                                <p>.triangle-bottom-left {</p>
+                                <div class="indented">
+                                    <p>width: 0;</p>
+                                    <p>height: 0;</p>
+                                    <p>border-top: 16rem solid transparent;</p>
+                                    <p>border-left: 16rem solid moccasin;</p>
+                                </div>
+                                <p>}</p>
+                            </div>
+                            <div class="container">
+                                <div class="tile triangle triangle-bottom-left"><span class="label">Bottom<br>Left</span></div>
+                            </div>
+                        </div> <!-- Triangle bottom left -->
+                        <div class="two-columns">
+                            <div class="code">
+                                <p>.triangle-bottom-right {</p>
+                                <div class="indented">
+                                    <p>width: 0;</p>
+                                    <p>height: 0;</p>
+                                    <p>border-top: 16rem solid transparent;</p>
+                                    <p>border-right: 16rem solid moccasin;</p>
+                                </div>
+                                <p>}</p>
+                            </div>
+                            <div class="container">
+                                <div class="tile triangle triangle-bottom-right">
+                                    <span class="label">Bottom<br>Right</span>
+                                </div>
+                            </div>
+                        </div> <!-- Triangle bottom right -->
                         <a class="top-details" href="#triangle">Top of Section</a>
                     </div>
                 </details>
                 <details>
                     <summary>Trapezoid</summary>
                     <div class="passages">
-                        <div class="two-columns"></div> <!-- Trapezoid -->
-                        <div class="two-columns"></div> <!-- Trapezoid -->
-                        <div class="two-columns"></div> <!-- Trapezoid -->
-                        <div class="two-columns"></div> <!-- Trapezoid -->
+                        <p>For trapezoids, the shortest side will be half of the longest, while the two sides of equal length but perpendicular are a fourth of the longest. These proportions can be played with, though sometimes, some proportions don't work.</p>
+                        <div class="two-columns">
+                            <div class="code">
+                                <p>.trapezoid-shortside-up {</p>
+                                <div class="indented">
+                                    <p>width: 16rem;</p>
+                                    <p>height: 0;</p>
+                                    <p>border-left: 4rem solid transparent;</p>
+                                    <p>border-right: 4rem solid transparent;</p>
+                                    <p>border-bottom: 8rem solid moccasin;</p>
+                                </div>
+                                <p>}</p>
+                            </div>
+                            <div class="container">
+                                <div class="tile trapezoid-shortside-up">
+                                    <span class="label">Trapezoid</span>
+                                </div>
+                            </div>
+                        </div> <!-- Trapezoid shortside up -->
+                        <div class="two-columns">
+                            <div class="code">
+                                <p>.trapezoid-shortside-down {</p>
+                                <div class="indented">
+                                    <p>width: 16rem;</p>
+                                    <p>height: 0;</p>
+                                    <p>border-left: 4rem solid transparent;</p>
+                                    <p>border-right: 4rem solid transparent;</p>
+                                    <p>border-top: 8rem solid moccasin;</p>
+                                </div>
+                                <p>}</p>
+                            </div>
+                            <div class="container">
+                                <div class="tile trapezoid-shortside-down">
+                                    <span class="label">Trapezoid</span>
+                                </div>
+                            </div>
+                        </div> <!-- Trapezoid shortside down -->
+                        <div class="two-columns">
+                            <div class="code">
+                                <p>.trapezoid-shortside-left {</p>
+                                <div class="indented">
+                                    <p>width: 0;</p>
+                                    <p>height: 16rem;</p>
+                                    <p>border-top: 4rem solid transparent;</p>
+                                    <p>border-bottom: 4rem solid transparent;</p>
+                                    <p>border-right: 8rem solid moccasin;</p>
+                                </div>
+                                <p>}</p>
+                            </div>
+                            <div class="container">
+                                <div class="tile trapezoid-shortside-left">
+                                    <span class="label">Trapezoid</span>
+                                </div>
+                            </div>
+                        </div> <!-- Trapezoid shortside left -->
+                        <div class="two-columns">
+                            <div class="code">
+                                <p>.trapezoid-shortside-right {</p>
+                                <div class="indented">
+                                    <p>width: 0;</p>
+                                    <p>height: 16rem;</p>
+                                    <p>border-top: 4rem solid transparent;</p>
+                                    <p>border-bottom: 4rem solid transparent;</p>
+                                    <p>border-left: 8rem solid moccasin;</p>
+                                </div>
+                                <p></p>
+                            </div>
+                            <div class="container">
+                                <div class="tile trapezoid-shortside-right">
+                                    <span class="label">Trapezoid</span>
+                                </div>
+                            </div>
+                        </div> <!-- Trapezoid shortside right -->
                     </div>
                 </details>
                 <details>
                     <summary>Parallelogram</summary>
                     <div class="passages">
-                        <div class="two-columns"></div> <!-- Parallelogram-->
-                        <div class="two-columns"></div> <!-- Parallelogram-->
-                        <div class="two-columns"></div> <!-- Parallelogram-->
-                        <div class="two-columns"></div> <!-- Parallelogram-->
+                        <p>Note that for parallelograms, the shorter edge is 56% of the longer edge, and the degree to skew the shape is 20 degrees, written <span class="code">20deg</span> in either direction. Positive is towards the left, negative is towards the right. If the shape contains text, the text will be skewed in the same direction as the shape, so separately, the text needs to be enclosed, such as in a div or span, and skewed in the opposite direction by the same number of degrees.</p>
+                        <div class="two-columns"></div> <!-- Parallelogram wide point left -->
+                        <div class="two-columns"></div> <!-- Parallelogram wide point right -->
+                        <div class="two-columns"></div> <!-- Parallelogram tall point left -->
+                        <div class="two-columns"></div> <!-- Parallelogram tall point right -->
                     </div>
                 </details>
                 <details id="polygon">
@@ -1471,11 +1710,10 @@ div::after {
                     </div>
                 </details>
                 <details>
-                    <summary>Heart and Yin Yang</summary>
+                    <summary>Heart</summary>
                     <div class="passages">
                         <div class="two-columns"></div> <!-- Heart -->
                         <div class="two-columns"></div> <!-- Heart -->
-                        <div class="two-columns"></div> <!-- Yin Yang -->
                     </div>
                 </details>
                 <details>
@@ -1506,10 +1744,11 @@ div::after {
                     </div>
                 </details>
                 <details>
-                    <summary>Chevron, Magnifying Glass, and Lock</summary>
+                    <summary>Symbols</summary>
                     <div class="two-columns"></div> <!-- Chevron -->
                     <div class="two-columns"></div> <!-- Mag Glass -->
                     <div class="two-columns"></div> <!-- Lock -->
+                    <div class="two-columns"></div> <!-- Yin Yang -->
                 </details>
                 <details>
                     <summary>Base</summary>

@@ -236,7 +236,10 @@ img {
     overflow-wrap: break-word;
 }
 
-.code p { margin: 0.8rem 0 }
+.code p { 
+    margin: 0.8rem 0;
+    text-align: left;
+}
 
 div.code {
     width: 100%;
