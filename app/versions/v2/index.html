@@ -1605,7 +1605,7 @@
                                     <p>border-bottom: 4rem solid transparent;</p>
                                     <p>border-left: 8rem solid moccasin;</p>
                                 </div>
-                                <p></p>
+                                <p>}</p>
                             </div>
                             <div class="container">
                                 <div class="tile trapezoid-shortside-right">
@@ -1619,23 +1619,341 @@
                     <summary>Parallelogram</summary>
                     <div class="passages">
                         <p>Note that for parallelograms, the shorter edge is 56% of the longer edge, and the degree to skew the shape is 20 degrees, written <span class="code">20deg</span> in either direction. Positive is towards the left, negative is towards the right. If the shape contains text, the text will be skewed in the same direction as the shape, so separately, the text needs to be enclosed, such as in a div or span, and skewed in the opposite direction by the same number of degrees.</p>
-                        <div class="two-columns"></div> <!-- Parallelogram wide point left -->
-                        <div class="two-columns"></div> <!-- Parallelogram wide point right -->
-                        <div class="two-columns"></div> <!-- Parallelogram tall point left -->
-                        <div class="two-columns"></div> <!-- Parallelogram tall point right -->
+                        <div class="two-columns">
+                            <div class="code">
+                                <p>.parallelogram-wide-point-left {</p>
+                                <div class="indented">
+                                    <p>width: 16rem;</p>
+                                    <p>height: 10.4rem;</p>
+                                    <p>transform: skew(20deg);</p>
+                                    <p>background-color: lightcoral</p>
+                                </div>
+                                <p>}</p>
+                            </div>
+                            <div class="container">
+                                <div class="tile parallelogram-wide-point-left lightcoral">
+                                    <span class="label">Wide point<br>left</span>
+                                </div>
+                            </div>
+                        </div> <!-- Parallelogram wide point left -->
+                        <div class="two-columns">
+                            <div class="code">
+                                <p>.parallelogram-wide-point-right {</p>
+                                <div class="indented">
+                                    <p>width: 16rem;</p>
+                                    <p>height: 10.4rem;</p>
+                                    <p>transform: skew(-20deg);</p>
+                                    <p>background-color: lightcoral</p>
+                                </div>
+                                <p>}</p>
+                            </div>
+                            <div class="container">
+                                <div class="tile parallelogram-wide-point-right lightcoral">
+                                    <span class="label">Wide point<br>right</span>
+                                </div>
+                            </div>
+                        </div> <!-- Parallelogram wide point right -->
+                        <div class="two-columns">
+                            <div class="code">
+                                <p>.parallelogram-tall-point-left {</p>
+                                <div class="indented">
+                                    <p>width: 10.4rem;</p>
+                                    <p>height: 16rem;</p>
+                                    <p>transform: skew(20deg);</p>
+                                    <p>background-color: lightcoral</p>
+                                </div>
+                                <p>}</p>
+                            </div>
+                            <div class="container">
+                                <div class="tile parallelogram-tall-point-left lightcoral">
+                                    <span class="label">Tall point<br>left</span>
+                                </div>
+                            </div>
+                        </div> <!-- Parallelogram tall point left -->
+                        <div class="two-columns">
+                            <div class="code">
+                                <p>.parallelogram-tall-point-right {</p>
+                                <div class="indented">
+                                    <p>width: 10.4rem;</p>
+                                    <p>height: 16rem;</p>
+                                    <p>transform: skew(-20deg);</p>
+                                    <p>background-color: lightcoral</p>
+                                </div>
+                                <p>}</p>
+                            </div>
+                            <div class="container">
+                                <div class="tile parallelogram-tall-point-right lightcoral">
+                                    <span class="label">Tall point<br>right</span>
+                                </div>
+                            </div>
+                        </div> <!-- Parallelogram tall point right -->
                     </div>
                 </details>
                 <details id="polygon">
                     <summary>Polygon</summary>
                     <div class="passages">
-                        <div class="two-columns"></div> <!-- Polygon -->
-                        <div class="two-columns"></div> <!-- Polygon -->
-                        <div class="two-columns"></div> <!-- Polygon -->
-                        <div class="two-columns"></div> <!-- Polygon -->
-                        <div class="two-columns"></div> <!-- Polygon -->
-                        <div class="two-columns"></div> <!-- Polygon -->
-                        <div class="two-columns"></div> <!-- Polygon -->
-                        <div class="two-columns"></div> <!-- Polygon -->
+                        <div class="two-columns">
+                            <div class="code">
+                                <p>.pentagon-point-up {</p>
+                                <div class="indented">
+                                    <p>position: relative;</p>
+                                    <p>box-sizing: content-box;</p>
+                                    <p>width: 8.64rem;</p>
+                                    <p>border-width: 8rem 2.88rem 0;</p>
+                                    <p>border-style: solid;</p>
+                                    <p>border-color: lightseagreen transparent;</p>
+                                </div>
+                                <p>}</p>
+                                <br>
+                                <p>.pentagon-point-up::before {</p>
+                                <div class="indented">
+                                    <p>position: absolute;</p>
+                                    <p>width: 0;</p>
+                                    <p>height: 0;</p>
+                                    <p>bottom: 11.7rem;</p>
+                                    <p>border-width: 0 7.2rem 5.6rem;</p>
+                                    <p>border-style: solid;</p>
+                                    <p>border-color: transparent transparent lightseagreen;</p>
+                                    <p>content: "";</p>
+                                </div>
+                                <p>}</p>
+                            </div>
+                            <div class="container">
+                                <div class="tile pentagon-point-up">
+                                    <span class="label">Pentagon<br>point up</span>
+                                </div>
+                            </div>
+                        </div> <!-- Polygon: Pentagon point up -->
+                        <div class="two-columns">
+                            <div class="code">
+                                <p>.pentagon-point-down {</p>
+                                <div class="indented">
+                                    <p>position: relative;</p>
+                                    <p>box-sizing: content-box;</p>
+                                    <p>width: 8.64rem;</p>
+                                    <p>bottom: 7.5rem;</p>
+                                    <p>border-width: 0 2.88rem 8rem;</p>
+                                    <p>border-style: solid;</p>
+                                    <p>border-color: lightseagreen transparent;</p>
+                                </div>
+                                <p>}</p>
+                                <br>
+                                <p>.pentagon-point-down::before {</p>
+                                <div class="indented">
+                                    <p>position: absolute;</p>
+                                    <p>width: 0;</p>
+                                    <p>height: 0;</p>
+                                    <p>top: 13.7rem;</p>
+                                    <p>border-width: 5.6rem 7.2rem 0;</p>
+                                    <p>border-style: solid;</p>
+                                    <p>border-color: lightseagreen transparent transparent;</p>
+                                    <p>content: "";</p>
+                                </div>
+                                <p>}</p>
+                            </div>
+                            <div class="container">
+                                <div class="tile pentagon-point-down">
+                                    <span class="label">Pentagon<br>point down</span>
+                                </div>
+                            </div>
+                        </div> <!-- Polygon: Pentagon point down -->
+                        <div class="two-columns">
+                            <div class="code">
+                                <p>.pentagon-point-left {</p>
+                                <div class="indented">
+                                    <p>position: relative;</p>
+                                    <p>box-sizing: content-box;</p>
+                                    <p>right: -7rem;</p>
+                                    <p>height: 8.64rem;</p>
+                                    <p>border-width: 2.88rem 0 2.88rem 8rem;</p>
+                                    <p>border-style: solid;</p>
+                                    <p>border-color: transparent lightseagreen;</p>
+                                </div>
+                                <p>}</p>
+                                <br>
+                                <p>.pentagon-point-left::before {</p>
+                                <div class="indented">
+                                    <p>position: absolute;</p>
+                                    <p>width: 0;</p>
+                                    <p>height: 0;</p>
+                                    <p>top: -2.88rem;</p>
+                                    <p>right: 15.6rem;</p>
+                                    <p>border-width: 7.2rem 5.6rem 7.2rem 0;</p>
+                                    <p>border-style: solid;</p>
+                                    <p>border-color: transparent lightseagreen transparent transparent;</p>
+                                    <p>content: "";</p>
+                                </div>
+                                <p>}</p>
+                            </div>
+                            <div class="container">
+                                <div class="tile pentagon-point-left">
+                                    <span class="label">Pentagon<br>point left</span>
+                                </div>
+                            </div>
+                        </div> <!-- Polygon: Pentagon point left -->
+                        <div class="two-columns">
+                            <div class="code">
+                                <p>.pentagon-point-right {</p>
+                                <div class="indented">
+                                    <p>position: relative;</p>
+                                    <p>box-sizing: content-box;</p>
+                                    <p>left: -7rem;</p>
+                                    <p>height: 8.64rem;</p>
+                                    <p>border-width: 2.88rem 8rem 2.88rem 0;</p>
+                                    <p>border-style: solid;</p>
+                                    <p>border-color: transparent lightseagreen;</p>
+                                </div>
+                                <p>}</p>
+                                <br>
+                                <p>.pentagon-point-right::before {</p>
+                                <div class="indented">
+                                    <p>position: absolute;</p>
+                                    <p>width: 0;</p>
+                                    <p>height: 0;</p>
+                                    <p>top: -2.88rem;</p>
+                                    <p>left: 16.9rem;</p>
+                                    <p>border-width: 7.2rem 0 7.2rem 5.6rem;</p>
+                                    <p>border-style: solid;</p>
+                                    <p>border-color: transparent transparent transparent lightseagreen;</p>
+                                    <p>content: "";</p>
+                                </div>
+                                <p>}</p>
+                            </div>
+                            <div class="container">
+                                <div class="tile pentagon-point-right">
+                                    <span class="label">Pentagon<br>point right</span>
+                                </div>
+                            </div>
+                        </div> <!-- Polygon: Pentagon point right -->
+                        <div class="two-columns">
+                            <div class="code">
+                                <p>.hexagon-vertical {</p>
+                                <div class="indented">
+                                    <p>position: relative;</p>
+                                    <p>width: 16rem;</p>
+                                    <p>height: 9.24rem;</p>
+                                    <p>background-color: lightseagreen</p>
+                                </div>
+                                <p>}</p>
+                                <br>
+                                <p>.hexagon-vertical::before {</p>
+                                <div class="indented">
+                                    <p>position: absolute;</p>
+                                    <p>width: 0;</p>
+                                    <p>height: 0;</p>
+                                    <p>top: -4.5rem;</p>
+                                    <p>border-left: 8rem solid transparent;</p>
+                                    <p>border-right: 8rem solid transparent;</p>
+                                    <p>border-bottom: 4.6rem solid lightseagreen;</p>
+                                    <p>content: "";</p>
+                                </div>
+                                <p>}</p>
+                                <br>
+                                <p>.hexagon-vertical::after {</p>
+                                <div class="indented">
+                                    <p>position: absolute;</p>
+                                    <p>bottom: -4.5rem;</p>
+                                    <p>width: 0;</p>
+                                    <p>height: 0;</p>
+                                    <p>border-left: 8rem solid transparent;</p>
+                                    <p>border-right: 8rem solid transparent;</p>
+                                    <p>border-top: 4.6rem solid lightseagreen;</p>
+                                    <p>content: "";</p>
+                                </div>
+                                <p>}</p>
+                            </div>
+                            <div class="container">
+                                <div class="tile hexagon-vertical lightseagreen">
+                                    <span class="label">Hexagon<br>vertical</span>
+                                </div>
+                            </div>
+                        </div> <!-- Polygon: Hexagon vertical -->
+                        <div class="two-columns">
+                            <div class="code">
+                                <p>.hexagon-horizontal {</p>
+                                <div class="indented">
+                                    <p>position: relative;</p>
+                                    <p>width: 9.24rem;</p>
+                                    <p>height: 16rem;</p>
+                                    <p>background-color: lightseagreen</p>
+                                </div>
+                                <p>}</p>
+                                <br>
+                                <p>.hexagon-horizontal::before {</p>
+                                <div class="indented">
+                                    <p>position: absolute;</p>
+                                    <p>width: 0;</p>
+                                    <p>height: 0;</p>
+                                    <p>left: -4.5rem;</p>
+                                    <p>border-top: 8rem solid transparent;</p>
+                                    <p>border-bottom: 8rem solid transparent;</p>
+                                    <p>border-right: 4.6rem solid lightseagreen;</p>
+                                    <p>content: "";</p>
+                                </div>
+                                <p>}</p>
+                                <br>
+                                <p>.hexagon-horizontal::after {</p>
+                                <div class="indented">
+                                    <p>position: absolute;</p>
+                                    <p>right: -4.6rem;</p>
+                                    <p>width: 0;</p>
+                                    <p>height: 0;</p>
+                                    <p>border-top: 8rem solid transparent;</p>
+                                    <p>border-bottom: 8rem solid transparent;</p>
+                                    <p>border-left: 4.6rem solid lightseagreen;</p>
+                                    <p>content: "";</p>
+                                </div>
+                                <p>}</p>
+                            </div>
+                            <div class="container">
+                                <div class="tile hexagon-horizontal lightseagreen">
+                                    <span class="label">Hexagon<br>horizontal</span>
+                                </div>
+                            </div>
+                        </div> <!-- Polygon: Hexagon horizontal -->
+                        <div class="two-columns">
+                            <div class="code">
+                                <p>.octagon {</p>
+                                <div class="indented">
+                                    <p>position: relative;</p>
+                                    <p>width: 16rem;</p>
+                                    <p>height: 16rem;</p>
+                                    <p>background-color: lightseagreen;</p>
+                                </div>
+                                <p>}</p>
+                                <br>
+                                <p>.octagon::before {</p>
+                                <div class="indented">
+                                    <p>position: absolute;</p>
+                                    <p>top: 0;</p>
+                                    <p>width: 6.8rem;</p>
+                                    <p>height: 0;</p>
+                                    <p>border-bottom: 4.64rem solid lightseagreen;</p>
+                                    <p>border-left: 4.64rem solid var(--background-color);</p>
+                                    <p>border-right: 4.64rem solid var(--background-color);</p>
+                                    <p>content: "";</p>
+                                </div>
+                                <p>}</p>
+                                <br>
+                                <p>.octagon::after {</p>
+                                <div class="indented">
+                                    <p>position: absolute;</p>
+                                    <p>bottom: 0;</p>
+                                    <p>width: 6.8rem;</p>
+                                    <p>height: 0;</p>
+                                    <p>border-top: 4.64rem solid lightseagreen;</p>
+                                    <p>border-left: 4.64rem solid var(--background-color);</p>
+                                    <p>border-right: 4.64rem solid var(--background-color);</p>
+                                    <p>content: "";</p>
+                                </div>
+                                <p>}</p>
+                            </div>
+                            <div class="container">
+                                <div class="tile octagon lightseagreen">
+                                    <span class="label">Octagon</span>
+                                </div>
+                            </div>
+                        </div> <!-- Polygon: Octagon -->
                         <a class="top-details" href="#polygon">Top of Section</a>
                     </div>
                 </details>
