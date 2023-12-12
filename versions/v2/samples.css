@@ -521,7 +521,7 @@ code {
     height: 16rem;
     top: 0;
     left: 0;
-    box-shadow: -8rem -8rem 0 0 thistle;
+    box-shadow: -8rem -8rem 0 0 lightslategray;
     border-radius: 50%;
     display: block;
     content: "";
@@ -532,7 +532,7 @@ code {
     height: 16rem;
     top: 0;
     left: 0;
-    box-shadow: 8rem -8rem 0 0 thistle;
+    box-shadow: 8rem -8rem 0 0 lightslategray;
     border-radius: 50%;
     display: block;
     content: "";
@@ -543,7 +543,7 @@ code {
     height: 16rem;
     top: 0;
     left: 0;
-    box-shadow: -8rem 8rem 0 0 thistle;
+    box-shadow: -8rem 8rem 0 0 lightslategray;
     border-radius: 50%;
     display: block;
     content: "";
@@ -554,7 +554,7 @@ code {
     height: 16rem;
     top: 0;
     left: 0;
-    box-shadow: 8rem 8rem 0 0 thistle;
+    box-shadow: 8rem 8rem 0 0 lightslategray;
     border-radius: 50%;
     display: block;
     content: "";
