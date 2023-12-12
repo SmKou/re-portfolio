@@ -164,10 +164,18 @@ code {
 
 /* -------------------------------------------------------------------------- SHAPES */
 
-#shapes .two-columns { grid-template-columns: 1fr 18rem }
+#shapes .two-columns { 
+    margin-bottom: 0.8rem;
+    grid-template-columns: 1fr 18rem;
+}
 
 @media (width < 36rem) {
-    #shapes .two-columns { grid-template-columns: 1fr }
+    #shapes .two-columns { 
+        margin-bottom: 6rem;
+        grid-template-columns: 1fr;
+    }
+
+    #shapes .two-columns .container .tile { margin-top: 3rem }
 }
 
 #shapes pre { 
@@ -176,6 +184,7 @@ code {
 }
 
 .lightcoral { background-color: lightcoral }
+.moccasin { background-color: moccasin }
 .lightseagreen { background-color: lightseagreen }
 .lightslategray { background-color: lightslategray }
 .khaki { background-color: khaki }
@@ -341,6 +350,7 @@ code {
 .pentagon-point-up {
     position: relative;
     box-sizing: content-box;
+    top: 4rem;
     width: 8.64rem;
     border-width: 8rem 2.88rem 0;
     border-style: solid;
@@ -350,7 +360,7 @@ code {
     position: absolute;
     width: 0;
     height: 0;
-    bottom: 10rem;
+    bottom: 11.7rem;
     border-width: 0 7.2rem 5.6rem;
     border-style: solid;
     border-color: transparent transparent lightseagreen;
@@ -361,7 +371,7 @@ code {
     position: relative;
     box-sizing: content-box;
     width: 8.64rem;
-    bottom: 7.5rem;
+    bottom: 6.5rem;
     border-width: 0 2.88rem 8rem;
     border-style: solid;
     border-color: lightseagreen transparent;
@@ -370,7 +380,7 @@ code {
     position: absolute;
     width: 0;
     height: 0;
-    top: 10rem;
+    top: 13.7rem;
     border-width: 5.6rem 7.2rem 0;
     border-style: solid;
     border-color: lightseagreen transparent transparent;
@@ -380,6 +390,7 @@ code {
 .pentagon-point-left {
     position: relative;
     box-sizing: content-box;
+    right: -7rem;
     height: 8.64rem;
     border-width: 2.88rem 0 2.88rem 8rem;
     border-style: solid;
@@ -390,16 +401,17 @@ code {
     width: 0;
     height: 0;
     top: -2.88rem;
-    right: 18.6rem;
+    right: 15.6rem;
     border-width: 7.2rem 5.6rem 7.2rem 0;
     border-style: solid;
     border-color: transparent lightseagreen transparent transparent;
     content: "";
 }
-.pentagon-point-left .label { right: 11.8rem }
+.pentagon-point-left .label { right: 9.8rem }
 .pentagon-point-right {
     position: relative;
     box-sizing: content-box;
+    left: -7rem;
     height: 8.64rem;
     border-width: 2.88rem 8rem 2.88rem 0;
     border-style: solid;
@@ -410,15 +422,16 @@ code {
     width: 0;
     height: 0;
     top: -2.88rem;
-    left: 18.6rem;
+    left: 16.7rem;
     border-width: 7.2rem 0 7.2rem 5.6rem;
     border-style: solid;
     border-color: transparent transparent transparent lightseagreen;
     content: "";
 }
-.pentagon-point-right .label { left: 11.8rem }
+.pentagon-point-right .label { left: 10.8rem }
 
 .hexagon-vertical {
+    position: relative;
     width: 16rem;
     height: 9.24rem;
 }
@@ -427,7 +440,6 @@ code {
     width: 0;
     height: 0;
     top: -4.5rem;
-    left: 25.1rem;
     border-left: 8rem solid transparent;
     border-right: 8rem solid transparent;
     border-bottom: 4.6rem solid lightseagreen;
@@ -436,7 +448,6 @@ code {
 .hexagon-vertical::after {
     position: absolute;
     bottom: -4.5rem;
-    left: 25.1rem;
     width: 0;
     height: 0;
     border-left: 8rem solid transparent;
@@ -446,6 +457,7 @@ code {
 }
 
 .hexagon-horizontal {
+    position: relative;
     width: 9.24rem;
     height: 16rem;
 }
@@ -453,8 +465,7 @@ code {
     position: absolute;
     width: 0;
     height: 0;
-    top: 0;
-    left: 23.85rem;
+    left: -4.5rem;
     border-top: 8rem solid transparent;
     border-bottom: 8rem solid transparent;
     border-right: 4.6rem solid lightseagreen;
@@ -462,8 +473,7 @@ code {
 }
 .hexagon-horizontal::after {
     position: absolute;
-    top: 0;
-    right: 23.8rem;
+    right: -4.5rem;
     width: 0;
     height: 0;
     border-top: 8rem solid transparent;
@@ -474,55 +484,28 @@ code {
 .hexagon-horizontal .label { z-index: 10 }
 
 .octagon {
+    position: relative;
     width: 16rem;
     height: 16rem;
 }
 .octagon::before {
     position: absolute;
     top: 0;
-    left: 25rem;
     width: 6.8rem;
     height: 0;
     border-bottom: 4.64rem solid lightseagreen;
-    border-left: 4.64rem solid var(--light-color-gray);
-    border-right: 4.64rem solid var(--light-color-gray);
+    border-left: 4.64rem solid var(--uni-white);
+    border-right: 4.64rem solid var(--uni-white);
     content: "";
 }
 .octagon::after {
     position: absolute;
     bottom: 0;
-    left: 25rem;
     width: 6.8rem;
     height: 0;
     border-top: 4.64rem solid lightseagreen;
-    border-left: 4.64rem solid var(--light-color-gray);
-    border-right: 4.64rem solid var(--light-color-gray);
-    content: "";
-}
-
-.octagon-2 {
-    width: 16rem;
-    height: 6rem;
-    transform: translateY(8.2rem);
-}
-.octagon-2::before {
-    position: absolute;
-    width: 6.6rem;
-    height: 0;
-    bottom: 6rem;
-    border-left: 4.8rem solid transparent;
-    border-right: 4.8rem solid transparent;
-    border-bottom: 5rem solid lightseagreen;
-    content: "";
-}
-.octagon-2::after {
-    position: absolute;
-    width: 6.6rem;
-    height: 0;
-    top: 6rem;
-    border-left: 4.8rem solid transparent;
-    border-right: 4.8rem solid transparent;
-    border-top: 5rem solid lightseagreen;
+    border-left: 4.64rem solid var(--uni-white);
+    border-right: 4.64rem solid var(--uni-white);
     content: "";
 }
 
