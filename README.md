@@ -11,6 +11,7 @@ Showcase portfolio: view on [Github Pages](smkou.github.io/re-portfolio)
 **v0: Profile**
 2015 - 2017
 Features block colors and styling, consists of portraits and personality
+[X] Complete
 
 **v1: Magazine**
 2015-2022
@@ -19,6 +20,7 @@ Features writings
 **v2: Design Index**
 2018 - 2019
 Features designer backgrounds using block styling, consists of css colors, shapes, and fonts
+[-] In-progress
 
 **v3: Slideshow**
 2020 - 2022
@@ -31,6 +33,21 @@ Features pages based on people's clothing
 **v5: Epicodus**
 2023
 Features resume and profile
+[X] Complete
+
+```
+Remastered: Design page with elements from given version to follow design trends from when the version was created
+
+[https://www.dezeen.com](https://www.dezeen.com/)
+- design trends
+
+[https://www.sitepoint.com](https://www.sitepoint.com/)
+- web design trends
+
+Containerize and Deploy C#/.Net apps
+https://www.codeguru.com/dotnet/asp-net-docker/
+https://learn.microsoft.com/en-us/dotnet/framework/deployment/
+```
 
 ### Art files
 
