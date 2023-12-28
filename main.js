@@ -40,9 +40,13 @@ const addLine = (output, isCmd = false) => {
     ui.section.append(line)
 }
 
-const messages = {
-    'cnet': 'All C#/.Net projects are not likely to be completed.'
+const addSpace = () => {
+    const line = document.createElement('p')
+    line.append(document.createTextNode(''))
+    ui.section.append(line)
 }
+
+const isPath = (path) => path.includes('/')
 
 const cmd = {
     cd: {
@@ -51,7 +55,21 @@ const cmd = {
             'format: cd [<path>] | cd [..]',
             'args: path <prop/prop/...>'
         ],
-        do: function(args) {}
+        do: function(args) {
+            if (!args.length || !isPath(args[0]))
+                return false
+
+            const subs = args[0].split('/')
+            const path = ui.path.slice().concat(subs[0] === '..' ? 
+                subs.slice(1) 
+                : subs
+            )
+            const node = getNode(path)
+            if (node)
+                ui.path.concat(subs[0] === '..' ? subs.slice(1) : subs)
+            else
+                addLine(getError('invalid path'))
+        }
     },
     clear: {
         help: [
@@ -59,17 +77,19 @@ const cmd = {
             'format: clear',
             'args: none'
         ],
-        do: function(args) {
-            ui.section.innerHTML = ''
-        }
+        do: function(args) { ui.section.innerHTML = '' }
     },
     count: {
         help: [
-            'do: count subentities',
+            'do: count properties',
             'format: count <path> <terms>',
-            'args: path <prop/prop/...>, (search) terms <term,term=value,...>'
+            'args: path <prop/prop/...>, (search) terms <term,term=value,...> (spaces => hyphens)'
         ],
-        do: function(args) {}
+        do: function(args) {
+            // Get path and terms
+            // Teat node and path
+            // Count terms or properties
+        }
     },
     descript: {
         help: [
@@ -77,10 +97,97 @@ const cmd = {
             'format: descript <path> <[now]>',
             'args: path <prop/prop/...>, now = description of status'
         ],
+        do: function(args) {
+
+        }
+    },
+    find: {
+        help: [
+            'do: list subentities',
+            'format: find <path> <terms>',
+            'args: path <prop/prop/...>, (search) terms <term,term=value,...> (spaces => hyphens)'
+        ],
         do: function(args) {}
     },
-    
+    go: {
+        help: [
+            'do: follow link',
+            'format: go <path> <property>',
+            'args: path <prop/prop/...>, property ~ files'
+        ],
+        do: function(args) {}
+    },
+    help: {
+        help: [
+            'do: list commands or display command information',
+            'format: help <command>',
+            'args: command'
+        ],
+        do: function(args) {
+            if (!args.length) {
+                for (const key of Object.keys(cmd)) {
+                    addLine('command: ' + key)
+                    const props = cmd[key].help
+                    for (const prop of props)
+                        addLine(prop)
+                    addSpace()
+                }
+                return true
+            }
 
+            const key = args[0]
+            if (!cmd.hasOwnProperty(key))
+                addLine(getBashError(key, 'command not found'))
+            else {
+                addLine(`help ${key}`, true)
+                const props = cmd[key].help
+                for (const prop of props)
+                    addLine(prop)
+                addSpace()
+            }
+        }
+    },
+    ls: {
+        help: [
+            'do: list properties in current path',
+            'format: ls <path>',
+            'args: path <prop/prop/...>'
+        ],
+        do: function(args) {}
+    },
+    more: {
+        help: [
+            'do: read more (...)',
+            'format: more <path> <property>',
+            'args: path <prop/prop/...>, property'
+        ],
+        do: function(args) {}
+    },
+    pwd: {
+        help: [
+            'do: display current path',
+            'format: pwd',
+            'args: none'
+        ],
+        do: function(args) { addLine(getPath()) }
+    },
+    searchable: {
+        help: [
+            'do: display searchable properties or values of property in directory',
+            'format: searchable <path> <prop>',
+            'args: path <prop/prop/...>, prop property'
+        ],
+        do: function(args) {
+        }
+    },
+    stat: {
+        help: [
+            'do: display entity (or property) information',
+            'format: stat <path>',
+            'args: path <prop/prop/...>'
+        ],
+        do: function(args) {}
+    }
 }
 
 /* -------------------------------------------------------------- Initial ui */

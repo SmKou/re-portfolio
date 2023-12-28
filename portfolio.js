@@ -518,7 +518,7 @@ const experience = {
         employer: 'SignedPic',
         location: 'Seattle, WA, USA',
         start: 2023-11,
-        end: 2024-1,
+        end: 2023-12,
         skills: ['React','verbal communication','git','problem-solving','listening','adaptability','creativity']
     },
     'store-clerk': {
@@ -624,15 +624,16 @@ const questions = [
 
 const portfolio = {
     dir: ['versions', 'projects', 'experience', 'education', 'questions'],
-    versions: versions,
     art: {
         title: 'Artworks',
         href: 'art/',
         description: 'I cannot meditate in the traditional sense due in part to my C-PTSD, so drawing acts as a sort of substitute. Rather than clarity and relaxation, drawing provides insight and allows for a nuance of expression when words fail as they often do for me when it comes to self-perception and sensation.'
     },
+    versions: versions,
     projects: projects,
     experience: experience,
     education: education,
+    questions: questions,
     sources: {
         type: 'src',
         'odin': {
@@ -676,6 +677,5 @@ const portfolio = {
             title: 'Sm Kou',
             href: 'https://smkou.hashnode.dev'
         }
-    },
-    questions: questions
+    }
 }
