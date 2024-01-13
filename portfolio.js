@@ -46,7 +46,6 @@ const messages = {
 
 const projects = {
     'first-page': {
-        type: 'proj',
         source: 'ztm',
         description: 'Scrolling single-page panels to demonstrate anchor links and form submission',
         year: 2023,
@@ -56,7 +55,6 @@ const projects = {
         status: 'complete'
     },
     'live-in-the-wild': {
-        type: 'proj',
         source: 'ztm',
         description: 'Gallery grid using flexbox',
         year: 2023,
@@ -66,7 +64,6 @@ const projects = {
         status: 'complete'
     },
     'android-journeys': {
-        type: 'proj',
         source: 'ztm',
         description: 'JS slideshow of landscapes featuring css-made android in a pretend travelogue',
         year: 2023, 
@@ -76,7 +73,6 @@ const projects = {
         status: 'complete'
     },
     'counting-calculator': {
-        type: 'proj',
         source: 'demo',
         description: 'Based on demo project of react and redux toolkit, counting calculator adapts the counter',
         year: 2023,
@@ -86,7 +82,6 @@ const projects = {
         status: 'complete'
     },
     'counting-calculator-2': {
-        type: 'proj',
         source: 'demo',
         description: 'Improvement of the original counting calculator with instructions and a different color scheme',
         year: 2023,
@@ -96,7 +91,6 @@ const projects = {
         status: 'complete'
     },
     'robofriends': {
-        type: 'proj',
         source: 'ztm',
         description: 'Grid of contact cards for robots with names and emails using api (class components), meant for understanding legacy react code',
         year: 2023,
@@ -106,7 +100,6 @@ const projects = {
         status: 'uibug'
     },
     'robofriends-func': {
-        type: 'proj',
         source: 'ztm',
         description: 'Robofriends using function components',
         year: 2023,
@@ -116,7 +109,6 @@ const projects = {
         status: 'uibug'
     },
     'programming-language-suggester': {
-        type: 'proj',
         source: 'epicodus',
         description: 'Programming language form for suggestions based on experience, motivation among other factors',
         year: 2023,
@@ -126,7 +118,6 @@ const projects = {
         status: 'complete'
     },
     'mr-roboger-neighborhood': {
-        type: 'proj',
         source: 'epicodus',
         description: 'Generate number sequences with substitutions for every number containing 1, 2, and 3 similar to fizzbuzz, includes tests based on test-driven development accessible through browser console',
         year: 2023,
@@ -136,7 +127,6 @@ const projects = {
         status: 'complete'
     },
     'pizza-parlor': {
-        type: 'proj',
         source: 'epicodus',
         description: 'Order form and checkout for pizza, includes tests based on TDD principles accessible through browser console (2nd iteration)',
         year: 2023,
@@ -146,7 +136,6 @@ const projects = {
         status: 'complete'
     },
     'currency-exchanger': {
-        type: 'proj',
         source: 'epicodus',
         description: 'Conversion form for amounts between currencies using ExchangeRate api',
         year: 2023,
@@ -156,7 +145,6 @@ const projects = {
         status: 'deploy'
     },
     'super-galactic-age-calculator': {
-        type: 'proj',
         source: 'epicodus',
         description: 'Age calculator for humans and dogs on other planets, generated from my own node template, commit history reflects use red-green workflow',
         year: 2023,
@@ -167,7 +155,6 @@ const projects = {
         now: ['Add ui then deploy']
     },
     'dino-ipsum': {
-        type: 'proj',
         source: 'epicodus',
         year: 2023,
         description: 'Dinosaur name generator using dino ipsum, choose dinosaur name and get robot avatars, pair project, uses XMLHttpRequest in node.js',
@@ -177,7 +164,6 @@ const projects = {
         status: 'review'
     },
     'pierre-bakery': {
-        type: 'proj',
         source: 'epicodus',
         description: "CLI for placing an order to an imaginary bakery: Pierre's Bakery",
         year: 2023,
@@ -188,7 +174,6 @@ const projects = {
         now: [messages.cnet]
     },
     'madlibs-clone': {
-        type: 'proj',
         source: 'epicodus',
         description: 'CLI app for filling in, reading and creating ablibs on local machine',
         year: 2023,
@@ -202,7 +187,6 @@ const projects = {
         ]
     },
     'hair-salon': {
-        type: 'proj',
         source: 'epicodus',
         description: 'MVC web app for managing stylists and clients in a one-to-one relationship',
         year: 2023,
@@ -213,7 +197,6 @@ const projects = {
         now: [messages.cnet]
     },
     'vendor-order-tracker': {
-        type: 'proj',
         source: 'epicodus',
         description: 'MVC web app for tracking and managing vendor information and orders in one-to-many relationships',
         year: 2023,
@@ -224,7 +207,6 @@ const projects = {
         now: [messages.cnet]
     },
     'sillystringz-factory': {
-        type: 'proj',
         source: 'epicodus',
         description: 'MVC web app for tracking and managing many-to-many relationships between machines and engineers licensed to fix them, uses migrations for database setup',
         year: 2023,
@@ -235,7 +217,6 @@ const projects = {
         now: [messages.cnet]
     },
     'pierres-sweet-and-savory-treats': {
-        type: 'proj',
         source: 'epicodus',
         description: 'MVC web app for tracking and managing treats and their flavors in many-to-many relationships with create, update and delete only allowed with authentication and authorization',
         year: 2023,
@@ -246,7 +227,6 @@ const projects = {
         now: [messages.cnet]
     },
     'parks-lookup': {
-        type: 'proj',
         source: 'epicodus',
         description: 'API for looking up national and state parks with user authorization for crud on accounts, makes use of JWT authentication, versioning and pagination',
         year: 2023,
@@ -260,7 +240,6 @@ const projects = {
         ]
     },
     'global-address-formatter': {
-        type: 'proj',
         source: 'epicodus',
         description: 'MVC web app and api for formatting addresses for international shipping and mail (team project), worked on web app and helped in debugging api',
         year: 2023,
@@ -271,7 +250,6 @@ const projects = {
         now: [messages.cnet]
     },
     'coffee-beans': {
-        type: 'proj',
         source: 'epicodus',
         description: 'Inventory tracker for coffee beans seller, uses class and function components, prop types, and uuid',
         year: 2023,
@@ -281,7 +259,6 @@ const projects = {
         status: 'complete'
     },
     'husky-goals': {
-        type: 'proj',
         source: 'uw',
         description: 'Mobile app for keeping track of goals based on counter, timer, and checklists',
         year: 2012,
@@ -295,7 +272,6 @@ const projects = {
         ]
     },
     'carmax': {
-        type: 'proj',
         source: 'uw',
         description: 'Mobile app for setting up appointment for car viewing, include step-by-step form for entering preferences',
         year: 2013,
@@ -309,7 +285,6 @@ const projects = {
         ]
     },
     'booksie': {
-        type: 'proj',
         source: 'uw',
         description: 'Database model for Booksie user content and services',
         year: 2013,
@@ -322,7 +297,6 @@ const projects = {
         ]
     },
     'apollo': {
-        type: 'proj',
         source: 'uw',
         description: 'Project management capstone project: resource and task management interface for teams',
         year: 2014,
@@ -336,7 +310,6 @@ const projects = {
         ]
     },
     'artemis': {
-        type: 'proj',
         source: 'uw',
         description: 'Project management capstone project: virtual badges with AR app for conferences and meetups',
         year: 2014,
@@ -350,7 +323,6 @@ const projects = {
         ]
     },
     'responsive-web': {
-        type: 'proj',
         source: 'fcc',
         description: 'Showcase web app for projects in freeCodeCamp Responsive Web Design',
         year: 2023,
@@ -364,7 +336,6 @@ const projects = {
         ]
     },
     'foundations': {
-        type: 'proj',
         source: 'odin',
         description: 'Showcase web app for projects in The Odin Project Foundations',
         year: -1,
@@ -378,7 +349,6 @@ const projects = {
         ]
     },
     'simplebrain': {
-        type: 'proj',
         source: 'ztm',
         description: 'Adapted from Face Brain Recognition project: react web app and express api for image submission with Clarifai face detection and ranking of users with accounts',
         year: -1,
@@ -391,7 +361,6 @@ const projects = {
         ]
     },
     'polish-notation-calculator': {
-        type: 'proj',
         source: 'personal',
         description: 'Calculator web app for performing calculations using polish notation, reverse polish notation, and standard notation with memory and accompanying visualization',
         year: -1,
@@ -404,7 +373,6 @@ const projects = {
         ]
     },
     'travel-scrapbooking': {
-        type: 'proj',
         source: 'personal',
         description: 'Web app and api for creating book-like slideshow of travels, including images, captions and notes, as well as a map with points linked to pages',
         year: -1,
@@ -417,7 +385,6 @@ const projects = {
         ]
     },
     'cattery': {
-        type: 'proj',
         source: 'http://www.angelofsiberia.com/',
         description: 'Design and development of web app based on Angel of Siberia website',
         year: -1,
@@ -427,7 +394,6 @@ const projects = {
         status: 'code'
     },
     'nudibranch': {
-        type: 'proj',
         source: 'personal',
         description: 'Showcase web app of design elements and styles based on nudibranch specimens',
         year: 2023,
@@ -440,7 +406,6 @@ const projects = {
         ]
     },
     'katadsa': {
-        type: 'proj',
         source: 'epicodus',
         description: [
             'Capstone project',
@@ -460,7 +425,6 @@ const projects = {
         ]
     },
     'power-planter': {
-        type: 'proj',
         source: 'epicodus',
         description: 'Based on exercise, numbers game built using functional programming principles',
         year: 2023,
@@ -473,7 +437,6 @@ const projects = {
         ]
     },
     'red-riding-hood': {
-        type: 'proj',
         source: 'sjtu',
         description: "Game adaptation of Red Riding Hood with aesthetics inspired by Molly Bang's Picture This, experimental for using multiple formats",
         year: 2023,
@@ -486,7 +449,6 @@ const projects = {
         ]
     },
     'algorithms': {
-        type: 'proj',
         source: 'personal',
         description: 'DSA practice with Leetcode (Neetcode 150) and reading for discerning problems and solutions',
         year: 2023,
@@ -499,7 +461,6 @@ const projects = {
         ]
     },
     'jordans-game': {
-        type: 'proj',
         source: 'personal',
         description: 'RPG game inspired by Pokemon Red with design decisions by nephew and use of developing Sm Kou aesthetics',
         year: 2023,
@@ -514,15 +475,13 @@ const projects = {
 
 const experience = {
     'frontend-intern': {
-        type: 'exp',
         employer: 'SignedPic',
         location: 'Seattle, WA, USA',
         start: 2023-11,
-        end: 2023-12,
+        end: 2024-1,
         skills: ['React','verbal communication','git','problem-solving','listening','adaptability','creativity']
     },
     'store-clerk': {
-        type: 'exp',
         employer: 'Paper Hammer',
         location: 'Seattle, WA, USA',
         start: 2021-8,
@@ -530,7 +489,6 @@ const experience = {
         skills: ['empathy','verbal communication','listening','attention to detail']
     },
     'head-student-editor': {
-        type: 'exp',
         exployer: 'SJTU School of Design',
         location: 'Shanghai, Shanghai, CN',
         start: 2018-3,
@@ -538,7 +496,6 @@ const experience = {
         skills: ['listening','creativity','leadership','attention to detail','written communication','verbal communication','problem-solving','documentation','analytical reasoning']
     },
     'teacher-assistant': {
-        type: 'exp',
         employer: 'SJTU School of Design',
         location: 'Shanghai, Shanghai, CN',
         start: 2018-9,
@@ -546,7 +503,6 @@ const experience = {
         skills: ['written communication','creativity','verbal communication','adaptability','adaptability','management','problem-solving','java']
     },
     'english-teacher': {
-        type: 'exp',
         employer: [
             'EasyFun',
             'Hampson',
@@ -561,7 +517,6 @@ const experience = {
 
 const education = {
     'pre-engineering': {
-        type: 'edu',
         degree: 'Associate of Science',
         major: 'Pre-engineering',
         institution: 'edcc',
@@ -569,7 +524,6 @@ const education = {
         graduation: 2011-6
     },
     'informatics': {
-        type: 'edu',
         degree: 'Bachelor of Science',
         major: 'Informatics',
         track: 'user experience design',
@@ -579,7 +533,6 @@ const education = {
         graduation: 2014-6
     },
     'design': {
-        type: 'edu',
         degree: 'Master of Arts',
         major: 'Design',
         track: 'interaction design',
@@ -589,7 +542,6 @@ const education = {
         graduation: 2020-3
     },
     'web-dev': {
-        type: 'edu',
         degree: 'Certificate',
         major: 'Web development',
         track: 'C#/.Net and React',
@@ -601,7 +553,6 @@ const education = {
 
 const questions = [
     {
-        type: 'qna',
         q: 'What does each status mean?',
         a: [
             'For every project, whether in a team or on my own, and whether the project is a feature, app or api, there are four tasks to do before I will label it as complete: code, test, review, and deploy. Depending on the size, another task may be added: content.',
@@ -614,7 +565,6 @@ const questions = [
         ]
     },
     {
-        type: 'qna',
         q: 'Why is the year of some projects -1?',
         a: [
             'Rather than list a future year as I do not know when I will get to work on a project, I list the year as -1. However, you may notice the status and the year do not match on some projects, particularly my old ones coming from academics. If I have not worked on a project before, meaning I did not at least reach the task of testing on it, then I do not consider it as having worked on it at all yet, no matter that I have designs and nodes. If I have worked on it, the project will have the last year it was updated or worked on, as well as a backlog of notes in <now>.'
