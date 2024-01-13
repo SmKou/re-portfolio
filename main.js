@@ -1,6 +1,9 @@
 const ui = {
     path: [],
-    host: (window.location.host === 'localhost:5173' ? 'http://' : 'https://') + window.location.host,
+    host: (window.location.host === 'localhost:5173' ? 
+        'http://'
+        : 'https://'
+    ) + window.location.host,
     aside: {
         toggle: document.getElementById('toggle-aside'),
         state: true,
@@ -10,7 +13,7 @@ const ui = {
     input: document.querySelector('input')
 }
 
-const getPath = () => ui.path.length ? '~/' + ui.path.join('/') : 'Home'
+const getPath = () => '~/' + (ui.path.length ? ui.path.join('/') : '')
 
 const getBashError = (cmd, error) => 'bash: ' + cmd + ': ' + error
 
@@ -46,9 +49,15 @@ const addSpace = () => {
     ui.section.append(line)
 }
 
-const isPath = (path) => path.includes('/')
-
 const cmd = {
+    clear: {
+        help: [ 'do: clear terminal', 'format: clear', 'args: none' ],
+        do: function(args) { ui.section.innerHTML = '' }
+    },
+    pwd: {
+        help: [ 'do: display current path', 'format: pwd', 'args: none' ],
+        do: function(args) { addLine(getPath()) }
+    },
     cd: {
         help: [
             'do: change path',
@@ -56,66 +65,22 @@ const cmd = {
             'args: path <prop/prop/...>'
         ],
         do: function(args) {
-            if (!args.length || !isPath(args[0]))
-                return false
+            if (!args.length) return;
 
-            const subs = args[0].split('/')
-            const path = ui.path.slice().concat(subs[0] === '..' ? 
-                subs.slice(1) 
-                : subs
-            )
+            let subs = args[0].split('/')
+            if (subs[0] === '..' && ui.path.length) {
+                subs.shift()
+                ui.path.pop()
+            }
+
+            const path = ui.path.slice().concat(subs)
             const node = getNode(path)
+
             if (node)
-                ui.path.concat(subs[0] === '..' ? subs.slice(1) : subs)
+                ui.path.concat(subs)
             else
                 addLine(getError('invalid path'))
         }
-    },
-    clear: {
-        help: [
-            'do: clear terminal',
-            'format: clear',
-            'args: none'
-        ],
-        do: function(args) { ui.section.innerHTML = '' }
-    },
-    count: {
-        help: [
-            'do: count properties',
-            'format: count <path> <terms>',
-            'args: path <prop/prop/...>, (search) terms <term,term=value,...> (spaces => hyphens)'
-        ],
-        do: function(args) {
-            // Get path and terms
-            // Teat node and path
-            // Count terms or properties
-        }
-    },
-    descript: {
-        help: [
-            'do: view statement or description',
-            'format: descript <path> <[now]>',
-            'args: path <prop/prop/...>, now = description of status'
-        ],
-        do: function(args) {
-
-        }
-    },
-    find: {
-        help: [
-            'do: list subentities',
-            'format: find <path> <terms>',
-            'args: path <prop/prop/...>, (search) terms <term,term=value,...> (spaces => hyphens)'
-        ],
-        do: function(args) {}
-    },
-    go: {
-        help: [
-            'do: follow link',
-            'format: go <path> <property>',
-            'args: path <prop/prop/...>, property ~ files'
-        ],
-        do: function(args) {}
     },
     help: {
         help: [
@@ -153,6 +118,98 @@ const cmd = {
             'format: ls <path>',
             'args: path <prop/prop/...>'
         ],
+        do: function(args) {
+            const node = args.length ?
+                getNode(ui.path.slice().concat(args[0].split('/')))
+                : getNode()
+
+            if (!node || typeof node !== 'object') {
+                let message = 'cannot list properties'
+                if (args.length)
+                    message += ' on ' + args[0]
+                addLine(getError(message))
+            }
+            
+            const props = Object.keys(node)
+            const p = document.createElement('p')
+
+            let content = ""
+            for (const prop of props) 
+                if (prop === 'dir')
+                    continue;
+                else if (portfolio.dir.includes(prop)) {
+                    content += prop + '/ '
+                }
+                else if (node[prop].href)
+                    content += `<a href="${ui.host + node[prop].href}">${prop}</a> `
+                else
+                    content += prop
+        }
+    },
+    stat: {
+        help: [
+            'do: display entity (or property) information',
+            'format: stat <path>',
+            'args: path <prop/prop/...>'
+        ],
+        do: function(args) {}
+    },
+    // 0-2 args
+    count: {
+        help: [
+            'do: count properties',
+            'format: count <path> <terms>',
+            'args: path <prop/prop/...>, (search) terms <term,term=value,...> (spaces => hyphens)'
+        ],
+        do: function(args) {
+            // Get path and terms
+            // Teat node and path
+            // Count terms or properties
+            let path, terms
+            if (args.length)
+                if (isPath(args[0]))
+                    [path, terms] = args
+                else
+                    [terms, path] = args
+            
+            const subs = ui.path.slice().concat(path)
+            const node = getNode(subs)
+
+            if (!node) {
+                addLine(getError('invalid path'))
+                return false
+            }
+
+            if (typeof node !== 'object') {
+                addLine('value: ' + node)
+                return false
+            }
+        }
+    },
+    descript: {
+        help: [
+            'do: view statement or description',
+            'format: descript <path> <[now]>',
+            'args: path <prop/prop/...>, now = description of status'
+        ],
+        do: function(args) {
+
+        }
+    },
+    find: {
+        help: [
+            'do: list subentities',
+            'format: find <path> <terms>',
+            'args: path <prop/prop/...>, (search) terms <term,term=value,...> (spaces => hyphens)'
+        ],
+        do: function(args) {}
+    },
+    go: {
+        help: [
+            'do: follow link',
+            'format: go <path> <property>',
+            'args: path <prop/prop/...>, property ~ files'
+        ],
         do: function(args) {}
     },
     more: {
@@ -163,14 +220,6 @@ const cmd = {
         ],
         do: function(args) {}
     },
-    pwd: {
-        help: [
-            'do: display current path',
-            'format: pwd',
-            'args: none'
-        ],
-        do: function(args) { addLine(getPath()) }
-    },
     searchable: {
         help: [
             'do: display searchable properties or values of property in directory',
@@ -179,14 +228,6 @@ const cmd = {
         ],
         do: function(args) {
         }
-    },
-    stat: {
-        help: [
-            'do: display entity (or property) information',
-            'format: stat <path>',
-            'args: path <prop/prop/...>'
-        ],
-        do: function(args) {}
     }
 }
 
