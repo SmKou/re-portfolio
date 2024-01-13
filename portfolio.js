@@ -585,7 +585,6 @@ const portfolio = {
     education: education,
     questions: questions,
     sources: {
-        type: 'src',
         'odin': {
             title: 'The Odin Project',
             href: 'https://www.theodinproject.com'
