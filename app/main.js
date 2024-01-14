@@ -44,12 +44,6 @@ const addLine = (output, isCmd = false) => {
     ui.section.append(line)
 }
 
-const addSpace = () => {
-    const line = document.createElement('p')
-    line.append(document.createTextNode(''))
-    ui.section.append(line)
-}
-
 const cmd = {
     clear: {
         help: [ 'do: clear terminal', 'format: clear', 'args: none' ],
@@ -87,13 +81,8 @@ const cmd = {
         ],
         do: function(args) {
             if (!args.length) {
-                for (const key of Object.keys(cmd)) {
-                    addLine('command: ' + key)
-                    const props = cmd[key].help
-                    for (const prop of props)
-                        addLine(prop)
-                    addSpace()
-                }
+                const props = Object.keys(cmd)
+                addLine('Available commands: ' + props.join(', '))
                 return true
             }
 
@@ -101,11 +90,9 @@ const cmd = {
             if (!cmd.hasOwnProperty(key))
                 addLine(getBashError(key, 'command not found'))
             else {
-                addLine(`help ${key}`, true)
                 const props = cmd[key].help
                 for (const prop of props)
                     addLine(prop)
-                addSpace()
             }
         }
     },
@@ -275,8 +262,6 @@ document.querySelectorAll('#aside-content button').forEach(btn =>
 
 const execute = value => {
     const [exec, ...ipt] = value.split(' ')
-    if (exec !== 'help' || (exec === 'help' && !ipt.length))
-        addLine(value)
     if (cmd.hasOwnProperty(exec))
         cmd[exec].do(ipt)
     else
@@ -284,11 +269,14 @@ const execute = value => {
 }
 
 ui.input.addEventListener('change', e => {
+    addLine(e.target.value)
     const value = e.target.value.slice(2)
     ui.input.value = '$ '
 
-    if (value.includes('&&')) 
-        value.split('&&').forEach(val => execute(val))
+    if (value.includes('&&')) {
+        const vals = value.split('&&')
+        vals.forEach(val => execute(val.trim()))
+    }
     else
         execute(value)
 
