@@ -7,7 +7,8 @@ const ui = {
     aside: {
         toggle: document.getElementById('toggle-aside'),
         state: true,
-        elem: document.querySelector('aside')
+        elem: document.querySelector('aside'),
+        ctt: document.getElementById('aside-content')
     },
     section: document.querySelector('section'),
     input: document.querySelector('input')
@@ -59,11 +60,7 @@ const cmd = {
         do: function(args) { addLine(getPath()) }
     },
     cd: {
-        help: [
-            'do: change path',
-            'format: cd [<path>] | cd [..]',
-            'args: path <prop/prop/...>'
-        ],
+        help: [ 'do: change path', 'format: cd [<path>] | cd [..]', 'args: path <prop/prop/...>' ],
         do: function(args) {
             if (!args.length) return;
 
@@ -77,7 +74,7 @@ const cmd = {
             const node = getNode(path)
 
             if (node)
-                ui.path.concat(subs)
+                ui.path = ui.path.concat(subs)
             else
                 addLine(getError('invalid path'))
         }
@@ -128,22 +125,41 @@ const cmd = {
                 if (args.length)
                     message += ' on ' + args[0]
                 addLine(getError(message))
+                return false
             }
             
             const props = Object.keys(node)
             const p = document.createElement('p')
 
-            let content = ""
-            for (const prop of props) 
+            for (const prop of props) {
                 if (prop === 'dir')
                     continue;
-                else if (portfolio.dir.includes(prop)) {
-                    content += prop + '/ '
+                else if (portfolio.dir.includes(prop)) 
+                    p.append(document.createTextNode(prop + '/'))
+                else if (prop === 'href') {
+                    const a = document.createElement('a')
+                    a.href = node[prop]
+                    a.append(document.createTextNode(prop))
+                    p.append(a)
                 }
-                else if (node[prop].href)
-                    content += `<a href="${ui.host + node[prop].href}">${prop}</a> `
+                else if (node[prop].href) {
+                    const a = document.createElement('a')
+                    a.href = ui.host + node[prop].href
+                    a.append(document.createTextNode(prop))
+                    p.append(a)
+                }
+                else if (portfolio.sources.hasOwnProperty(node[prop])) {
+                    const a = document.createElement('a')
+                    a.href = portfolio.sources[node[prop]].href
+                    a.target = "_blank"
+                    a.append(document.createTextNode(prop))
+                }
                 else
-                    content += prop
+                    p.append(document.createTextNode(prop))
+                p.append(document.createTextNode(' '))
+            }
+            
+            ui.section.append(p)
         }
     },
     stat: {
@@ -152,7 +168,30 @@ const cmd = {
             'format: stat <path>',
             'args: path <prop/prop/...>'
         ],
-        do: function(args) {}
+        do: function(args) {
+            const path = ((p = ui.path.slice()) => {
+                let subs = args.length ? args[0].split('/') : []
+                if (subs[0] === '..' && p.length) {
+                    p.pop()
+                    subs.shift()
+                }
+                return p.concat(subs)
+            })()
+            const node = getNode(path)
+            
+            if (!node) {
+                addLine(getError('invalid path'))
+                return false
+            }
+
+            if (typeof node !== 'object') {
+                const title = path[path.length - 1]
+                addLine(title + ': ' + node)
+                return true
+            }
+
+            addLine(JSON.stringify(node))
+        }
     },
     // 0-2 args
     count: {
@@ -165,25 +204,7 @@ const cmd = {
             // Get path and terms
             // Teat node and path
             // Count terms or properties
-            let path, terms
-            if (args.length)
-                if (isPath(args[0]))
-                    [path, terms] = args
-                else
-                    [terms, path] = args
-            
-            const subs = ui.path.slice().concat(path)
-            const node = getNode(subs)
-
-            if (!node) {
-                addLine(getError('invalid path'))
-                return false
-            }
-
-            if (typeof node !== 'object') {
-                addLine('value: ' + node)
-                return false
-            }
+            addLine('not implemented yet')
         }
     },
     descript: {
@@ -192,9 +213,7 @@ const cmd = {
             'format: descript <path> <[now]>',
             'args: path <prop/prop/...>, now = description of status'
         ],
-        do: function(args) {
-
-        }
+        do: function(args) { addLine('not implemented yet') }
     },
     find: {
         help: [
@@ -202,7 +221,7 @@ const cmd = {
             'format: find <path> <terms>',
             'args: path <prop/prop/...>, (search) terms <term,term=value,...> (spaces => hyphens)'
         ],
-        do: function(args) {}
+        do: function(args) { addLine('not implemented yet') }
     },
     go: {
         help: [
@@ -210,7 +229,7 @@ const cmd = {
             'format: go <path> <property>',
             'args: path <prop/prop/...>, property ~ files'
         ],
-        do: function(args) {}
+        do: function(args) { addLine('not implemented yet') }
     },
     more: {
         help: [
@@ -218,7 +237,7 @@ const cmd = {
             'format: more <path> <property>',
             'args: path <prop/prop/...>, property'
         ],
-        do: function(args) {}
+        do: function(args) { addLine('not implemented yet') }
     },
     searchable: {
         help: [
@@ -226,8 +245,7 @@ const cmd = {
             'format: searchable <path> <prop>',
             'args: path <prop/prop/...>, prop property'
         ],
-        do: function(args) {
-        }
+        do: function(args) { addLine('not implemented yet') }
     }
 }
 
@@ -246,27 +264,33 @@ Object.keys(cmd).forEach(key => {
     const button = document.createElement('button')
     button.id = key + '-btn'
     button.append(document.createTextNode(key))
-    ui.aside.elem.append(button)
+    ui.aside.ctt.append(button)
 })
 
-document.querySelectorAll('aside button').forEach(btn => 
+document.querySelectorAll('#aside-content button').forEach(btn => 
     btn.addEventListener('click', () => cmd.help.do([btn.innerHTML]))
 )
 
 /* ------------------------------------------------------------------- Input */
 
-ui.input.addEventListener('change', e => {
-    const value = e.target.value
-    ui.input.value = '$ '
-
-    const [sign, exec, ...ipt] = value.split(' ')
+const execute = value => {
+    const [exec, ...ipt] = value.split(' ')
     if (exec !== 'help' || (exec === 'help' && !ipt.length))
         addLine(value)
-
     if (cmd.hasOwnProperty(exec))
         cmd[exec].do(ipt)
     else
         addLine(getBashError(exec, 'command not found'))
+}
+
+ui.input.addEventListener('change', e => {
+    const value = e.target.value.slice(2)
+    ui.input.value = '$ '
+
+    if (value.includes('&&')) 
+        value.split('&&').forEach(val => execute(val))
+    else
+        execute(value)
 
     addBashPath()
 })
