@@ -40,10 +40,6 @@ const versions = {
     }
 }
 
-const messages = {
-    cnet: 'All C#/.Net projects are not likely to be completed.'
-}
-
 const projects = {
     'first-page': {
         source: 'ztm',
@@ -572,8 +568,13 @@ const questions = [
     }
 ]
 
+const messages = {
+    cnet: 'All C#/.Net projects are not likely to be completed.'
+}
+
+const dir = ['versions', 'projects', 'experience', 'education', 'questions']
+
 const portfolio = {
-    dir: ['versions', 'projects', 'experience', 'education', 'questions'],
     art: {
         title: 'Artworks',
         href: 'art/',

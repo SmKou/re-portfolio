@@ -18,6 +18,7 @@ v1 - Magazine (aesthetic, add content)
 - Edit and redesign smjoker.com -> slate
 v2 - Design Index (add content)
 v0 - Profile (interactions, add content)
+image hasher
 
 **v0: Profile**
 2015 - 2017
