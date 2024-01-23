@@ -105,6 +105,10 @@ h1 {
     pointer-events: all;
 }
 
+.pages-dropdown .content a.disabled {
+    pointer-events: none
+}
+
 @media screen and (width < 400px) {
     header { 
         height: 6rem;
