@@ -14,6 +14,7 @@ const aside = {
 }
 
 const getPath = () => `~/${path.length ? ui.path.join('/') : ''}`
+const getBashError = (error, cmd) => `bash: ${cmd}: ${error}`
 const getError = (error, term = '') => `error: ${term? term + ': ' : ''}${error}`
 
 const getNode = (path = ui.path.slice(), node = portfolio) => {
@@ -22,7 +23,7 @@ const getNode = (path = ui.path.slice(), node = portfolio) => {
         if (node.hasOwnProperty(shift))
             node = node[shift]
         else
-            return false
+            return { shift }
     return node
 }
 
@@ -46,11 +47,11 @@ const help = {
     count: [
         'do: count properties',
         'format: count <path> <terms>',
-        'args: path <prop/prop/...>, (search) terms <term,term=value,...> (spaces => hyphens)'
+        'args: path <prop/prop/...>, (search) terms <term, term=value, ...> (spaces => hyphens)'
     ],
     descript: [
         'do: view statement or description',
-        'format: descript <path> <[now]>',
+        'format: descript <path> <[now]|[status]>',
         'args: path <prop/prop/...>, now = description of status'
     ],
     find: [
@@ -96,10 +97,110 @@ const help = {
 }
 
 const cmd = {
-    cd: function(args) {},
+    cd: function(args) {
+        if (!args.length) return;
+
+        let path = ui.path.slice()
+        let subs = args[0].split('/')
+        while (subs.length && subs[0] === '..')
+            if (path.length) {
+                path.shift()
+                subs.shift()
+            }
+            else{
+                ui.path = []
+                return;
+            }
+
+        const node = getNode(path.concat(subs))
+        if (node.shift)
+            addLine(getBashError('No such file or directory', `cd: ${node.shift}`))
+        else
+            ui.path = path.concat(subs)
+    },
     clear: function() { view.innerHTML = '' },
-    count: function(args) {},
-    descript: function(args) {},
+    count: function(args) {
+        let [path, ...terms] = args
+        terms = terms.length ? terms.split(',').map(t => {
+            const term = t.trim()
+            if (term.includes('='))
+                return term.split('=')
+            else
+                return term
+        })
+        : []
+
+        let node = getNode(ui.path.slice().concat(path.split('/')))
+        if (node.shift) {
+            terms.unshift(path)
+            path = ui.path.slice()
+            node = getNode()
+        } else
+            path = path.split('/')
+
+        if (!dir.includes(path[path.length - 1]) || typeof node != object) {
+            addLine(getError('Cannot be counted', path[path.length - 1]))
+            return false
+        }
+        
+        const counts = new Array(terms.length)
+        counts.fill(0)
+        const props = Object.keys(node)
+        for (const prop of props) {
+            const subprops = Object.keys(node[prop])
+            for (let i = 0; i < terms.length; ++i)
+                if ((
+                    typeof terms[i] === 'string' 
+                    && subprops.includes(terms[i].toLowerCase())
+                ) || (
+                    subprops.includes(terms[i][0].toLowerCase()) 
+                    && node[prop][terms[i][0]].toLowerCase().includes(terms[i][1])
+                ))
+                    counts[i] += 1
+        }
+
+        const title = path[path.length - 1]
+        for (let i = 0; i < terms.length; ++i) {
+            if (typeof terms[i] === 'string')
+                addLine(`${counts[i]} containing ${terms[i]} in ${title}`)
+            else
+                addLine(`${counts[i]} containing ${terms[i][0]}=${terms[i][1]} in ${title}`)
+        }        
+    },
+    descript: function(args) {
+        let [path, now] = args
+        let node
+
+        if (path === undefined) {
+            path = ui.path.slice()
+            node = getNode()
+            now = 'description'
+        } 
+        else {
+            node = getNode(ui.path.slice().concat(path.split('/')))
+            if (node.shift)
+                if (path === 'status' || path === 'now' || path === 'description') {
+                    node = getNode()
+                    now = path
+                    path = ui.path.slice()
+                }
+                else {
+                    addLine(getBashError('No such file or directory', node.shift))
+                    return false
+                }
+        }
+
+        if (node.hasOwnProperty(now)) {
+            const line = typeof node[now] === 'string' ? node[now]
+                : node[now][0] + (node[now].length > 1 ? '...' : '')
+            addLine(`${now}: ${line}`)
+        } else if (['description', 'status', 'now'].includes(path[path.length - 1])) {
+            const line = typeof node === 'string' ? node
+                : node[0] + (node.length > 1 ? '...' : '')
+            addLine(`${path[path.length - 1]}: ${line}`)
+        } else 
+            addLine(getError('Cannot view statement'))
+    },
     find: function(args) {},
     go: function(args) {},
     help: function(args) {},
@@ -140,14 +241,12 @@ document.querySelectorAll('#aside-content button').forEach(btn => btn.addEventLi
 
 /* ------------------------------------------- Input */
 
-const getBashError = (cmd, error) => `bash: ${cmd}: ${error}`
-
 const execute = value => {
     const [exec, ...ipt] = value.split(' ')
     if (cmd.hasOwnProperty(exec))
         cmd[exec](ipt)
     else
-        addLine(getBashError(exec, 'command not found'))
+        addLine(getBashError('command not found', exec))
 }
 
 input.addEventListener('change', e => {
