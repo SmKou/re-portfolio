@@ -7,7 +7,8 @@
     padding: 0.3rem 0.6rem 0 0.6rem;
     border: 0.2rem solid var(--uni-black);
     border-radius: 50%;
-    color: var(--uni-off-white);
+    color: var(--uni-off-black);
+    background: var(--uni-off-white);
     font-family: 'League Spartan';
     font-weight: bold;
     text-align: center;
@@ -18,10 +19,9 @@
     z-index: 10;
 }
 
-#back-to-top:hover {
-    color: var(--uni-off-black);
-    background: var(--uni-off-white);
-}
+#back-to-top:hover { color: red }
+
+/* ------------------------------------------------- HEADER */
 
 header {
     position: relative;
@@ -36,8 +36,8 @@ header {
 
 h1 {
     position: absolute;
-    top: 1.2rem;
     left: 0.75rem;
+    bottom: -1.8rem;
     margin: 0;
     padding: 0.8rem 1.2rem 0 1.2rem;
     border: 0.3rem solid var(--uni-black);
@@ -46,7 +46,7 @@ h1 {
     font-family: 'League Spartan';
     font-size: 2.4rem;
     line-height: 1;
-    z-index: 10;
+    z-index: 2;
 }
 
 .pages-dropdown {
@@ -56,13 +56,76 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    overflow: hidden;
+    z-index: 5;
 }
 
 #pages-btn {
     width: 100%;
     height: 100%;
-    
+    padding: 0.8rem 1.2rem;
+    border: 0.1rem solid var(--uni-off-white);
+    border-radius: 0.8rem 0.8rem 0 0;
+    outline: none;
+    color: var(--uni-off-white);
+    background: transparent;
+    font-family: 'League Spartan';
+    font-size: 1.4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pages-dropdown .content {
+    width: 100%;
+    height: 0;
+    background: var(--uni-off-black);
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    pointer-events: none;
+    transition: height 0.3s, opacity 0.1s;
+}
+
+.pages-dropdown .content a {
+    width: 100%;
+    padding: 0.8rem 0 0.8rem 1.2rem;
+    border: 0.1rem solid var(--uni-off-white);
+    color: var(--uni-mid);
+    font-family: 'League Spartan';
+}
+
+.pages-dropdown .content a:hover {
+    color: var(--uni-black);
+    background: var(--uni-off-white);
+}
+
+.pages-dropdown.expand .content {
+    height: auto;
+    opacity: 1;
+    pointer-events: all;
+}
+
+@media screen and (width < 400px) {
+    header { 
+        height: 6rem;
+        padding: 0;
+    }
+
+    .pages-dropdown {
+        width: 92%;
+        margin: 0 auto;
+    }
+}
+
+/* --------------------------------------------------- MAIN */
+
+main {
+    background: var(--uni-off-black)
+}
+
+section {
+    max-width: 60rem;
+    margin: 0 auto;
 }
 
 .person {
