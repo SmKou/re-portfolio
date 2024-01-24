@@ -86,7 +86,7 @@ https://learn.microsoft.com/en-us/dotnet/framework/deployment/
 1. Upload image of artwork to dev/Art
 2. Convert HEIC to PNG (if necessary)
 3. Optimizilla: add to app/art/assets
-4. Hash image
+4. Convert to mosaic
 5. Add to app/art
 
 ## Complete Setup
@@ -104,8 +104,8 @@ Note: Do not merge from main or checkout the gh-pages branch
 ## Known Bugs
 
 **Homepage**
-- commands: count, go, more, search, 
-- command: stat on type='qna'
+- test commands: cd, count, descript
+- commands: find, go, help, ls, more, pwd, stat
 - add functionality to view versions page
 
 **versions**

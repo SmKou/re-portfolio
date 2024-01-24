@@ -202,13 +202,133 @@ const cmd = {
             addLine(getError('Cannot view statement'))
     },
     find: function(args) {},
-    go: function(args) {},
-    help: function(args) {},
-    ls: function(args) {},
+    go: function(args) {
+        const createLink = (p, np) => {
+            const a = document.createElement('a')
+            a.href = np
+            if (np.includes('http'))
+                a.target = "_blank"
+            a.append(document.createTextNode(p === 'href' ? path[path.length - 1] : p))
+            return a
+        }
+
+        let path, property, node, props
+        if (!args.length) {
+            path = ui.path.slice()
+            node = getNode()
+            props = Object.keys(node)
+
+            property = []
+            for (const prop of props)
+                if (node[prop].includes('/') || (Array.isArray(node[prop]) && node[prop][0].includes('/')))
+                    property.push(prop)
+
+            if (property.length > 1) {
+                const p = document.createElement('p')
+                for (const prop of property) {
+                    if (Array.isArray(node[prop]))
+                        for (let i = 0; i < node[prop].length; ++i)
+                            p.append(createLink(i + 1, node[prop][i]))
+                    else p.append(createLink(prop, node[prop]))
+                    p.append(document.createTextNode(' '))
+                }
+                view.append(p)
+                return true
+            }
+
+            property = property[0]
+        }
+        else {
+            [path, property] = args
+            node = getNode(ui.path.slice().concat(path.split('/')))
+            if (node.shift) {
+                node = getNode()
+                if (!node.hasOwnProperty(path)) {
+                    addLine(getError(`Cannot identify ${path}`))
+                    return false
+                } else property = path
+            } 
+            else if (typeof node !== object) {
+                addLine(getError('Cannot recognize links from values'))
+                return false
+            }
+            else if (!node.hasOwnProperty(property)) {
+                addLine(getError('No such property', property))
+                return false
+            }
+        }
+
+        if (node[property].includes('http'))
+            window.open(node[property], '_blank')
+        else if (Array.isArray(node[property])) {
+            const p = document.createElement('p')
+            for (let i = 0; i < node[property].length; ++i) {
+                p.append(createLink(i + 1, node[property][i]))
+                p.append(document.createTextNode(' '))
+            }
+            view.append(p)
+        }
+        else
+            window.open(ui.host + '/' + node[property], '_self')
+    },
+    help: function(args) {
+        const props = Object.keys(help)
+        if (!args.length) {
+            addLine(`Available commands: ${props.join(', ')}`)
+            return true
+        }
+
+        if (!props.includes(args[0])) {
+            addLine(getError('No such command', args[0]))
+            return false
+        }
+
+        const lines = help[args[0]]
+        lines.forEach(line => addLine(line))
+    },
+    ls: function(args) {
+        const node = args.length ? 
+            getNode(ui.path.slice().concat(args[0].split('/')))
+            : getNode()
+        
+        if (node.shift) {
+            addLine(getBashError('No such file or directory', `ls: ${node.shift}`))
+            return false
+        }
+
+        if (typeof node !== object || Array.isArray(node)) {
+            addLine(getError('Cannot list a value'))
+            return false
+        }
+
+        const props = Object.keys(node)
+        const p = document.createElement('p')
+        const fragments = []
+        for (const prop of props) {
+            if (dir.includes(prop))
+                fragments.push(document.createTextNode(prop + '/'))
+            else if (node[prop].href) {
+                const a = document.createElement(a)
+                a.href = node[prop].href
+                if (node[prop].href.includes('http'))
+                    a.target = "_blank"
+                a.append(document.createTextNode(prop))
+                fragments.push(a)
+            }
+            else
+                fragments.push(document.createTextNode(prop))
+            fragments.push(document.createTextNode(' '))
+        }
+        for (const fragment of fragments)
+            p.append(fragment)
+        view.append(p)
+    },
     more: function(args) {},
     pwd: function() { addLine(getPath()) },
     searchable: function(args) {},
-    stat: function(args) {}
+    stat: function(args) {
+
+    }
 }
 
 /* ------------------------------------------- Initial ui */
