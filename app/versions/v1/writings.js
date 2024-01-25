@@ -4159,9 +4159,9 @@ const writings = {
 
 const journal = {
     main: 'my-reconstruction',
-    posts: [],
     series: [],
-    prompts: []
+    prompts: [],
+    posts: []
 }
 
 const works = Object.keys(writings)
@@ -4195,10 +4195,6 @@ const mainStory = () => {
     mainfig.style.height = mainfig.clientWidth + 'px'
 }
 mainStory()
-
-const setupNav = () => {
-
-}
 
 window.onresize = () => {
     const mainfig = document.querySelector('.main-story figure')

@@ -7,7 +7,7 @@ body {
 header {
     position: relative;
     height: 4.8rem;
-    margin-bottom: 4.8rem;
+    margin-bottom: 0.9rem;
     border-bottom: 0.3rem solid var(--uni-black);
     display: flex;
     justify-content: center;
@@ -84,11 +84,11 @@ h2, h3, p { margin-bottom: 0 }
     right: 1.2rem;
     width: 3.6rem;
     height: 3.6rem;
+    padding-top: 0.4rem;
     border-radius: 50%;
     color: var(--uni-white);
     background: var(--uni-mid);
     text-transform: uppercase;
-    line-height: 1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -162,8 +162,26 @@ nav {
     max-width: 24rem;
     min-height: calc(100vh - 4.8rem);
     opacity: 1;
-    float: right;
+    float: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     pointer-events: all;
+}
+
+nav button.read-more {
+    width: 100%;
+    padding: 0.8rem 0 0.8rem 0.8rem;
+    color: var(--uni-white);
+    background: var(--uni-light);
+    text-align: left;
+}
+
+nav button.read-more.nav-head { background: #7C3238 }
+
+nav button.read-more:hover { 
+    color: var(--uni-white);
+    background: #B7245C
 }
 
 nav.collapsed {
@@ -174,6 +192,7 @@ nav.collapsed {
 }
 
 article {
+    padding-top: 4.8rem;
     display: flex;
     flex-direction: column;
     align-items: center;
