@@ -4097,7 +4097,13 @@ const sort = (set, criteria) => {
     }
 }
 
-const display = set => {}
+const display = set => {
+    const e = document.querySelector(`.container.${set}`)
+    e.innerHTML = ''
+    journal[set].forEach(title => {
+
+    })
+}
 
 const mainStory = () => {
     const dates = document.querySelector('.main-story .dates')
@@ -4110,31 +4116,13 @@ const mainStory = () => {
     const pproof = document.createElement('p')
     pproof.append(document.createTextNode(`Proofread ${proofread.map(date => new Date(date).toLocaleDateString()).join(', ')}`))
     dates.append(pproof)
+
+    const mainfig = document.querySelector('.main-story figure')
+    mainfig.style.height = mainfig.clientWidth + 'px'
 }
 mainStory()
 
-/* -------------------------------------------- USER INTERFACE */
-
-const aside = {
-    toggle: document.getElementById('toggle-aside'),
-    state: false,
-    e: document.querySelector('aside')
+window.onresize = () => {
+    const mainfig = document.querySelector('.main-story figure')
+    mainfig.style.height = mainfig.clientWidth + 'px'
 }
-
-const main = {
-    main_story: document.querySelector('.main-story'),
-    prompts: document.querySelector('.prompts'),
-    posts: document.querySelector('.posts')
-}
-
-
-const sort_btns = document.querySelectorAll('.sort-options button')
-sort_btns.forEach(btn => btn.addEventListener('click', e => {
-    const [criteria, set] = e.classList
-    const activeBtn = document.querySelector(`button.${set}.active`)
-    if (activeBtn)
-        activeBtn.classList.remove('active')
-    sort(journal[set], criteria)
-    display(set)
-    e.classList.add('active')
-}))
