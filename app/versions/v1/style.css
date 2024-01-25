@@ -179,6 +179,22 @@ section .header h2 {
 .sort-options button.active,
 .sort-options button:hover { background: var(--uni-mid) }
 
+.container.series,
+.container.prompts {
+    width: 100%;
+    display: grid;
+    gap: 2rem;
+}
+
+.container.series { grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr)) }
+.container.prompts { grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)) }
+
+.container.posts {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
 button.read-more {
     border: none;
     outline: none;
