@@ -162,8 +162,9 @@ const sort = (set, criteria) => {
         return false
     }
 
+
     if (criteria === 'title')
-        set.sort((a, b) => writings[a].title - writings[b].title)
+        set.sort((a, b) => writings[a].title.localeCompare(writings[b].title))
     
     if (criteria === 'newest')
         set.sort((a, b) => {
@@ -202,13 +203,13 @@ nav.toggle.addEventListener('click', () => {
 
 const sort_btns = document.querySelectorAll('.sort-options button')
 sort_btns.forEach(btn => btn.addEventListener('click', e => {
-    const [criteria, set] = e.classList
+    const [criteria, set] = e.target.classList
     const activeBtn = document.querySelector(`button.${set}.active`)
     if (activeBtn)
         activeBtn.classList.remove('active')
     sort(journal[set], criteria)
     display(set)
-    e.classList.add('active')
+    e.target.classList.add('active')
 }))
 
 const read_btns = document.querySelectorAll('button.read-more')
