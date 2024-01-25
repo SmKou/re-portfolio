@@ -1,8 +1,14 @@
+body { 
+    background: #f5f2e8;
+    font-family: 'League Spartan';
+    font-size: 1.6rem;
+}
+
 header {
     position: relative;
     height: 4.8rem;
+    margin-bottom: 4.8rem;
     border-bottom: 0.3rem solid var(--uni-black);
-    /* background: var(--uni-light); */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,13 +18,19 @@ header::before,
 header::after {
     position: absolute;
     width: 100%;
-    height: 0.1rem;
     background: var(--uni-black);
     content: '';
 }
 
-header::before { bottom: 0.2rem }
-header::after { bottom: -0.9rem }
+header::before { 
+    bottom: 0.2rem;
+    height: 0.1rem;
+}
+
+header::after { 
+    bottom: -1.2rem;
+    height: 0.3rem;
+}
 
 #toggle-aside {
     position: absolute;
@@ -60,11 +72,118 @@ header::after { bottom: -0.9rem }
 
 #toggle-aside.expanded .box::after { transform: rotate(-45deg) }
 
-header a { color: var(--uni-black) }
-header a:hover { color: var(--uni-white) }
+header a { color: var(--uni-mid) }
+header a:hover { color: var(--uni-black) }
 
 h1 { font-family: 'Bebas Neue' }
 
-aside.collapsed {
-    transform: translateX(-100%)
+/* ------------------------------------------------ MAIN */
+
+
+
+aside {
+    width: 100%;
+    max-width: 24rem;
+    min-height: calc(100vh - 4.8rem);
+    opacity: 1;
+    float: right;
+    pointer-events: all;
 }
+
+aside.collapsed {
+    width: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: width 0.3s, opacity 0.1s;
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-story .container {
+    width: 92%;
+    margin: 0 auto;
+    text-align: justify;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(31rem, 1fr))
+}
+
+.main-story .container .left,
+.main-story .container .right {
+    padding: 2rem
+}
+
+.main-story figure {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.main-story .img {
+    width: 100%;
+    height: 100%;
+    background: url(assets/001-mountains-640-bw.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden;
+}
+
+.main-story .img:hover {
+    background: url(assets/001-mountains-640-clr.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.main-story figcaption {
+    padding: 1.2rem;
+    border: 0.1rem solid var(--uni-black);
+    font-size: 1.4rem;
+}
+
+.main-story figcaption a { 
+    color: var(--uni-mid);
+    text-decoration: underline;
+}
+.main-story figcaption a:hover { 
+    color: var(--uni-black)
+}
+
+section {
+    width: 92%;
+    max-width: 84rem;
+    margin: 2.4rem auto;
+    border-top: 0.1rem solid var(--uni-black);
+}
+
+section.main-story { border-top: none }
+
+section .header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+section .header h2 {
+    display: inline-block;
+}
+
+.sort-options button {
+    padding: 0.4rem 0.6rem;
+    border: none;
+    border-radius: 0.6rem;
+    outline: none;
+    color: var(--uni-white);
+    background: var(--uni-light);
+    font-family: 'Bebas Neue';
+    font-size: 1.6rem;
+    letter-spacing: 0.1rem;
+}
+
+.sort-options button.active,
+.sort-options button:hover { background: var(--uni-mid) }
