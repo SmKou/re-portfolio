@@ -4175,7 +4175,6 @@ for (const work of works) {
     else 
         journal.posts.push(work)
 }
-console.log(journal.series)
 
 const first = arr => arr[0]
 const last = arr => arr[arr.length - 1]
