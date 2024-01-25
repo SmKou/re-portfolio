@@ -1035,6 +1035,8 @@ const writings = {
     'an-empty-room': {
         title: "An Empty Room",
         date: ['6-20-15', '7-13-17', '1-29-23'],
+        img: '',
+        credit: '',
         text: `Warm light streamed through a slit in the outer doors, stirring Angela from her sleep. She jerks when it flares and birds start swooping and whistling outside. Rising from the sheets, she fumbles a little, trying to navigate the hard floor and her meager beddings. With her hair in frazzled disarray, squinting, tan bony fingers frantically searching her proximity, given a soft grunt, she locates her glasses where once she had lain them. She slips on her glasses, then surveys the room.
 
         The room is far from impressive. Plastic covers the paneless outer doors leading to a run-down washroom, walls are cracked, the concrete partially painted and mostly peeling, cockroaches and ants create morning traffic on the floor and in dark corners, and there is absolutely no furniture.
@@ -1100,6 +1102,8 @@ const writings = {
     'the-eyes': {
         title: "The Eyes",
         date: ['7-1-15', '8-29-17', '1-23-23'],
+        img: '',
+        credit: '',
         text: `It was something about her eyes and face that compelled me to take a picture. She is not beautiful, not by my usual definition, but then, my usual definition is subject to bias favoring nature and human expression. Perhaps then, she is beautiful and I cannot fathom that I have actually found a subject I find enchanting so-to-speak.
 
         The way the light caught in her eyes. A white square appeared in the corner of murky brown irises and glowed. With her features that seem to slope like mountains and slant like the strokes of Chinese characters, she gained a surreal air… The woman's face was long, drawn down into the jaw that was heavy and reminiscent of a horse. Raven black hair fell down the sides of her face and shoulders, swishing as the bus jerked, and as she watched the outside, light flared in her murky brown irises. At first, she seemed to be squinting, her eyes with their long downy lashes appearing near slits, but as she raised her chin, the squares of light appeared, illuminating the brown irises.`
@@ -1107,6 +1111,8 @@ const writings = {
     'gulping-laugh': {
         title: "The Gulping Laugh",
         date: ['7-2-15', '6-29-17', '1-24-23'],
+        img: '',
+        credit: '',
         text: `She was excitable as she rattled off in another language, speaking to a man of gray hair and edged features like the lines of a bird's beak, who sat close, listening. As animated as she was, she seemed to laugh with the wholehearted guts of flirtation. The bridge of her nose and the slant of her forehead are both flat as if she has worn a Spartan helmet pounded against her skull. From the side, her constant ramblings of the forward, fumbling language of Spanish, or so it sounds from her lips, the strain of attraction, and her odd features capture my attention in such a way that I am more intent on eavesdropping when they utter foreign phrases than if they conversed in my native tongue.
 
         How odd. The very sound of her laughter and gasps are so much that of strained flirtation, I am compelled to wonder how real she is, both in her attraction and the fact that she exists less than a few meters away...`
@@ -1114,6 +1120,8 @@ const writings = {
     'interesting-people-on-the-bus': {
         title: "Interesting People on the Bus",
         date: ['9-14-15', '8-29-17', '1-26-23'],
+        img: '',
+        credit: '',
         text: `The woman's dress is black with tacky gold embroidery, but her fingernails are an inch long, almost seeming as if they could be longer. She wears rings of gold curling around her fingers in interlaced hearts, a coiled dragon, and stacked triangles. The gold does not glimmer, yet it is bright and I wonder if it's dull and polished because the rings are not old-looking…
 
         I was just thinking I need a men's bag, then I looked up and saw a lithe man in a comfortable pair of blue jeans, a gray-and-blue streaked shirt, and a beige backpack featuring flowers, a girl, and sheep in thin pastel lines. The straps, back, and handles are a light brown, a very warm, almost golden, hue of the typical brown sold in stores. If that was his bag, I guess I needed simply a backpack, or a laptop case with a strap.`
@@ -1121,6 +1129,8 @@ const writings = {
     'shield': {
         title: "Shield",
         date: ['11-1-15', '1-26-23'],
+        img: '',
+        credit: '',
         text: `On the metro bout 10 min ago, if not 15, I watched a young man and woman climb on, and at once the woman was held in the man's arms as he bore the incoming crowd at his back. It was admirable and reminded me of some movie, though it tends to be common here, though usually in some corner. These two stood right at the door.
 
         I found it interesting and with the tightness of surrounding bodies, I was made to look at this guy, and for the most part, I did try to look away, but there's only so much I can do if wanting to see something clearly requires craning my neck, so I looked at him.
@@ -1134,6 +1144,8 @@ const writings = {
     'custom': {
         title: "The Custom",
         date: ['11-14-15', '1-26-23'],
+        img: '',
+        credit: '',
         text: `The tiny stones were practically imperceptible on the fine-banded ring she wore. I do not know if the stones were turquoise, purple, or black, yet the woman presented her hand beneath the camera of her mobile phone, resting it lightly in her boyfriend's as if brandishing an engagement ring. Perhaps it was a promise ring, though it rested on her middle finger. Over her boyfriend's hand which came up in the picture as if to grab a giant pearl in his grasp, it looked like a monster stretching forth its red-skinned claw to seize her. His hand was so red, that the redness could either be mistaken for overheating or a blush reaching from head to toe. What a strange thing to see…
 
         Pleasantries exist for people to say something in an otherwise awkward situation. Yesterday, I saw a woman lounging in a red velvet chair and a short time later, I found a second woman had sat down and proceeded to nap as well. It occurred to me that they could be strangers. What if it was normal to nap in public and wake up with a stranger opposite of you as if they are your company, or have become your company upon the two of you waking?
@@ -1148,6 +1160,8 @@ const writings = {
     'crying-girl': {
         title: "Crying Girl",
         date: ['2-15-16', '8-29-17', '1-29-23'],
+        img: '',
+        credit: '',
         text: `A little girl with a very long plump face is crying here on the subway train. Her cries sound like gritty, heaved groans. When first everyone barged into the car and scrambled to secure a seat, this girl and her mother soon followed, easily walking in and stepping up to the bench because most everyone will give up a seat to a child here in China. It has been 5 minutes and the child continues to wail. It's not that hard to ignore, but what intrigued me was when she first started crying as if she were devastated greatly by something. She was directing her cries at her mother, making them more poignant and disruptive. Her mother was unfazed. She watched her little girl cry and after three heaving sobs that garnered no results, the girl wiped her own tears. Turning away, she persisted in crying, but the sound was not as gritting on the ear. She was crying to herself.
 
         Another interesting thing happened less than a few minutes ago. As the girl consented to sitting on her mom's lap and started to calm down, the doors soon opened to the next station. An old man of crinkled appearance, snaggle-toothed, worn, sun-burnt and freckled and moled, he stopped at me first. I thought he waited on me to give up my seat, but then he looked away and I saw his gaze was directed more towards the side of the bench with the girl and mother. He approached them and offered the girl a folded, previously rolled newspaper. She took it and calmed down from then on.
@@ -1157,6 +1171,8 @@ const writings = {
     'funny-situations': {
         title: "Funny Situations",
         date: ['3-10-16', '8-29-17', '1-29-23'],
+        img: '',
+        credit: '',
         text: `Two things today. I work in Taihe, about an hour from the city center by metro and an additional 20 min by motorbike. While I could go by bus from that stop, that takes longer and riding the motorbike is my guilty little pleasure. So much so that I have a small handful of drivers who recognize me on sight, such that I need only walk
         up to them and hop on the bike, instructions not required. This is only true in the morning though. For the trip back, I have always ridden with whichever driver is available, yet for the first time, today, as I climbed onto the back of a
         motorbike, another came up to me. The driver looked at me and seemed familiar with me. I could not recognize him, but he whispered to me. I felt like a woman caught by her boyfriend going out with another man. Awkward. And since that was so not the case, so terribly weird, then funny.
@@ -1172,6 +1188,8 @@ const writings = {
     'pink-boy': {
         title: "Pink Boy",
         date: ['7-25-16', '6-29-17', '1-29-23'],
+        img: '',
+        credit: '',
         text: `As I sat on the subway, waiting for my stop to arrive, I looked down and saw a dainty pair of feet. The skin was dark and frail with age, an aspect I hadn't noticed at first. Instead what I saw was the floral strap reminiscent of pink sakura blossoms and the pristine nails, the cream straps encircling a dainty ankle, and how small the foot was, poised on the curve of the tan wedge supporting it. However, as I followed the lines of the foot into the leg and noticed the protruding girth beneath a white and red-floral dress, I recognized a stereotypical dichotomy between the woman's body and the point of her feet. Later, once I was standing, I noted her flat, duck lips and her downcast eyes, the round face, and her brittle black hair combed and curled about her head. How strangely she matched.
 
         But that is a later moment. After noticing her feet and unusual structure, the doors of the train opened and in flooded more passengers. Among them, I glimpsed a cotton dress of wide horizontal stripes in pink, orange, and white. In that first glimpse, I saw the darkened skin of a young teen exposed in the shoulder and curve of a neck, and recognized the thin, scrawny body of one no older than twelve or thirteen. The age escapes me, once I noticed the height and lack of chest in the subject. It seemed like a boy, then I considered that it might be a girl. I strove to catch a glimpse of this new subject's face. In my pursuit, I met the warm black eyes of their mother.
@@ -1185,6 +1203,8 @@ const writings = {
     'flat-face': {
         title: "Flat Face",
         date: ['9-18-16', '8-29-17', '1-30-23'],
+        img: '',
+        credit: '',
         text: `I know it was awfully mean of me.
 
         I was standing on the edge of the crosswalk, waiting for the light to turn, I noticed a pair of women in white and pink. From their shoulders to the hem of the dress and the skirt, their clothes were infested with holes as if someone had embroidered a screen and then removed the screen. All white and all pink.
@@ -1196,6 +1216,8 @@ const writings = {
     'man-of-the-glade': {
         title: "Man of the Glade",
         date: ['10-13-16', '2-5-23'],
+        img: '',
+        credit: '',
         text: `I was looking for a man, but for some reason, it was the sun, the moon, the snow, the rain, something else every time. My most recent distraction led me to a glade, where the tears of the willows have turned white with icy flakes and sprinkled droplets of crystal.
 
         My footsteps fade behind as I wander, aware I've chased another apparition to nowhere. I can't understand it, seriously, how I see a man--I'm sure it's only one, though his colors may change. He always has the same broad shoulders, a long butterfly back, his head long like a living Adonis with curled hair and flat cheeks, a matted forehead, and thick straight brows. His eyes always appear clouded, yet his whole countenance fixates on me. No matter how or where I move, his eyes will follow, so I know how he watches.
@@ -1210,6 +1232,8 @@ const writings = {
     'father-and-son': {
         title: "Father and Son",
         date: ['1-5-17', '2-12-23'],
+        img: '',
+        credit: '',
         text: `A black-haired father with cliff cheeks and a dagger chin, a handlebar moustache over his soft, long lips that spread and glisten as he smiles, his soft eyes, dark blue eyes so clear and calm. With his long hair and high collars, he stood in a pristine white suit, all lines and folds neat, intended, and resembled a gentleman of innocence lost. If only he wore red would one recognize him for what he does, what he would do. Instead he wears white like the innocence his prey has forgotten as he stalks closer, ever closer.
 
         "I know you like my father."
@@ -1219,6 +1243,8 @@ const writings = {
     'colors-of-once': {
         title: "The Colors of Once",
         date: ['5-25-17', '2-12-23'],
+        img: '',
+        credit: '',
         text: `People who die and come back say there's a light or something like god, angels, Heaven and Hell. I know Heaven, that's an actual place, but it's no place for the dead. Technically, I'm dead. Then again, ghosts can die twice. Should have tried that on my resume.
 
         Anyways, I don't know anything about any god, but there was a light, I think. My body grew cold, wasn't sure if I was dead or alive until I stood over my body. That was obvious. Then I left. Looked like a bunch of bad guys were collecting my body out of the pit. Inconspicuous and familiar-looking the lot. They didn't matter though.
@@ -1310,6 +1336,8 @@ const writings = {
     'prince-of-the-sword': {
         title: "Prince of the Sword",
         date: ['5-25-17', '8-28-17', '5-9-20', '1-30-23'],
+        img: '',
+        credit: '',
         text: `Today, I was thinking of a love story based strongly on King Arthur. To be honest though, I am not too familiar with the folklore and all its variations. Instead, what I saw was the dry, grassy hills of England as often depicted in such movies and there was the legend of Excalibur, the sword in the stone that not even the strongest man could extract, but then a young, simple-looking man appeared after years of failed attempts and resentful, crass denouncements of the sword's merit...
         
         This simple young man approached the sword and its stone with no true intention of freeing the legend. At the legend's implications, he fell to his knees. He wished for peace and unity among the peoples who labored and grieved and pined over the most minuscule of scraps. He prayed to the heavens, to the sword in the stone that it was so strong and honorable as to provide such a state of peace. Out of plain anguish, his misery clinging to the last of hope, he reached for the sword's thorn-lain hilt and even as the thorns pierced his hands, he grasped the legend's hilt and pulled. Without his notice, as he poured all his hopes and prayers into his one and only effort, the spirit of the sword, a small and fragile-looking woman, appeared. The sword slid smoothly out of the stone. The spirit watched as the young man stumbled back, never worried that her sharp edge would harm him. Dumbfounded, the man marveled at the sword, only to notice her and marveled at her soft beauty and shadow-like smile.
@@ -1393,6 +1421,8 @@ const writings = {
     'mansion-of-the-woods': {
         title: "Mansion in the Woods",
         date: ['5-28-17', '1-26-23'],
+        img: '',
+        credit: '',
         text: `The night was predetermined, its events and startling revelations decided like a strike of lightning, or rather as the sky split in half, the blues beautiful and rich, the darkness daunting and hanging over the black woods, it seemed my choice was made. Standing on the patio, I gazed up at the skies. Tendrils of the gray clouds invaded the blue, their white underbellies glowing as if behind them hid the moon, soon curling and rearing up, forming the dragons of lore. They spread over me, infecting the serene blue heavens as the sun set, and in their wake, one large gaping dragon remained, an eye piercing through his mist and in it, a single glowing pupil. I had no idea if he was blessing me or cursing me, but he was staring at me with that one good eye. As he disappeared past the roof, the wind changed and blew towards the black woods. How stupid you might think me. But here is what you don't know about me. Darkness has never been my enemy.
 
         With the wind guiding me, I crossed the dirt lane behind the houses and ran into the dark woods, the towering pines and shivering oaks quick to embrace me. In my wake, my house and the friendly neighborhood were no more. As I wandered on, I marveled at the shadows within shadows, caring little for the native residents and their chattering, hooting, or scampering.
@@ -1492,6 +1522,8 @@ const writings = {
     'monotony': {
         title: "Monotony",
         date: ['7-2-16', '5-29-17', '2-5-23'],
+        img: '',
+        credit: '',
         text: `Recently, I have been edging away from realism, and for some reason, I have been, in a manner of speaking, trapped by it. While I have my current project, today I was thinking, only on the bus home though. In my head was black and white. Then I saw a city on a gray scale.
 
         The color scheme of the city was both a choice and a public expectation. People stayed in their lines and queues, moving at the same deliberate and measured pace that all others did. If there existed any color, it was hidden or foreign. In this city, a thin man strode through the crowd with his eyes down. He dressed in the same gray-scale as everyone else, but his silver hair was styled up and ruffled. It was not normal.
@@ -1895,6 +1927,8 @@ const writings = {
     'who-are-you': {
         title: "Who are You",
         date: ['1-2-16', '5-29-17', '2-5-23'],
+        img: '',
+        credit: '',
         text: `I get caught in daydreams, rather happily too, and yesterday I imagined arriving at a party for me, no one knowing that it happened to be my twenty-fourth birthday. I stole a teddy bear from some back room after having jumped off the top of the grand staircase and landing on one of the tables. Though I returned to the top of the stairs with the teddy bear, since a woman was directing me back down, I hopped onto the rail and slid down to the end, but stayed seated there, playing with the plain-looking stuffed animal.
 
         Suddenly, a woman appeared, a very normal, plain, black woman. She undressed, and a bed materialized to my left with a sleazy, broad-chested black man goading her to come over and ride his dong. I watched her climb onto the bed and asked her if she was a prostitute. Then it faded, and I saw her again in an alley. The timeline in my head showed it was hours earlier, and she was out with her son, strolling down some alley. That didn't seem like a good idea. However, she could see me and she was very wary of my presence, and I know I had a devilish grin on my face as I pestered her with the question "Who are you" and continuously reminded her that she was not part of my reality as I was not part of hers, only she could see me and only I could see her.
@@ -1936,6 +1970,8 @@ const writings = {
     'the-maid': {
         title: "The Maid",
         date: ['6-1-17', '1-26-23'],
+        img: '',
+        credit: '',
         text: `You could say she was sexy, too sexy for anyone. You could say she was tireless because she put them to sleep after a lot of sex. You could even say she was sick, evil, inhumane. But I've never seen myself as anything more than troubled. This is my problem. I fuck and I fuck, but I'll never get off until I kill them. It depends what I think of them. The family. I fuck the father, then I fuck the wife. If there's a dog or horse, I'll fuck it too. And children. They're so sweet, so confused. One boy liked me so much. He screamed when he saw me, curled up and closed his eyes, but he liked me so much that with his eyes closed as I cooed at him, he threw reality away and clung to me. I stroked his hair and held him to me, smelled the sun, the dirt and grass, and a powdered boy, and shaking, I hugged him, rubbing his back as I thought of his favorite tree, where he hid the toy bird I bought him, along with the key chain from Disney World that his cousin gave him and the tattered blue baseball cap he outgrew a year ago. Such a sweet boy. I would cut off each limb, each section by the joint, and rest him in the tree. That's what I thought, and that's what I did. I'd never touch a child. I didn't have to.
 
         There was one man. He still lived with his parents and he was so boyish, so spineless. I couldn't stand keeping them alive, the sex always bored me, but this man was prone to tantrums and hysterics. He liked me, no, loved me because I was nice to him. I spoke softly, gently, and I sang for him. Oh, he loved me so much that if I frowned, he'd go into a fit. If I wanted something that would require his parents' help to get, he would cry and scream and beg until they surrendered, whether out of annoyance or exasperation. But these things hardly interested me. What I wanted was something only he could give me. His broken moans. His keening cries. Oh, I tortured him, drilled him with questions he could never answer, doubted him and his love, tested him to the point of killing himself to prove it. Watching as he trembled, the knife poised and prepared to dive right in, I felt wet and delighted, especially when it slipped, my face, I mean. He finally saw how serious I was, how little I cared for him, how much I wanted him to die. He froze and I sauntered over to him. He didn't even fight me, just allowed me to stab him again and again, our hands entwined on the blade of the knife, moving in and out. It was beautiful. It was sensual.
@@ -1983,6 +2019,8 @@ const writings = {
     'headless': {
         title: "Headless",
         date: ['6-2-17', '3-11-23'],
+        img: '',
+        credit: '',
         text: `My steps were practiced. After years of restless wandering and slugging over various terrains, in heels, my legs and feet were assured, but as I left the movie, it felt as if I were staggering with each drunken step. There was no movie I had ever seen before where I felt personally empowered by the female protagonist, yet as soon as I felt the swell of inspiration, bursting and blooming out of what red cavity remained, I then felt a weight rest upon my back and press me down. Figuratively speaking, the parallel of wondering what caused either was lifting my head and laying eyes on the treacherous stem of a dream weighing on my back.
 
         Recently, I read an article about the vast expressions across the world over for relaying sensation, feeling, and sentiment. Reading that article made me realize how limited my vocabulary and that of my native tongue was, for as many words there were of science and ideologies, there were as few for one's sensitivity to their well-being and inner workings. The article stated that an increased ability to identify one's sensations led to a more informed and able manner of coping and handling stressful situations, which I am not so surprised about. However, while leaving the cinema, I wondered then what word was there for the feeling. If I were to define it, I would have said to be full and burst with greatness, only to feel the weight of that greatness in the very same breath.
@@ -2064,6 +2102,8 @@ const writings = {
     'hostage': {
         title: "Hostage",
         date: ['6-9-17', '8-29-17', '3-11-23'],
+        img: '',
+        credit: '',
         text: `The place flashes in my mind: a summer house fit for a king among green hills overlooking a massive lake. But all this was a dream and a strange dream at that. In one room, I found a living area with couches, side tables, white rugs. It was the standard open beach house format with hues of white, baby blue, and tan. The floors were of a light wood, either cedar or mahogany. That's all I noticed in that living area. I had nothing to do with it, apart from trashing it at one point. After the living area, there was a step, leading to picturesque dressers of the same caramel-colored wood, probably mahogany, and white-striped baby blue wall paper. To the right was a small room with a standard white door. Due to its transparency, it seemed the wall was made of glass. Obscured glass. In that room, there was a round Persian carpet of blue diamonds and flowers, dressers to the left and right, a couch, and then after another step, a bed. On the other side of the bed was a white balustrade overlooking three gigantic panels of glass that first saw a magnificent clear pool beside a row of Dorian columns along the house, and then the lake.
 
         It was only later that I thought of winding stairs. Back in the living area, instead of going up the step, turning left, there was a winding stairs disappearing down, curling beneath the room with the bed. I would also later discover that the room was purposely unfinished, though how I did not notice is a bit incomprehensible. Up the step and to the right, the corner of the room was missing. It led to grass and showed the side of a more ordinary house one might live in with umber-painted wood planks. The back of the house was carved out of the hill and lined with stones, but this I will review later.
@@ -2101,6 +2141,8 @@ const writings = {
     'play-in-perspective': {
         title: "Play in Perspective",
         date: ['6-20-16', '6-10-17'],
+        img: '',
+        credit: '',
         episodes: {
             'The Dog that Fell in Love': {
                 'The Man': `The young man strolled down the sidewalk, minding his own business. He had his hands buried in his pockets and walked with a hunch to his back, his head lowered. The people he passed paid him no mind, even bumping into him and walking off without apology. When they bumped him though, he hardly noticed.
@@ -2178,6 +2220,8 @@ const writings = {
     'devil-green-ring': {
         title: "Devil's Green Ring",
         date: ['4-7-17', '8-29-17', '4-6-20', '2-12-23'],
+        img: '',
+        credit: '',
         text: `For the last couple weeks, my family has been preparing to move. To avoid bringing my old boxes, I have been going through their contents, most of which consist of old journals and writings from throughout my teenage years. Among them, I found a particularly interesting piece that I had written in response to a manga series that had held my interest for at least a month: Black Butler. This is that response...
         
         "Reeves." He glanced over his shoulder, and though he knew the boy wouldn't be there, his heart constricted when all he saw was a store window and a crowded sidewalk. "Will you come to me, Reeves?"
@@ -2252,7 +2296,9 @@ const writings = {
     'abandoned-reasons': {
         title: "Abandoned Reasons",
         date: ['7-6-17', '2-12-23'],
-        eisodes: {
+        img: '',
+        credit: '',
+        episodes: {
             1: `I wandered the halls, my bare feet scraping the harsh fibers of the rugs, my fingertips gliding along the grooved walls, halting on protruding door frames and forgotten doors. In my chest was a feeling. It felt as if my heart was sinking and moment by moment, my lead feet were drowning me, pulling me against waves I could neither see nor hear, but I felt them jerking me one way then the other. I had no idea where I was, where I stood, in which hall or by what door. All I knew was the slow, stilted slide against the wall as I gave up, and when my bent leg caught my fall, I felt like a contortionist. With a slump, my body caved in and I found myself slouched over, lying against the wall with my neck straining, and I did not care.
 
             There were footsteps. Out of the corner of my eye, I saw a leather shoe, the pointed tip appearing around the corner, reflecting the light of the lamp at the end of the hall. As another step sounded so did another shoe appear. Those shoes flowed into long gray pants, a suit jacket, and a stern-faced man with white hair and not a wrinkle in his complexion. His face was fair-skinned, the peachy kind that was healthy and decent. As his dark gaze fell on me, I wondered why he came this time. When I looked back at his face, an expression of concern formed, hidden under flawless skin and a neatly trimmed beard, his hair, even his eyebrows, all moonsilver. He blinked, turning his head down. The light caught in his eyes, turning them green.
@@ -2461,6 +2507,8 @@ const writings = {
     'last-box': {
         title: "The Last Box",
         date: ['9-5-17', '2-12-23'],
+        img: '',
+        credit: '',
         text: `The box was packed and her fingers lingered over the interlocked folds. Though it was tattered, bent, and misshapen, the box stood intact. She slid her fingers down its sides, wedged her fingers between its bottom and the table, and with a huff, hoisted it up against her chest. As she lumbered out of the study, past the kitchen, and onto the deck out back, she thought of her flight the next day, the time to get there, the time to wake up, the passing of time itself. It was slow. Every breath was deep, every step was heavy, and the box pressing against her chest reminded her that every double thump was a second gone.
 
         She crossed the backyard, glancing over an expanse of brown grass with patches of green where the shade should be and where the kiddie pool was overturned. Baseballs, soccer balls, and bouncing balls congregated around the swing and slide set, which would one day become a castle turret, a pirate ship, or a spacecraft. She remembered a pair of boys, blond and brunette, seven and one, playing together and wondered what they would look like at eight and two, or seventeen and ten.
@@ -2496,6 +2544,8 @@ const writings = {
     'in-his-little-dream': {
         title: "In His Little Dream",
         date: ['7-13-17', '1-27-23'],
+        img: '',
+        credit: '',
         text: `There was a little boy with spiky black hair and yellowed skin, a perpetual discolored patch of skin around his right eye as if he had been punched. His lips were thin, jutting out with a constant pout and his nose was small with a button tip. His eyes were slim and pointed, the pupils such a dark shade of blue that they seemed black.
 
         At a young age, perhaps two or three, the boy played on the benches. He ran about, greeting people and would stand at the glass, in particular the front-most pane, where he could see the conductor step out for a few seconds or sitting at the front of the train, dressed in a dark blue uniform with a forward-facing cap. For his birthday, the boy asked for a conductor's cap.
@@ -2555,6 +2605,8 @@ const writings = {
     'dont-listen-to-the-vagina': {
         title: "(Don't) Listen to the Vagina",
         date: ['1-23-23'],
+        img: '',
+        credit: '',
         text: `"You better watch what you say. Like nipples, your vaggie is listening."
 
         Anjelica was incredulous. She didn't know whether she was disgusted, or angry, or confused, and before she could make up her mind, she saw Karla looking at her, lower jaw jutting out like an older woman who just had to be crazy, one eye open at all times and behind the times for thirty years. Then Karla said, "There's a stink here. It's not above the table, but from down under."
@@ -2574,6 +2626,8 @@ const writings = {
     'the-meaning-of-chips': {
         title: "The Meaning of Chips",
         date: ['1-24-23'],
+        img: '',
+        credit: '',
         text: `"Oh, my ode to chips. I miss you. To taste you. But I am committed to my intestines, and they have said no to this throuple."
 
         "What the hell you going on about," cried Krieg, pushing back, almost knocking himself off his seat.
@@ -2596,6 +2650,8 @@ const writings = {
         title: "Chicken Rice",
         date: ['1-24-23'],
         prompt: "If you could make your pet understand one thing, what would it be?",
+        img: '',
+        credit: '',
         text: `"So what'll it be today?"
 
         "Rice."
@@ -2633,6 +2689,8 @@ const writings = {
     'comparisons-with-beer-in-hand': {
         title: "Comparisons with Beer in Hand",
         date: ['1-24-23'],
+        img: '',
+        credit: '',
         text: `I can forgive anyone in writing, she thought as she watched the man sway in the doorway of the buses double doors, But then I meet, and most of them, I'd push off a bridge. The man was bundled up, an ear bud dangling off the shell of his ear. She never saw his face and avoided looking at him entirely. Unfortunately, she could not miss when he pointed at her in her peripheral, muttering "I love you" when he finally got to sit down. He thanked the old woman who gestured past him to the open seat and for some unfathomable reason, muttered the "I love you."
 
         He only sat for one stop, offering his seat to the next passenger, and resumed his place in the doorway. At his feet, beside the rails guarding the doors opening, he had placed a market basket full of beer cans, one open. She'd seen the liquid sloshing inside and wondered, looking at the basket, if he'd stolen them all or bought them and never left the basket as he walked out. The man kept swaying. Seeing all the cans of beer, she soon recognized that he was drunk, probably one of those who forever kept themselves in a haze of short, drawled sentences like "I love you (all), no matter who you are" and "You have to keep going."
@@ -2645,6 +2703,8 @@ const writings = {
         title: "Five Things to Bethany",
         date: ['1-25-23'],
         prompt: "List five things you do for fun.",
+        img: '',
+        credit: '',
         text: `"I beat a dead horse. I throw shit at the fan. I stuff my foot in my mouth. I break the ice, and I bite the bullet." Bethany looked up from her fingers and grinned at Odyssi. He stared at her, dumbfounded, which did not phase her until she realized he kept staring at her and frowned. "What?"
 
         "Those are all idioms."
@@ -2682,6 +2742,8 @@ const writings = {
     'to-be-in-limbo': {
         title: "To Be in Limbo",
         date: ['1-26-23'],
+        img: '',
+        credit: '',
         text: `"You know what's so odd about my recollections of China, maybe it's not odd, but. I don't have the best memories. I was starving, there were cockroaches on my walls and sewage up to my knees. No. But there's so many peaceful places. No matter where I went. The crowds were big, the buildings were bigger and there were always spaces to be alone. Dark, quiet, undisturbed, parts of buildings where the offices were unoccupied, or a cafe in the corner of a hotel lobby in the afternoon, benches in the park, and bridges crossing rivers or ponds in schools. Always. Always."
 
         "Is that. That sounds so different than anything I've ever heard."
@@ -2711,6 +2773,8 @@ const writings = {
     'line-among-friends': {
         title: "The Line Among Friends isn't Thin",
         date: ['1-27-23'],
+        img: '',
+        credit: '',
         text: `"What. The hell. You doing!"
 
         Alex threw another ball at Louise. She jerked back, curling up, narrowly avoiding the impact, and grimaced, hearing the ball strike the wall. Her body was sore. Uncurling, she looked over at Alex, hands in fists, and cried again, "What the fuck!"
@@ -2769,6 +2833,8 @@ const writings = {
         title: "The Book that Can't Be Open",
         date: ['1-29-23'],
         prompt: "What books do you want to read?",
+        img: '',
+        credit: '',
         text: `"I'm thinking of a thing."
 
         Patricka, Aria and Melanie all smiled.
@@ -2848,6 +2914,8 @@ const writings = {
     'new-girl': {
         title: "The New Girl",
         date: ['6-21-17', '8-29-17', '5-9-20', '1-30-23'],
+        img: '',
+        credit: '',
         text: `They think I'm the stupid one, that's okay. I really don't mind prancing around with a cell phone and lollipop in my hands, cause then nothing else fits there. And no one expects anything. It's better than Gina and Fanny. Georgie is something else.
 
         "Why do you spend time with them then?"
@@ -2921,6 +2989,8 @@ const writings = {
     'uniform': {
         title: "Uniform",
         date: ['1-31-23'],
+        img: '',
+        credit: '',
         text: `On the platform, to each side, were two painted lines. Along the edge of the platform was a two-feet thick yellow line, and then three feet from the yellow line was a foot-thick green line. At first, she stood between the lines as she waited for the trains, but as she looked about, she found she had to turn to see anyone. They were all standing between the green lines of the platform. Beside the escalators, people stood in rows. Feeling out of place, she strode over to the next open spot in the row.
 
         As she approached, a young man with a drawing pad noticed and glanced at her. She saw and looked away. He returned to his sketch pad. Standing between the side of the escalator and the green line, she felt just as awkward in place as she did out of place, checking the screens to read a line passing across the bottom: Train arrives in 2 minutes.
@@ -2933,6 +3003,8 @@ const writings = {
         title: "Jewel's Carla",
         date: ['2-1-23'],
         prompt: "What do you complain about the most?",
+        img: '',
+        credit: '',
         text: `"Oh, that's so hard," Jewelly whined, "I complain about everything."
 
         Carla looked over from her book. As Jewelly turned to her, she looked down.
@@ -2960,6 +3032,8 @@ const writings = {
     'dog-in-the-rain': {
         title: "A Dog in the Rain",
         date: ['2-2-23'],
+        img: '',
+        credit: '',
         text: `Sophie swooned with a sigh, raising her hands to her chest, accompanied by the crinkle of her sleeves and the tinkle of the metal ring on Othello's collar. "Home is where the heart is," she said, watching as another woman across the street was being led by her dog.
 
         Othello huffed. "Home is where bone is."
@@ -2987,6 +3061,8 @@ const writings = {
     'that-disturbing-face': {
         title: "That Disturbing Face",
         date: ['1-17-16', '7-13-17', '2-12-23'],
+        img: '',
+        credit: '',
         text: `This morning, an odd occurrence woke me up. It was nothing physical. Actually, it was of a psychological, if not hallucinatory, nature. While I can vaguely recall my fleeting dreams about an engagement to a man that had no care for me, which despite their obscurity remain interesting, I can distinctly recall what apparition woke me. In those few moments it happened, I realize I was already waking up, caught in that twilight state between consciousness and the lack of it.
 
         My mind projected an eerie blackness so impenetrable that it reminded me of the phrase "night's curtain." This darkness was so unnervingly close to me as I lay on my side, my head bowed on the pillow, I gazed at it warily and saw that there was a dim illumination from somewhere attempting to reach into it as if a candle might've been lit behind or beside me. A figure head appeared and it was slowly getting closer and closer to the edge of the bed. And suddenly, it was there in my bedroom, a grotesque head on shoulders. It was a man's head, pockmarked as if his face were made from white coral, but agitated and swollen. His eyes were black and bulbous as he stared right at me, his mouth slightly agape as if caught in mid-cry. It was reminiscent of those that have been impaled.
@@ -3006,6 +3082,8 @@ const writings = {
     'mama-and-her-girlfriend': {
         title: "Mama and Her Girlfriend",
         date: ['9-19-15', '2-13-23'],
+        img: '',
+        credit: '',
         text: `Just now, I saw a little boy come on the train with two women and two older women. He got separated from the older women for a moment, veering to the right. One of the women grabbed him and he jerked away, rounding her to cling to the other woman, and I thought of disappointment.
 
         There is a similar story I have. It's the essential notion of who is your true parent. This one is simple and mundane. "Mama and Her Girlfriend" is about a woman whose children prefer her girlfriend over herself. For some reason, they think of her girlfriend as their true mother, and her as their mother's partner.
@@ -3015,6 +3093,8 @@ const writings = {
     'my-snow-white': {
         title: "My Snow White",
         date: ['10-30-15', '2-13-23'],
+        img: '',
+        credit: '',
         text: `Yesterday, before class, two of my girls were running around in princess costumes: Merida from Brave and Snow White.
 
         The girl in Snow White is a dark girl, her color reminiscent of milk chocolate. She is thin and lanky, with the impression of height despite being the same height as those her age. She has clear eyes, wide and when she smiles, they crinkle at their edges as she laughs like a doll from the movies involved in a mischievous trick. Her features are long but petite and I can imagine that she'd have a wild kind of beauty when she is older.
@@ -3030,6 +3110,8 @@ const writings = {
     'in-a-love-letter': {
         title: "In A Love Letter",
         date: ['5-7-19', '2-13-23'],
+        img: '',
+        credit: '',
         text: `If I were to write a love letter, I would describe the pungency of your scent and the curvature of your muscles beneath my hands, and the pleasure that would seep through my flesh, burying in my loins to remind me of my own womanhood, as I press against the muscles of your chest and abdomen. The sensitive nerve-endings sparking at my fingertips would not be primal enough. I would have to drag my nails across your pectorals to feel any sort of satisfaction, watching the very manifestation of my desire slash across my vision before my eyes. I would reach up and caress your warm, barely shaven cheek, inhaling the very recesses of your stench as you wrap me in your arms. I would have to lay my hands along your cheeks, delighting in the sheer masculinity of your hallow cheeks, the protrusions of your cheekbones, and the hardness of your skull beneath your temples and my touch, unsure if I can calm my racing heart and shiver of excitement as your arms constrict around me.
 
         In the enclosure of your arms, against the sharp protrusions of your ribs, I imagine I would squirm with sexual agitation or melt against you, burying my face in the curvature of your neck, and as roughened as your unwashed, reeking skin, I would breathe in your musk and lick the column of your throat, convulsing deep in my belly. You should turn your head down, and give me your lips, and I expect to taste your tongue, to feel your heat against my lips, too aware that this long, hard organ filling my mouth should precede the organ hardening at your groin, pressing at the curvature to my belly leading down to the aperture of my legs.
@@ -3051,6 +3133,8 @@ const writings = {
     'how-do-we-change': {
         title: "How do we Change",
         date: ['2-14-23'],
+        img: '',
+        credit: '',
         text: `"Here's the thing I don't get. Asking every time a woman comes in with a man if he's her boyfriend, yet not asking about the women. One, that question isn't asked of men; it's seen as their business. And what if, just what if, the woman is a slut, but she's a slut for other women, so every woman she comes in with is her girlfriend. But she's not asked when she brings in other women. What is the point of asking then?" Clara turned to Maria. "To affirm that one isn't lonely because a single woman is deemed available, up for grabs, open for business."
 
         Maria smiled to herself and ducked her head.
@@ -3164,6 +3248,8 @@ const writings = {
     'snake-and-bird': {
         title: "The Snake and the Bird",
         date: ['3-3-23'],
+        img: '',
+        credit: '',
         text: `Venussa lounged on her perch, Mercuriel beside her, leaning over the railing above her head with head in her hands and a sigh on her lips, as they stared at the young, awkward man pacing the foyer floor without pants and wearing only a faux lab coat. The man went from crying and pounding on his head, moaning a name, to stomping about, swearing at the floor about flat tires and cold, rainy nights and unhaunted castles, and then he was standing tall, declaring promises and his devotion, after slamming his hand to his chest, causing himself to cough with surprise.
 
         "Oh, how sweet," Mercuriel swooned.
@@ -3208,6 +3294,8 @@ const writings = {
         title: "The End of the Hall",
         date: ['3-3-23'],
         prompt: "Do you enjoy your job?",
+        img: '',
+        credit: '',
         text: `It's been a while, but I find myself in a strange situation.
 
         Part of me wonders if everything is okay because I now live in a place, a space that has all I need and I do not have to interact with strangers who smoke fentanyl and set off the fire alarm, who might barge into my room and hit me in the face, whose dogs piss in the hallways, who spread their trash and jizz and piss throughout communal bathrooms, who leave boxes of vegetables in the stairwell to rot, who stick tape on the opening of doors, who call me a bitch after they turn around or call at me to never come back when I'm heading out.
@@ -3385,6 +3473,8 @@ const writings = {
     'happy-halloween': {
         title: "Happy Halloween",
         date: ['10-1-18', '3-3-23'],
+        img: '',
+        credit: '',
         text: `Two thousand years ago, Halloween was a celtic festival celebrated in the UK, Ireland and northern France called Samhain (summer's end). It was seen as the day when the worlds of the living and dead would collide as winter was a time of darkness, cold and death. To ward off the otherworldly beings, people danced around a sacred bonfire in costumes and brought this fire back to their homes with torches to light their hearths, protecting them from otherworldly beings and the harsh winter.
 
         On Sep 29, I stopped by the supermarket and saw Halloween decorations taking two whole aisles. Golden Week, China's National Holiday, was the next day and Mid-Autumn festival was just a few days ago but all the mooncake was gone. Just the day before, my friend and I heard Christmas music playing in a cafe and talked about Thanksgiving in the US. What a strange time of year. Like it happens all at once.
@@ -3401,6 +3491,8 @@ const writings = {
         title: "No Be Nothing",
         date: ['3-28-23'],
         prompt: 'How often do you say "no" to things that would interfere with your goals?',
+        img: '',
+        credit: '',
         text: `"Just one," begged Jesse, "please!"
 
         "No." Maddy kept her head down, looking from book to notes as she continued scribbling.
@@ -3481,6 +3573,8 @@ const writings = {
         title: "Not A Question",
         date: ['7-2-23'],
         prompt: "Have you ever had surgery? What for?",
+        img: '',
+        credit: '',
         text: `"I wasn't asking."
 
         Paula stopped, surprised, and peered at Mark. "What you mean—you did ask."
@@ -3519,6 +3613,8 @@ const writings = {
         title: "One-eyed Leading the Blind",
         date: ['7-4-23'],
         prompt: "What makes a teacher great?",
+        img: '',
+        credit: '',
         text: `Seph sat back, rocking in their chair, arms crossed, thinking. Next to him, Elle reclined along the sofa, only to turn over and look at Seph with a frown. "What's wrong?"
 
         Seph cocked their head, but did not look over.
@@ -3579,6 +3675,8 @@ const writings = {
         title: "Finality",
         date: ['7-4-23'],
         prompt: "What are you most worried about for the future?",
+        img: '',
+        credit: '',
         text: `She stumbled down the street, crying in her head. There was a scream inside her and she wanted to scream, destroy the silence of the quaint houses and cobble streets, the romantic street lamps and the starry sky. She wanted to cry hot, sticky tears. She wanted to lift her head and scream as if she might shatter every window and glass.
 
         But no one saw her stumbling down the street.
@@ -3626,6 +3724,8 @@ const writings = {
     'inexplicable-reason': {
         title: "The Inexplicable Reason",
         date: ['5-21', '5-27-21', '7-4-23'],
+        img: '',
+        credit: '',
         text: `“I wish I'd known,” she mused, thinking aloud with her chin on her hand, resting against the table in the middle of their kitchen. Her husband was in the entrance, standing just out of the light. When she looked at him, she did not see him. Then he stepped through the entryway into the dim lighting of the kitchen. He was wearing a blue jumpsuit, his sleeves and pants covered in blood with splatters across his chest. Looking at her, he sighed. His shoulders relaxed as he shook his head. Seeing her husband, the woman sat back. She took a moment, swallowing thickly and closed her eyes, pinching the bridge of her nose, saying “Give me a moment.”
 
         Her husband slunk to the chair beside her. She opened her eyes and looked down at the floor to see if he was tracking any dirt or blood, but there was none. He was in his socks, shoes discarded. He slid out the chair beside her, the legs dragged on the floor. Shifting about, he plopped down and slumped forward, folding his arms on the table, lowering his head.
@@ -3775,6 +3875,8 @@ const writings = {
     'red-is-pain': {
         title: "Red is Pain",
         date: ['7-5-23'],
+        img: '',
+        credit: '',
         text: `"What are you supposed to do with a headache?" Ellis groaned and flopped back on their pillow, only to regret it as their head seemed to ache and throb even more, and was that a touch of lightheadedness?
 
         At their feet, Judith and Oliver sat on the floor, their heads spinning slowly in tandem and as they rocked from side to side, they joined in chorus, "What to do, what to do, oh what to do with a headache!" Judith threw out her arms, Oliver ducked and whined. Judith laughed in pain, and Ellis kicked her. A cry turned into a moan as Judith fell back. Oliver remained bent over, whining under his breath.
@@ -3855,6 +3957,8 @@ const writings = {
         title: "Apollo's Lover",
         date: ['10-12-23'],
         prompt: "What's something you would attempt if you were guaranteed not to fail.",
+        img: '',
+        credit: '',
         text: `She swayed with each step, hands out, prim and manicured, keeping her balance, as she wandered away, moving her skirts and wisps of her hair rising with the passing breeze. As I watched her walk in her short, stumpy burgundy heels, that sky blue long skirt, the wide leather belt at her waist, and the craning of her slender neck, as she looked into the sunlight shining at the front of the pagoda, I thought the light could take her. Maybe that's what the Greeks saw, when they imagined Apollo, or some other god riding on a blinding white chariot swooping down to take some maiden away. That's all I saw.
 
         What could be heard was lost. I doubted she realized she'd dropped to a whisper, and as the breeze blew past her, it took her words in lieu of the hair and woman who seemed as if she could disappear that easily. I reclined along the wooden bench and thought of the image of her, her craning neck and the light that obscured her face.
@@ -3909,6 +4013,8 @@ const writings = {
         title: "One More Dream",
         date: ['10-13-23'],
         prompt: "If you had a million dollars to give away, who would you give it to?",
+        img: '',
+        credit: '',
         text: `Berry hummed and sewed, weaving the needle as he bobbed his head side to side. With each poke and pull of the needle, he dreamed a dream. He would close his eyes but a moment and see the lights shining on a glamourous man with big hair and studded mantle, see the sun and trees and warm breeze as a man reclined on a blanket, next to a wicker basket, see the old men playing banjos and harmonicas, laughing, clapping, stomping their feet among flickering lights as couples danced in circles and glasses crashed against the walls, see the solo musician playing long, soulful notes on his saxophone, framed by the spotlight, and when he opened his eyes, he saw the needle, thread and his canvas, and continued to hum.
 
         When pattering feet flew past the room, he cocked his head and paused for the moment. Hearing heavy-booted feet, he glanced up just as another man appeared, burly with a beard and mop that obscured everything but his eyes. As soon as Heinrik appeared, he looked in and met the glance his way. His eyes gleamed.
@@ -3965,6 +4071,8 @@ const writings = {
         title: "Never Stop",
         date: ['10-15-23'],
         prompt: "What have you been putting off doing? Why?",
+        img: '',
+        credit: '',
         text: `Floriena sat pinboard straight, hand gripping her beer glass, eyes closed. She looked a figure of stone, her expression of another class in direct contrast with her surroundings. As people danced, whooped and hollered, as boots stomped and a man crooned with the band, she was motionless and solemn. The servers were aware, stealing glances at her as they passed. She was the only sitting patron in her area of the bar.
 
         Everyone who had been at her table was among the dancers, the audience sitting around on the stools, slapping their thighs, chugging their beers, and mumbling along to the music. She was alone, and they knew. There were caught glances sent her way as others in her party met the gaze of a passing server.
@@ -4058,52 +4166,19 @@ const journal = {
 
 const works = Object.keys(writings)
 for (const work of works) {
-    if (work === journal.main) continue
-    else if (writings[work].prompt) journal.prompts.push(work)
-    else if (writings[work].episodes) journal.series.push(work)
-    else journal.posts.push(work)
+    if (work === journal.main) 
+        continue
+    else if (writings[work].prompt) 
+        journal.prompts.push(work)
+    else if (writings[work].episodes) 
+        journal.series.push(work)
+    else 
+        journal.posts.push(work)
 }
+console.log(journal.series)
 
 const first = arr => arr[0]
 const last = arr => arr[arr.length - 1]
-
-const sort = (set, criteria) => {
-    switch (criteria) {
-        case 'title':
-            set.sort((a, b) => writings[a].title - writings[b].title)
-            break
-        case 'oldest':
-            set.sort((a, b) => {
-                const adates = writings[a].date.map(date => new Date(date))
-                const bdates = writings[b].date.map(date => new Date(date))
-                if (last(adates) - last(bdates) === 0)
-                    if (first(adates) - first(bdates) === 0) 
-                        return writings[a].title - writings[b].title
-                    else return first(adates) - first(bdates)
-                else return last(adates) - last(bdates)
-            })
-            break
-        default: // newest
-            set.sort((a, b) => {
-                const adates = writings[a].date.map(date => new Date(date))
-                const bdates = writings[b].date.map(date => new Date(date))
-                if (last(bdates) - last(adates) === 0)
-                    if (first(bdates) - first(adates) === 0)
-                        return writings[b].title - writings[a].title
-                    else return first(bdates) - first(adates)
-                else return last(bdates) - last(adates)
-            })
-            break
-    }
-}
-
-const display = set => {
-    const e = document.querySelector(`.container.${set}`)
-    e.innerHTML = ''
-    journal[set].forEach(title => {
-
-    })
-}
 
 const mainStory = () => {
     const dates = document.querySelector('.main-story .dates')
@@ -4121,6 +4196,12 @@ const mainStory = () => {
     mainfig.style.height = mainfig.clientWidth + 'px'
 }
 mainStory()
+
+
+
+const setupNav = () => {
+
+}
 
 window.onresize = () => {
     const mainfig = document.querySelector('.main-story figure')
