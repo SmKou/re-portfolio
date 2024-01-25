@@ -8,21 +8,19 @@ const view = {
     article: document.getElementById('view-story'),
     title: '',
     container: document.querySelector('#view-story .container'),
-    btns: document.querySelector('.nav-btns'),
+    btns: document.querySelector('.story-btns'),
     close: document.getElementById('close-view'),
-    series: {
-        prev: {},
-        next: {},
-        ep: -1,
-        episodes: {}
-    }
+    prev: {},
+    next: {},
+    ep: -1,
+    episodes: {}
 }
 
 const read = e => {
-    const [, title, ep] = e.classList
+    const [, title, ep] = e.target.classList
 
     if (!title || !writings[title]) {
-        console.error('Invalid title')
+        console.error(`Invalid title: ${title}`)
         return false
     }
 
@@ -31,18 +29,17 @@ const read = e => {
     if (title === journal.main || journal.series.includes(title)) {
 
         if (ep === undefined) {
-            console.error('Episode not defined for journal main or series')
+            console.error(`Episode not defined for journal main or series: ${ep}`)
             return false
         }
 
         view.episodes = Object.keys(writings[title].episodes)
         if (ep < 0 || ep >= view.episodes.length) {
-            console.error('Invalid episode')
+            console.error(`Invalid episode: ${ep}`)
             return false
         }
 
         view.ep = ep
-        ep = view.episodes[ep]
 
         view.next = document.createElement('button')
         view.next.append(document.createTextNode('next'))
@@ -51,6 +48,7 @@ const read = e => {
             if (view.ep >= view.episodes.length)
                 view.ep = 0
             displayStory(writings[view.title])
+            document.getElementById('top-view').click()
         })
         view.btns.prepend(view.next)
 
@@ -61,6 +59,7 @@ const read = e => {
             if (view.ep < 0)
                 view.ep = view.episodes.length - 1
             displayStory(writings[view.title])
+            document.getElementById('top-view').click()
         })
         view.btns.prepend(view.prev)
     }
@@ -97,7 +96,7 @@ const display = set => {
             html += `<h2>${work.title}</h2><p>${dates}</p><p>${work.text.split('\n')[0].split(/[.?!]/)[0]}</p>`
         
             
-        html += `<button class="read-more ${title}${set === 'series' ? '0' : ''}">...</button></div></div>`
+        html += `<button class="read-more ${title}${set === 'series' ? ' 0' : ''}">...</button></div></div>`
 
         e.innerHTML += html
     })
@@ -136,8 +135,8 @@ const displayStory = work => {
     if (work.prompt)
         content += `<h3>${work.prompt}</h3>`
 
-    if (view.series.ep) {
-        const [ep, episodes] = view.series
+    if (view.ep > -1) {
+        const {ep, episodes} = view
         const episode = episodes[ep]
         content += `<h2>${episode}</h2>`
         if (typeof work.episodes[episode] !== 'object') {
@@ -150,7 +149,7 @@ const displayStory = work => {
                 content += paragraphs(work.episodes[episode][part])
             }
         }
-    } else
+    } else 
         content += paragraphs(work.text)
     
     view.container.innerHTML = content
@@ -217,15 +216,11 @@ read_btns.forEach(btn => btn.addEventListener('click', read))
 
 view.close.addEventListener('click', () => {
     view.title = ''
-    view.series = {
-        prev: {},
-        next: {},
-        ep: -1,
-        episodes: {}
-    }
+    view.prev = {}
+    view.next = {}
+    view.ep = -1
+    view.episodes = []
     view.container.innerHTML = ''
-    view.story.classList.add('collapsed')
+    view.article.classList.add('collapsed')
 })
-
-/* ------------------------------------------------------- FUNCTIONS */
 
