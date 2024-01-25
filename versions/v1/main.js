@@ -216,7 +216,9 @@ read_btns.forEach(btn => btn.addEventListener('click', read))
 
 view.close.addEventListener('click', () => {
     view.title = ''
+    view.prev.remove()
     view.prev = {}
+    view.next.remove()
     view.next = {}
     view.ep = -1
     view.episodes = []
