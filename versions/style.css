@@ -60,7 +60,7 @@ aside {
     align-items: center;
 }
 
-aside .controls {
+.controls {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 3fr 1fr;
@@ -73,21 +73,26 @@ aside .controls {
 #next {
     width: 7.2rem;
     height: 7.2rem;
-    border: 0.1rem solid var(--uni-black);
+    border: 0.2rem solid var(--uni-black);
     border-radius: 50%;
-    background: var(--uni-off-black);
+    background: var(--uni-mid);
+    box-shadow: -0.2rem -0.2rem 0.6rem var(--uni-light),
+        0.2rem 0.2rem 0.6rem var(--uni-black);
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+#prev:hover,
+#next:hover { background: var(--uni-light) }
 
 .circle-dial {
     width: 5.6rem;
     height: 5.6rem;
     border: 0.3rem solid var(--uni-black);
     border-radius: 50%;
-    box-shadow: 0.4rem 0.4rem 1.2rem var(--uni-black) inset,
-        -0.2rem -0.2rem 0.6rem var(--uni-black) inset;
+    box-shadow: 0.4rem 0.4rem 1.2rem var(--uni-off-black) inset,
+        -0.2rem -0.2rem 0.6rem var(--uni-off-black) inset;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -99,7 +104,14 @@ aside .controls {
     margin: 0;
 }
 
-#prev svg { transform: rotate(180deg) }
+#prev svg { 
+    padding-left: 0.5rem;
+    transform: rotate(180deg) 
+}
+
+#next svg {
+    padding-left: 0.5rem;
+}
 
 #link,
 #home {
@@ -109,9 +121,15 @@ aside .controls {
     border: 0.2rem solid var(--uni-black);
     border-radius: 50%;
     background: var(--uni-off-black);
-    box-shadow: 0.2rem 0.2rem 0.6rem var(--uni-black) inset, -0.2rem -0.4rem 0.6rem var(--uni-black) inset;
     display: flex;
     align-items: center;
+}
+
+#link:hover,
+#home:hover {
+    background: var(--uni-black);
+    box-shadow: 0.1rem 0.1rem 0.3rem var(--uni-black) inset,
+        -0.3rem -0.3rem 0.6rem var(--uni-black) inset;
 }
 
 #link { justify-content: center }
@@ -134,6 +152,8 @@ aside .controls {
     border-radius: 50%;
     background: var(--uni-off-black);
 }
+
+#link:hover .cross-dot { background: var(--uni-black) }
 
 #home .circle-outline {
     position: relative;
@@ -173,22 +193,31 @@ aside .controls {
     article {
         width: 80%;
         height: 100vh;
-        /* background: conic-gradient(from 45deg, 
-        #5c5b54 5deg,#908e80 70deg, 
-        #d0d0ca 75deg, 
-        #76756a 80deg, #9a988a, #76756a 190deg, 
-        #d0d0ca 195deg, 
-        #a6a294 200deg, #aeaa9b 250deg, 
-        #5c5b54 255deg, 
-        #6f6f65 260deg, #85837a, #6f6f65 355deg); */
     }
-    
+
     aside {
         width: 20%;
         height: 100vh;
-        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 785px) and (orientation: landscape) {
+    .background { display: none }
+
+    .no-background {
+        width: 100%;
+        height: 100vh;
     }
 
+    .controls {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (min-width: 786px) and (orientation: landscape) {
     .background {
         bottom: 0;
         right: 0;
@@ -197,6 +226,7 @@ aside .controls {
     }
 
     .no-background {
+        top: 0;
         width: 100%;
         height: 50%;
     }
@@ -208,22 +238,27 @@ aside .controls {
     article {
         width: 100%;
         height: 80vh;
-        /* background: conic-gradient(from 45deg, 
-        #908e80 5deg, 
-        #d0d0ca 90deg, 
-        #76756a 95deg, #9a988a, #76756a 175deg, 
-        #d0d0ca 180deg, 
-        #a6a294 185deg, #aeaa9b 265deg, 
-        #5c5b54 270deg, 
-        #6f6f65 275deg, #85837a, #6f6f65 355deg, 
-        #5c5b54 360deg); */
     }
 
     aside {
         width: 100%;
         height: 20vh;
     }
+}
 
+@media (max-height: 810px) and (orientation: portrait) {
+    .background { display: none }
+    .no-background { width: 100% }
+
+    .controls {
+        width: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+}
+
+@media (min-height: 811px) and (orientation: portrait) {
     .background {
         top: 0;
         right: 0;
