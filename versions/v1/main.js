@@ -125,6 +125,38 @@ for (const key of Object.keys(journal))
     if (key === 'main') continue
     else display(key)
 
+const createReadButton = (title, displayTitle, index = -1, seriesHead) => {
+    const button = document.createElement('button')
+    button.setAttribute('class', `read-more ${title}${index > -1 ? ' ' + index : ''}${seriesHead ? ' nav-head' : ''}`)
+    button.append(document.createTextNode(displayTitle))
+    button.addEventListener('click', read)
+    return button
+}
+
+const setupNav = () => {
+    const works = Object.keys(journal).reverse()
+    for (const work of works) {
+        if (work === 'main') {
+            const seriesTitle = writings[journal.main].title
+            nav.nav.append(createReadButton(journal.main, seriesTitle, 0, true))
+            const episodes = Object.keys(writings[journal.main].episodes)
+            for (let i = 0; i < episodes.length; ++i)
+                nav.nav.append(createReadButton(journal.main, '— ' + episodes[i], i))
+        }
+        else if (work === 'series')
+            journal[work].forEach(title => {
+                const seriesTitle = writings[title].title
+                nav.nav.append(createReadButton(title, seriesTitle, 0, true))
+                const episodes = Object.keys(writings[title].episodes)
+                for (let i = 0; i < episodes.length; ++i)
+                    nav.nav.append(createReadButton(title, '— ' + episodes[i], i))
+            })
+        else 
+            journal[work].forEach(title => nav.nav.append(createReadButton(title, writings[title].title)))
+    }
+}
+setupNav()
+
 const paragraphs = part => part.split('\n').map(para => `<p>${para}</p>`).join('')
 
 const displayStory = work => {
