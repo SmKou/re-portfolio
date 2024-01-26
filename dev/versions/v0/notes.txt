@@ -1,0 +1,61 @@
+Light or Dark mode
+Small, Medium or Large text
+Color
+
+What is your graphic preference? Little None Much
+Graphic information to include:
+- Charts
+- Progress bars
+- Stock images
+- Credits and sources
+
+What is your textual preference? Little None Much
+Textual information to include:
+- Bullet points
+- Personal facts
+- Statements
+- Summaries
+- Analyses
+
+Select all
+Deselect all
+Default: random combination
+
+What would you like to know?
+- How would you handle a conflict?
+- How would you handle a challenge?
+- How would you handle criticism and constructive feedback?
+- How would you handle adversity?
+- How would you handle a lack or experience or skill?
+- How would you handle a project failing or being scrapped?
+- How do you work with a team?
+- How do you work with authority?
+- How do you work on tight deadlines?
+- How do you manage your time?
+- How do you manage your health?
+- How do you learn a new language, framework or library?
+- How do you engage with communities?
+
+What is important to your team or company?
+- Hobbies
+- Social activities
+- Languages
+- Interests
+- Life Experience
+- Personality
+- Active Learning
+
+Are you interested in ideas?
+- Excitement
+- Frustration
+- Pride
+- Autism
+- Passion
+- Failure
+- Journeys and Goals
+- Multiple personalities
+- Privacy
+- Communication and Common Ground
+
+Would you like an idea of what to take from this portfolio?
+Would you like to know what I think of providing these answers?

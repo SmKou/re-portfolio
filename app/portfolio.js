@@ -12,7 +12,7 @@ const versions = {
         title: 'The Magazine',
         href: 'v1/',
         description: 'Re-Portfolio 2015-2022 features magazine of stories and self-identifiable writing',
-        status: false
+        status: true
     },
     v2: {
         title: 'The Design Index',
@@ -36,8 +36,12 @@ const versions = {
         title: 'The Resume',
         href: 'v5/',
         description: 'Re-Portfolio 2023 features resume and profile according to Epicodus assignment and review',
-        status: false
+        status: true
     }
+}
+
+const messages = {
+    cnet: 'All C#/.Net projects are not likely to be completed.'
 }
 
 const projects = {
@@ -567,10 +571,6 @@ const questions = [
         ]
     }
 ]
-
-const messages = {
-    cnet: 'All C#/.Net projects are not likely to be completed.'
-}
 
 const dir = ['versions', 'projects', 'experience', 'education', 'questions']
 

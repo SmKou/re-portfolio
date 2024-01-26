@@ -9,46 +9,60 @@ View on [Github Pages](smkou.github.io/re-portfolio)
 
 Re-Portfolio is a static portfolio website where every page has its own design. It features various versions done of my portfolio over the years, grouped by year and interface type.
 
-### Versions
+**In-Development**
+Homepage
+- Commands: find, more, searchable, stat
+- Test commands
 
-homepage
-v4 - People in Pages (add content)
-v3 - Slideshows (switch mechanism, add content)
-v1 - Magazine (aesthetic, add content)
+v0 Profile
+personalization redesign: [User Interfaces with Big-5 Personality Traits](https://www.kamranhughes.com/how-to-tailor-designs-using-the-big-5-personality-traits/)
+- Add questionaire
+- Gather content per question
+  - chart or bar graph
+  - progress bars
+  - stock image, credits and sources
+  - bullet points
+  - personal facts
+  - statements
+  - summaries
+  - analyses
+
+v1 Magazine
+- Add images for stories: 640 clr-opt, bw
 - Edit and redesign smjoker.com -> slate
-v2 - Design Index (add content)
-v0 - Profile (interactions, add content)
-image hasher
+
+v2 Design Index
+- Redesign for actual handbook aesthetic (change layout)
+- What is this handbook for?
+- Add content
+
+v3 Slideshows
+- Switch mechanism
+- Add content
+
+Art
+- image mosaic
+  - nodejs generator
+  - canvas feature
+- Upload recent works (ongoing)
+
+Calendar
+- auto-population
+- Update recent events (ongoing)
+
+### Versions
 
 **v0: Profile**
 2015 - 2017
 Features block colors and styling, consists of portraits and personality
 
-Status:
-[-] To re-do
-- personalization redesign: [User Interfaces with Big-5 Personality Traits](https://www.kamranhughes.com/how-to-tailor-designs-using-the-big-5-personality-traits/)
-- Development
-
 **v1: Magazine**
 2015-2022
 Features writings
 
-Status:
-[] To-do
-- Gather writings (proofread)
-- Design page layout and interactions
-- Edit and redesign smjoker.com
-- Development
-
 **v2: Design Index**
 2018 - 2019
 Features designer backgrounds using block styling, consists of css colors, shapes, and fonts
-
-Status:
-[-] To-do
-- Redesign for actual handbook aesthetic
-- What is this handbook for?
-- Development
 
 **v3: Slideshow**
 2020 - 2022
@@ -57,23 +71,13 @@ Features slideshows, consists of:
 2. magazine, newspaper, documentation designs
 3. shows (backgrounds)
 
-Status: 
-[] To-do
-- Design switch mechanism between slideshows
-- Development
-
 **v4: People Pages**
 2021 - 2022
 Features pages based on people's clothing
 
-Status:
-[] To-do
-- Development
-
 **v5: Epicodus**
 2023
 Features resume and profile
-[X] Complete
 
 ```
 Containerize and Deploy C#/.Net apps
