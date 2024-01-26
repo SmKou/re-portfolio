@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="../icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Calendar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=League+Spartan:wght@200;400;700&family=Ovo&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../universal.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h2>
+            <span class="mon-date"></span>
+            - 
+            <span class="sun-date"></span>
+        </h2>
+        <nav>
+            <a href="../">Sm Kou</a>
+            <button id="prev-week">prev</button>
+            <button id="next-week">next</button>
+        </nav>
+    </header>
+    <article class="single day collapsed">
+        <h3 class="date"></h3>
+        <div class="half-hours"></div>
+        <nav>
+            <button id="close-day">close</button>
+            <button id="prev-day">prev</button>
+            <button id="next-day">next</button>
+        </nav>
+    </article>
+    <article class="single event collapsed">
+        <div class="container">
+            <h3 class="title"></h3>
+            <p>
+                <span class="first_date"></span>
+                <span class="last_date"></span>
+            </p>
+            <p class="days"></p>
+            <p class="notes"></p>
+        </div>
+        <nav>
+            <button id="close-event">close</button>
+            <button id="prev-event">prev</button>
+            <button id="next-event">next</button>
+        </nav>
+    </article>
+    <main>
+        <section class="week-projects">
+            <h3>Projects</h3>
+        </section>
+        <section>
+            <h3 class="date"></h3>
+            <div class="half-hours"></div>
+        </section>
+        <section>
+            <h3 class="date"></h3>
+            <div class="half-hours"></div>
+        </section>
+        <section>
+            <h3 class="date"></h3>
+            <div class="half-hours"></div>
+        </section>
+        <section>
+            <h3 class="date"></h3>
+            <div class="half-hours"></div>
+        </section>
+        <section>
+            <h3 class="date"></h3>
+            <div class="half-hours"></div>
+        </section>
+        <section>
+            <h3 class="date"></h3>
+            <div class="half-hours"></div>
+        </section>
+        <section>
+            <h3 class="date"></h3>
+            <div class="half-hours"></div>
+        </section>
+    </main>
+    <script src="calendar.js"></script>
+</body>
+</html>
