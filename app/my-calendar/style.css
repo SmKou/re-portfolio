@@ -231,16 +231,17 @@ main section {
     align-items: center;
 }
 
-.week-projects {
-    justify-content: flex-end;
-}
-
-.week-projects button {
+.week-projects div {
     width: 100%;
     height: 2.4rem;
     border: none;
-    outline: 0;
+    outline: none;
+    color: var(--uni-white);
 }
+
+.week-projects div.morning { background: var(--lblue-1) }
+.week-projects div.afternoon { background: var(--blue-1) }
+.week-projects div.night { background: var(--dpurple-1) }
 
 main section h3 {
     width: 100%;
@@ -272,17 +273,9 @@ section .half-hours button {
     text-align: left;
 }
 
-.half-hours button.daily {
-    background: var(--orange-1)
-}
-
-.half-hours button.weekly {
-    background: var(--lgreen-1)
-}
-
-.half-hours button.outing {
-    background: var(--amber-1)
-}
+.half-hours button.daily { background: var(--orange-1) }
+.half-hours button.weekly { background: var(--lgreen-1) }
+.half-hours button.outing { background: var(--amber-1) }
 
 .half-hours button:hover { background: var(--uni-off-white) }
 
