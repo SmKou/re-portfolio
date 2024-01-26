@@ -1,0 +1,316 @@
+:root {
+    --red-0: #FFCDD2;
+    --red-1: #D50000;
+    --pink-0: #F8BBD0;
+    --pink-1: #FF80AB;
+    --purple-0: #E1BEE7;
+    --purple-1: #6A1B9A;
+    --dpurple-0: #D1C4E9;
+    --dpurple-1: #512DA8;
+    --indigo-0: #C5CAE9;
+    --indigo-1: #283593;
+    --blue-0: #BBDEFB;
+    --blue-1: #1565C0;
+    --lblue-0: #B3E5FC;
+    --lblue-1: #0091EA;
+    --cyan-0: #B2EBF2;
+    --cyan-1: #00ACC1;
+    --teal-0: #B2DFDB;
+    --teal-1: #00BFA5;
+    --green-0: #C8E6C9;
+    --green-1: #43A047;
+    --lgreen-0: #DCEDC8;
+    --lgreen-1: #689F38;
+    --lime-0: #F0F4C3;
+    --lime-1: #DCE775;
+    --yellow-0: #FFF9C4;
+    --yellow-1: #FDD835;
+    --amber-0: #FFECB3;
+    --amber-1: #FFB300;
+    --orange-0: #FFE0B2;
+    --orange-1: #FF9800;
+    --dorange-0: #FFCCBC;
+    --dorange-1: #E64A19;
+    --brown-0: #D7CCC8;
+    --brown-1: #6D4C41;
+    --bgrey-0: #CFD8DC;
+    --bgery-1: #546E7A 
+}
+
+/* 
+yellow: single day
+cyan: single event
+*/
+
+body {
+    width: 100vw;
+    height: calc(100vh - 0.5px);
+    margin: 0;
+    border: 1px solid var(--uni-off-black);
+    overflow: hidden;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3.6rem;
+    color: var(--uni-white);
+    background: var(--uni-off-black);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header h2 {
+    margin-left: 1.2rem;
+    font-family: 'Bebas Neue';
+    letter-spacing: 0.1rem;
+}
+
+header nav a {
+    margin-left: 1.2rem;
+    color: var(--uni-mid);
+    font-family: 'League Spartan';
+    font-size: 2.4rem;
+}
+
+header nav a:hover { color: var(--uni-light) }
+
+header nav button {
+    margin: 0 0.6rem;
+    padding-top: 0.4rem;
+    border: 0.2rem solid var(--uni-mid);
+    border-radius: 0.5rem;
+    outline: none;
+    color: var(--uni-mid);
+    background: transparent;
+    font-family: 'Bebas Neue';
+    font-size: 1.6rem;
+}
+
+header nav button:hover {
+    border-color: var(--uni-light);
+    color: var(--uni-light);
+}
+
+/* -------------------------------------- COLLAPSIBLE SINGLE */
+
+.single {
+    position: absolute;
+    max-width: 42rem;
+    max-height: 42rem;
+    border: 0.1rem solid var(--uni-black);
+    z-index: 10;
+}
+
+.single.left,
+.single.right {
+    top: 0;
+    width: 50%;
+    height: 100%;
+}
+
+.single.left { left: 0 }
+.single.right { right: 0 }
+
+@media (orientation: portrait) and (max-width: 80rem) {
+    .single.left,
+    .single.right { width: 100% }
+}
+
+.single.up,
+.single.down {
+    left: 0;
+    width: 100%;
+    height: 50%;
+}
+
+.single.up { top: 0 }
+.single.down { bottom: 0 }
+
+@media (orientation: landscape) and (max-height: 80rem) {
+    .single.up,
+    .single.down { height: 100% }
+}
+
+.single.day { background: var(--lime-1) }
+
+.single.day h3 {
+    margin: 0;
+    width: 100%;
+    height: 2.4rem;
+    padding-top: 0.4rem;
+    padding-left: 1.2rem;
+    font-family: 'League Spartan';
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.single.day .half-hours {
+    height: calc(100% - 6.4rem);
+    overflow-y: scroll;
+}
+
+.single.day .half-hours div {
+    height: 2rem;
+    padding-left: 2.4rem;
+    border-top: 0.1rem solid var(--uni-mid);
+    border-bottom: 0.1rem solid var(--uni-mid);
+    background: var(--yellow-0);
+    font-family: 'Ovo';
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+}
+
+.single.day .half-hours div:hover { background: var(--lime-1) }
+
+.single.day .half-hours div:first-of-type { border-top-width: 0.2rem }
+.single.day .half-hours div:last-of-type { border-bottom-width: 0.2rem }
+
+.single.event { background: var(--cyan-0) }
+
+.single.event .container {
+    height: calc(100% - 4rem);
+    padding: 4rem;
+    border-bottom: 0.2rem solid var(--uni-off-black);
+    font-family: 'Ovo';
+    font-size: 1.6rem;
+    overflow-y: scroll;
+}
+
+.single.event .container h3 {
+    font-family: 'League Spartan';
+    font-size: 2.1rem;
+}
+
+.single.day nav,
+.single.event nav {
+    height: 4rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.single.day nav button,
+.single.event nav button {
+    margin: 0 0.6rem;
+    border-radius: 0.5rem;
+    background: transparent;
+    font-family: 'Bebas Neue';
+    letter-spacing: 0.1rem;
+}
+
+.single.day nav button:first-of-type,
+.single.event nav button:first-of-type { align-self: flex-start }
+
+.single.day nav button:hover { background: var(--yellow-1) }
+.single.event nav button:hover { background: var(--cyan-1) }
+
+.single.collapsed { display: none }
+
+/* -------------------------------------- DAYS VIEW */
+
+main {
+    position: absolute;
+    top: 3.6rem;
+    width: 100%;
+    height: calc(100% - 3.6rem);
+}
+
+main section {
+    border: 0.1rem solid var(--brown-1);
+    background: var(--brown-0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.week-projects {
+    justify-content: flex-end;
+}
+
+.week-projects button {
+    width: 100%;
+    height: 2.4rem;
+    border: none;
+    outline: 0;
+}
+
+main section h3 {
+    width: 100%;
+    height: 2.4rem;
+    margin: 0;
+    border-bottom: 0.1rem solid var(--brown-1);
+    font-family: 'Bebas Neue';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+section .half-hours {
+    width: 100%;
+    height: calc(100% - 2.4rem);
+    display: flex;
+    flex-direction: column;
+}
+
+section .half-hours button {
+    width: 100%;
+    height: 100%;
+    padding: 0.6rem 1.2rem;
+    padding-left: 1.2rem;
+    border: none;
+    background: transparent;
+    font-family: 'Ovo';
+    font-weight: bold;
+    text-align: left;
+}
+
+.half-hours button.daily {
+    background: var(--orange-1)
+}
+
+.half-hours button.weekly {
+    background: var(--lgreen-1)
+}
+
+.half-hours button.outing {
+    background: var(--amber-1)
+}
+
+.half-hours button:hover { background: var(--uni-off-white) }
+
+@media (max-width: 1049px) {
+    main {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(40rem, 1fr))
+    }
+}
+
+@media (min-width: 1050px) {
+    main { 
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    main section { 
+        width: calc(100vw / 7.015);
+        border-left: 0.1rem solid var(--brown-1);
+        border-right: 0.1rem solid var(--brown-1);
+    }
+    .week-projects { width: 100% }
+    .week-projects h3 { display: none }
+}
+
+/* @media (orientation: portrait) and (min-width: 105rem) {
+    main {
+        display: flex
+    }
+} */
