@@ -55,6 +55,23 @@ const filterTopic = e => {
     if (activeBtn)
         activeBtn.classList.remove('active')
     e.target.classList.add('active')
+
+    // const sections = document.querySelectorAll('section')
+    // for (const section of sections) {
+    //     const [alpha] = section.classList
+    //     if (document.querySelector(`section.${alpha} dt.${topic}`))
+    //         continue
+
+    //     let allCollapsed = true
+    //     const ds = document.querySelectorAll(`section.${alpha} dt, section.${alpha} dd`)
+    //     for (const d of ds)
+    //         if (!d.classList.contains('collapsed')) {
+    //             allCollapsed = false
+    //             break
+    //         }
+    //     if (allCollapsed)
+    //         section.classList.add('collapsed')
+    // }
 }
 
 const topics = ['html', 'tag', 'css', 'font', 'shape', 'layout', 'ui-element', 'programming', 'data-structure', 'algorithm', 'technique', 'resource']
