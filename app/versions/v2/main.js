@@ -1,10 +1,12 @@
 const alpha_opt_btns = document.querySelector('.option-btns.alpha')
 const topic_opt_btns = document.querySelector('.option-btns.topics')
 
+const measure = document.querySelector('.measure')
+
 const createButton = (option, classes, func) => {
     const button = document.createElement('button')
     button.setAttribute('class', classes)
-    button.append(document.createTextNode(option.toUpperCase()))
+    button.innerHTML = option.toUpperCase()
     button.addEventListener('click', func)
     return button
 }
@@ -46,8 +48,8 @@ const filterTopic = e => {
         return true
     }
 
-    document.querySelectorAll(`dt.${topic}, dd.${topic}`).forEach(entry => entry.classList.remove('collapsed'))
-    document.querySelectorAll(`dt:not(.${topic}), dd:not(.${topic})`).forEach(entry => entry.classList.add('collapsed'))
+    document.querySelectorAll(`dt.${topic}, dt.${topic} + dd`).forEach(entry => entry.classList.remove('collapsed'))
+    document.querySelectorAll(`dt:not(.${topic}), dt:not(.${topic}) + dd`).forEach(entry => entry.classList.add('collapsed'))
 
     const activeBtn = document.querySelector('button.topic.active')
     if (activeBtn)
@@ -55,6 +57,32 @@ const filterTopic = e => {
     e.target.classList.add('active')
 }
 
-const topics = ['html', 'css', 'tag', 'font', 'shape', 'layout', 'element']
+const topics = ['html', 'tag', 'css', 'font', 'shape', 'layout', 'ui-element', 'resource']
 
-topics.forEach(topic => topic_opt_btns.append(createButton(topic, `topic ${topic}`, filterTopic)))
+topics.forEach(topic => {
+    const classTopic = topic.includes('-') ? topic.split('-').join(' ') : topic
+    const button = createButton(topic, `topic ${classTopic}`, filterTopic)
+    measure.append(button)
+    const width = 12 + button.clientWidth
+    button.remove()
+    button.style.minWidth = width + 'px'
+    topic_opt_btns.append(button)
+})
+
+/* Populate fonts */
+const numbers = new Array(10)
+for (let i = 0; i < numbers.length; ++i)
+    numbers[i] = i
+const samples = new Array(alphaClasses.length).concat(numbers)
+for (let i = 0; i < alphaClasses.length; ++i)
+    samples[i] = alphaClasses[i].toUpperCase() + alphaClasses[i]
+
+const fontexs = document.querySelectorAll('dt.font + dd div.sample')
+fontexs.forEach(fontex => {
+    const spans = samples.map(sample => {
+        const span = document.createElement('span')
+        span.innerHTML = sample
+        return span
+    })
+    spans.forEach(span => fontex.append(span))
+})
