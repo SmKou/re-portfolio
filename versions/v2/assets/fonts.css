@@ -78,6 +78,20 @@
     font-style: normal;
 }
 
+/* Ra Mono */
+@font-face {
+    font-family: 'Ra Mono';
+    src: url('./fonts/RaMonoRegular.eot');
+    src: url('./fonts/RaMonoRegular.eot?#iefix') format('embedded-opentype'),
+        url('./fonts/RaMonoRegular.woff2') format('woff2'),
+        url('./fonts/RaMonoRegular.woff') format('woff'),
+        url('./fonts/RaMonoRegular.ttf') format('truetype'),
+        url('./fonts/RaMonoRegular.svg#RaMonoRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 /* STXingkai */
 @font-face {
     font-family: "STXingkai";

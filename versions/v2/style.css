@@ -74,10 +74,9 @@ nav {
 .options {
     width: 100%;
     max-width: 84rem;
-    height: 3.6rem;
     margin: 0 auto;
     display: flex;
-    align-items: center;
+    flex-direction: column;
 }
 
 .options h3 {
@@ -86,16 +85,18 @@ nav {
     color: var(--uni-mid);
     background: var(--uni-light);
     font-family: 'League Spartan';
+    display: inline-block;
 }
 
 .option-btns {
     width: 100%;
     display: flex;
+    flex-shrink: 0;
+    align-items: center;
     overflow-x: scroll;
 }
 
 .option-btns button {
-    min-width: 2.4rem;
     min-height: 2.4rem;
     padding-top: 0.4rem;
     border: none;
@@ -104,6 +105,9 @@ nav {
     font-family: 'League Spartan';
     font-size: 1.6rem;
 }
+
+.option-btns.alpha button { min-width: 2.4rem }
+.option-btns.topics button { min-width: 10rem }
 
 .option-btns button:hover { text-decoration: underline }
 .option-btns button.active { background: var(--uni-light) }
@@ -125,5 +129,80 @@ section {
 
 section h3 { font-size: 2.4rem }
 
+section h4 { 
+    margin-bottom: 0.6rem;
+    font-size: 2rem;
+}
+
+dt {
+    font-family: 'League Spartan';
+    font-size: 2rem;
+}
+
+dd {
+    font-family: 'League Spartan';
+    font-size: 1.6rem;
+}
+
+dd div { margin-bottom: 1.2rem }
+
+.font + dd .sample {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(3rem, 1fr));
+    gap: 0.6rem;
+}
+
+.font-pair {
+    padding: 1.2rem;
+    border: 0.1rem solid var(--uni-black);
+    border-radius: 0.8rem;
+    background: var(--uni-white);
+}
+
+.font-pair p { margin: 0 }
+
+.font-pair .heading {
+    margin-bottom: 0.6rem;
+    font-size: 2.4rem;
+}
+
+.font-pair p.ra-mono { font-size: 1.4rem }
+
+.bebas-neue { font-family: 'Bebas Neue' }
+.broken-heart { font-family: 'Broken Heart' }
+.halant { font-family: 'Halant' }
+.karla { font-family: 'Karla' }
+.league-spartan { font-family: 'League Spartan' }
+.libre { font-family: 'Libre Baskerville'}
+.nunito { font-family: 'Nunito Sans' }
+.ovo { font-family: 'Ovo' }
+.playfair { font-family: 'Playfair Display' }
+.ra-mono { font-family: 'Ra Mono' }
+.rubik { font-family: 'Rubik' }
+.spectral { font-family: 'Spectral' }
+.stxingkai { font-family: 'STXingkai' }
+
+.thin { font-weight: 200 }
+.light { font-weight: 300 }
+.regular { font-weight: 400 }
+.bold { font-weight: 700 }
+
+.italic { font-style: italic }
+
+.california-sun,
+.california-sun.regular { font-family: 'Californiasun-Regular' }
+.california-sun.italic { font-family: 'Californiasun-Italic'}
+
+.muli,
+.muli.regular { font-family: 'Muli-Regular' }
+.muli.light { font-family: 'Muli-Light' }
+.muli.bold { font-family: 'Muli-Bold' }
+
+.measure {
+    position: fixed;
+    bottom: 1.2rem;
+    left: 1.2rem;
+}
 
 .collapsed { display: none }
