@@ -57,7 +57,7 @@ const filterTopic = e => {
     e.target.classList.add('active')
 }
 
-const topics = ['html', 'tag', 'css', 'font', 'shape', 'layout', 'ui-element', 'resource']
+const topics = ['html', 'tag', 'css', 'font', 'shape', 'layout', 'ui-element', 'programming', 'data-structure', 'algorithm', 'technique', 'resource']
 
 topics.forEach(topic => {
     const classTopic = topic.includes('-') ? topic.split('-').join(' ') : topic
