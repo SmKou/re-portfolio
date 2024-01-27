@@ -119,7 +119,6 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow-y: scroll;
 }
 
 section {
@@ -143,6 +142,9 @@ dd {
     font-family: 'League Spartan';
     font-size: 1.6rem;
 }
+
+dd a { color: var(--uni-mid) }
+dd a:hover { color: var(--uni-off-black) }
 
 dd div { margin-bottom: 1.2rem }
 
@@ -198,6 +200,21 @@ dd div { margin-bottom: 1.2rem }
 .muli.regular { font-family: 'Muli-Regular' }
 .muli.light { font-family: 'Muli-Light' }
 .muli.bold { font-family: 'Muli-Bold' }
+
+dd .code,
+dd .code,
+dd .code {
+    width: 100%;
+    padding: 1.2rem 1.8rem;
+    border-radius: 0.6rem;
+    background: #f2f4f4;
+    font-family: 'Ra Mono', monospace;
+    font-size: 1.4rem;
+    letter-spacing: -0.1rem;
+}
+
+.indented { padding-left: 2rem }
+dd span.code { padding: 0.2rem 0.6rem }
 
 .measure {
     position: fixed;

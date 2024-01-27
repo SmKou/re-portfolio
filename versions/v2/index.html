@@ -40,8 +40,28 @@
         <section class="a">
             <h3>A</h3>
             <dl>
-                <dt></dt>
-                <dd></dd>
+                <dt class="resource">Accessibility</dt>
+                <dd>
+                    <p>Read about <a href="https://www.w3.org/WAI/fundamentals/accessibility-intro/" target="_blank">Web
+                        Accessibility</a>.</p>
+                    <p>How to make a website or web app accessible:</p>
+                    <ul>
+                        <li>DreamHost: <a href="https://www.dreamhost.com/blog/make-your-website-accessible/"
+                                target="_blank">How to Design an Accessible Website</a></li>
+                        <li>HubSpot: <a href="https://blog.hubspot.com/website/web-accessibility" target="_blank">Web
+                                Accessibility</a></li>
+                        <li>Web Accessibility in Mind (WebAIM): <a href="https://webaim.org/" target="_blank">Training
+                                and Resources</a></li>
+                    </ul>
+                    <p>Get certified:</p>
+                    <ul>
+                        <li>CPACC: <a href="https://www.accessibilityassociation.org/s/certified-professional"
+                                target="_blank">Certified Professional in Accessibility Core Competencies</a></li>
+                        <li>WAS: <a href="https://www.accessibilityassociation.org/s/wascertification"
+                                target="_blank">Web Accessibility Specialist</a></li>
+                    </ul>
+                    <p>Take a course: <a href="https://dequeuniversity.com/" target="_blank">Dequeu University</a></p>
+                </dd>
             </dl>
         </section>
         <section class="b">
@@ -75,13 +95,53 @@
                         <p class="ra-mono">Panagrams are words or sentences containing every letter of the alphabet at least once. The most well known panagram in English is "A quick brown fox jumps over the lazy dog." While the latin paragraphs of Lorem Ipsum are used for paragraph samples, pangrams can be used as an alphabet sample.</p>
                     </div>
                 </dd>
+                <dt class="css">CSS</dt>
+                <dd><p>Stands for: Cascading StyleSheets</p></dd>
             </dl>
         </section>
         <section class="d">
             <h3>D</h3>
             <dl>
-                <dt></dt>
-                <dd></dd>
+                <dt class="html css">Document Structure</dt>
+                <dd>
+                    <p><strong>HTML</strong></p>
+                    <div class="code">
+                        <p>&lt;!DOCTYPE html&gt;</p>
+                        <p>&lt;html&gt;</p>
+                        <div class="indented">
+                            <p>&lt;head&gt;</p>
+                            <div class="indented">
+                                <p>&lt;meta charset="utf-8"&gt;</p>
+                                <p>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+                                <p>&lt;title&gt;Document Title&lt;/title&gt;</p>
+                                <p>&lt;link rel="stylesheet" href="style.css"&gt;</p>
+                            </div>
+                            <p>&lt;/head&gt;</p>
+                        </div>
+                        <div class="indented">
+                            <p>&lt;body&gt;</p>
+                            <div class="indented">
+                                <p>&lt;script src="main.js"&gt;&lt;script&gt;</p>
+                            </div>
+                            <p>&lt;/body&gt;</p>
+                        </div>
+                        <p>&lt;/html&gt;</p>
+                    </div>
+                    <p><strong>CSS</strong></p>
+                    <div class="code">
+                        <p>:root {</p>
+                        <div class="indented">
+                            <p>--old-parchment: #F9D8A7</p>
+                        </div>
+                        <p>}</p>
+                        <p>main {</p>
+                        <div class="indented">
+                            <p>background: linear-gradient(white, var(--old-parchment));</p>
+                        </div>
+                        <p>}</p>
+                    </div>
+                    <p>Lookup <a href="#variables">variables</a> to understand <span class="code">--old-parchment: #F9D8A7</span>.</p>
+                </dd>
             </dl>
         </section>
         <section class="e">
@@ -127,6 +187,8 @@
                         <p class="nunito light">Panagrams are words or sentences containing every letter of the alphabet at least once. The most well known panagram in English is "A quick brown fox jumps over the lazy dog." While the latin paragraphs of Lorem Ipsum are used for paragraph samples, pangrams can be used as an alphabet sample.</p>
                     </div>
                 </dd>
+                <dt class="html">HTML</dt>
+                <dd><p>Stands for: HyperText Markup Language</p></dd>
             </dl>
         </section>
         <section class="i">
@@ -332,7 +394,7 @@
         <section class="v">
             <h3>V</h3>
             <dl>
-                <dt></dt>
+                <dt id="variables" class="programming">Variables</dt>
                 <dd></dd>
             </dl>
         </section>
