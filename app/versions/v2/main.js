@@ -74,7 +74,7 @@ const filterTopic = e => {
     // }
 }
 
-const topics = ['html', 'tag', 'css', 'font', 'shape', 'layout', 'ui-element', 'programming', 'data-structure', 'algorithm', 'technique', 'resource']
+const topics = ['html', 'tag', 'css', 'font', 'shape', 'layout', 'ui-element', 'programming', 'resource']
 
 topics.forEach(topic => {
     const classTopic = topic.includes('-') ? topic.split('-').join(' ') : topic

@@ -32,8 +32,7 @@ v1 Magazine
 - Edit and redesign smjoker.com -> slate
 
 v2 Design Index
-- Redesign for actual handbook aesthetic (change layout)
-- What is this handbook for?
+- What is this handbook for? Note-taking
 - Add content
 
 v3 Slideshows
