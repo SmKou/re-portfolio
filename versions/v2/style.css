@@ -112,6 +112,11 @@ nav {
 .option-btns button:hover { text-decoration: underline }
 .option-btns button.active { background: var(--uni-light) }
 
+nav p {
+    max-width: 84rem;
+    margin: 0 auto;
+}
+
 /* -------------------------------------------------- Index */
 
 main {

@@ -327,7 +327,6 @@ const loadCalendar = () => {
 }
 loadCalendar()
 
-// 
 const loadDay = () => {}
 
 const loadEvent = () => {}

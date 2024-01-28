@@ -17,14 +17,14 @@ const getPath = () => `~/${path.length ? ui.path.join('/') : ''}`
 const getBashError = (error, cmd) => `bash: ${cmd}: ${error}`
 const getError = (error, term = '') => `error: ${term? term + ': ' : ''}${error}`
 
-const getNode = (path = ui.path.slice(), node = portfolio) => {
-    let shift
-    while (shift = path.shift())
-        if (node.hasOwnProperty(shift))
-            node = node[shift]
-        else
-            return { shift }
-    return node
+const node = (path = ui.path.slice(), node = portfolio, shift = path.shift()) => {
+    shift = path.shift()
+    if (!path.length)
+        return node
+    if (node.hasOwnProperty(shift))
+        return node(path, node[shift])
+    else
+        return { shift }
 }
 
 const addLine = output => {
