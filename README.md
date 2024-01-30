@@ -11,7 +11,41 @@ Re-Portfolio is a static portfolio website where every page has its own design. 
 
 **In-Development**
 Homepage
-- Commands: find, more, searchable, stat
+- Commands
+  - _print_
+  
+  Interface
+  - cls / clear: clear terminal
+  - echo: show messages
+  - lynx: follow link
+
+  Directories
+  - cd: change directory
+  - dir / ls: list directories and files
+  - pwd: print working directory
+  - tree: graphically display folder structure
+
+  Files
+  - find: search for specified text string in files
+  - more: display contained information in text file
+  - sort: read and sort data
+  - stat: view details on file
+
+  Commands
+  - help / --help
+  - man: manual page for command
+  - whatis: display what a command is for
+
+  Dev information
+  - hostname
+  - msg: (send message to user)
+  - whoami: display active username
+
+  Date and Time
+  - cal: view cmd calendar
+  - date
+  - time
+
 - Test commands
 
 v0 Profile
