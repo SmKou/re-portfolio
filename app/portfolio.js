@@ -1,9 +1,19 @@
 const manual = {
     cal: {
-        name: '',
-        synopsis: [],
-        description: ``,
-        help: ``
+        name: 'cal - calendar',
+        synopsis: [ 
+            'cal', 
+            'cal DATE',
+            'cal FREQUENCY',
+        ],
+        description: `Show calendar information.
+        Default date is today's.
+        Specify a date or frequency for viewing events from calendar information.
+        
+        --help
+            display command information of cal`,
+        help: `cal: cal <[date]|[frequency]>
+        Show calendar information.`
     },
     cd: {
         name: 'cd - change directory',
@@ -40,10 +50,42 @@ const manual = {
         Clear the terminal.`
     },
     date: {
-        name: '',
-        synopsis: [],
-        description: ``,
-        help: ``
+        name: 'date',
+        synopsis: [ 'date', 'date OPTIONS', 'date' ],
+        description: `Show date.
+        Current date is today's date.
+        Dates can be written as M/D/YY or M-D-YY. The default format uses forward slashes. To use a different ordering or format, specify with an option.
+
+        Options consist of flags. There is no option for padding.
+
+        -d, --day
+            display day in month of date (default: numeric)
+
+        -wd, --weekday
+            display weekday of date (default: numeric)
+
+        -w, --week
+            display week in month of date (default: numeric)
+
+        -y, --year
+            display year of date (default: numeric)
+
+        -s, --short
+            display result in short form
+
+        -l, --long
+            display result in long form
+
+        -n, --numeric
+            display result in numeric form
+
+        -h, --hyphen
+            display result with hyphens if the result has multiple parts
+        
+        --help
+            display command information of date`,
+        help: `date: date
+        Show current date.`
     },
     dir: {
         name: 'dir - directory',
@@ -74,21 +116,40 @@ const manual = {
     find: {
         name: 'find',
         synopsis: [ 'find ["string"]', 'find ["string"] CATEGORY' ],
-        description: ``,
+        description: `Search a category, or categories, for a string appearing in item properties and their values.
+        If the string consists of spaces, it will be split into individual terms and item properties and values will be tested against each individual term. In other words, search does not consist of equivalence.
+        
+        -p, --property-only
+            search only item properties
+
+        -v, --value-only
+            search only item values
+        
+        --help
+            display command information of find`,
         help: `find ["string"] <category>
         Search items for property name or value.`
     },
     help: {
-        name: '',
-        synopsis: [],
-        description: ``,
-        help: ``
+        name: 'help',
+        synopsis: [ 'help', 'help COMMAND' ],
+        description: `Display command information.
+        If no command is specified, help will return a list of available commands.
+        
+        --help
+            display command information of help`,
+        help: `help: help <command>
+        Show command information.`
     },
     hostname: {
-        name: '',
-        synopsis: [],
-        description: ``,
-        help: ``
+        name: 'hostname',
+        synopsis: [ 'hostname' ],
+        description: `Display name of host.
+        
+        --help
+            display command information of hostname`,
+        help: `hostname: hostname
+        Display name of host.`
     },
     ls: {
         name: 'ls - list',
@@ -119,22 +180,53 @@ const manual = {
         Open item url.`
     },
     man: {
-        name: '',
-        synopsis: [],
-        description: ``,
+        name: 'man - manual',
+        synopsis: [ 'man', 'man COMMANDS' ],
+        description: `Show manual pages of commands.
+        List commands separated by spaces. Ensure correct spelling and that command names are only lowercase.
+
+        -n, --name-only
+            show only names from manual pages
+
+        -s, --synopsis-only
+            show only synopsis from menaul pages
+
+        -d, --description-only
+            show only description from manual pages
+        
+        --help
+            display command information of man`,
         help: ``
     },
     more: {
         name: 'more',
-        synopsis: [],
-        description: ``,
+        synopsis: [ 'more', 'more ITEM' ],
+        description: `Show contained information of current item.
+        Use name of an item as-is.
+        Cannot be used on categories.
+
+        -m, --messages-included
+            show item messages as well
+        
+        --help
+            display command information of more`,
         help: `more: more
         Show contained information in item.`
     },
     msg: {
-        name: '',
-        synopsis: [],
-        description: ``,
+        name: 'msg - message',
+        synopsis: [ 'msg', 'msg PREFERENCE' ],
+        description: `View contact to send a message to developer.
+        Available preferences: linkedin, github.
+        
+        -l, --linkedin
+            show only linkedin contact
+
+        -g, --github
+            show only github contact
+
+        --help
+            display command information of msg`,
         help: ``
     },
     pwd: {
@@ -150,24 +242,43 @@ const manual = {
     },
     sort: {
         name: 'sort',
-        synopsis: [],
-        description: ``,
+        synopsis: [ 'sort', 'sort CATEGORY' ],
+        description: `Sort items in category.
+        Default order is ascending alphabetical order according to the name of items.
+
+        -d, --descending
+            sort in descending order
+
+        -y, --year
+            sort by year if items contain a year property
+
+        -s, --status
+            sort by status and then name if items contain a status
+        
+        --help
+            display command information of sort`,
         help: `sort: sort
         Sort items in category in results from another command.
         Valid commands: dir, ls`
     },
     stat: {
         name: 'stat',
-        synopsis: [],
-        description: ``,
+        synopsis: [ 'stat', 'stat ITEM' ],
+        description: `Show details of an item, consisting of category, status, and year.
+
+        -c, --category-only
+            show only category of item
+
+        -s, --status-only
+            show only status of item
+
+        -y, --year-only
+            show only year of item if item has a year
+        
+        --help
+            display command information of stat`,
         help: `stat: stat <item_name>
         Show details of item.`
-    },
-    time: {
-        name: '',
-        synopsis: [],
-        description: ``,
-        help: ``
     },
     tree: {
         name: 'tree',
@@ -184,16 +295,27 @@ const manual = {
         Show path structure of category.`
     },
     whatis: {
-        name: '',
-        synopsis: [],
-        description: ``,
-        help: ``
+        name: 'whatis - what is',
+        synopsis: [ 'whatis COMMAND' ],
+        description: `Show command action, taken from command information used for help.
+
+        -m, --manual
+            show description from manual page
+        
+        --help
+            display command information of whatis`,
+        help: `whatis: whatis [command]
+        Show what a command does.`
     },
     whoami: {
-        name: '',
-        synopsis: [],
-        description: ``,
-        help: ``
+        name: 'whoami - who am i',
+        synopsis: [ 'whoami' ],
+        description: `Show the name of the developer.
+        
+        --help
+            display command information of whoami`,
+        help: `whoami: whoami
+        Show the name of the developer.`
     }
 }
 
