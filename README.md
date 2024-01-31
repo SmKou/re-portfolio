@@ -48,19 +48,6 @@ Homepage
 
 - Test commands
 
-v0 Profile
-personalization redesign: [User Interfaces with Big-5 Personality Traits](https://www.kamranhughes.com/how-to-tailor-designs-using-the-big-5-personality-traits/)
-- Add questionaire
-- Gather content per question
-  - chart or bar graph
-  - progress bars
-  - stock image, credits and sources
-  - bullet points
-  - personal facts
-  - statements
-  - summaries
-  - analyses
-
 v1 Magazine
 - Add images for stories: 640 clr-opt, bw
 - Edit and redesign smjoker.com -> slate
