@@ -1,5 +1,22 @@
+const ui = {
+    path: [],
+    host: `${/^localhost:\d+/.test(window.location.host) ? 'http://' : 'https://'}${window.location.host}`,
+    cns: document.querySelector('article section'),
+    ipt: document.querySelector('article input'),
+    aside: {
+        e: document.querySelector('aside'),
+        state: true,
+        tog: document.getElementById('toggle-aside'),
+        ctt: document.getElementById('aside-content')
+    }
+}
+
 const cmd = {
-    cal: function(args) {},
+    cal: function(args) {
+        if (args.length && args.includes('--help')) {
+
+        }
+    },
     cd: function(args) {},
     cls: function(args) {},
     clear: function(args) {},
