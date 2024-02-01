@@ -1195,23 +1195,8 @@ const projects = {
         status: false,
         comment: `Based on Dungeons & Dragons
         Two narratives: third-person (Seraph) and first-person (Kibakhan)`
-    }
-}
-
-const projects_queue = [
-    projects['husky-goals'],
-    projects['ijuum'],
-    projects['little-red'],
-    projects['ulore'],
-    projects['freecodecamp-challenge'],
-    projects['simple-brain'],
-    projects['super-galactic-age-calculator'],
-    projects['dino-ipsum'],
-    projects['madlibs-clone'],
-    projects['power-planter'],
-    projects['katadsa'],
-    projects['mahjong-cards'],
-    {
+    },
+    'odin-challenge': {
         title: 'Odin Challenge',
         description: 'Complete foundations and full-stack javascript paths in given time limit',
         keywords: ['html', 'css', 'javascript', 'vanilla js', 'node.js'],
@@ -1220,7 +1205,7 @@ const projects_queue = [
         status: false,
         comment: `Self-designated challenge: 7 courses in 1 month`
     },
-    {
+    'notation-calculator': {
         title: 'Notation Calculator',
         description: 'Calculator web app using (reverse) polish and standard notation with memory and collapsible visualization',
         keywords: ['html', 'css', 'javascript', 'vanilla js', 'responsive design', 'canvas'],
@@ -1235,7 +1220,7 @@ const projects_queue = [
         - View visualization
         - Use of memory`
     },
-    {
+    'travel-scrapbook': {
         title: 'Travel Scrapbook',
         description: 'Travelogue web app for creating and viewing scrapbooks',
         keywords: ['html', 'css', 'javascript', 'vanilla js'],
@@ -1250,7 +1235,7 @@ const projects_queue = [
         
         Requires app and server`
     },
-    {
+    'cattery': {
         title: 'Angels of Siberia',
         description: 'Cattery website',
         keywords: ['html', 'css', 'javascript', 'vanilla js', 'sql', 'node.js', 'api', 'responsive design'],
@@ -1263,7 +1248,7 @@ const projects_queue = [
         comment: `Requires frontend for display and personal backend for owner
         - CMS: Wordpress, Wix`
     },
-    {
+    'nudibranch': {
         title: 'Nudibranch Pages',
         description: 'Element and page design based on nudibranchs',
         keywords: ['html', 'css', 'javascript', 'vanilla js'],
@@ -1278,7 +1263,7 @@ const projects_queue = [
         
         Nudibranchs = sea slugs`
     },
-    {
+    '[wwjd]': {
         title: '[What Would Jesus Do?]',
         description: 'Rock game',
         keywords: ['html', 'css', 'javascript', 'vanilla js', 'canvas'],
@@ -1292,15 +1277,15 @@ const projects_queue = [
         - snow
         - fire / magma`
     },
-    {
+    '[farting-mario]': {
         title: '[Farting Mario]',
         description: 'Mario-parody game',
         keywords: ['godot', 'c#'],
-        year: 2024,
+        year: 2025,
         href: { source: sources.smkou },
         status: false
     },
-    {
+    '[hernia]': {
         title: '[Hernia]',
         description: 'Something to do with the word and concept of hernia',
         keywords: [],
@@ -1310,9 +1295,9 @@ const projects_queue = [
         comment: `Hernia 1 2 3 4 - "sounds like a series"
         "1 and 2 were great, but after 3, it just went downhill from there."`
     }
-]
+}
 
-const experience = {
+const experiences = {
     'frontend-intern': {
         title: 'Frontend Intern',
         description: 'React web app developmnt',
@@ -1439,10 +1424,109 @@ const education = {
     }
 }
 
+const calendar = {
+    daily: {
+        routine: {
+            morning: { time: ['10:00', 1.5], status: false },
+            night: { time: ['11:30', 1.5], status: true }
+        },
+        goals: {
+            danish: { 
+                time: 0.5, 
+                status: false, 
+                comment: `Duolingo
+                Short Stories in Danish => Teach Yourself Danish` 
+            },
+            german: { 
+                time: 0.5, 
+                status: false, 
+                comment: `Speakly
+                Short Stories in German => Learn German for Beginners` 
+            },
+            algorithms: { 
+                time: 0.5, 
+                status: false, 
+                comment: `1. [] Grokking Algorithms
+                2. [] Advanced Algorithms and Data Structures
+                3. [] Dive into Algorithms
+                4. [] 50 Algorithms Every Programmer Should Know
+                5. [] Intro to Algorithms`
+            },
+            ai: {
+                time: 0.5,
+                status: false,
+                comment: `1. [] Make Your Own Neural Network
+                2. [] Grokking AI Algorithms
+                3. [] AI for Games`
+            }
+        }
+    },
+    weekly: {
+        routine: {
+            therapy: { 
+                days: 1, 
+                time: ['10:30', 2], 
+                status: true 
+            },
+            isg: { 
+                days: 6, 
+                time: ['13:00', 5.5], 
+                status: true 
+            }
+        },
+        goals: {
+            dsa: {
+                days: [0, 1, 1, 1, 0, 0, 0],
+                time: 2,
+                status: false
+            }
+        }
+    },
+    monthly: {
+        routine: {
+            seattlejs: { 
+                week: 2,
+                days: 3,
+                time: ['17:00', 2.5],
+                status: true
+            },
+            code_katas: {
+                week: 3,
+                days: 2,
+                time: ['17:00', 1.5],
+                status: true
+            },
+            indies_social: {
+                week: 3,
+                days: 2,
+                time: ['20:30', 2.5],
+                status: true
+            }
+        }
+    },
+    events: {
+        '2/6/24': {
+            city_light: { time: ['13:30', 0.5] },
+            gov: { time: ['14:30', 1.5] }
+        }
+    },
+    projects: {
+        '1/28/24': [ 'Re-Portfolio', "Jordan's Game" ],
+        '1/21/24': [ 'Re-Portfolio' ]
+    }
+}
+
 const portfolio = {
-    categories: { versions, projects, experiences, education },
-    additional: {
-        projects: projects_queue
+    categories: { 
+        versions, 
+        projects, 
+        experiences, 
+        education 
+    },
+    res: {
+        manual,
+        calendar,
+        sources
     },
     pages: {
         art: {
