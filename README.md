@@ -48,18 +48,6 @@ Homepage
 
 - Test commands
 
-v1 Magazine
-- Add images for stories: 640 clr-opt, bw
-- Edit and redesign smjoker.com -> slate
-
-v2 Design Index
-- What is this handbook for? Note-taking
-- Add content
-
-v3 Slideshows
-- Switch mechanism
-- Add content
-
 Art
 - image mosaic
   - nodejs generator
