@@ -1516,35 +1516,26 @@ const calendar = {
     }
 }
 
-const portfolio = {
-    categories: { 
-        versions, 
-        projects, 
-        experiences, 
-        education 
+const categories = ['versions', 'projects', 'experiences', 'education']
+const resources = { manual, calendar, sources }
+const pages = {
+    art: {
+        title: 'Artworks',
+        description: 'A slideshow of image mosaics formed from personal drawings',
+        href: { view: ['art/'] },
+        comment: `I cannot meditate in the traditional sense due in part to my C-PTSD, so drawing acts as a sort of substitute. Rather than clarity and relaxation, drawing provides insight and allows for a nuance of expression when words fail as they often do for me when it comes to self-perception and sensation.`
     },
-    res: {
-        manual,
-        calendar,
-        sources
+    calendar: {
+        title: 'My Calendar',
+        description: 'A demo of a calendar app showing a personal schedule',
+        href: { view: ['my-calendar/'] },
+        comment: `The design of the week layout has always annoyed me in apps, requiring a landscape view when a portrait view should still work, so for the calendar app, I made sure there was a portrait layout and an intermediate layout when the width is not long enough for the traditional week view.`
     },
-    pages: {
-        art: {
-            title: 'Artworks',
-            description: 'A slideshow of image mosaics formed from personal drawings',
-            href: { view: ['art/'] },
-            comment: `I cannot meditate in the traditional sense due in part to my C-PTSD, so drawing acts as a sort of substitute. Rather than clarity and relaxation, drawing provides insight and allows for a nuance of expression when words fail as they often do for me when it comes to self-perception and sensation.`
-        },
-        calendar: {
-            title: 'My Calendar',
-            description: 'A demo of a calendar app showing a personal schedule',
-            href: { view: ['my-calendar/'] },
-            comment: `The design of the week layout has always annoyed me in apps, requiring a landscape view when a portrait view should still work, so for the calendar app, I made sure there was a portrait layout and an intermediate layout when the width is not long enough for the traditional week view.`
-        },
-        versions: {
-            title: 'The Old TV',
-            description: 'Preview the available portfolios',
-            href: { view: ['versions/'] }
-        }
+    versions: {
+        title: 'The Old TV',
+        description: 'Preview the available portfolios',
+        href: { view: ['versions/'] }
     }
 }
+
+const portfolio = { versions, projects, experiences, education }
