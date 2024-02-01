@@ -21,5 +21,3 @@ const cmd = {
     whatis: function(args) {},
     whoami: function(args) {}
 }
-
-console.log(Object.keys(portfolio))
