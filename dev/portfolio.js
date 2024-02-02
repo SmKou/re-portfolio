@@ -151,10 +151,7 @@ const manual = {
             name: 'help',
             synopsis: [ 'help', 'help COMMAND' ],
             description: `Display command information.
-            If no command is specified, help will return a list of available commands.
-            
-            --help
-                display command information of help`
+            If no command is specified, help will return a list of available commands.`
         },
         help: `help: help <command>
         Show command information.`
@@ -1427,37 +1424,42 @@ const education = {
 const calendar = {
     daily: {
         routine: {
-            morning: { time: ['10:00', 1.5], status: false },
-            night: { time: ['11:30', 1.5], status: true }
+            morning: { 
+                time: ['8:00', 2], 
+                status: false 
+            },
+            night: { 
+                time: ['23:00', 1], 
+                status: true 
+            }
         },
         goals: {
+            study: {
+                time: 1,
+                status: false,
+                comment: ``
+            },
             danish: { 
-                time: 0.5, 
+                time: 0.25, 
                 status: false, 
                 comment: `Duolingo
                 Short Stories in Danish => Teach Yourself Danish` 
             },
             german: { 
-                time: 0.5, 
+                time: 0.25, 
                 status: false, 
                 comment: `Speakly
                 Short Stories in German => Learn German for Beginners` 
             },
-            algorithms: { 
-                time: 0.5, 
-                status: false, 
-                comment: `1. [] Grokking Algorithms
-                2. [] Advanced Algorithms and Data Structures
-                3. [] Dive into Algorithms
-                4. [] 50 Algorithms Every Programmer Should Know
-                5. [] Intro to Algorithms`
-            },
-            ai: {
+            exercise: {
                 time: 0.5,
                 status: false,
-                comment: `1. [] Make Your Own Neural Network
-                2. [] Grokking AI Algorithms
-                3. [] AI for Games`
+                comment: `Total: 10 min
+                1 min per exercise
+                10 s rest, 2 circuits
+                - Lunges, squats, bridges, knee taps
+                
+                10-20 min: Jog in Place`
             }
         }
     },
@@ -1479,6 +1481,24 @@ const calendar = {
                 days: [0, 1, 1, 1, 0, 0, 0],
                 time: 2,
                 status: false
+            },
+            algorithms: {
+                days: [1, 1, 1, 1, 1, 0, 0],
+                time: 0.5,
+                status: false,
+                comment: `1. [] Grokking Algorithms
+                2. [] Advanced Algorithms and Data Structures
+                3. [] Dive into Algorithms
+                4. [] 50 Algorithms Every Programmer Should Know
+                5. [] Intro to Algorithms`
+            },
+            ai: {
+                days: [1, 1, 1, 1, 1, 0, 0],
+                time: 0.5,
+                status: false,
+                comment: `1. [] Make Your Own Neural Network
+                2. [] Grokking AI Algorithms
+                3. [] AI for Games`
             }
         }
     },
@@ -1502,9 +1522,47 @@ const calendar = {
                 time: ['20:30', 2.5],
                 status: true
             }
+        },
+        goals: {
+            frye_art: {
+                weeK: 1,
+                days: 0,
+                time: 1,
+                status: false
+            },
+            wing_luke: {
+                week: 2,
+                days: 0,
+                time: 1.5,
+                status: false
+            },
+            henry_art: {
+                week: 3,
+                days: 0,
+                time: 2.5,
+                status: false
+            },
+            nordic: {
+                week: 4,
+                days: 0,
+                time: 4,
+                status: false
+            }
         }
     },
     events: {
+        '4/4/24': {
+            act: { time: ['19:30', 3.5] }
+        },
+        '3/22/24': {
+            act: { time: ['19:30', 1.5] }
+        },
+        '3/8/24': {
+            act: { time: ['19:00', 1.5] }
+        },
+        '2/9/24': {
+            act: { time: ['19:30', 1.5] }
+        },
         '2/6/24': {
             city_light: { time: ['13:30', 0.5] },
             gov: { time: ['14:30', 1.5] }
