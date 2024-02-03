@@ -10,6 +10,8 @@ const manual = {
             description: `Show calendar information.
             Default date is today's.
             Specify a date or frequency for viewing events from calendar information.
+
+            Frequency can be daily, weekly, and monthly.
             
             --help
                 display command information of cal`
