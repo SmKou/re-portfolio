@@ -62,21 +62,22 @@ const manual = {
     date: {
         page: {
             name: 'date',
-            synopsis: [ 'date', 'date OPTIONS', 'date' ],
+            synopsis: [ 'date', 'date OPTIONS' ],
             description: `Show date.
             Current date is today's date.
             Dates can be written as M/D/YY or M-D-YY. The default format uses forward slashes. To use a different ordering or format, specify with an option.
 
-            Options consist of flags. There is no option for padding.
-
             -d, --day
-                display day in month of date (default: numeric)
+                display day in month of date (numeric)
 
             -wd, --weekday
-                display weekday of date (default: numeric)
+                display weekday of date (short)
 
             -w, --week
-                display week in month of date (default: numeric)
+                display week in month of date (numeric)
+
+            -m, --month
+                display month of date (numeric)
 
             -y, --year
                 display year of date (default: numeric)
@@ -1620,6 +1621,9 @@ const stdError = (message, term) => error(message, term, 'error')
 const bashError = (message, term) => error(message, term, 'bash')
 const optionError = (message, term) => error(message, term, '')
 
+// addLine(error(`unknown option ${args[0]}`, ''))
+// ls: unknown option -- j
+
 const addLine = (output, bash = false) => {
     const line = document.createElement('p')
     if (bash)
@@ -1629,6 +1633,16 @@ const addLine = (output, bash = false) => {
 }
 
 const addLines = output => output.split('\n').forEach(line => addLine(line))
+
+/* Check if array has at least one of given terms */
+const includes = (arr, ...terms) => {
+    let included = false
+    terms.forEach(term => {
+        if (!included && arr.includes(term))
+            included = true
+    })
+    return included
+}
 
 const cmd = {
     cal: function(args) {
@@ -1642,15 +1656,15 @@ const cmd = {
             else
                 date = new Date(args[0])
         
-        const daySched = new Array((24 - 8) * 2)
-        daySched.fill('')
-
+        const daySched = {}
         const addSched = (routine, text, name) => {
-            const time = routine.time[0].split(':')
-            const hour = (parseInt(time[0]) - 8) * 2 + (parseInt(time[1]) ? 1 : 0)
-            const n = routine.time[1] * 2
-            for (let i = hour; i < hour + n; ++i)
-                daySched[i] = `${text}: ${name.split('_').join(' ')}`
+            const [time, dur] = routine.time
+            const [hour, half] = time.split(':')
+            daySched[time] = {
+                n: parseInt(hour) * 2 + (parseInt(half) ? 1 : 0),
+                name: `${text}: ${name}`,
+                duration: `${dur} hour${dur !== 1 ? 's' : ''}`
+            }
         }
 
         for (const daily of Object.keys(calendar.daily.routine)) {
@@ -1687,15 +1701,58 @@ const cmd = {
                 addSched(routine, 'monthly routine', monthly)
         }
 
-        addLines(`${date.toLocaleDateString(undefined, options)}
-        ${daySched.filter().join('\n')}`)
+        const keys = Object.keys(daySched).sort((a, b) => daySched[a].n - daySched[b].n)
+        addLines(`${keys.map(key => `${daySched[key].name}
+        ${key} for ${daySched[key].duration}`).join('\n')}`)
     },
     cd: function(args) {},
     cls: function(args) {},
     clear: function(args) {},
     date: function(args) {
-        // addLine(error(`unknown option ${args[0]}`, ''))
-        // ls: unknown option -- j
+        if (!args.length) {
+            const options = {
+                weekday: 'short',
+                day: 'numeric',
+                month: 'numeric',
+                year: 'numeric'
+            }
+            addLine(date.toLocaleDateString(undefined, options))
+            return true
+        }
+
+        if (args.includes('--help'))
+            return this.help(['date'])
+
+        /* Note: Add options to manual
+        - use for checking
+        - use for modifying result
+
+        Reason: only date command has more options than --help atm
+        */
+        const date_options = ['-d', '--day', '-wd', '--weekday', '-w', '--week', '-m', '--month', '-y', '--year', '-s', '--short', '-l', '--long', '-n', '--numeric', '-h', '--hyphen']
+        let wrong = []
+        args.forEach(arg => {
+            if (!date_options.includes(arg))
+                wrong.push(arg)
+        })
+        
+        if (wrong.length) {
+            wrong = wrong.map(term => {
+                term = term.split('-')
+                return term[term.length - 1]
+            })
+            addLine(optionError(`unknown option ${wrong.join(', ')}`, 'date'))
+            return false
+        }
+
+        const options = {
+            weekday: includes(args, '-w', '--weekday') ? 'short' : undefined,
+            day: includes(args, '-d', '--day') ? 'numeric' : undefined,
+            month: includes(args, '-m', '--month') ? 'numeric' : undefined,
+            year: includes(args, '-y', '--year')
+        }
+
+        addLine(new Date.toLocaleDateString(undefined, options))
     },
     dir: function(args) {},
     echo: function(args) {},
