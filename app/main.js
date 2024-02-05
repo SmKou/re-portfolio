@@ -24,14 +24,24 @@ const manual = {
                 '-e': 'addEvents',
                 '--events': 'addEvents'
             },
-            addGoals: (freq, daySched, addSched, getSched) => {
-                if (freq) 
+            addGoals: (freq, addSched, weekday, sched) => {
+                if (freq)
                     addSched(freq, 'goals')
                 else 
                     for (const f of ['daily', 'weekly', 'monthly'])
                         addSched(f, 'goals')
-                const keys = getSched(daySched)
-                console.log(keys)
+
+                if (weekday !== 0) return true
+
+                /* Special case */
+                const keys = Object.keys(sched)
+                const goal = daySched[keys.filter(key => daySched[key].freq === 'monthly' && daySched[key].type === 'goals')[0]]
+                if (weekday === 0) 
+                    for (const key of keys) {
+                        const event = daySched[key]
+                        if (event.n < goal.n || (event.n + event.d > goal.n && event.n + event.d < goal.n + goal.d))
+                            delete daySched[key]
+                    }
             },
             addEvents: (date, options, events, add) => {
                 const d = date.toLocaleDateString(undefined, options)
@@ -1749,7 +1759,7 @@ const cmd = {
                 n: parseInt(hour) * 2 + (parseInt(half) ? 1 : 0),
                 d: dur * 2,
                 name: key.split('_').join(' '),
-                origin: freq,
+                freq,
                 type,
                 duration: `${dur} hour${dur !== 1 ? 's' : ''}`
             }
@@ -1766,8 +1776,6 @@ const cmd = {
             }
         }
 
-        const getSched = sched => Object.keys(sched).sort((a, b) => sched[a].n - sched[b].n)
-
         if (freq) 
             addSched(freq, 'routine')
         else 
@@ -1776,11 +1784,12 @@ const cmd = {
 
         if (flags.length) 
             if (includes(flags, '-g', '--goals'))
-                manual.cal.options.addGoals(freq, daySched, addSched, getSched)
+                manual.cal.options.addGoals(freq, addSched, weekday, daySched)
             else if (includes(flags, '-e', '--events'))
                 manual.cal.options.addEvents(date, options, calendar.events, add(freq, 'events'))
 
-        const keys = getSched(daySched)
+
+        const keys = Object.keys(daySched).sort((a, b) => daySched[a].n - daySched[b].n)
         addLines(`${keys.map(key => `${daySched[key].name} -  ${key} for ${daySched[key].duration}`).join('\n')}`)
     },
     cd: function(args) {},
@@ -1924,6 +1933,11 @@ document.querySelector('aside').append(div)
 
 /* ----------------------------------------------------- Enable input */
 
+const input = {
+    vals: [],
+    i: -1
+}
+
 const execute = input => {
     const [command, ...ipt] = input.split(' ')
     if (cmd.hasOwnProperty(command))
@@ -1932,13 +1946,25 @@ const execute = input => {
         addLine(bashError('command not found', command))
 }
 
-ui.ipt.addEventListener('change', e => {
-    addLine(e.target.value)
-    const value = e.target.value.slice(2)
-    ui.ipt.value = '$ '
-    if (value.includes('&&'))
-        value.split('&&').forEach(val => execute(val.trim()))
-    else
-        execute(value)
-    addPath()
+ui.ipt.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+        addLine(e.target.value)
+        input.vals.push(e.target.value)
+        input.i = input.vals.length - 1
+
+        const value = e.target.value.slice(2)
+        ui.ipt.value = '$ '
+        if (value.includes('&&'))
+            value.split('&&').forEach(val => execute(val.trim()))
+        else
+            execute(value)
+        addPath()
+    }
+    else if (e.key === 'ArrowUp' && input.i > 0) 
+        input.i--
+    else if (e.key === 'ArrowDown' && input.i < input.vals.length - 1) 
+        input.i++
+    
+    if (e.key === 'ArrowUp' || e.key === 'ArrowDown')
+        ui.ipt.value = input.vals[input.i]
 })
