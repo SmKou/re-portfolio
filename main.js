@@ -65,7 +65,7 @@ const manual = {
         page: {
             name: 'cls - clear screen',
             synopsis: [ 'cls' ],
-            description: `Clear the terminal. Collapse aside and footer of interface, thus not showing commands list, introduction, and site copyright.
+            description: `Clear the terminal. Collapse aside, thus not showing commands list and introduction.
                 
             --help
                 display command information of cls`
@@ -1784,8 +1784,11 @@ const cmd = {
         addLines(`${keys.map(key => `${daySched[key].name} -  ${key} for ${daySched[key].duration}`).join('\n')}`)
     },
     cd: function(args) {},
-    cls: function(args) {},
-    clear: function(args) {},
+    cls: function(args) {
+        ui.cns.innerHTML = ''
+        ui.aside.tog.click()
+    },
+    clear: function(args) { ui.cns.innerHTML = '' },
     date: function(args) {
         const options = {
             weekday: 'short',
