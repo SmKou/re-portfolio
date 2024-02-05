@@ -6,6 +6,7 @@ const manual = {
                 'cal', 
                 'cal DATE',
                 'cal FREQUENCY',
+                'cal DATE FREQUENCY'
             ],
             description: `Show calendar information.
             Default date is today's.
@@ -15,6 +16,31 @@ const manual = {
             
             --help
                 display command information of cal`
+        },
+        options: {
+            flags: {
+                '-g': 'addGoals',
+                '--goals': 'addGoals',
+                '-e': 'addEvents',
+                '--events': 'addEvents'
+            },
+            addGoals: (freq, daySched, addSched, getSched) => {
+                if (freq) 
+                    addSched(freq, 'goals')
+                else 
+                    for (const f of ['daily', 'weekly', 'monthly'])
+                        addSched(f, 'goals')
+                const keys = getSched(daySched)
+                console.log(keys)
+            },
+            addEvents: (date, options, events, add) => {
+                const d = date.toLocaleDateString(undefined, options)
+                if (!events.hasOwnProperty(d)) return false
+
+                const f = events[d]
+                for (const e of Object.keys(f))
+                    add(f[e], e)
+            }
         },
         help: `cal: cal <[date]|[frequency]>
         Show calendar information.`
@@ -62,7 +88,7 @@ const manual = {
     date: {
         page: {
             name: 'date',
-            synopsis: [ 'date', 'date OPTIONS' ],
+            synopsis: [ 'date' ],
             description: `Show date.
             Current date is today's date.
             Dates can be written as M/D/YY or M-D-YY. The default format uses forward slashes. To use a different ordering or format, specify with an option.
@@ -96,6 +122,54 @@ const manual = {
             
             --help
                 display command information of date`
+        },
+        options: {
+            flags: {
+                start: {
+                    '-d': 'addDay', 
+                    '--day': 'addDay',
+                    '-w': 'addWeek', 
+                    '--week': 'addWeek',
+                    '-m': 'addMonth',
+                    '--month': 'addMonth',
+                    '-y': 'addYear',
+                    '--year': 'addYear',
+                    '-s': 'formatShort',
+                    '--short': 'formatShort',
+                    '-l': 'formatLong',
+                    '--long': 'formatLong',
+                    '-n': 'formatNumeric',
+                    '--numeric': 'formatNumeric'
+                },
+                end: {
+                    '-wd': 'addWeekday',
+                    '--weekday': 'addWeekday',
+                    '-h': 'formatHyphen',
+                    '--hyphen': 'formatHyphen'
+                }
+            },
+            addDay: (options) => options.day = 'numeric',
+            addWeekday: (options) => options.weekday = 'narrow',
+            addMonth: (options) => options.month = 'narrow',
+            addYear: (options) => options.day = '2-digit',
+            formatShort: (options) => {
+                options.weekday = 'short',
+                options.month = 'short'
+            },
+            formatLong: (options) => {
+                options.weekday = 'long',
+                options.month = 'long'
+            },
+            formatNumeric: (options) => {
+                options.month = 'numeric'
+                options.year = 'numeric'
+            },
+            addWeek: (date, str) => {
+                const week = Math.floor(date.getDate() / 7)
+                const place = ['st', 'nd', 'rd', 'th', 'th']
+                return `${week + 1}${place[week]} ${str}`
+            },
+            formatHyphen: (date, str) => str.replace('/', '-')
         },
         help: `date: date
         Show current date.`
@@ -1427,36 +1501,26 @@ const education = {
 const calendar = {
     daily: {
         routine: {
-            morning: { 
-                time: ['8:00', 2], 
-                status: false 
-            },
-            night: { 
-                time: ['23:00', 1], 
-                status: true 
-            }
+            morning: { time: ['8:00', 1.5] },
+            night: { time: ['23:00', 1] }
         },
         goals: {
+            language: {
+                time: ['9:30', 0.5],
+                comment: `Danish:
+                - Duolingo
+                - Short Stories in Danish => Teach Yourself Danish
+                
+                German:
+                - Speakly
+                - Short Stories in German => Learn German for Beginners`
+            },
             study: {
-                time: 1,
-                status: false,
-                comment: ``
-            },
-            danish: { 
-                time: 0.25, 
-                status: false, 
-                comment: `Duolingo
-                Short Stories in Danish => Teach Yourself Danish` 
-            },
-            german: { 
-                time: 0.25, 
-                status: false, 
-                comment: `Speakly
-                Short Stories in German => Learn German for Beginners` 
+                time: ['10:00', 1],
+                comment: `Frontend Masters`
             },
             exercise: {
-                time: 0.5,
-                status: false,
+                time: ['14:30', 0.5],
                 comment: `Total: 10 min
                 1 min per exercise
                 10 s rest, 2 circuits
@@ -1469,26 +1533,22 @@ const calendar = {
     weekly: {
         routine: {
             therapy: { 
-                days: 1, 
-                time: ['10:30', 2], 
-                status: true 
+                days: [0, 1, 0, 0, 0, 0, 0], 
+                time: ['10:30', 2]
             },
             isg: { 
-                days: 6, 
-                time: ['13:00', 5.5], 
-                status: true 
+                days: [0, 0, 0, 0, 0, 0, 1], 
+                time: ['13:00', 5.5]
             }
         },
         goals: {
             dsa: {
-                days: [0, 1, 1, 1, 0, 0, 0],
-                time: 2,
-                status: false
+                days: [1, 1, 1, 1, 1, 0, 0],
+                time: ['15:00', 2]
             },
             algorithms: {
                 days: [1, 1, 1, 1, 1, 0, 0],
-                time: 0.5,
-                status: false,
+                time: ['17:00', 0.5],
                 comment: `1. [] Grokking Algorithms
                 2. [] Advanced Algorithms and Data Structures
                 3. [] Dive into Algorithms
@@ -1497,8 +1557,7 @@ const calendar = {
             },
             ai: {
                 days: [1, 1, 1, 1, 1, 0, 0],
-                time: 0.5,
-                status: false,
+                time: ['17:30', 0.5],
                 comment: `1. [] Make Your Own Neural Network
                 2. [] Grokking AI Algorithms
                 3. [] AI for Games`
@@ -1507,50 +1566,15 @@ const calendar = {
     },
     monthly: {
         routine: {
-            seattlejs: { 
-                week: 2,
-                days: 3,
-                time: ['17:00', 2.5],
-                status: true
-            },
-            code_katas: {
-                week: 3,
-                days: 2,
-                time: ['17:00', 1.5],
-                status: true
-            },
-            indies_social: {
-                week: 3,
-                days: 2,
-                time: ['20:30', 2.5],
-                status: true
-            }
+            seattlejs: { week: 2, days: 3, time: ['17:00', 2.5] },
+            code_katas: { week: 3, days: 2, time: ['17:00', 1.5] },
+            indies_social: { week: 3, days: 2, time: ['20:30', 2.5] }
         },
         goals: {
-            frye_art: {
-                weeK: 1,
-                days: 0,
-                time: 1,
-                status: false
-            },
-            wing_luke: {
-                week: 2,
-                days: 0,
-                time: 1.5,
-                status: false
-            },
-            henry_art: {
-                week: 3,
-                days: 0,
-                time: 2.5,
-                status: false
-            },
-            nordic: {
-                week: 4,
-                days: 0,
-                time: 4,
-                status: false
-            }
+            frye_art: { week: 1, days: 0, time: ['10:30', 3] },
+            wing_luke: { week: 2, days: 0, time: ['9:30', 3] },
+            henry_art: { week: 3, days: 0, time: ['8:30', 4] },
+            nordic: { week: 4, days: 0, time: ['8:00', 6] }
         }
     },
     events: {
@@ -1565,6 +1589,10 @@ const calendar = {
         },
         '2/9/24': {
             act: { time: ['19:30', 1.5] }
+        },
+        '2/7/24': {
+            frye_art: { time: ['10:30', 2.5] },
+            family: { time: ['15:30', 5] }
         },
         '2/6/24': {
             city_light: { time: ['13:30', 0.5] },
@@ -1615,11 +1643,19 @@ const ui = {
     }
 }
 
-const error = (message, term, type) => `${type}: ${term ? term + ': ' : ''}${message}`
+const error = (message, term, type) => `${type ? type + ': ' : ''}${term ? term + ': ' : ''}${message}`
 
 const stdError = (message, term) => error(message, term, 'error')
 const bashError = (message, term) => error(message, term, 'bash')
-const optionError = (message, term) => error(message, term, '')
+const optionError = (message, term, wrong) => {
+    if (!message)
+        message = 'unknown option -- '
+    wrong = wrong.map(term => {
+        term = term.split('-')
+        return term[term.length - 1]
+    })
+    return error(`${message} ${wrong.join(', ')}`, term, '')
+}
 
 // addLine(error(`unknown option ${args[0]}`, ''))
 // ls: unknown option -- j
@@ -1634,6 +1670,17 @@ const addLine = (output, bash = false) => {
 
 const addLines = output => output.split('\n').forEach(line => addLine(line))
 
+const flatten = (arr, flat = []) => {
+    if (!arr.length) return flat
+    arr.forEach(e => {
+        if (Array.isArray(e))
+            flat.concat(flatten(e, flat))
+        else
+            flat.push(e)
+    })
+    return flat
+}
+
 /* Check if array has at least one of given terms */
 const includes = (arr, ...terms) => {
     let included = false
@@ -1646,44 +1693,44 @@ const includes = (arr, ...terms) => {
 
 const cmd = {
     cal: function(args) {
-        if (args.length && args.includes('--help'))
-            return this.help(['cal'])
-    
-        let date = new Date(), freq
-        if (args.length) 
-            if (['daily', 'weekly', 'monthly'].includes(args[0]))
-                freq = args[0]
+        let date = new Date(), freq = '', flags = []
+        const wrong = [], wrong_options = []
+        const isValidDate = str => !isNaN(new Date(str))
+        while (args.length) {
+            const e = args.pop()
+            if (e.includes('-') || e.includes('--'))
+                if (Object.keys(manual.cal.options.flags).includes(e))
+                    flags.push(e)
+                else
+                    wrong_options.push(e)
+            else if (['daily', 'weekly', 'monthly'].includes(e))
+                freq = e
+            else if (isValidDate(e)) 
+                date = new Date(e)
             else
-                date = new Date(args[0])
+                wrong.push(e)
+        }
+
+        if (wrong.length) {
+            addLine(optionError(`cannot access `, 'cal', wrong))
+            return false
+        }
+
+        if (wrong_options.length) {
+            addLine(optionError('', 'cal', wrong_options))
+            return false
+        }
+
+        if (flags.includes('--help'))
+            return this.help(['cal'])
         
         const daySched = {}
-        const addSched = (routine, text, name) => {
-            const [time, dur] = routine.time
-            const [hour, half] = time.split(':')
-            daySched[time] = {
-                n: parseInt(hour) * 2 + (parseInt(half) ? 1 : 0),
-                name: `${text}: ${name}`,
-                duration: `${dur} hour${dur !== 1 ? 's' : ''}`
-            }
-        }
-
-        for (const daily of Object.keys(calendar.daily.routine)) {
-            const routine = calendar.daily.routine[daily]
-            addSched(routine, 'daily routine', daily)
-        }
-        
         const weekday = date.getDay()
-        for (const weekly of Object.keys(calendar.weekly.routine)) {
-            const routine = calendar.weekly.routine[weekly]
-            if (routine.days === weekday) 
-                addSched(routine, 'weekly routine', weekly)
-        }
-
         const options = {
             weekday: undefined,
             day: 'numeric',
             month: 'numeric',
-            year: 'numeric'
+            year: '2-digit'
         }
 
         let weeksDiff = 1
@@ -1692,30 +1739,62 @@ const cmd = {
                 .toLocaleDateString(undefined, options)
                 .split('/')
             const firstOfMonth = new Date(`${month}/1/${year}`)
-            weeksDiff = Math.floor((date.getTime() - firstOfMonth.getTime()) / (1000 * 60 * 60 * 24)) % 7 + 1
+            weeksDiff = Math.floor((date.getTime() - firstOfMonth.getTime()) / (1000 * 60 * 60 * 24) / 7) + 1
         }
 
-        for (const monthly of Object.keys(calendar.monthly.routine)) {
-            const routine = calendar.monthly.routine[monthly]
-            if (routine.week === weeksDiff && routine.days === weekday)
-                addSched(routine, 'monthly routine', monthly)
+        const add = (freq, type) => (e, key) => {
+            const [time, dur] = e.time
+            const [hour, half] = time.split(':')
+            daySched[time] = {
+                n: parseInt(hour) * 2 + (parseInt(half) ? 1 : 0),
+                d: dur * 2,
+                name: key.split('_').join(' '),
+                origin: freq,
+                type,
+                duration: `${dur} hour${dur !== 1 ? 's' : ''}`
+            }
         }
 
-        const keys = Object.keys(daySched).sort((a, b) => daySched[a].n - daySched[b].n)
-        addLines(`${keys.map(key => `${daySched[key].name}
-        ${key} for ${daySched[key].duration}`).join('\n')}`)
+        const addSched = (freq, type) => {
+            const f = calendar[freq][type]
+            for (const key of Object.keys(f)) {
+                const e = f[key]
+                if (freq === 'daily' 
+                || (freq === 'weekly' && e.days[weekday]) 
+                || (freq === 'monthly' && e.week === weeksDiff && e.days === weekday)) 
+                    add(freq, type)(e, key)
+            }
+        }
+
+        const getSched = sched => Object.keys(sched).sort((a, b) => sched[a].n - sched[b].n)
+
+        if (freq) 
+            addSched(freq, 'routine')
+        else 
+            for (const f of ['daily', 'weekly', 'monthly'])
+                addSched(f, 'routine')
+
+        if (flags.length) 
+            if (includes(flags, '-g', '--goals'))
+                manual.cal.options.addGoals(freq, daySched, addSched, getSched)
+            else if (includes(flags, '-e', '--events'))
+                manual.cal.options.addEvents(date, options, calendar.events, add(freq, 'events'))
+
+        const keys = getSched(daySched)
+        addLines(`${keys.map(key => `${daySched[key].name} -  ${key} for ${daySched[key].duration}`).join('\n')}`)
     },
     cd: function(args) {},
     cls: function(args) {},
     clear: function(args) {},
     date: function(args) {
+        const options = {
+            weekday: 'short',
+            day: 'numeric',
+            month: 'numeric',
+            year: '2-digit'
+        }
+
         if (!args.length) {
-            const options = {
-                weekday: 'short',
-                day: 'numeric',
-                month: 'numeric',
-                year: 'numeric'
-            }
             addLine(date.toLocaleDateString(undefined, options))
             return true
         }
@@ -1723,36 +1802,45 @@ const cmd = {
         if (args.includes('--help'))
             return this.help(['date'])
 
-        /* Note: Add options to manual
-        - use for checking
-        - use for modifying result
-
-        Reason: only date command has more options than --help atm
-        */
-        const date_options = ['-d', '--day', '-wd', '--weekday', '-w', '--week', '-m', '--month', '-y', '--year', '-s', '--short', '-l', '--long', '-n', '--numeric', '-h', '--hyphen']
-        let wrong = []
-        args.forEach(arg => {
-            if (!date_options.includes(arg))
+        const start_options = Object.keys(manual.date.options.flags.start)
+        const end_options = Object.keys(manual.date.options.flags.end)
+        const start_args = []
+        const end_args = []
+        const wrong = []
+        for (const arg of args)
+            if (!start_options.includes(arg) && !end_options.includes(arg))
                 wrong.push(arg)
-        })
+            else if (start_options.includes(arg))
+                start_args.push(arg)
+            else if (end_options.includes(arg))
+                end_args.push(arg)
         
         if (wrong.length) {
-            wrong = wrong.map(term => {
-                term = term.split('-')
-                return term[term.length - 1]
-            })
-            addLine(optionError(`unknown option ${wrong.join(', ')}`, 'date'))
+            addLine(optionError(`unknown option -- ${wrong
+                .map(term => {
+                    term = term.split('-')
+                    return term[term.length - 1]
+                })
+                .join(', ')
+            }`, 'date'))
             return false
         }
-
-        const options = {
-            weekday: includes(args, '-w', '--weekday') ? 'short' : undefined,
-            day: includes(args, '-d', '--day') ? 'numeric' : undefined,
-            month: includes(args, '-m', '--month') ? 'numeric' : undefined,
-            year: includes(args, '-y', '--year')
+        
+        for (const start_arg of start_args) {
+            const funcName = manual.date.options.flags.start[start_arg]
+            const func = manual.date.options[funcName]
+            func(options)
         }
 
-        addLine(new Date.toLocaleDateString(undefined, options))
+        const date = new Date()
+        let str = date.toLocaleDateString(undefined, options)
+        for (const end_arg of end_args) {
+            const funcName = manual.date.options.flags.end[end_arg]
+            const func = manual.date.options[funcName]
+            str = func(date, str)
+        }
+
+        addLine(str)
     },
     dir: function(args) {},
     echo: function(args) {},
@@ -1814,7 +1902,11 @@ Object.keys(manual).forEach(command => {
     ui.aside.ctt.append(btn)
 })
 
-document.querySelectorAll('#aside-content button').forEach(btn => btn.addEventListener('click', () => cmd.help([btn.innerHTML])))
+document.querySelectorAll('#aside-content button').forEach(btn => btn.addEventListener('click', () => {
+    const command = btn.innerHTML
+    addLine(`$ help ${command}`)
+    cmd.help([command])
+}))
 
 /* ----------------------------------------------------- Enable input */
 
