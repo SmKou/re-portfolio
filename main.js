@@ -1615,7 +1615,6 @@ const calendar = {
     }
 }
 
-const categories = ['versions', 'projects', 'experiences', 'education']
 const resources = { manual, calendar, sources }
 const pages = {
     art: {
@@ -1651,6 +1650,17 @@ const ui = {
         tog: document.getElementById('toggle-aside'),
         ctt: document.getElementById('aside-content')
     }
+}
+
+const getNode = (path = ui.path.slice(), node = portfolio, shift) => {
+    shift = path.shift()
+    if (!path.length)
+        return node
+
+    if (node.hasOwnProperty(shift))
+        return getNode(path, node[shift])
+    else
+        return { shift }
 }
 
 const error = (message, term, type) => `${type ? type + ': ' : ''}${term ? term + ': ' : ''}${message}`
@@ -1792,12 +1802,53 @@ const cmd = {
         const keys = Object.keys(daySched).sort((a, b) => daySched[a].n - daySched[b].n)
         addLines(`${keys.map(key => `${daySched[key].name} -  ${key} for ${daySched[key].duration}`).join('\n')}`)
     },
-    cd: function(args) {},
+    cd: function(args) {
+        if (!args.length) {
+            ui.path = []
+            return true
+        }
+
+        if (args.includes('--help'))
+            return this.help(['cd'])
+
+        let subs = args[0].split('/')
+        if (subs[0] == '..' && ui.path.length) {
+            subs.shift()
+            ui.path.pop()
+        }
+
+        const path = ui.path.slice().concat(subs)
+        const node = getNode(path)
+        
+        if (node.shift) {
+            addLine(bashError('No such item or category', `cd: ${node.shift}`))
+            return false
+        }
+
+        ui.path = path.concat(subs)
+    },
     cls: function(args) {
+        if (args.length) 
+            if (args.includes('--help'))
+                return this.help(['cls'])
+            else {
+                addLine(stdError('Command does not accept options except --help', 'cls'))
+                return false
+            }
+
         ui.cns.innerHTML = ''
         ui.aside.tog.click()
     },
-    clear: function(args) { ui.cns.innerHTML = '' },
+    clear: function(args) { 
+        if (args.length)
+            if (args.includes('--help'))
+                return this.help(['clear'])
+            else {
+                addLine(stdError('Command does not accept options except --help', 'clear'))
+            }
+
+        ui.cns.innerHTML = ''
+    },
     date: function(args) {
         const options = {
             weekday: 'short',
@@ -1878,7 +1929,34 @@ const cmd = {
         return true
     },
     hostname: function(args) {},
-    ls: function(args) {},
+    ls: function(args) {
+        let path = ui.path.slice()
+        if (args.length) {
+            let subs = args[0].split('/')
+            if (subs[0] === '..') {
+                subs.shift()
+                path.pop()
+            }
+            path = path.concat(subs)
+        }
+
+        const node = getNode(path)
+        if (node.shift) {
+            addLine(bashError('No such item or category', `ls: ${node.shift}`))
+            return false
+        }
+
+        if (typeof node !== 'object') {
+            addLine(stdError('Cannot list a value', 'ls'))
+            return false
+        }
+
+        const itms = Object.keys(node)
+        const frags = []
+        for (const itm of itms) {
+            
+        }
+    },
     lynx: function(args) {},
     man: function(args) {},
     more: function(args) {},
