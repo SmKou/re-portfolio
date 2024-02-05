@@ -1911,6 +1911,17 @@ document.querySelectorAll('#aside-content button').forEach(btn => btn.addEventLi
     cmd.help([command])
 }))
 
+const intro = `<p>This is the Sm Kou portfolio website, where every page has a unique design and purpose. I am introducing it here for those who do not have the time to explore or navigate a cmd interface. But just to note, if you don't have the time for this interface, you probably don't have enough time for this portfolio.</p>
+<p><a href="versions/">Versions</a>: An old TV-styled preview of portfolio pages.</p>
+<p><a href="versions/v0/">The Profile</a><br><a href="versions/v1/">The Magazine</a><br><a href="versions/v2/">The Design Index</a><br><a href="versions/v3/">Slideshows</a><br><a href="versions/v4/">People in Pages</a><br><a href="versions/v5/">Epicodus</a></p>
+<p>There are also experimental pages, where I have developed my own version of a tool or interface: <a href="art/">Art</a> featuring rearranging image mosaics, and <a href="my-calendar/">My Calendar</a></p>`
+
+const div = document.createElement('div')
+div.setAttribute('class', 'intro')
+div.innerHTML = intro
+
+document.querySelector('aside').append(div)
+
 /* ----------------------------------------------------- Enable input */
 
 const execute = input => {
