@@ -35,12 +35,12 @@ const manual = {
 
                 /* Special case */
                 const keys = Object.keys(sched)
-                const goal = daySched[keys.filter(key => daySched[key].freq === 'monthly' && daySched[key].type === 'goals')[0]]
+                const goal = sched[keys.filter(key => sched[key].freq === 'monthly' && sched[key].type === 'goals')[0]]
                 if (weekday === 0) 
                     for (const key of keys) {
-                        const event = daySched[key]
+                        const event = sched[key]
                         if (event.n < goal.n || (event.n + event.d > goal.n && event.n + event.d < goal.n + goal.d))
-                            delete daySched[key]
+                            delete sched[key]
                     }
             },
             addEvents: (date, options, events, add) => {
