@@ -135,28 +135,24 @@ const manual = {
         },
         options: {
             flags: {
-                start: {
-                    '-d': 'addDay', 
-                    '--day': 'addDay',
-                    '-w': 'addWeek', 
-                    '--week': 'addWeek',
-                    '-m': 'addMonth',
-                    '--month': 'addMonth',
-                    '-y': 'addYear',
-                    '--year': 'addYear',
-                    '-s': 'formatShort',
-                    '--short': 'formatShort',
-                    '-l': 'formatLong',
-                    '--long': 'formatLong',
-                    '-n': 'formatNumeric',
-                    '--numeric': 'formatNumeric'
-                },
-                end: {
-                    '-wd': 'addWeekday',
-                    '--weekday': 'addWeekday',
-                    '-h': 'formatHyphen',
-                    '--hyphen': 'formatHyphen'
-                }
+                '-d': 'addDay', 
+                '--day': 'addDay',
+                '-w': 'addWeek', 
+                '--week': 'addWeek',
+                '-m': 'addMonth',
+                '--month': 'addMonth',
+                '-y': 'addYear',
+                '--year': 'addYear',
+                '-s': 'formatShort',
+                '--short': 'formatShort',
+                '-l': 'formatLong',
+                '--long': 'formatLong',
+                '-n': 'formatNumeric',
+                '--numeric': 'formatNumeric',
+                '-wd': 'addWeekday',
+                '--weekday': 'addWeekday',
+                '-h': 'formatHyphen',
+                '--hyphen': 'formatHyphen'
             },
             addDay: (options) => options.day = 'numeric',
             addWeekday: (options) => options.weekday = 'narrow',
@@ -1663,22 +1659,30 @@ const getNode = (path = ui.path.slice(), node = portfolio, shift) => {
         return { shift }
 }
 
-const error = (message, term, type) => `${type ? type + ': ' : ''}${term ? term + ': ' : ''}${message}`
-
-const stdError = (message, term) => error(message, term, 'error')
-const bashError = (message, term) => error(message, term, 'bash')
-const optionError = (message, term, wrong) => {
-    if (!message)
-        message = 'unknown option -- '
-    wrong = wrong.map(term => {
-        term = term.split('-')
-        return term[term.length - 1]
-    })
-    return error(`${message} ${wrong.join(', ')}`, term, '')
+const non_command = (term) => {
+    addLine(`bash: ${term}: command not found`)
+    return false
 }
 
-// addLine(error(`unknown option ${args[0]}`, ''))
-// ls: unknown option -- j
+const non_node = (term, wrong) => {
+    addLine(`bash: ${term}: ${wrong}: No such item or category`)
+    return false
+}
+
+const invalid_option = (term, wrong) => {
+    addLines(`bash: ${term}: ${wrong.join(', ')}: invalid option
+    ${term}: usage: ${manual[term].help.split('\n')[0]}`)
+    return false
+}
+
+const unknown_option = (term, wrong) => {
+    addLines(`${term}: unknown option -- ${wrong.map(err => {
+        err = err.split('-')
+        return err[err.length - 1]
+    }).join(', ')}
+    Try '${term} --help' for more information.`)
+    return false
+}
 
 const addLine = (output, bash = false) => {
     const line = document.createElement('p')
@@ -1703,6 +1707,7 @@ const flatten = (arr, flat = []) => {
 
 /* Check if array has at least one of given terms */
 const includes = (arr, ...terms) => {
+    terms = flatten(terms)
     let included = false
     terms.forEach(term => {
         if (!included && arr.includes(term))
@@ -1718,7 +1723,7 @@ const cmd = {
         const isValidDate = str => !isNaN(new Date(str))
         while (args.length) {
             const e = args.pop()
-            if (e.includes('-') || e.includes('--'))
+            if (e.includes('-'))
                 if (Object.keys(manual.cal.options.flags).includes(e))
                     flags.push(e)
                 else
@@ -1731,16 +1736,10 @@ const cmd = {
                 wrong.push(e)
         }
 
-        if (wrong.length) {
-            addLine(optionError(`cannot access `, 'cal', wrong))
-            return false
-        }
-
-        if (wrong_options.length) {
-            addLine(optionError('', 'cal', wrong_options))
-            return false
-        }
-
+        if (wrong.length)
+            return invalid_option('cal', wrong)
+        if (wrong_options.length)
+            return unknown_option('cal', wrong_options)
         if (flags.includes('--help'))
             return this.help(['cal'])
         
@@ -1792,12 +1791,13 @@ const cmd = {
             for (const f of ['daily', 'weekly', 'monthly'])
                 addSched(f, 'routine')
 
-        if (flags.length) 
-            if (includes(flags, '-g', '--goals'))
-                manual.cal.options.addGoals(freq, addSched, weekday, daySched)
+        if (flags.length) {
+            const manual_opt = manual.cal.options
+            if (includes(flags, '-g', '--goals')) 
+                manual_opt[manual_opt.flags['-g']](freq, addSched, weekday, daySched)
             else if (includes(flags, '-e', '--events'))
-                manual.cal.options.addEvents(date, options, calendar.events, add(freq, 'events'))
-
+                manual_opt[manual_opt.flags['-e']](date, options, calendar.events, add(freq, 'events'))
+        }
 
         const keys = Object.keys(daySched).sort((a, b) => daySched[a].n - daySched[b].n)
         addLines(`${keys.map(key => `${daySched[key].name} -  ${key} for ${daySched[key].duration}`).join('\n')}`)
@@ -1811,19 +1811,20 @@ const cmd = {
         if (args.includes('--help'))
             return this.help(['cd'])
 
-        let subs = args[0].split('/')
+        const flags = args.filter(arg => arg.includes('-'))
+        if (flags.length)
+            return invalid_option('cd', flags)
+
+        let path = ui.path.slice(), subs = args[0].split('/')
         if (subs[0] == '..' && ui.path.length) {
             subs.shift()
-            ui.path.pop()
+            path.pop()
         }
+        path = path.concat(subs)
 
-        const path = ui.path.slice().concat(subs)
         const node = getNode(path)
-        
-        if (node.shift) {
-            addLine(bashError('No such item or category', `cd: ${node.shift}`))
-            return false
-        }
+        if (node.shift) 
+            return non_node('cd', node.shift)
 
         ui.path = path.concat(subs)
     },
@@ -1831,10 +1832,8 @@ const cmd = {
         if (args.length) 
             if (args.includes('--help'))
                 return this.help(['cls'])
-            else {
-                addLine(stdError('Command does not accept options except --help', 'cls'))
-                return false
-            }
+            else
+                return invalid_option('cls', args)
 
         ui.cns.innerHTML = ''
         ui.aside.tog.click()
@@ -1843,9 +1842,8 @@ const cmd = {
         if (args.length)
             if (args.includes('--help'))
                 return this.help(['clear'])
-            else {
-                addLine(stdError('Command does not accept options except --help', 'clear'))
-            }
+            else
+                return invalid_option('clear', args)
 
         ui.cns.innerHTML = ''
     },
@@ -1865,44 +1863,34 @@ const cmd = {
         if (args.includes('--help'))
             return this.help(['date'])
 
-        const start_options = Object.keys(manual.date.options.flags.start)
-        const end_options = Object.keys(manual.date.options.flags.end)
-        const start_args = []
-        const end_args = []
-        const wrong = []
+        const valid_flags = manual.date.options.flags
+        const flags = [], wrong = []
         for (const arg of args)
-            if (!start_options.includes(arg) && !end_options.includes(arg))
+            if (!valid_flags[arg])
                 wrong.push(arg)
-            else if (start_options.includes(arg))
-                start_args.push(arg)
-            else if (end_options.includes(arg))
-                end_args.push(arg)
+            else
+                options.push(arg)
         
-        if (wrong.length) {
-            addLine(optionError(`unknown option -- ${wrong
-                .map(term => {
-                    term = term.split('-')
-                    return term[term.length - 1]
-                })
-                .join(', ')
-            }`, 'date'))
-            return false
-        }
+        if (wrong.length)
+            return unknown_option('date', wrong)
         
-        for (const start_arg of start_args) {
-            const funcName = manual.date.options.flags.start[start_arg]
-            const func = manual.date.options[funcName]
-            func(options)
+        const manual_opt = manual.date.options
+        const exceptions = { '-wd': false, '-h': false }
+        for (const flag of flags) {
+            if (['-wd', '--weekday'].includes(flag))
+                exceptions['-wd'] = true
+            else if (['-h', '--hyphen'].includes(flag))
+                exceptions['-h'] = true
+            else
+                manual_opt[manual_opt.flags[flag]](options)
         }
 
         const date = new Date()
         let str = date.toLocaleDateString(undefined, options)
-        for (const end_arg of end_args) {
-            const funcName = manual.date.options.flags.end[end_arg]
-            const func = manual.date.options[funcName]
-            str = func(date, str)
-        }
-
+        for (const key of Object.keys(wd_h))
+            if (wd_h[key])
+                str = manual_opt[manual_opt.flags[key]]
+        
         addLine(str)
     },
     dir: function(args) {},
@@ -1915,20 +1903,22 @@ const cmd = {
             return true
         }
 
-        if (args[0] === '--help') {
-            addLines(manual.help.help)
-            return true
-        }
+        if (args.includes('--help'))
+            return this.help(['help'])
 
-        if (!manual.hasOwnProperty(args[0])) {
-            addLine(bashError('command not found', args[0]))
-            return false
-        }
+        if (!manual.hasOwnProperty(args[0])) 
+            return non_command(args[0])
         
         addLines(manual[args[0]].help)
-        return true
     },
-    hostname: function(args) {},
+    hostname: function(args) {
+        if (args.length)
+            if (args.includes('--help'))
+                return this.help(['hostname'])
+            else return invalid_option('hostname', args)
+
+        addLine(ui.host)
+    },
     ls: function(args) {
         let path = ui.path.slice()
         if (args.length) {
@@ -1941,24 +1931,43 @@ const cmd = {
         }
 
         const node = getNode(path)
-        if (node.shift) {
-            addLine(bashError('No such item or category', `ls: ${node.shift}`))
-            return false
-        }
-
-        if (typeof node !== 'object') {
-            addLine(stdError('Cannot list a value', 'ls'))
-            return false
-        }
-
-        const itms = Object.keys(node)
-        const frags = []
-        for (const itm of itms) {
-            
-        }
+        if (node.shift) 
+            return non_node('ls', node.shift)
+        
+        
     },
     lynx: function(args) {},
-    man: function(args) {},
+    man: function(args) {
+        if (!args.length) {
+            const pages = Object.keys(manual)
+            addLine(`Available pages: ${pages.join(', ')}`)
+            return true
+        }
+
+        const commands = []
+        const options = []
+        const wrong = []
+        const wrong_options = []
+        while (args.length) {
+            const command = args.pop()
+            if (manual.hasOwnProperty(command))
+                commands.push(command)
+            else if (command.includes('-'))
+                if (manual.man.options.flags.includes(command))
+                    options.push(command)
+                else
+                    wrong_options.push(command)
+            else
+                wrong.push(command)
+        }
+
+        if (wrong.length) 
+            return non_command(wrong.join(', '))
+        if (wrong_options.length) 
+            return unknown_option('man', wrong_options)
+
+        // for (const command of commands)
+    },
     more: function(args) {},
     msg: function(args) {},
     pwd: function(args) {},
