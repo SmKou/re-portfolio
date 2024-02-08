@@ -423,6 +423,8 @@ const manual = {
             synopsis: [ 'whatis COMMAND' ],
             description: `Show command action, taken from command information used for help.
 
+            Among options, name-only, synopsis-only, and description-only take precedence over the manual. Only the first option taking greatest precedence will be used.
+
             -m, --manual
                 show manual page
 
@@ -449,7 +451,11 @@ const manual = {
                 '-d': 'showDescription',
                 '--description-only': 'showDescription'
             },
-            showManual: function(args) {}
+            show: (cmd) => manual[cmd].help.split('\n')[1],
+            showManual: (cmd) => manual[cmd].page,
+            showName: (cmd) => manual[cmd].page.name,
+            showSynopsis: (cmd) => manual[cmd].page.synopsis,
+            showDescription: (cmd) => manual[cmd].page.description
         },
         help: `whatis: whatis [command]
         Show what a command does.`
@@ -2023,7 +2029,10 @@ const cmd = {
         for (const arg of args)
             if (arg.includes('-'))
                 if (Object.keys(manual_opt.flags).includes(arg))
-                    flags.push(arg)
+                    if (includes(['-m', '--manual'], arg))
+                        flags[0] = '-m'
+                    else if (!flags[1])
+                        flags[1] = arg
                 else
                     wrong_options.push(arg)
             else if (manual[arg])
@@ -2036,7 +2045,20 @@ const cmd = {
         if (wrong_options.length)
             return invalid_option('whatis', wrong_options)
 
-        
+        if (!flags.length) {
+            const show = manual.whatis.options.show
+            for (const command of commands)
+                addLine(`${command}: ${show(command)}`)
+            return true
+        }
+
+        const funcName = flags[1] ? 
+            manual.whatis.options[flags[1]] 
+            : manual.whatis.options[flags[0]]
+        const func = manual.whatis.options[funcName]
+
+        for (const command of commands)
+            addLine(`${command}: ${func(command)}`)
     },
     whoami: function(args) {
         if (args.length)
