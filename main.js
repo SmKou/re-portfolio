@@ -424,10 +424,32 @@ const manual = {
             description: `Show command action, taken from command information used for help.
 
             -m, --manual
-                show description from manual page
+                show manual page
+
+            -n, --name-only
+                show only names from manual page
+
+            -s, --synopsis-only
+                show only synopsis from menaul page
+
+            -d, --description-only
+                show only description from manual page
             
             --help
                 display command information of whatis`
+        },
+        options: {
+            flags: {
+                '-m': 'showManual',
+                '--manual': 'showManual',
+                '-n': 'showName',
+                '--name-only': 'showName',
+                '-s': 'showSynopsis',
+                '--synopsis-only': 'showSynopsis',
+                '-d': 'showDescription',
+                '--description-only': 'showDescription'
+            },
+            showManual: function(args) {}
         },
         help: `whatis: whatis [command]
         Show what a command does.`
@@ -1659,6 +1681,21 @@ const getNode = (path = ui.path.slice(), node = portfolio, shift) => {
         return { shift }
 }
 
+const addLine = (output, bash = false) => {
+    const line = document.createElement('p')
+    if (bash)
+        line.setAttribute('class', 'bash')
+    line.append(document.createTextNode(output))
+    ui.cns.append(line)
+}
+
+const addLines = output => output.split('\n').forEach(line => addLine(line))
+
+const error = (term, message) => {
+    addLine(`error: ${term}: ${message}`)
+    return false
+}
+
 const non_command = (term) => {
     addLine(`bash: ${term}: command not found`)
     return false
@@ -1683,16 +1720,6 @@ const unknown_option = (term, wrong) => {
     Try '${term} --help' for more information.`)
     return false
 }
-
-const addLine = (output, bash = false) => {
-    const line = document.createElement('p')
-    if (bash)
-        line.setAttribute('class', 'bash')
-    line.append(document.createTextNode(output))
-    ui.cns.append(line)
-}
-
-const addLines = output => output.split('\n').forEach(line => addLine(line))
 
 const flatten = (arr, flat = []) => {
     if (!arr.length) return flat
@@ -1915,7 +1942,8 @@ const cmd = {
         if (args.length)
             if (args.includes('--help'))
                 return this.help(['hostname'])
-            else return invalid_option('hostname', args)
+            else 
+                return invalid_option('hostname', args)
 
         addLine(ui.host)
     },
@@ -1970,12 +1998,55 @@ const cmd = {
     },
     more: function(args) {},
     msg: function(args) {},
-    pwd: function(args) {},
+    pwd: function(args) {
+        if (args.length)
+            if (args.includes('--help'))
+                return this.help(['pwd'])
+            else
+                return invalid_option('pwd', args)
+
+        addLine(`~/${ui.path.join('/')}`)
+    },
     sort: function(args) {},
     stat: function(args) {},
     tree: function(args) {},
-    whatis: function(args) {},
-    whoami: function(args) {}
+    whatis: function(args) {
+        if (!args.length)
+            return error('whatis', 'no command specified')
+        
+        if (args.includes('--help'))
+            return this.help(['whatis'])
+        
+        const manual_opt = manual.whatis.options
+        const flags = [], commands = []
+        const wrong = [], wrong_options = []
+        for (const arg of args)
+            if (arg.includes('-'))
+                if (Object.keys(manual_opt.flags).includes(arg))
+                    flags.push(arg)
+                else
+                    wrong_options.push(arg)
+            else if (manual[arg])
+                commands.push(arg)
+            else
+                wrong.push(arg)
+
+        if (wrong.length)
+            return error('what is', `${wrong.join(', ')}: command not found`)
+        if (wrong_options.length)
+            return invalid_option('whatis', wrong_options)
+
+        
+    },
+    whoami: function(args) {
+        if (args.length)
+            if (args.includes('--help'))
+                return this.help(['whoami'])
+            else
+                return invalid_option('whoami', args)
+
+        addLine('Developer: Stella Marie (Sm Kou)')
+    }
 }
 
 /* ----------------------------------------------------- Setup UI */
