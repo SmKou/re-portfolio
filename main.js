@@ -305,6 +305,25 @@ const manual = {
             --help
                 display command information of man`
         },
+        options: {
+            flags: {
+                '-n': 'showName',
+                '--name-only': 'showName',
+                '-s': 'showSynopsis',
+                '--synopsis-only': 'showSynopsis',
+                '-d': 'showDescription',
+                '--description-only': 'showDescription'
+            },
+            show: (cmd) => {
+                const page = manual[cmd].page
+                return `${page.name}
+                ${page.synopsis}
+                ${page.description}`
+            },
+            showName: (cmd) => manual[cmd].page.name,
+            showSynopsis: (cmd) => manual[cmd].page.synopsis,
+            showDescription: (cmd) => manual[cmd].page.description
+        },
         help: `man: man <command command...>
         Show manual page for command(s).`
     },
@@ -1978,17 +1997,17 @@ const cmd = {
             return true
         }
 
-        const commands = []
-        const options = []
-        const wrong = []
-        const wrong_options = []
+        const manual_opt = manual.man.options
+        const commands = [], flags = []
+        const wrong = [], wrong_options = []
         while (args.length) {
             const command = args.pop()
             if (manual.hasOwnProperty(command))
                 commands.push(command)
             else if (command.includes('-'))
-                if (manual.man.options.flags.includes(command))
-                    options.push(command)
+                if (manual_opt.flags.includes(command))
+                    if (!flags.length)
+                        flags.push(command)
                 else
                     wrong_options.push(command)
             else
@@ -2000,7 +2019,13 @@ const cmd = {
         if (wrong_options.length) 
             return unknown_option('man', wrong_options)
 
-        // for (const command of commands)
+        const funcName = flags.length ? 
+            manual_opt.flags[flags[0]]
+            : 'show'
+        const func = manual_opt[funcName]
+
+        for (const command of commands)
+            addLines(func(command))
     },
     more: function(args) {},
     msg: function(args) {},
@@ -2026,10 +2051,11 @@ const cmd = {
         const manual_opt = manual.whatis.options
         const flags = [], commands = []
         const wrong = [], wrong_options = []
-        for (const arg of args)
+        while (args.length) {
+            const arg = args.pop()
             if (arg.includes('-'))
                 if (Object.keys(manual_opt.flags).includes(arg))
-                    if (includes(['-m', '--manual'], arg))
+                    if (['-m', '--manual'].includes(arg))
                         flags[0] = '-m'
                     else if (!flags[1])
                         flags[1] = arg
@@ -2038,7 +2064,8 @@ const cmd = {
             else if (manual[arg])
                 commands.push(arg)
             else
-                wrong.push(arg)
+                wrong.push(arg) 
+        }
 
         if (wrong.length)
             return error('what is', `${wrong.join(', ')}: command not found`)
@@ -2046,16 +2073,16 @@ const cmd = {
             return invalid_option('whatis', wrong_options)
 
         if (!flags.length) {
-            const show = manual.whatis.options.show
+            const show = manual_opt.show
             for (const command of commands)
                 addLine(`${command}: ${show(command)}`)
             return true
         }
 
         const funcName = flags[1] ? 
-            manual.whatis.options[flags[1]] 
-            : manual.whatis.options[flags[0]]
-        const func = manual.whatis.options[funcName]
+            manual_opt[flags[1]] 
+            : manual_opt[flags[0]]
+        const func = manual_opt[funcName]
 
         for (const command of commands)
             addLine(`${command}: ${func(command)}`)
