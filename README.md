@@ -39,9 +39,12 @@ Art
   - canvas feature
 - Upload recent works (ongoing)
 
-Calendar
+My Calendar
 - auto-population
 - Update recent events (ongoing)
+- Record (ongoing)
+
+Documentation
 
 ### Versions
 
@@ -84,6 +87,12 @@ https://learn.microsoft.com/en-us/dotnet/framework/deployment/
 3. Optimizilla: add to app/art/assets
 4. _Convert to mosaic_
 5. Add to app/art
+
+### Documentation
+- What does it do?
+- Working example
+- Full code
+- Chunks of code interspersed with explanations
 
 ## Complete Setup
 
