@@ -1945,7 +1945,15 @@ const cmd = {
         
         addLine(str)
     },
-    dir: function(args) {},
+    dir: function(args) {
+        let path = ui.path.slice()
+        if (args.length)
+            if (args.includes('--help'))
+                return this.help(['dir'])
+            else {
+                
+            }
+    },
     echo: function(args) {},
     find: function(args) {},
     help: function(args) {
@@ -1974,14 +1982,17 @@ const cmd = {
     },
     ls: function(args) {
         let path = ui.path.slice()
-        if (args.length) {
-            let subs = args[0].split('/')
-            if (subs[0] === '..') {
-                subs.shift()
-                path.pop()
+        if (args.length)
+            if (args.includes('--help'))
+                return this.help(['ls'])
+            else {
+                let subs = args[0].split('/')
+                if (subs[0] === '..') {
+                    subs.shift()
+                    path.pop()
+                }
+                path = path.concat(subs)
             }
-            path = path.concat(subs)
-        }
 
         const node = getNode(path)
         if (node.shift) 
