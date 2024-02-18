@@ -1527,32 +1527,27 @@ const education = {
 const calendar = {
     daily: {
         routine: {
-            morning: { time: ['8:00', 1.5] },
-            night: { time: ['23:00', 1] }
+            morning: { time: ['9:00', 1] },
+            night: { time: ['22:00', 2] }
         },
         goals: {
-            language: {
-                time: ['9:30', 0.5],
-                comment: `Danish:
-                - Duolingo
-                - Short Stories in Danish => Teach Yourself Danish
-                
-                German:
-                - Speakly
-                - Short Stories in German => Learn German for Beginners`
-            },
-            study: {
-                time: ['10:00', 1],
-                comment: `Frontend Masters`
-            },
             exercise: {
-                time: ['14:30', 0.5],
-                comment: `Total: 10 min
-                1 min per exercise
-                10 s rest, 2 circuits
-                - Lunges, squats, bridges, knee taps
-                
-                10-20 min: Jog in Place`
+                time: 1,
+                comment: `1 hour walk`
+            },
+            web_development: { 
+                time: 1,
+                source: sources.fm,
+                comment: `Learning Paths:
+                1. [] Computer Science
+                2. [] Professional`
+            },
+            dsa: {
+                time: 2,
+                source: {
+                    title: 'Coding Interview study plan',
+                    href: 'https://www.techinterviewhandbook.org/coding-interview-study-plan/'
+                }
             }
         }
     },
@@ -1568,25 +1563,49 @@ const calendar = {
             }
         },
         goals: {
-            dsa: {
-                days: [1, 1, 1, 1, 1, 0, 0],
-                time: ['15:00', 2]
+            exercise: {
+                days: [0, 0, 1, 1, 1, 1, 0],
+                time: 0.5,
+                comment: `[optional]
+                1 min, 10s rest, 2 circuits = 10 min
+                - Lunges, squats, bridges, knee taps
+                10-20 min: Jog in Place`
             },
             algorithms: {
-                days: [1, 1, 1, 1, 1, 0, 0],
-                time: ['17:00', 0.5],
-                comment: `1. [] Grokking Algorithms
+                days: [0, 1, 1, 1, 1, 0, 0],
+                time: 1,
+                comment: `1. [] Make Your Own Neural Network
+                2. [] Grokking AI Algorithms
+                3. [] AI for Games
+                
+                1. [] Grokking Algorithms
                 2. [] Advanced Algorithms and Data Structures
                 3. [] Dive into Algorithms
                 4. [] 50 Algorithms Every Programmer Should Know
                 5. [] Intro to Algorithms`
             },
-            ai: {
-                days: [1, 1, 1, 1, 1, 0, 0],
-                time: ['17:30', 0.5],
-                comment: `1. [] Make Your Own Neural Network
-                2. [] Grokking AI Algorithms
-                3. [] AI for Games`
+            golang: {
+                days: [0, 1, 1, 1, 1, 0, 0],
+                time: 1,
+                source: sources.fm,
+                comment: `Frontend Masters
+                1. [] Basics of Go
+                2. [] HTMX & Go
+
+                Gophercises: https://gophercises.com
+                
+                [] Powerful Command-Line Applications
+                [] Network Programming
+                [] Writing an Interpreter|Compiler in Go`
+            },
+            nature_of_code: {
+                days: [0, 1, 1, 1, 1, 0, 0],
+                time: 1,
+                source: {
+                    title: 'Nature of Code',
+                    href: 'https://natureofcode.com'
+                },
+                comment: `Use Java/Processing`
             }
         }
     },
@@ -1599,27 +1618,78 @@ const calendar = {
         goals: {
             frye_art: { week: 1, days: 0, time: ['10:30', 3] },
             wing_luke: { week: 2, days: 0, time: ['9:30', 3] },
-            henry_art: { week: 3, days: 0, time: ['8:30', 4] },
-            nordic: { week: 4, days: 0, time: ['8:00', 6] }
+            henry_art: { week: 3, days: 0, time: ['9:00', 4] },
+            nordic: { week: 4, days: 0, time: ['9:00', 6] }
+        }
+    },
+    record: {
+        '2/18/24': {
+            daily: { 
+                routine: { morning: '13:00', night: false },
+                goals: {
+                    exercise: {
+                        target: '1 hour walk',
+                        complete: false
+                    },
+                    dsa: {
+                        target: 'Array',
+                        complete: false
+                    },
+                    web_development: {
+                        target: 'Complete Intro to Computer Science',
+                        complete: false
+                    }
+                }
+            },
+            weekly: { 
+                routine: '',
+                goals: {
+                    exercise: {
+                        target: '30 min calisthenics',
+                        comment: 'Woke up too late (reminder: optional)',
+                        complete: false
+                    },
+                    algorithms: {
+                        target: 'Make Your Own Neural Network',
+                        comment: 'Extra tasks',
+                        complete: false
+                    },
+                    nature_of_code: {
+                        target: '0. Randomness',
+                        comment: 'Extra tasks',
+                        complete: false
+                    }
+                }
+            },
+            monthly: { 
+                routine: '', 
+                goals: { 
+                    henry_art: {
+                        target: 'Walk to Henry Art Gallery',
+                        comment: 'Not starting this month',
+                        complete: false
+                    }
+                }
+            },
+            tasks: {
+                'read coding standards': false,
+                'read design patterns': false
+            }
         }
     },
     events: {
         '4/4/24': {
             act: { time: ['19:30', 3.5] }
-        },
+        }, // THU
         '3/22/24': {
             act: { time: ['19:30', 1.5] }
-        },
+        }, // FRI
         '3/8/24': {
             act: { time: ['19:00', 1.5] }
-        },
+        }, // FRI
         '2/9/24': {
             act: { time: ['19:30', 1.5] }
-        },
-        '2/7/24': {
-            frye_art: { time: ['10:30', 2.5] },
-            family: { time: ['15:30', 5] }
-        },
+        }, // FRI
         '2/6/24': {
             city_light: { time: ['13:30', 0.5] },
             gov: { time: ['14:30', 1.5] }
@@ -1641,7 +1711,7 @@ const pages = {
     },
     calendar: {
         title: 'My Calendar',
-        description: 'A demo of a calendar app showing a personal schedule',
+        description: 'A demo of a calendar app',
         href: { view: ['my-calendar/'] },
         comment: `The design of the week layout has always annoyed me in apps, requiring a landscape view when a portrait view should still work, so for the calendar app, I made sure there was a portrait layout and an intermediate layout when the width is not long enough for the traditional week view.`
     },
@@ -1651,7 +1721,7 @@ const pages = {
         href: { view: ['versions/'] }
     }
 }
-const portfolio = { versions, projects, experiences, education }
+const portfolio = { versions, projects, experiences, education, pages }
 
 /* ----------------------------------------------------- Cmd */
 
