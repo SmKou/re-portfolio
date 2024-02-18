@@ -98,87 +98,60 @@ const manual = {
     date: {
         page: {
             name: 'date',
-            synopsis: [ 'date' ],
+            synopsis: [ 
+                'date', 
+                'date FREQUENCY QUANTITY', 
+                'date DATE FREQUENCY QUANTITY',
+                'date DATE' 
+            ],
             description: `Show date.
             Current date is today's date.
-            Dates can be written as M/D/YY or M-D-YY. The default format uses forward slashes. To use a different ordering or format, specify with an option.
+            Dates can be written with forward slashes or hyphens. Shown in format: W M/dd/YY
 
-            -d, --day
-                display day in month of date (numeric)
-
-            -wd, --weekday
-                display weekday of date (short)
-
-            -w, --week
-                display week in month of date (numeric)
-
-            -m, --month
-                display month of date (numeric)
-
-            -y, --year
-                display year of date (default: numeric)
+            Avoid using leading zeroes in your entered dates: 12/03/15
+            
+            Determine date in a given amount of time from a given date, or amount of time from today's date to a given date.
 
             -s, --short
-                display result in short form
+                display result in short form: W Mon. dd, year
 
             -l, --long
-                display result in long form
-
-            -n, --numeric
-                display result in numeric form
+                display result in long form: Weekday Month dd, year
 
             -h, --hyphen
                 display result with hyphens if the result has multiple parts
+                cannot be used with change of format
             
             --help
                 display command information of date`
         },
         options: {
             flags: {
-                '-d': 'addDay', 
-                '--day': 'addDay',
-                '-w': 'addWeek', 
-                '--week': 'addWeek',
-                '-m': 'addMonth',
-                '--month': 'addMonth',
-                '-y': 'addYear',
-                '--year': 'addYear',
                 '-s': 'formatShort',
                 '--short': 'formatShort',
                 '-l': 'formatLong',
                 '--long': 'formatLong',
-                '-n': 'formatNumeric',
-                '--numeric': 'formatNumeric',
-                '-wd': 'addWeekday',
-                '--weekday': 'addWeekday',
                 '-h': 'formatHyphen',
                 '--hyphen': 'formatHyphen'
             },
-            addDay: (options) => options.day = 'numeric',
-            addWeekday: (options) => options.weekday = 'narrow',
-            addMonth: (options) => options.month = 'narrow',
-            addYear: (options) => options.day = '2-digit',
             formatShort: (options) => {
-                options.weekday = 'short',
+                options.weekday = 'short'
                 options.month = 'short'
             },
             formatLong: (options) => {
-                options.weekday = 'long',
+                options.weekday = 'long'
                 options.month = 'long'
-            },
-            formatNumeric: (options) => {
-                options.month = 'numeric'
                 options.year = 'numeric'
             },
-            addWeek: (date, str) => {
-                const week = Math.floor(date.getDate() / 7)
-                const place = ['st', 'nd', 'rd', 'th', 'th']
-                return `${week + 1}${place[week]} ${str}`
-            },
+            // addWeek: (date, str) => {
+            //     const week = Math.floor(date.getDate() / 7)
+            //     const place = ['st', 'nd', 'rd', 'th', 'th']
+            //     return `${week + 1}${place[week]} ${str}`
+            // },
             formatHyphen: (date, str) => str.replace('/', '-')
         },
-        help: `date: date
-        Show current date.`
+        help: `date: date <date> <freq qty>
+        Show date or time to date.`
     },
     dir: {
         page: {
@@ -264,7 +237,7 @@ const manual = {
                 display command information of ls`
         },
         help: `ls: ls [..][<path>]
-        List categories and items in current category.`
+        List categories, items, and properties in current category or item.`
     },
     lynx: {
         page: {
@@ -1901,7 +1874,7 @@ const cmd = {
     },
     date: function(args) {
         const options = {
-            weekday: 'short',
+            weekday: 'narrow',
             day: 'numeric',
             month: 'numeric',
             year: '2-digit'
@@ -1951,7 +1924,7 @@ const cmd = {
             if (args.includes('--help'))
                 return this.help(['dir'])
             else {
-                
+
             }
     },
     echo: function(args) {},
