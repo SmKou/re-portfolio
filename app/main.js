@@ -1,43 +1,75 @@
-/*
-globals.data = function() {
-    return {
-        manual: {
-            cal: {
-                page: {
-                    name: 'cal - calendar',
-                    synopsis: [
-                        'cal',
-                        'cal DATE',
-                        'cal FREQUENCY',
-                        'cal DATE FREQUENCY'
-                    ],
-                    description: `Show calendar information.
-                    Default date: today
-                    Default frequency: all (daily, weekly, monthly)
-                    Specify a date and/or frequency for viewing events from calendar.
-                    
-                    --help
-                        display command information`
-                },
-                options: {
-                    flags: ['-g', '-e'],
-                    addGoals: function() {},
-                    addEvents: function() {}
-                },
-                help: 'cal: cal <date> <frequency>',
-                whatis: 'Show calendar information'
+function init() {
+    const manual = {
+        cal: {
+            page: {
+                name: 'cal - calendar',
+                synopsis: [
+                    'cal',
+                    'cal DATE',
+                    'cal FREQUENCY',
+                    'cal DATE FREQUENCY'
+                ],
+                description: `Show calendar information.
+                Default date: today
+                Default frequency: all (daily, weekly, monthly)
+                Specify a date and/or frequency for viewing events from calendar.
+                
+                --help
+                    display command information`
             },
-            cd: {
-                page: {
-                    name: '',
-                    synopsis: [],
-                    description: ``
-                }
-            }
+            options: {
+                flags: ['-g', '-e'],
+                add_goals: function() {},
+                add_events: function() {}
+            },
+            help: 'cal: cal <date> <frequency>',
+            whatis: 'Show calendar information.'
+        },
+        cd: {
+            page: {
+                name: 'cd - change directory',
+                synopsis: [ 'cd PATH' ],
+                description: `Change working path.
+                Root: portfolio
+                Directories: categories, pages, manual, sources
+                Items equate to files in standard file system and terminal.
+
+                -d, --dir-only
+                    show only directories
+
+                -i, --itm-only
+                    show only items
+                
+                --help
+                    display command information`
+            },
+            options: {
+                flags: ['-d', '--dir-only', '-i', '--itm-only'],
+                filter_dir: function() {},
+                filter_itm: function() {}
+            },
+            help: 'cd: cd [..][<path>]',
+            whatis: 'Change working path.'
+        },
+        cls: {
+            page: {
+                name: 'cls - clear screen',
+                synopsis: [ 'cls' ],
+                description: `Clear interface: terminal + aside
+                Collapse aside, hiding command list and introduction.
+                
+                --help
+                    display command information`
+            },
+            help: 'cls: cls',
+            whatis: 'Clear interface'
         }
     }
+
+    const data = { manual }
+
+    return data
 }
-*/
 
 const manual = {
     cal: {
