@@ -1,4 +1,4 @@
-function data() {
+function init() {
     const versions = [
         { title: 'The Profile', present: true, completed: false },
         { title: 'The Magazine', present: true, completed: false },
@@ -22,33 +22,27 @@ function data() {
 
     const path = () => `v${ui.version}/`
 
-    return { versions, ui, path }
-}
-
-function init() {
-    const data = data()
-
-    data.ui.frame.setAttribute('src', data.path())
+    ui.frame.setAttribute('src', path())
 
     const toggle_view = present => {
         if (present)
-            data.ui.message.classList.remove('view')
+            ui.message.classList.remove('view')
         else
-            data.ui.message.classList.add('view')
+            ui.message.classList.add('view')
 
-        data.ui.frame.src = present ? data.path() : ''
+        ui.frame.src = present ? path() : ''
     }
 
-    data.ui.controls.prev.addEventListener('click', () => {
-        data.ui.version--
-        if (data.ui.version < 0) data.ui.version = data.versions.length - 1
-        toggle_view(data.versions[data.ui.version].present)
+    ui.controls.prev.addEventListener('click', () => {
+        ui.version--
+        if (ui.version < 0) ui.version = versions.length - 1
+        toggle_view(versions[ui.version].present)
     })
 
-    data.ui.controls.next.addEventListener('click', () => {
-        data.ui.version++
-        if (data.ui.version > data.versions.length - 1) data.ui.version = 0
-        toggle_view(data.versions[data.ui.version].present)
+    ui.controls.next.addEventListener('click', () => {
+        ui.version++
+        if (ui.version > versions.length - 1) ui.version = 0
+        toggle_view(versions[ui.version].present)
     })
 
     const get_host = () => {
@@ -57,12 +51,12 @@ function init() {
         return http + host + '/'
     }
 
-    data.ui.controls.link.addEventListener('click', () => {
-        const href = `${get_host()}/versions/${data.path()}/`
+    ui.controls.link.addEventListener('click', () => {
+        const href = `${get_host()}/versions/${path()}`
         window.location.href = href
     })
 
-    data.ui.controls.home.addEventListener('click', () => {
+    ui.controls.home.addEventListener('click', () => {
         const href = get_host()
         window.location.href = href
     })
