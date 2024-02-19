@@ -1572,40 +1572,23 @@ const calendar = {
                 10-20 min: Jog in Place`
             },
             algorithms: {
-                days: [0, 1, 1, 1, 1, 0, 0],
+                days: [1, 1, 0, 0, 1, 0, 0],
                 time: 1,
-                comment: `1. [] Make Your Own Neural Network
-                2. [] Grokking AI Algorithms
-                3. [] AI for Games
-                
-                1. [] Grokking Algorithms
-                2. [] Advanced Algorithms and Data Structures
-                3. [] Dive into Algorithms
-                4. [] 50 Algorithms Every Programmer Should Know
-                5. [] Intro to Algorithms`
+                comment: `Make Your Own Neural Network []`
             },
             golang: {
-                days: [0, 1, 1, 1, 1, 0, 0],
+                days: [1, 0, 1, 0, 0, 1, 0],
                 time: 1,
                 source: sources.fm,
-                comment: `Frontend Masters
-                1. [] Basics of Go
-                2. [] HTMX & Go
-
-                Gophercises: https://gophercises.com
-                
-                [] Powerful Command-Line Applications
-                [] Network Programming
-                [] Writing an Interpreter|Compiler in Go`
+                comment: `Basics of Go []`
             },
             nature_of_code: {
-                days: [0, 1, 1, 1, 1, 0, 0],
+                days: [1, 0, 0, 1, 0, 0, 1],
                 time: 1,
                 source: {
                     title: 'Nature of Code',
                     href: 'https://natureofcode.com'
-                },
-                comment: `Use Java/Processing`
+                }
             }
         }
     },
@@ -1623,57 +1606,129 @@ const calendar = {
         }
     },
     record: {
+        /*
+        '': {
+            daily: {
+                routine: { morning: false, night: false },
+                goals: {
+                    exercise: { completed: false },
+                    dsa: { 
+                        target: '',
+                        done: false,
+                        completed: false 
+                    },
+                    web_development: { 
+                        target: '', 
+                        done: false,
+                        completed: false 
+                    }
+                }
+            },
+            weekly: {
+                routine: {
+                    therapy: { completed: false },
+                    isg: { completed: false }
+                },
+                goals: {
+                    exercise: { completed: false },
+                    algorithms: { 
+                        target: '',
+                        done: false,
+                        completed: false
+                    }, // Sun, Mon, Thu
+                    golang: {
+                        target: '',
+                        done: false,
+                        completed: false
+                    }, // Sun, Tue, Fri
+                    nature_of_code: { 
+                        target: '',
+                        done: false,
+                        completed: false
+                    } // Sun, Wed, Sat
+                }
+            },
+            monthly: {
+                routine: {
+                    seattlejs: { completed: false }, // 2nd Wed
+                    code_katas: { completed: false }, // 3rd Tue
+                    indies_social: { completed: false } // 3rd Tue
+                },
+                goals: {
+                    frye_art: { completed: false }, // 1st Sun
+                    wing_luke: { completed: false }, // 2nd Sun
+                    henry_art: { completed: false }, // 3rd Sun
+                    nordic: { completed: false } // 4th Sun
+                }
+            },
+            tasks: {
+                '': {
+                    done: false,
+                    completed: false
+                }
+            }
+        },
+
+        done: was it done? (true: timestamp)
+        completed: is it finished? (true: date of completion)
+        - milestones
+        */
         '2/18/24': {
             daily: { 
-                routine: { morning: '13:00', night: false },
+                routine: { morning: '13:00', night: '23:30' },
                 goals: {
-                    exercise: {
-                        target: '1 hour walk',
-                        complete: false
+                    exercise: { 
+                        done: false, 
+                        comment: 'Woke up too late + afternoon rain' 
                     },
-                    dsa: {
+                    dsa: { 
                         target: 'Array',
-                        complete: false
+                        done: '21:03',
+                        completed: false 
                     },
-                    web_development: {
-                        target: 'Complete Intro to Computer Science',
-                        complete: false
+                    web_development: { 
+                        target: 'Complete Intro to Computer Science', 
+                        done: '20:11',
+                        completed: false 
                     }
                 }
             },
             weekly: { 
                 routine: '',
                 goals: {
-                    exercise: {
-                        target: '30 min calisthenics',
-                        comment: 'Woke up too late (reminder: optional)',
-                        complete: false
-                    },
                     algorithms: {
                         target: 'Make Your Own Neural Network',
                         comment: 'Extra tasks',
-                        complete: false
+                        done: false,
+                        completed: false
+                    },
+                    golang: {
+                        target: 'Basics of Go',
+                        comment: 'Extra tasks',
+                        done: false,
+                        completed: false
                     },
                     nature_of_code: {
                         target: '0. Randomness',
                         comment: 'Extra tasks',
-                        complete: false
+                        done: false,
+                        completed: false
                     }
                 }
             },
             monthly: { 
                 routine: '', 
-                goals: { 
-                    henry_art: {
-                        target: 'Walk to Henry Art Gallery',
-                        comment: 'Not starting this month',
-                        complete: false
-                    }
-                }
+                goals: ''
             },
             tasks: {
-                'read coding standards': false,
-                'read design patterns': false
+                'read coding standards': {
+                    done: true,
+                    completed: false
+                },
+                'read design patterns': {
+                    done: false,
+                    completed: false
+                }
             }
         }
     },
