@@ -52,7 +52,7 @@ function init() {
     }
 
     ui.controls.link.addEventListener('click', () => {
-        const href = `${get_host()}/versions/${path()}`
+        const href = `${get_host()}versions/${path()}`
         window.location.href = href
     })
 
