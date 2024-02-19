@@ -1743,6 +1743,8 @@ const calendar = {
                 'read coding patterns'
                 : { done: false, completed: false },
                 're: career counselor'
+                : { done: false, completed: false },
+                'godot rpg tutorial - 5 sections'
                 : { done: false, completed: false }
             }
         },
