@@ -1,3 +1,19 @@
+/*
+Use of snake case: 
+- variable name
+- function name
+- property
+
+Use of upper camel case: 
+- constant
+- dom element
+- class or prototype
+
+Use of lower camel case:
+- api
+*/
+
+
 function init() {
     const manual = {
         cal: {
@@ -23,7 +39,22 @@ function init() {
                 add_events: function() {}
             },
             help: 'cal: cal <date> <frequency>',
-            whatis: 'Show calendar information.'
+            whatis: 'Show calendar information.',
+            helpers: {
+                is_valid_date: str => !isNaN(new Date(str))
+            },
+            cmd: function(args) {
+                let date = new Date()
+                let freq = ''
+                let flags = []
+
+                const wrong_data = []
+                const wrong_options = []
+
+                while (args.length) {
+                    const arg = args.pop()
+                }
+            }
         },
         cd: {
             page: {
@@ -1781,7 +1812,7 @@ const calendar = {
         */
         '': {
             daily: {
-                routine: { morning: false, night: false },
+                routine: { morning: '12:30', night: false },
                 goals: {
                     exercise: { completed: false },
                     dsa: { 
@@ -1812,7 +1843,7 @@ const calendar = {
             monthly: { routine: '', goals: '' },
             tasks: {
                 'read coding standards'
-                : { done: false, completed: false },
+                : { done: '12:41', completed: false },
                 'read coding patterns'
                 : { done: false, completed: false },
                 're: career counselor'
