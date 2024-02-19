@@ -1,64 +1,71 @@
-const props = Object.keys(versions).filter(key => key.includes('v'))
-let version = 0
+function data() {
+    const versions = [
+        { title: 'The Profile', present: true, completed: false },
+        { title: 'The Magazine', present: true, completed: false },
+        { title: 'The Design Index', present: true, completed: false },
+        { title: 'The Show', present: false, completed: false },
+        { title: 'The People in Pages', present: true, completed: true },
+        { title: 'Epicodus Resume', present: true, completed: true }
+    ]
 
-const ui = {
-    controls: {
-        prev: document.getElementById('prev'),
-        next: document.getElementById('next'),
-        link: document.getElementById('link'),
-        home: document.getElementById('home')
-    },
-    frame: document.getElementById('version-view'),
-    message: document.querySelector('.message')
+    const ui = {
+        version: 0,
+        controls: {
+            prev: document.getElementById('prev'),
+            next: document.getElementById('next'),
+            link: document.getElementById('link'),
+            home: document.getElementById('home')
+        },
+        frame: document.getElementById('version-view'),
+        message: document.querySelector('.message')
+    }
+
+    const path = () => `v${ui.version}/`
+
+    return { versions, ui, path }
 }
 
-const path = () => versions[props[version]].href
+function init() {
+    const data = data()
 
-ui.frame.setAttribute('src', path())
+    data.ui.frame.setAttribute('src', data.path())
 
-ui.controls.prev.addEventListener('click', () => {
-    version--
-    if (version < 0)
-        version = props.length - 1
+    const toggle_view = present => {
+        if (present)
+            data.ui.message.classList.remove('view')
+        else
+            data.ui.message.classList.add('view')
 
-    if (versions[props[version]].status) {
-        ui.message.classList.remove('view')
-        ui.frame.src = path()
+        data.ui.frame.src = present ? data.path() : ''
     }
-    else {
-        ui.message.classList.add('view')
-        ui.frame.src = ''
-    }
-})
 
-ui.controls.next.addEventListener('click', () => {
-    version++
-    if (version > props.length - 1)
-        version = 0
+    data.ui.controls.prev.addEventListener('click', () => {
+        data.ui.version--
+        if (data.ui.version < 0) data.ui.version = data.versions.length - 1
+        toggle_view(data.versions[data.ui.version].present)
+    })
 
-    if (versions[props[version]].status) {
-        ui.message.classList.remove('view')
-        ui.frame.src = path()
-    }
-    else {
-        ui.message.classList.add('view')
-        ui.frame.src = ''
-    }
-})
+    data.ui.controls.next.addEventListener('click', () => {
+        data.ui.version++
+        if (data.ui.version > data.versions.length - 1) data.ui.version = 0
+        toggle_view(data.versions[data.ui.version].present)
+    })
 
-// deployed: https://smkou.github.io/re-portfolio/versions/v4/
-const getHttpHost = () => {
-    const host = window.location.host
-    const http = host === 'localhost:5173' ? 'http://' : 'https://'
-    return http + host + '/'
+    const get_host = () => {
+        const host = window.location.host
+        const http = host === 'localhost:5173' ? 'http://' : 'https://'
+        return http + host + '/'
+    }
+
+    data.ui.controls.link.addEventListener('click', () => {
+        const href = `${get_host()}/versions/${data.path()}/`
+        window.location.href = href
+    })
+
+    data.ui.controls.home.addEventListener('click', () => {
+        const href = get_host()
+        window.location.href = href
+    })
 }
 
-ui.controls.link.addEventListener('click', () => {
-    const href = getHttpHost() + versions.href + path()
-    window.location.href = href
-})
-
-ui.controls.home.addEventListener('click', () => {
-    const href = getHttpHost()
-    window.location.href = href
-})
+init()

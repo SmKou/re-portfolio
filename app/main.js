@@ -96,7 +96,6 @@ function data() {
                 ref: ['https://www.kamranhughes.com/how-to-tailor-designs-using-the-big-5-personality-traits/']
             },
             description: 'Re-Portfolio 2015-2017 features a questionnaire that changes page content and layout based on user answers. It is divided into visual preferences, graphic and text preferences, answer sections and question preferences.',
-            status: false,
             dev: `Add user questionnaire
             Add content:
             - chart or bar graph
@@ -113,19 +112,17 @@ function data() {
         {
             title: 'The Magazine',
             href: {
-                view: ['v1/'],
+                view: 'v1/',
                 inspiration: ['https://www.nytimes.com/section/magazine']
             },
             description: 'Re-Portfolio 2015-2022 features a magazine-layout of flash fiction, short stories, and series. Though the writing is reflective of mental state at time of writing, do not take them at face value. Assume impressionism.',
-            status: true,
             dev: `Add images for stories (use 640 optimized on clr, gen bw)
             Edit and redesign smjoker.com (slated)`
         },
         {
             title: 'The Design Index',
-            href: { view: ['v2/'] },
+            href: { view: 'v2/' },
             description: 'Re-Portfolio 2018-2021 features a book index layout. The index consists of concepts in html and css, which can be further sorted into tags, fonts, shapes, layouts, ui elements, programming, and resources.',
-            status: true,
             dev: `Add content
             - tags
             - shapes
@@ -137,9 +134,9 @@ function data() {
             Work out code interfaces for shapes, layouts and ui elements`
         },
         {
-            title: 'The Slideshow of Slideshows',
+            title: 'The Show',
             href: {
-                view: ['v3/'],
+                view: 'v3/',
                 ref: ['https://codepen.io/dodozhang21/pen/kMoXZz']
             },
             description: 'Re-Portfolio 2020-2022 features four slideshows on portfolio, different page designs, and favorite shows.',
