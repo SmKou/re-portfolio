@@ -470,42 +470,42 @@ const sources = {
     fm: {
         title: 'Frontend Masters',
         href: { ref: ['https://frontendmasters.com'] },
-        comment: `Intended Courses:
-        - The Last Algorithms Course You'll Need
-        - The Last Algorithms Course You'll Need pt. 2
-        - Blazingly Fast Javascript
-        - Vanilla JS: You Might Not Need a Framework
-        - The Hard Parts of UI Development
-        - Web UX Design for High Converting Websites
-        - HTMX and Go
-        - Cross-Platform Mobile Apps with Flutter
-        - Build Progress Web Apps (PWAs) from Scratch
-        - Practical Problem Solving with Algorithms
-        ...
+        comment: `Learning paths:
+        1. [] Computer Science
+           - data structures, algorithms, problem solving, web assembly (wasm), functional programming
+           - build a programming language
+        2. [] Professional (senior)
+           - html, css, js, react, web performance, typescript, next.js, pwas, full-stack
         
         Completed:`
     },
     odin: {
         title: 'The Odin Project',
         href: { ref: ['https://www.theodinproject.com'] },
-        comment: `Personal goal (project challenge) - Complete courses in beginner's web development from The Odin Project
-        1 month
-        - Foundations
-        - Full Stack Javascript`
+        comment: `Personal goal (project challenge)
+        Task: Complete courses
+        - html, css, js, react
+        Duration: 1 month
+        Result: _num_ of projects`
     },
     fcc: {
         title: 'freeCodeCamp',
         href: { ref: ['https://www.freecodecamp.org/'] },
-        comment: `Personal goal (project challenge) - Complete curriculum from freeCodeCamp
-        4 months
-        - 12 main courses in web development and python
-        - 3 courses in developer interview job prep`
+        comment: `Personal goal (project challenge)
+        Task: Complete curriculum
+        - frontend and backend web development, databases, python
+        Duration: 4 months
+        Result: _num_ of projects`
     },
     ztm: {
         title: 'Zero to Mastery',
         href: { ref: ['https://zerotomastery.io'] },
         comment: `Used for review of introduction to web devevlopment
-        Projects - First Page, Live in the Wild, Android Journeys, RoboFriends, Face Brain Recognition (redesigned to SimpleBrain)`
+        - First Page
+        - Live in the Wild
+        - Android Journeys
+        - RoboFriends
+        - Face Brain Recognition (redesigned to SimpleBrain)`
     },
     epi: {
         title: 'Epicodus',
@@ -514,10 +514,31 @@ const sources = {
             referral: ['https://www.linkedin.com/in/calvinwill/', 'https://www.linkedin.com/in/jasminemklein/']
         },
         comment: `Coding Bootcamp from May to Dec 2023
-        Courses included Intro to Web development, Advanced JS and Node.js, C# for Full-stack web development, and React
-        Projects - Programming Language suggester, Mr. Roboger Neighborhood, Pizza Parlor, Currency Exchanger, Super Galactic Age calculator, Dino Ipsum, Pierre Bakery, Madlibs clone, Hair Salon, Vendor Order Tracker, Sillystringz Factory, Pierre's Sweet and Savory Treats, Parks Lookup api, Coffee Beans
-        Team projects - game (obsolete), Global Address Formatter
-        Capstone - KataDSA app concept (obselete)`
+        Courses
+        - intro to web development
+        - advanced JS and Node.js
+        - C# (cli apps, web apps, apis, databases, identity)
+        - react (typescript)
+        Projects
+        - Programming Language suggester
+        - Mr. Roboger Neighborhood
+        - Pizza Parlor
+        - Currency Exchanger
+        - Super Galactic Age calculator
+        - Dino Ipsum
+        - Pierre Bakery
+        - Madlibs clone
+        - Hair Salon
+        - Vendor Order Tracker
+        - Sillystringz Factory
+        - Pierre's Sweet and Savory Treats
+        - Parks Lookup api
+        - Coffee Beans
+        Team projects
+        - game (obsolete)
+        - Global Address Formatter
+        Capstone
+        - KataDSA app concept (obselete)`
     },
     edcc: {
         title: 'Edmonds College (formerly Edmonds Community College)',
@@ -536,7 +557,8 @@ const sources = {
         title: 'University of Washington',
         href: { ref: ['https://www.washington.edu'] },
         comment: `Alma mater
-        Graduated 2014 with BS Informatics from Information School`
+        Graduated 2014
+        BS Informatics from Information School`
     },
     ischool: {
         title: 'iSchool (Information School)',
@@ -546,7 +568,10 @@ const sources = {
         },
         comment: `Bachelor's degree in Informatics
         Specialized in User experience design
-        Projects - Husky Goals, Carmax, Booksie, Apollo-Artemis in LETO project management
+        Projects
+        - Husky Goals
+        - Carmax, Booksie
+        - Apollo-Artemis in LETO project management
         
         Note: Design projects resulted in design spec, portfolios, and Axure prototypes`
     },
@@ -559,7 +584,8 @@ const sources = {
             ]   // Include backup links in arr
         },
         comment: `Alma mater
-        Graduated 2020 with MA Design from School of Design
+        Graduated 2020
+        MA Design from School of Design
         Renamed to Design School (unconfirmed)`
     },
     sod: {
@@ -570,7 +596,14 @@ const sources = {
         },
         comment: `Master's degree in Design
         Specialized in Interaction design
-        Projects - KS Healthcare app, Little Red game, Storytelling in Design, Interaction Design course, Service Design course, Disney Imaginations Shanghai, Creative writing app
+        Projects
+        - KS Healthcare app
+        - Little Red game
+        - Storytelling in Design
+        - Interaction Design course
+        - Service Design course
+        - Disney Imaginations Shanghai competition
+        - Creative writing app
         
         Note: Design projects resulted in design spec, portfolios, and Java/Processing prototypes`
     },
@@ -588,7 +621,7 @@ const sources = {
         href: {
             ref: ['https://signedpic.com'],
             linkedin: ['https://www.linkedin.com/company/signedpic/about/'],
-            refferal: ['https://www.linkedin.com/in/leegrambush/']
+            referral: ['https://www.linkedin.com/in/leegrambush/']
         },
         comment: `Worked on react flow and d3 implementation for firm accounts to manage attorneys and clients`
     },
@@ -596,7 +629,7 @@ const sources = {
         title: 'Paper Hammer',
         href: { 
             ref: ['https://www.paper-hammer.com'],
-            refferal: ['https://www.linkedin.com/in/edmarquand/']
+            referral: ['https://www.linkedin.com/in/edmarquand/']
         }
     }
 }
@@ -1673,13 +1706,53 @@ const calendar = {
         completed: is it finished? (true: date of completion)
         - milestones
         */
+        '': {
+            daily: {
+                routine: { morning: false, night: false },
+                goals: {
+                    exercise: { completed: false },
+                    dsa: { 
+                        target: 'Array | String',
+                        done: false,
+                        completed: false 
+                    },
+                    web_development: { 
+                        target: 'Complete Intro to Computer Science', 
+                        done: false,
+                        completed: false 
+                    }
+                }
+            },
+            weekly: {
+                routine: '',
+                goals: {
+                    exercise: { completed: false },
+                    algorithms: { 
+                        target: '',
+                        done: false,
+                        completed: false
+                    },
+                    golang: '',
+                    nature_of_code: ''
+                }
+            },
+            monthly: { routine: '', goals: '' },
+            tasks: {
+                'read coding standards'
+                : { done: false, completed: false },
+                'read coding patterns'
+                : { done: false, completed: false },
+                're: career counselor'
+                : { done: false, completed: false }
+            }
+        },
         '2/18/24': {
             daily: { 
                 routine: { morning: '13:00', night: '23:30' },
                 goals: {
                     exercise: { 
                         done: false, 
-                        comment: 'Woke up too late + afternoon rain' 
+                        comment: 'late m-routine + afternoon rain' 
                     },
                     dsa: { 
                         target: 'Array',
@@ -1716,41 +1789,38 @@ const calendar = {
                     }
                 }
             },
-            monthly: { 
-                routine: '', 
-                goals: ''
-            },
+            monthly: { routine: '', goals: '' },
             tasks: {
-                'read coding standards': {
-                    done: true,
-                    completed: false
-                },
-                'read design patterns': {
-                    done: false,
-                    completed: false
-                }
+                'read coding standards'
+                : { done: true, completed: false },
+                'read design patterns'
+                : { done: false, completed: false }
             }
         }
     },
     events: {
         '4/4/24': {
-            act: { time: ['19:30', 3.5] }
+            act: { time: ['19:30', 3.5], attended: false }
         }, // THU
         '3/22/24': {
-            act: { time: ['19:30', 1.5] }
+            act: { time: ['19:30', 1.5], attended: false }
         }, // FRI
         '3/8/24': {
-            act: { time: ['19:00', 1.5] }
+            act: { time: ['19:00', 1.5], attended: false }
         }, // FRI
+        '2/21/24': {
+            therapy: { time: ['10:30', 1.5], attended: false }
+        },
         '2/9/24': {
-            act: { time: ['19:30', 1.5] }
+            act: { time: ['19:30', 1.5], attended: true }
         }, // FRI
         '2/6/24': {
-            city_light: { time: ['13:30', 0.5] },
-            gov: { time: ['14:30', 1.5] }
+            city_light: { time: ['13:30', 0.5], attended: true },
+            gov: { time: ['14:30', 1.5], attended: true }
         }
     },
     projects: {
+        '2/18/24': ['Re-Portfolio', "Jordan's Game"],
         '1/28/24': [ 'Re-Portfolio', "Jordan's Game" ],
         '1/21/24': [ 'Re-Portfolio' ]
     }
