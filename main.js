@@ -14,7 +14,7 @@ Use of lower camel case:
 */
 
 
-function init() {
+function data() {
     const manual = {
         cal: {
             page: {
@@ -42,18 +42,6 @@ function init() {
             whatis: 'Show calendar information.',
             helpers: {
                 is_valid_date: str => !isNaN(new Date(str))
-            },
-            cmd: function(args) {
-                let date = new Date()
-                let freq = ''
-                let flags = []
-
-                const wrong_data = []
-                const wrong_options = []
-
-                while (args.length) {
-                    const arg = args.pop()
-                }
             }
         },
         cd: {
@@ -88,6 +76,9 @@ function init() {
                 synopsis: [ 'cls' ],
                 description: `Clear interface: terminal + aside
                 Collapse aside, hiding command list and introduction.
+
+                -i, --intro
+                    display intro in terminal
                 
                 --help
                     display command information`
@@ -97,9 +88,1047 @@ function init() {
         }
     }
 
-    const data = { manual }
+    const versions = [
+        {
+            title: 'The Profile',
+            href: {
+                view: 'v0/',
+                ref: ['https://www.kamranhughes.com/how-to-tailor-designs-using-the-big-5-personality-traits/']
+            },
+            description: 'Re-Portfolio 2015-2017 features a questionnaire that changes page content and layout based on user answers. It is divided into visual preferences, graphic and text preferences, answer sections and question preferences.',
+            status: false,
+            dev: `Add user questionnaire
+            Add content:
+            - chart or bar graph
+            - progress bars
+            - stock image, credit and source
+            - bullet points
+            - personal fact(s)
+            - statement(s)
+            - summary
+            - analysis
+            
+            Basis of concept: User Interfaces with Big-5 Personality Traits (refer: ref)`
+        },
+        {
+            title: 'The Magazine',
+            href: {
+                view: ['v1/'],
+                inspiration: ['https://www.nytimes.com/section/magazine']
+            },
+            description: 'Re-Portfolio 2015-2022 features a magazine-layout of flash fiction, short stories, and series. Though the writing is reflective of mental state at time of writing, do not take them at face value. Assume impressionism.',
+            status: true,
+            dev: `Add images for stories (use 640 optimized on clr, gen bw)
+            Edit and redesign smjoker.com (slated)`
+        },
+        {
+            title: 'The Design Index',
+            href: { view: ['v2/'] },
+            description: 'Re-Portfolio 2018-2021 features a book index layout. The index consists of concepts in html and css, which can be further sorted into tags, fonts, shapes, layouts, ui elements, programming, and resources.',
+            status: true,
+            dev: `Add content
+            - tags
+            - shapes
+            - layouts
+            - ui elements
+            - programming ie. variables and expressions
+            - resources
+            
+            Work out code interfaces for shapes, layouts and ui elements`
+        },
+        {
+            title: 'The Slideshow of Slideshows',
+            href: {
+                view: ['v3/'],
+                ref: ['https://codepen.io/dodozhang21/pen/kMoXZz']
+            },
+            description: 'Re-Portfolio 2020-2022 features four slideshows on portfolio, different page designs, and favorite shows.',
+            status: false,
+            dev: `Determine switch mechanism between slideshows
+            Include back and home
+            Add slideshows:
+            - navigation
+            - portfolio
+            - favorite movies
+            - favorite shows`
+        },
+        {
+            title: 'The People in Pages',
+            href: { view: ['v4/'] },
+            description: 'Re-Portfolio 2021-2022 features page designs based on observations of people. When I see a combination of clothing that catches my attention, since I cannot draw or take a photograph, I turn their clothing combination into the layout for a webpage.',
+            status: true
+        },
+        {
+            title: 'Epicodus Resume',
+            href: { view: ['v5/'] },
+            description: 'Re-Portfolio 2023 features a resume and profile format, done for portfolio review as part of a bootcamp code review (Epicodus).',
+            status: true
+        }
+    ]
 
-    return data
+    const experience = {
+        'frontend-intern': {
+            title: 'Frontend Intern',
+            description: 'React web app developmnt',
+            keywords: ['react', 'verbal communication', 'git', 'problem-solving', 'interface design', 'listening', 'adaptability', 'creativity'],
+            year: ['Nov 2023', 'Dec 2023'],
+            href: { source: sources.signed },
+            status: true,
+            comment: `Remote
+            Location: Seattle, WA, USA
+            Referral: Lee Grambush`
+        },
+        'store-clerk': {
+            title: 'Store Clerk',
+            description: 'Part-time store clerk',
+            keywords: ['empathy', 'verbal communication', 'listening', 'attention to detail', 'organization'],
+            year: ['Aug 2021', 'Apr 2023'],
+            href: { source: sources.ph },
+            status: true,
+            comment: `Seattle location, closed in Apr. 2024,
+            Location: Seattle, WA, USA
+            Referral: Ed Marquand, Suzanne Crimmins (no linkedin)`
+        },
+        'head-student-editor': {
+            title: 'Head Student Editor',
+            description: 'Lead team in translating, editing and proofreading course textbook on interaction design',
+            keywords: ['listening', 'creativity', 'leadership', 'attention to detail', 'written communication', 'verbal communication', 'problem-solving', 'documentation', 'analytical reasoning'],
+            year: ['Mar 2018', 'Aug 2019'],
+            href: { source: sources.sjtu },
+            status: true,
+            comment: `Office in Minhang campus, SOD building
+            Location: Shanghai, Shanghai, CN
+            
+            Conduct weekly meetings
+            Manage translation and editing schedule
+            Collect and synthesize weekly student feedback, drafts, edits, notes, and confirmations from professor
+            Proofread and edit chapter drafts each week`
+        },
+        'teacher-assistant': {
+            title: 'Teacher Assistant',
+            description: `Assist professors and manage course schedule, materials and projects`,
+            keywords: ['written communication','creativity','verbal communication','adaptability','adaptability','management','problem-solving','java','service design','interaction design'],
+            year: ['Mar 2018', 'Jun 2019'],
+            href: { source: sources.sod },
+            status: true,
+            comment: `Graduate courses in School of Design, SJTU
+            Location: Shanghai, Shanghai, CN
+            
+            Develop and distribute course curriculumns
+            Develop class presentations and tutorials
+            Develop grading rubric
+            Supervise class time and schedule
+            Collect, grade and review assignments and projects`
+        },
+        'english-teacher': {
+            title: 'Foreign English Teacher',
+            description: `Teacher, trainer and supervisor of operations`,
+            keywords: ['verbal communication','written communication','documentatation','time management','management','adaptability','creativity','analytical reasoning','critical thinking','problem-solving','teaching','training','business counseling','feedback','hiring decisions'],
+            year: ['Aug 2015', 'Nov 2016'],
+            href: {},
+            status: true,
+            comment: `EasyFun, Hampson, Side-by-Side English (simultaneous)
+            Location: Guangzhou, Guangdong, CN
+            
+            Develop curriculums, course plans and class plans
+            Review textbook series
+            Assess student and teacher performance
+            Client consultations
+            Teach students 4-45 years old, 400 students per week
+            Train teachers and teacher assistants
+            Substitution
+            Winter and summer camps
+            Private tutoring`
+        }
+    }
+    
+
+    const education = {
+        'web-dev': {
+            title: 'Web Development Certificate',
+            description: 'Development in html, css, javscript, Node.js, C# and .Net, and React',
+            keywords: ['react', 'jest', 'babel', 'eslint', 'html', 'css', 'javscript', 'vanilla js', 'c#', '.net 6', '.net 7', 'api', 'node.js', 'tdd', 'red-green workflow', 'pair programming', 'code review', 'scrum', 'dev teams', 'mysql', 'sql', 'authentication', 'authorization', 'jwt', 'frontend', 'json'],
+            year: 'Dec 2023',
+            href: { source: sources.epi },
+            status: true,
+            comment: `Epicodus
+            Location: Portland, OR, USA (remote)
+            Referral: Calvin Will, Jasmine Klein`
+        },
+        'design': {
+            title: 'MA Design',
+            description: 'Design research, practices, processes and fields',
+            keywords: ['java', 'processing', 'adobe illustrator', 'user research', 'user interviews', 'quantitative analysis', 'qualitative analysis', 'low-fidelity prototypes', 'high-fidelity prototypes', 'eye-trackers', 'field research', 'service design', 'design thinking', 'interaction design', 'chinese'],
+            year: 'Mar 2020',
+            href: { source: [sources.sjtu, sources.sod] },
+            status: true,
+            comment: `Shanghai Jiaotong University, School of Design
+            Location: Shanghai, Shanghai, CN
+            Specialized in Interaction design`
+        },
+        'informatics': {
+            title: 'BS Informatics',
+            description: `Information technology, applications, and principles`,
+            keywords: ['java', 'mobile apps', 'web apps', 'responsive design', 'web design and development', 'database modeling', 'database design', 'sql', 'mysql', 'android', 'axure rp', 'adobe illustrator', 'visual design', 'user experience design', 'service design', 'design thinking', 'computer science', 'software entrepreneurship'],
+            year: 'Jun 2014',
+            href: { source: [sources.uw, sources.ischool] },
+            status: true,
+            comment: `University of Washington, Information School
+            Location: Seattle, WA, USA
+            Specialized in User Experience design
+            Referral: Mike Eisenberg (dean emeritus)`
+        },
+        'pre-engineering': {
+            title: 'AS Pre-Engineering',
+            description: `Introduction to engineering sciences, including computer science`,
+            keywords: ['visual basic', 'java', 'desktop apps', 'forms'],
+            year: 'Jun 2011',
+            href: { source: sources.edcc },
+            status: true,
+            comment: `Edmonds Community College
+            Location: Edmonds, WA, USA
+            
+            Program: Running Start
+            - AS Pre-Engineering
+            - IB Mathematics, Chinese`
+        }
+    }
+
+    const messages = {
+        cnet: `Status: deprecated
+        All C#/.Net projects are not likely to be completed (deployed).`,
+        basic: `Status: complete
+        Does not require maintainence (changes or updates).`,
+        demo: 'Included for demonstration purposes.'
+    }
+
+    const projects = {
+        'husky-goals': {
+            title: 'Husky Goals',
+            description: 'Mobile app for keeping track of goals based on counter, timer, and checklists',
+            keywords: ['axure rp','html','css','javascript', 'paper prototypes', 'wireframes', 'mockups', 'user research', 'user testing', 'user interviews', 'user stories', 'personas'],
+            year: 2012,
+            href: { source: sources.ischool },
+            status: true,
+            comment: `Course: Design Thinking
+            Completed submission: Axure RP prototype and design spec`,
+            dev: `Status: queued
+            Prototype in vanilla js
+            Redesign as responsive web app`
+        },
+        'carmax': {
+            title: 'Carmax',
+            description: 'Mobile app for setting up appointment for car viewing, include step-by-step form for entering preferences',
+            keywords: ['axure rp', 'wireframes', 'mockups'],
+            year: 2013,
+            href: { source: sources.ischool, ref: ['https://www.carmax.com'] },
+            status: true,
+            comment: `Course: Service Design
+            Completed submission: Axure RP prototype, design spec and app presentation`,
+            dev: `Status: deprecated (rework)
+            
+            Research: car market and carmax situation
+            - Carmax mobile app and website
+            Redesign for Carmax corporate design`
+        },
+        'booksie': {
+            title: 'Booksie Database Design',
+            description: 'Database model for Booksie user content and services',
+            keywords: ['sql', 'database models', 'mysql', 'flow diagrams'],
+            year: 2013,
+            href: { source: sources.ischool, ref: ['https://www.booksie.com'] },
+            status: true,
+            comment: `Course: Database Models and Design
+            Completed submission: database model and database with mock data`,
+            dev: `Status: in-consideration
+            Prefer system and service redesign
+            - online writing community
+            - publishing
+            - blogging platforms
+            
+            Requires app, server and database`
+        },
+        'ijuum': {
+            title: 'Ijuum',
+            description: 'Text adventure with AI for NPCs',
+            keywords: ['html', 'css', 'javascript', 'vanilla js', 'golang', 'cli', 'desktop app'],
+            year: 2013,
+            href: { source: sources.smkou, inspect: 'https://github.com/SmKou/ijuum' },
+            status: false,
+            comment: `Alternative title: Art and Execution
+            Type: Open-world
+            Mix of procedural-generated and scripted characters, capable of conversation. Timeline navigation. Compiles on language of ijuum.
+            
+            Reading: AI
+            - Make Your Own Neural Network
+            - Grokking AI Algorithms [optional]
+            - AI and Machine Learning for Coders: A Programmer's Guide to Artificial Intelligence
+            - Artificial Intelligence: A Modern Approach
+            - AI for Games
+            
+            Reading: Language
+            - Writing an Interpreter in Go
+            - Writing a Compiler in Go`,
+            dev: `Status: queued`
+        },
+        'leto': {
+            title: 'The Leto Project',
+            description: 'Resource and task management interface for teams, and AR app for conference/meetup recruitment using virtual badges',
+            keywords: ['axure rp', 'adobe illustrator', 'adobe ux', 'java', 'android', 'ar', 'augmented reality', 'wireframes', 'mockups'],
+            year: 2014,
+            href: { source: sources.ischool },
+            status: true,
+            comment: `Capstone project (proof of concept)
+            Completed submission: mock virtual badges, design spec, ar prototype`,
+            dev: `Status: deprecated (rework)
+            
+            Research: project management options, team recruitment, and project pages
+            - version control
+            - market: Obsidian, Notion, AnyType
+            Perhaps abstract out concept to another project`
+        },
+        'ks-healthcare': {
+            title: 'KS Healthcare',
+            description: 'Mobile app for managing appointments, doctor notes, lab results, and mainly for navigation of Chinese hospitals',
+            keywords: ['adobe illustrator', 'adobe ux', 'paper prototypes', 'mockups', 'wireframes', 'user interviews', 'field study', 'personas', 'user stories'],
+            year: 2018,
+            href: { source: sources.sod },
+            status: true,
+            comment: `Course: Design Thinking and Process
+            Completed submission: design spec, research report and presentation`,
+            dev: `Status: deprecated
+            Requires further research, note updates since covid
+            Concept does not apply to American context`
+        },
+        'little-red': {
+            title: 'Little Red',
+            description: 'Prototype for game adaptation of Little Red Riding Hood',
+            keywords: ['java', 'processing', 'html', 'css', 'js', 'canvas', 'vanilla js'],
+            year: 2018,
+            href: { 
+                source: sources.sod,
+                author: ['https://www.mollybang.com/Pages/picture.html'],
+                inspiration: ['https://www.amazon.com/Picture-This-How-Pictures-Work/dp/1452151997'],
+                ref: ['https://inventwithpython.com/blog/2012/02/20/i-need-practice-programming-49-ideas-for-game-clones-to-code/'],
+                inspect: ['https://github.com/SmKou/red-riding-hood']
+            },
+            status: true,
+            comment: `Course: Interaction Design
+            Completed prototype in java/processing
+            - adaptation of Little Red Riding Hood
+            - aesthetics inspired by "Picture This" (Molly Bang)`,
+            dev: `Status: queued
+            Adapt into different formats for series
+            - learn how game format affects depiction and projection of story
+            Remove references to physics and rendering
+            Create app for easy deployment to gh-pages
+            Homepage: Switch between versions (responsive ui)
+            
+            In-consideration:
+            - Graphic adventure
+            - Match 3
+            - Dress-up / Runway
+            - Platformer or side-scroller`
+        },
+        'ulore': {
+            title: 'Creative Writing Editor',
+            description: 'Browser-based document editor designed for creating writing',
+            keywords: ['html', 'css', 'javascript', 'vanilla js'],
+            year: 2018,
+            href: { 
+                source: sources.sod,
+                ref: ['https://blog.reedsy.com/guide/author-websites/']
+            },
+            status: true,
+            comment: `Course: User Experience Design
+            Completed prototype in java/processing
+            - document editor with file and notes management`,
+            dev: `Status: queued
+            Research:
+            Blogging platforms - Write.as, Medium, Ghost, Wordpress
+            Creative writing resources - Campfire Writing, LivingWriter
+            
+            Reanalyze purpose and intent -> redesign
+            Consider: HTMX + Go`
+        },
+        'responsive-web': {
+            title: 'Responsive Web Design',
+            description: 'Showcase web app for projects in freeCodeCamp course',
+            keywords: ['html','css','javascript', 'vanilla js'],
+            year: 2021,
+            href: { source: sources.fcc },
+            status: false,
+            comment: `Course: Responsive Web Design`,
+            dev: `Redo based on course redesign
+            - Survey Form
+            - Tribute page
+            - Technical Documentation page
+            - Product Landing page
+            - Personal Portfolio page
+            
+            Note to self: intermediate projects`
+        },
+        'freecodecamp-challenge': {
+            title: 'freeCodeCamp Challenge',
+            description: 'Complete freecodecamp main courses in given time limit',
+            keywords: ['html', 'javascript', 'vanilla js', 'python', 'sql', 'node.js', 'express', 'chai', 'mongodb', 'mongoose', 'd3', 'bootstrap', 'css', 'jqery', 'sass', 'react', 'redux'],
+            year: 2025,
+            href: { source: sources.fcc },
+            status: false,
+            comment: `Original challenge: Complete main courses in 1 month
+            - new courses added make this impossible
+            - skip first course
+            
+            Revised to: Complete main courses in 3 months (or 1 course per week)`,
+            dev: `Status: queued (personal goal)
+            Requires 3 months available`
+        },
+        'first-page': {
+            title: 'First Page',
+            description: 'Scrolling single-page panels to demonstrate anchor links and form submission',
+            keywords: ['html','css'],
+            source: 'ztm',
+            year: 2023,
+            href: {
+                source: sources.ztm,
+                view: ['https://smkou.github.io/first-page/'],
+                inspect: ['https://github.com/SmKou/first-page']
+            },
+            status: true,
+            comment: `Course: Complete Web Developer in 2023`,
+            dev: `${messages.basic}
+            ${messages.demo}`
+        },
+        'live-in-the-wild': {
+            title: 'Live in the Wild',
+            description: 'Gallery grid using flexbox',
+            keywords: ['html','css'],
+            year: 2023,
+            href: {
+                source: sources.ztm,
+                view: ['https://smkou.github.io/live-in-the-wild/'],
+                inspect: ['https://github.com/SmKou/live-in-the-wild']
+            },
+            status: true,
+            comment: `Course: Complete Web Developer in 2023`,
+            dev: `${messages.basic}
+            ${messages.demo}`
+        },
+        'android-journeys': {
+            title: 'Android Journeys',
+            description: 'JS slideshow of landscapes featuring css-made android in a pretend travelogue',
+            keywords: ['html','css', 'javascript', 'vanilla js'],
+            year: 2023, 
+            href: {
+                source: sources.ztm,
+                view: ['https://smkou.github.io/android-journeys/'],
+                inspect: ['https://github.com/SmKou/android-journeys']
+            },
+            status: true,
+            comment: `Course: Complete Web Developer in 2023
+            The original project was the css-only robot with the hover effect. In my implementation, the robot changes between black and white and its size based on the background image.`,
+            dev: `${messages.basic}
+            ${messages.demo}`
+        },
+        'robofriends': {
+            title: 'RoboFriends',
+            description: 'Grid of contact cards for robots with names and emails using api (class components), meant for understanding legacy react code',
+            keywords: ['react','css'],
+            year: 2023,
+            href: {
+                source: sources.ztm,
+                view: ['https://smkou.github.io/robofriends/', 'https://smkou.github.io/robofriends-func/'],
+                inspect: ['https://github.com/SmKou/robofriends', 'https://github.com/SmKou/robofriends-func']
+            },
+            status: true,
+            comment: `Course: Complete Web Developer in 2023
+            Two versions available: class-based react app and function-based react app`,
+            dev: `Status: uibug
+            Search bar text is too small and placeholder text has poor contrast with header, header text also needs to adjust size based on width`
+        },
+        'simplebrain': {
+            title: 'SimpleBrain',
+            description: 'React web app and express api for image submission with face detection and user accounts',
+            keywords: ['react', 'api', 'express', 'node.js',  'knex.js', 'postgresql', 'sql', 'authentication', 'authorization', 'responsive design'],
+            year: 2023,
+            href: {
+                source: sources.ztm,
+                ref: ['https://github.com/aneagoie/face-recognition-brain', 'https://github.com/aneagoie/face-recognition-brain-api'],
+                res: ['https://www.clarifai.com'],
+                old: ['https://github.com/SmKou/bfrb', 'https://github.com/SmKou/bfrb-api']
+            },
+            status: false,
+            comment: `Course: Complete Web Developer in 2023
+            Adapted from Face Recognition Brain project from ZTM
+            Uses Clarifai api for face detection
+            App includes user ranking based on images submitted (mod: no. of faces x images)`,
+            dev: `Status: queued
+            Last 3 iterations in React`
+        },
+        'counting-calculator': {
+            title: 'Counting Calculator',
+            description: 'Based on demo project of react and redux toolkit, counting calculator adapted from counter',
+            keywords: ['react','redux toolkit'],
+            year: 2023,
+            href: {
+                source: ['https://redux-toolkit.js.org/tutorials/quick-start'],
+                view: ['https://smkou.github.io/counting-calculator/', 'https://smkou.github.io/counting-calculator-2/'],
+                inspect: ['https://github.com/SmKou/counting-calculator', 'https://github.com/SmKou/counting-calculator-2']
+            },
+            status: true,
+            comment: `I changed the tutorial counter into a counting calculator, having once heard the comment that there are no calculators for counting for advancing through levels of arithmetic. Namely, this person's child is young and was learning to count, but their child's class was using regular calculators. That was the motivation behind creating this counting calculator.
+            
+            I have iterated this project twice now, so there are two versions available.`,
+            dev: `New version: collapsible instructions, more responsive layout
+            Perhaps only use vanilla js
+    
+            Idea: extend project to advance calculator format
+            - counting (addition and subtraction)
+            - arithmetic (incl. multiplication and division)
+            - pemdas
+            - intermediate arithmetic (exponentiation, roots and logarithms)`
+        },
+        'programming-language-suggester': {
+            title: 'Programming Language Suggester',
+            description: 'Programming language form for suggestions based on experience, motivation among other factors',
+            keywords: ['html','javascript', 'vanilla js','css'],
+            year: 2023,
+            href: {
+                source: sources.epi,
+                view: ['https://smkou.github.io/programming-language-suggester/'],
+                inspect: ['https://github.com/SmKou/programming-language-suggester']
+            },
+            status: true,
+            comment: `Code reviewed`,
+            dev: `${messages.basic}
+            ${messages.demo}`
+        },
+        'mr-roboger-neighborhood': {
+            title: "Mr. Roboger's Neighborhood",
+            description: 'Generate number sequences with substitutions for every number containing 1, 2, and 3 similar to fizzbuzz, includes tests based on test-driven development accessible through browser console',
+            keywords: ['html','javascript', 'vanilla js', 'css'],
+            year: 2023,
+            href: {
+                source: sources.epi,
+                view: ['https://smkou.github.io/mr-roboger-neighborhood/'],
+                inspect: ['https://github.com/SmKou/mr-roboger-neighborhood']
+            },
+            status: true,
+            comment: `Code reviewed`,
+            dev: `${messages.basic}
+            ${messages.demo}
+            
+            May split TDD framework away from project.`
+        },
+        'pizza-parlor': {
+            title: 'Pizza Parlor',
+            description: 'Order form and checkout for pizza, includes tests based on TDD principles accessible through browser console (2nd iteration)',
+            keywords: ['html','css','javascript', 'vanilla js'],
+            year: 2023,
+            href: {
+                source: sources.epi,
+                view: ['https://smkou.github.io/pizza-parlor/'],
+                inspect: ['https://github.com/SmKou/pizza-parlor']
+            },
+            status: true,
+            comment: `Code reviewed`,
+            dev: `${messages.basic}
+            ${messages.demo}
+    
+            UI: Form always requires scrolling to fill-out
+            
+            May split TDD framework away from project (2nd itr).`
+        },
+        'currency-exchanger': {
+            title: 'Currency Exchanger',
+            description: 'Conversion form for amounts between currencies using ExchangeRate api',
+            keywords: ['node.js','babel','eslint','webpack','jest'],
+            year: 2023,
+            href: {
+                source: sources.epi,
+                inspect: ['https://github.com/SmKou/currency-exchanger']
+            },
+            status: true,
+            comment: `Code reviewed`,
+            dev: `Submission required no deployment
+            API requires an api key
+            Consider: Netlify or render.com`
+        },
+        'super-galactic-age-calculator': {
+            title: 'Super Galactic Age Calculator',
+            description: 'Age calculator for humans and dogs on other planets, generated from my own node template, commit history reflects use red-green workflow',
+            keywords: ['node.js','babel','eslint','webpack','jest'],
+            year: 2023,
+            href: {
+                source: sources.epi,
+                inspect: ['https://github.com/SmKou/super-galactic-age-calculator']
+            },
+            status: false,
+            comment: `Code reviewed`,
+            dev: `Status: queued
+            Scaffold with vite (vanilla), framework not required
+            Add ui: age calculator`
+        },
+        'dino-ipsum': {
+            title: 'Dino Ipsum',
+            description: 'Dinosaur name generator using dino ipsum, choose dinosaur name and get robot avatars',
+            keywords: ['node.js','babel','eslint','webpack','jest'],
+            year: 2023,
+            href: {
+                source: sources.epi,
+                inspect: ['https://github.com/SmKou/dino-ipsum']
+            },
+            status: true,
+            comment: `Pair programming project
+            Uses XMLHttpRequest in Node.js
+            Dino Ipsum does not require api key, use of node.js overcomplicates page`,
+            dev: `Status: queued
+            Redo in HTMX`
+        },
+        'pierre-bakery': {
+            title: "Pierre's Bakery",
+            description: "CLI app for placing an order",
+            keywords: ['c#','cmd','.net 6'],
+            year: 2023,
+            href: { 
+                source: sources.epi,
+                inspect: ['https://github.com/SmKou/PierresBakery.Solution']
+            },
+            status: true,
+            comment: `Code reviewed`,
+            dev: messages.cnet
+        },
+        'madlibs-clone': {
+            title: 'Madlibs clone',
+            description: 'CLI app for filling in, reading and creating ablibs on local machine',
+            keywords: ['c#','cmd','.net 6'],
+            year: 2023,
+            href: {
+                source: sources.epi,
+                inspect: ['https://github.com/SmKou/Week9.Solutions']
+            },
+            status: true,
+            comment: `Pair programming project (solo dev with supervision)`,
+            dev: messages.cnet
+        },
+        'hair-salon': {
+            title: 'Hair Salon',
+            description: 'MVC web app for managing stylists and clients in a one-to-one relationship',
+            keywords: ['c#','.net 6','entity framework core','mysql','mvc','sql'],
+            year: 2023,
+            href: {
+                source: sources.epi,
+                inspect: ['https://github.com/SmKou/HairSalon.Solution']
+            },
+            status: true,
+            comment: `Code reviewed`,
+            dev: messages.cnet
+        },
+        'vendor-order-tracker': {
+            title: 'Vendor Order Tracker',
+            description: 'MVC web app for tracking and managing vendor information and orders in one-to-many relationships',
+            keywords: ['c#','.net 6', 'entity framework core','mysql','mvc','sql'],
+            year: 2023,
+            href: {
+                source: sources.epi,
+                inspect: ['https://github.com/SmKou/VendorOrderTracker.Solution']
+            },
+            status: true,
+            comment: `Code reviewed`,
+            dev: messages.cnet
+        },
+        'sillystringz-factory': {
+            title: 'Sillystringz Factory',
+            description: 'MVC web app for tracking and managing many-to-many relationships between machines and engineers',
+            keywords: ['c#','.net 6', 'entity framework core','mysql','mvc','sql'],
+            year: 2023,
+            href: {
+                source: sources.epi,
+                inspect: ['https://github.com/SmKou/SillystringzFactory.Solution']
+            },
+            status: true,
+            comment: `Code reviewed
+            Uses migrations for database setup`,
+            dev: messages.cnet
+        },
+        'pierres-sweet-and-savory-treats': {
+            title: "Pierre's Sweet and Savory Treats",
+            description: 'MVC web app for tracking and managing treats and their flavors in many-to-many relationships with ',
+            keywords: ['c#', '.net 7', 'identity', 'entity framework core', 'mysql', 'sql', 'mvc', 'authentication', 'authorization'],
+            year: 2023,
+            href: {
+                source: sources.epi,
+                inspect: ['https://github.com/SmKou/PierresSweetSavoryTreats']
+            },
+            status: true,
+            comment: `Code reviewed
+            Create, update and delete only allowed with authentication and authorization`,
+            dev: messages.cnet
+        },
+        'parks-lookup': {
+            title: "Parks Lookup api",
+            description: 'API for looking up national and state parks with user authorization for crud on accounts, makes use of JWT authentication, versioning and pagination',
+            keywords: ['c#', '.net 7', 'identity', 'entity framework core', 'mysql', 'sql', 'mvc', 'authentication', 'versioning', 'pagination', 'jwt', 'api'],
+            year: 2023,
+            href: {
+                source: sources.epi,
+                inspect: ['https://github.com/SmKou/ParksLookup.Solution']
+            },
+            status: true,
+            comment: `Code reviewed`,
+            dev: `${messages.cnet}
+            Use national park api and states' park apis for accurate information - actual use case `
+        },
+        'global-address-formatter': {
+            title: 'Global Address Formatter',
+            description: 'MVC web app and api for formatting addresses for international shipping and mail',
+            keywords: ['c#', '.net 7', 'entity framework core', 'mysql', 'sql', 'javascript', 'vanilla js', 'restsharp', 'newtonsoft.json', 'css', 'html', 'chtml', 'mvc', 'api'],
+            year: 2023,
+            href: {
+                source: sources.epi,
+                inspect: ['https://github.com/SmKou/GlobalAddressFormatter.Solution']
+            },
+            status: true,
+            comment: `Code reviewed
+            Team project
+            My role: Frontend web app & Debugging api`,
+            dev: messages.cnet
+        },
+        'power-planter': {
+            title: 'Power Planter',
+            description: 'Numbers game using functional programming principles',
+            keywords: ['html', 'css', 'javascript', 'vanilla js', 'responsive design'],
+            year: 2023,
+            href: {
+                source: sources.epi,
+                inspect: ['https://github.com/SmKou/power-planter/']
+            },
+            status: false,
+            comment: `Pair programming project (solo dev with supervision)`,
+            dev: `Status: queued
+            Re-scaffold with vite?
+            Use app with subtree pushes to gh-pages`
+        },
+        'coffee-beans': {
+            title: 'Coffee Beans',
+            description: 'Inventory tracker for coffee beans seller, uses class and function components, prop types, and uuid',
+            keywords: ['react', 'class components', 'function components', 'prop types', 'uuid'],
+            year: 2023,
+            href: {
+                source: sources.epi,
+                view: ['https://smkou.github.io/inventory-tracker/'],
+                inspect: ['https://github.com/SmKou/inventory-tracker']
+            },
+            status: true,
+            comment: `Code reviewed`,
+            dev: messages.basic
+        },
+        'katadsa': {
+            title: 'KataDSA',
+            description: 'DSA-learning resource focused on theory and applications',
+            keywords: ['godot', 'node.js', 'go', 'cli', 'web app', 'templates', 'vanilla js', 'javascript', 'html', 'css', 'java', 'processing'],
+            year: 2023,
+            href: {
+                source: sources.epi,
+                material: ['https://github.com/SmKou/algorithms'],
+                inspect: ['https://github.com/SmKou/katadsa-spec'],
+                ref: ['https://www.techinterviewhandbook.org/coding-interview-study-plan/', 'https://www.manning.com/books/grokking-algorithms', 'https://www.manning.com/books/advanced-algorithms-and-data-structures', 'https://nostarch.com/Dive-Into-Algorithms', 'https://www.amazon.com/Algorithms-Every-Programmer-Should-Know-ebook/dp/B09QKY6VP9', 'https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/'],
+                docs: ['https://natureofcode.com', 'https://processing.org/reference']
+            },
+            status: false,
+            comment: `Capstone project
+            
+            Template projects (koudblue): UI- and tests-provided app where developers add code for dsa, additional view for comparison of solutions' performance
+    
+            Game (Cubitt): Playing a scan and retrieval program, the player's mission is to locate and retrieve a missing cubitt in an infected sector and to identify the virus behind the infection, which manifests as a labyrinth and a humanoid cubitt. As the player guides Cubitt out of the infected sector by speaking to them in the cubitt programming language, the virus attempts to corrupt cubitt's memory and functions.
+    
+            Iterations: 2`,
+            dev: `Status: queued
+            
+            Algorithms - DSA practice with LeetCode
+            - NeetCode 150 (paused)
+            - Coding Interview Study Plan`
+        },
+        'mahjong-cards': {
+            title: 'Mahjong Cards',
+            description: `Print & Play designs of mahjong cards`,
+            year: 2024,
+            href: { source: sources.smkou },
+            status: true,
+            comment: `Birthday present for nana
+            Two versions: traditional and cat-themed
+            Intended for Itch.io`,
+            dev: `Status: queued
+    
+            Traditional
+            - Clean up images for user printing
+            
+            Cat-themed "meowjong"
+            - circles: yarn balls
+            - sticks: wands or feathers
+            - characters: lucky cat
+            - flowers: [TBD]
+            - seasons: [TBD]
+            - honors: [TBD]`
+        },
+        'jordans-game': {
+            title: "Jordan's Game",
+            description: 'Pokemon-inspired monster collecting and battling game',
+            keywords: ['godot', 'gdscript', 'affinity designer', 'html ', 'css', 'javascript', 'vanilla js'],
+            year: 2023,
+            href: {
+                ref: ['https://github.com/SmKou/godot-rpg'],
+                inspect: ['https://github.com/SmKou/jordans-game']
+            },
+            status: false,
+            comment: `Birthday present for nephew
+            Inspired by Pokemon Red
+            Design decisions by nephew (old spec)
+            Aesthetics style: Sm Kou`,
+            dev: `MVP: First town with interactions, characters and scenes`
+        },
+        'tale-of-ki': {
+            title: 'Tales of Ki',
+            description: 'Text adventure with alternative and adaptive narratives, featuring family of gremlins',
+            keywords: ['html', 'css', 'javascript', 'vanilla js'],
+            year: 2024,
+            href: {
+                source: sources.smkou,
+                view: ['https://smkou.github.io/tale-of-kibakhan/', 'https://smkou.github.io/tale-of-ki/'],
+                inspect: ['https://github.com/SmKou/tale-of-kibakhan', 'https://github.com/SmKou/tale-of-ki']
+            },
+            status: false,
+            comment: `Based on Dungeons & Dragons
+            Two narratives: third-person (Seraph) and first-person (Kibakhan)`
+        }
+    }
+
+    /*
+        'odin-challenge': {
+            title: 'Odin Challenge',
+            description: 'Complete foundations and full-stack javascript paths in given time limit',
+            keywords: ['html', 'css', 'javascript', 'vanilla js', 'node.js'],
+            year: 2025,
+            href: { source: sources.odin },
+            status: false,
+            comment: `Self-designated challenge: 7 courses in 1 month`
+        },
+        'notation-calculator': {
+            title: 'Notation Calculator',
+            description: 'Calculator web app using (reverse) polish and standard notation with memory and collapsible visualization',
+            keywords: ['html', 'css', 'javascript', 'vanilla js', 'responsive design', 'canvas'],
+            year: 2024,
+            href: {
+                source: sources.smkou,
+                ref: ['https://leetcode.ca/2016-04-28-150-Evaluate-Reverse-Polish-Notation/', 'https://math.stackexchange.com/questions/1811628/converting-from-standard-to-functional-polish-and-reverse-polish-notation']
+            },
+            status: false,
+            comment: `Features:
+            - Switch notation mode
+            - View visualization
+            - Use of memory`
+        },
+        'travel-scrapbook': {
+            title: 'Travel Scrapbook',
+            description: 'Travelogue web app for creating and viewing scrapbooks',
+            keywords: ['html', 'css', 'javascript', 'vanilla js'],
+            year: 2025,
+            status: false,
+            comment: `Features:
+            - Upload images to use
+            - Add images, text and maps to pages
+            - Alternative page templates eg. freeform vs form-provided
+            - Designate order of focus
+            - User accounts: images and scrapbooks
+            
+            Requires app and server`
+        },
+        'cattery': {
+            title: 'Angels of Siberia',
+            description: 'Cattery website',
+            keywords: ['html', 'css', 'javascript', 'vanilla js', 'sql', 'node.js', 'api', 'responsive design'],
+            year: 2025,
+            href: {
+                source: sources.smkou,
+                ref: ['http://www.angelofsiberia.com']
+            },
+            status: false,
+            comment: `Requires frontend for display and personal backend for owner
+            - CMS: Wordpress, Wix`
+        },
+        'nudibranch': {
+            title: 'Nudibranch Pages',
+            description: 'Element and page design based on nudibranchs',
+            keywords: ['html', 'css', 'javascript', 'vanilla js'],
+            year: 2023,
+            href: {
+                source: sources.smkou,
+                inspect: ['https://github.com/SmKou/nudibranch']
+            },
+            status: false,
+            comment: `Template page
+            Switch mechanism: css docs
+            
+            Nudibranchs = sea slugs`
+        },
+        '[wwjd]': {
+            title: '[What Would Jesus Do?]',
+            description: 'Rock game',
+            keywords: ['html', 'css', 'javascript', 'vanilla js', 'canvas'],
+            year: 2025,
+            href: { source: sources.smkou },
+            status: false,
+            comment: `Zero-player game?
+    
+            Protect a rock from external forces that would crack, break or shrink it
+            - water
+            - snow
+            - fire / magma`
+        },
+        '[farting-mario]': {
+            title: '[Farting Mario]',
+            description: 'Mario-parody game',
+            keywords: ['godot', 'c#'],
+            year: 2025,
+            href: { source: sources.smkou },
+            status: false
+        },
+        '[hernia]': {
+            title: '[Hernia]',
+            description: 'Something to do with the word and concept of hernia',
+            keywords: [],
+            year: 2026,
+            href: { source: sources.smkou },
+            status: false,
+            comment: `Hernia 1 2 3 4 - "sounds like a series"
+            "1 and 2 were great, but after 3, it just went downhill from there."`
+        }
+    */
+
+    const resources = { manual, sources, calendar }
+    const pages = {
+        art: {
+            title: 'Artworks',
+            description: 'Slideshow of image mosaics formed from personal drawings',
+            href: 'art/',
+            comment: `I cannot meditate in the traditional sense due in part to my C-PTSD, so drawing acts as a sort of substitute. Rather than clarity and relaxation, drawing provides insight and allows for a nuance of expression.`
+        },
+        calendar: {
+            title: 'My Calendar',
+            description: 'Demo of a calendar app',
+            href: 'calendar/',
+            comment: `The design of the week layout has always annoyed me in apps, requiring a landscape view when a portrait view should still work, so for the calendar app, I made sure there was a portrait layout and an intermediate layout when the width is not long enough for the traditional week view.`
+        },
+        versions: {
+            title: 'The Old TV',
+            description: 'Preview the available portfolios',
+            href: 'versions/'
+        }
+    }
+    const portfolio = { versions, experience, education, projects }
+
+    return { resources, pages, portfolio}
+}
+
+function init() {
+    const data = data()
+
+    const ui = {
+        path: [],
+        host: `${/^localhost:\d+/.test(window.location.host) ? 'http://' : 'https://'}${window.location.host}`,
+        cns: document.querySelector('article section'),
+        ipt: document.querySelector('article input'),
+        aside: {
+            e: document.querySelector('aside'),
+            state: true,
+            tog: document.getElementById('toggle-aside'),
+            ctt: document.getElementById('aside-content')
+        }
+    }
+
+    const get_node = (path = ui.path.slice(), node = data.portfolio, shift) => {
+        shift = path.shift()
+        if (!path.length) return node
+        if (node.hasOwnProperty(shift)) return get_node(path, node[shift])
+        else return { shift }
+    }
+
+    const add_line = (output, bash = false) => {
+        const line = document.createElement('p')
+        if (bash) line.setAttribute('class', 'bash')
+        line.append(document.createTextNode(output))
+        ui.cns.append(line)
+    }
+    const add_lines = output => output.split('\n').forEach(line => add_line(line))
+
+    /* Errors */
+    const print_error = err => {
+        add_line(err)
+        return false
+    }
+    const custom_error = (term, message) => print_error(`error: ${term}: ${message}`)
+    const command_error = (term) => print_error(`bash: ${term}: command not found`)
+    const node_error = (term, wrong) => print_error(`bash: ${term}: ${wrong}: no such item or directory`)
+    const invalid_option_error = (term, wrong) => print_error(`bash: ${term}: ${wrong.join(', ')}: invalid option
+    ${term}: usage: ${data.resources.manual[term].help}`)
+    const unknown_option = (term, wrong) => print_error(`${term}: unknown option -- ${wrong.map(err => {
+        err = err.split('-')
+        return err[err.length - 1]
+    }).join(', ')}
+    Try '${term} --help' for more information.`)
+
+    /* Helpers */
+    const flatten = (arr, flat = []) => {
+        if (!arr.length) return flat
+        arr.forEach(e => {
+            if (Array.isArray(e)) flat.concat(flatten(e, flat))
+            else flat.push(e)
+        })
+        return flat
+    }
+
+    const includes = (arr, ...terms) => {
+        terms = flatten(terms)
+
+        let included = false
+        let i = -1
+        while (++i < terms.length && !included)
+            if (arr.includes(terms[i]))
+                included = true
+
+        return included
+    }
+
+    const cmd = {
+        cd: function(args) {
+            const addr = data.resources.manual.cal
+
+            let date = new Date()
+            let freq = ''
+            let flags = []
+
+            const wrong_input = []
+            const wrong_options = []
+
+            while (args.length) {
+                const arg = args.pop()
+                if (arg.includes('-'))
+                    if (addr.options.flags.includes(arg) || arg === '--help')
+                        flags.push(arg)
+                    else
+                        wrong_options.push(arg)
+                else if (['daily', 'weekly', 'monthly'].includes(arg))
+                    freq = arg
+                else if (addr.helpers.is_valid_date(arg))
+                    date = new Date(arg)
+                else
+                    wrong_input.push(arg)
+            }
+
+            if (wrong_input.length)
+                
+        }
+    }
 }
 
 const manual = {
@@ -738,83 +1767,7 @@ const sources = {
     }
 }
 
-const versions = [
-    {
-        title: 'The Profile',
-        href: {
-            view: ['v0/'],
-            ref: ['https://www.kamranhughes.com/how-to-tailor-designs-using-the-big-5-personality-traits/']
-        },
-        description: 'Re-Portfolio 2015-2017 features a questionnaire that changes page content and layout based on user answers. It is divided into visual preferences, graphic and text preferences, answer sections and question preferences.',
-        status: false,
-        dev: `Add user questionnaire
-        Add content:
-        - chart or bar graph
-        - progress bars
-        - stock image, credit and source
-        - bullet points
-        - personal fact(s)
-        - statement(s)
-        - summary
-        - analysis
-        
-        Basis of concept: User Interfaces with Big-5 Personality Traits (refer: ref)`
-    },
-    {
-        title: 'The Magazine',
-        href: {
-            view: ['v1/'],
-            inspiration: ['https://www.nytimes.com/section/magazine']
-        },
-        description: 'Re-Portfolio 2015-2022 features a magazine-layout of flash fiction, short stories, and series. The writing is reflective of my mental state at the time of writing. Taking them at face value is not suggested.',
-        status: true,
-        dev: `Add images for stories (use 640 optimized on clr, gen bw)
-        Edit and redesign smjoker.com (slated)`
-    },
-    {
-        title: 'The Design Index',
-        href: { view: ['v2/'] },
-        description: 'Re-Portfolio 2018-2021 features a book index layout. The index consists of concepts in html and css, which can be further sorted into tags, fonts, shapes, layouts, ui elements, programming, and resources.',
-        status: true,
-        dev: `Add content
-        - tags
-        - shapes
-        - layouts
-        - ui elements
-        - programming ie. variables and expressions
-        - resources
-        
-        Work out code interfaces for shapes, layouts and ui elements`
-    },
-    {
-        title: 'The Slideshow of Slideshows',
-        href: {
-            view: ['v3/'],
-            ref: ['https://codepen.io/dodozhang21/pen/kMoXZz']
-        },
-        description: 'Re-Portfolio 2020-2022 features four slideshows on portfolio, different page designs, and favorite shows.',
-        status: false,
-        dev: `Determine switch mechanism between slideshows
-        Include back and home
-        Add slideshows:
-        - navigation
-        - portfolio
-        - favorite movies
-        - favorite shows`
-    },
-    {
-        title: 'The People in Pages',
-        href: { view: ['v4/'] },
-        description: 'Re-Portfolio 2021-2022 features page designs based on observations of people. When I see a combination of clothing that catches my attention, since I cannot draw or take a photograph, I turn their clothing combination into the layout for a webpage.',
-        status: true
-    },
-    {
-        title: 'Epicodus Resume',
-        href: { view: ['v5/'] },
-        description: 'Re-Portfolio 2023 features a resume and profile format, done for portfolio review as part of a bootcamp code review (Epicodus).',
-        status: true
-    }
-]
+
 
 const messages = {
     cnet: 'All C#/.Net projects are not likely to be completed.',
@@ -825,841 +1778,10 @@ const messages = {
     demo: `Only included for demonstration.`
 }
 
-const projects = {
-    'husky-goals': {
-        title: 'Husky Goals',
-        description: 'Mobile app for keeping track of goals based on counter, timer, and checklists',
-        keywords: ['axure rp','html','css','javascript', 'paper prototypes', 'wireframes', 'mockups', 'user research', 'user testing', 'user interviews', 'user stories', 'personas'],
-        year: 2012,
-        href: { source: sources.ischool },
-        status: true,
-        comment: `Course: Design Thinking
-        Completed submission: Axure RP prototype and design spec`,
-        dev: `Status: queued
-        Prototype in vanilla js
-        Redesign as responsive web app`
-    },
-    'carmax': {
-        title: 'Carmax',
-        description: 'Mobile app for setting up appointment for car viewing, include step-by-step form for entering preferences',
-        keywords: ['axure rp', 'wireframes', 'mockups'],
-        year: 2013,
-        href: {
-            source: sources.ischool,
-            ref: ['https://www.carmax.com']
-        },
-        status: true,
-        comment: `Course: Service Design
-        Completed submission: Axure RP prototype, design spec and app presentation`,
-        dev: `Status: deprecated
-        Not likely to rework
-        
-        Research: car market and carmax situation
-        - Carmax mobile app and website
-        Redesign for Carmax corporate design`
-    },
-    'booksie': {
-        title: 'Booksie Database Design',
-        description: 'Database model for Booksie user content and services',
-        keywords: ['sql', 'database models', 'mysql', 'flow diagrams'],
-        year: 2013,
-        href: {
-            source: sources.ischool,
-            ref: ['https://www.booksie.com']
-        },
-        status: true,
-        comment: `Course: Database Models and Design
-        Completed submission: database model and database with mock data`,
-        dev: `Status: in-consideration
-        Prefer system and service redesign
-        - online writing community
-        - publishing
-        - blogging platforms
-        
-        Requires app, server and database`
-    },
-    'ijuum': {
-        title: 'Ijuum',
-        description: 'Text adventure with AI for NPCs',
-        keywords: ['html', 'css', 'javascript', 'vanilla js', 'go', 'cli', 'desktop app'],
-        year: 2013,
-        href: { 
-            source: sources.smkou,
-            'ai ref': ['https://www.amazon.ca/Make-Your-Own-Neural-Network/dp/1530826608', 'https://www.manning.com/books/grokking-artificial-intelligence-algorithms', 'https://www.amazon.ca/AI-Games-Third-Ian-Millington/dp/0367670569'],
-            'lang ref': ['https://interpreterbook.com']
-        },
-        status: false,
-        comment: `Open-world
-        Mix of procedural-generated and scripted characters
-        Characters capable of conversation
-        Compiles on language of ijuum`,
-        dev: `Status: queued
-        
-        main loop
-        - determine every character in player's area
-        - loop character progressions
-        - player interaction
-        `
-    },
-    'leto': {
-        title: 'The Leto Project',
-        description: 'Resource and task management interface for teams, and AR app for conference/meetup recruitment using virtual badges',
-        keywords: ['axure rp', 'adobe illustrator', 'adobe ux', 'java', 'android', 'ar', 'augmented reality', 'wireframes', 'mockups'],
-        year: 2014,
-        href: { source: sources.ischool },
-        status: true,
-        comment: `Capstone project (proof of concept)
-        Completed submission: mock virtual badges, design spec, ar prototype`,
-        dev: `Status: deprecated
-        
-        Research: project management options, team recruitment, and project pages
-        - version control
-        Perhaps abstract out concept to another project`
-    },
-    'ks-healthcare': {
-        title: 'KS Healthcare',
-        description: 'Mobile app for managing appointments, doctor notes, lab results, and mainly for navigation of Chinese hospitals',
-        keywords: ['adobe illustrator', 'adobe ux', 'paper prototypes', 'mockups', 'wireframes', 'user interviews', 'field study', 'personas', 'user stories'],
-        year: 2018,
-        href: { source: sources.sod },
-        status: true,
-        comment: `Course: Design Thinking and Process
-        Completed submission: design spec, research report and presentation`,
-        dev: `Status: deprecated
-        Requires further research, note updates since covid
-        Concept does not apply to American context`
-    },
-    'little-red': {
-        title: 'Little Red',
-        description: 'Prototype for game adaptation of Little Red Riding Hood',
-        keywords: ['java', 'processing', 'html', 'css', 'js', 'canvas', 'vanilla js'],
-        year: 2018,
-        href: { 
-            source: sources.sod,
-            author: ['https://www.mollybang.com/Pages/picture.html'],
-            inspiration: ['https://www.amazon.com/Picture-This-How-Pictures-Work/dp/1452151997'],
-            ref: ['https://inventwithpython.com/blog/2012/02/20/i-need-practice-programming-49-ideas-for-game-clones-to-code/'],
-            inspect: ['https://github.com/SmKou/red-riding-hood']
-        },
-        status: true,
-        comment: `Course: Interaction Design
-        Completed prototype in java/processing
-        - adaptation of Little Red Riding Hood
-        - aesthetics inspired by "Picture This" (Molly Bang)`,
-        dev: `Status: queued
-        Adapt into different formats for series
-        - learn how game format affects depiction and projection of story
-        Remove references to physics and rendering
-        Create app for easy deployment to gh-pages
-        Homepage: Switch between versions (responsive ui)
-        
-        In-consideration:
-        - Graphic adventure
-        - Match 3
-        - Dress-up / Runway
-        - Platformer or side-scroller`
-    },
-    'ulore': {
-        title: 'Creative Writing Editor',
-        description: 'Browser-based document editor designed for creating writing',
-        keywords: ['html', 'css', 'javascript', 'vanilla js'],
-        year: 2018,
-        href: { 
-            source: sources.sod,
-            ref: ['https://blog.reedsy.com/guide/author-websites/']
-        },
-        status: true,
-        comment: `Course: User Experience Design
-        Completed prototype in java/processing
-        - document editor with file and notes management`,
-        dev: `Status: queued
-        Research:
-        Blogging platforms - Write.as, Medium, Ghost, Wordpress
-        Creative writing resources - Campfire Writing, LivingWriter
-        
-        Reanalyze purpose and intent -> redesign
-        Consider: HTMX + Go`
-    },
-    'responsive-web': {
-        title: 'Responsive Web Design',
-        description: 'Showcase web app for projects in freeCodeCamp course',
-        keywords: ['html','css','javascript', 'vanilla js'],
-        year: 2021,
-        href: { source: sources.fcc },
-        status: false,
-        comment: `Course: Responsive Web Design`,
-        dev: `Redo based on course redesign
-        - Survey Form
-        - Tribute page
-        - Technical Documentation page
-        - Product Landing page
-        - Personal Portfolio page
-        
-        Note to self: intermediate projects`
-    },
-    'freecodecamp-challenge': {
-        title: 'freeCodeCamp Challenge',
-        description: 'Complete freecodecamp main courses in given time limit',
-        keywords: ['html', 'javascript', 'vanilla js', 'python', 'sql', 'node.js', 'express', 'chai', 'mongodb', 'mongoose', 'd3', 'bootstrap', 'css', 'jqery', 'sass', 'react', 'redux'],
-        year: 2025,
-        href: { source: sources.fcc },
-        status: false,
-        comment: `Original challenge: Complete main courses in 1 month
-        - new courses added make this impossible
-        - skip first course
-        
-        Revised to: Complete main courses in 3 months (or 1 course per week)`,
-        dev: `Status: queued (personal goal)
-        Requires 3 months available`
-    },
-    'first-page': {
-        title: 'First Page',
-        description: 'Scrolling single-page panels to demonstrate anchor links and form submission',
-        keywords: ['html','css'],
-        source: 'ztm',
-        year: 2023,
-        href: {
-            source: sources.ztm,
-            view: ['https://smkou.github.io/first-page/'],
-            inspect: ['https://github.com/SmKou/first-page']
-        },
-        status: true,
-        comment: `Course: Complete Web Developer in 2023`,
-        dev: `${messages.basic}
-        ${messages.demo}`
-    },
-    'live-in-the-wild': {
-        title: 'Live in the Wild',
-        description: 'Gallery grid using flexbox',
-        keywords: ['html','css'],
-        year: 2023,
-        href: {
-            source: sources.ztm,
-            view: ['https://smkou.github.io/live-in-the-wild/'],
-            inspect: ['https://github.com/SmKou/live-in-the-wild']
-        },
-        status: true,
-        comment: `Course: Complete Web Developer in 2023`,
-        dev: `${messages.basic}
-        ${messages.demo}`
-    },
-    'android-journeys': {
-        title: 'Android Journeys',
-        description: 'JS slideshow of landscapes featuring css-made android in a pretend travelogue',
-        keywords: ['html','css', 'javascript', 'vanilla js'],
-        year: 2023, 
-        href: {
-            source: sources.ztm,
-            view: ['https://smkou.github.io/android-journeys/'],
-            inspect: ['https://github.com/SmKou/android-journeys']
-        },
-        status: true,
-        comment: `Course: Complete Web Developer in 2023
-        The original project was the css-only robot with the hover effect. In my implementation, the robot changes between black and white and its size based on the background image.`,
-        dev: `${messages.basic}
-        ${messages.demo}`
-    },
-    'robofriends': {
-        title: 'RoboFriends',
-        description: 'Grid of contact cards for robots with names and emails using api (class components), meant for understanding legacy react code',
-        keywords: ['react','css'],
-        year: 2023,
-        href: {
-            source: sources.ztm,
-            view: ['https://smkou.github.io/robofriends/', 'https://smkou.github.io/robofriends-func/'],
-            inspect: ['https://github.com/SmKou/robofriends', 'https://github.com/SmKou/robofriends-func']
-        },
-        status: true,
-        comment: `Course: Complete Web Developer in 2023
-        Two versions available: class-based react app and function-based react app`,
-        dev: `Status: uibug
-        Search bar text is too small and placeholder text has poor contrast with header, header text also needs to adjust size based on width`
-    },
-    'simplebrain': {
-        title: 'SimpleBrain',
-        description: 'React web app and express api for image submission with face detection and user accounts',
-        keywords: ['react', 'api', 'express', 'node.js',  'knex.js', 'postgresql', 'sql', 'authentication', 'authorization', 'responsive design'],
-        year: 2023,
-        href: {
-            source: sources.ztm,
-            ref: ['https://github.com/aneagoie/face-recognition-brain', 'https://github.com/aneagoie/face-recognition-brain-api'],
-            res: ['https://www.clarifai.com'],
-            old: ['https://github.com/SmKou/bfrb', 'https://github.com/SmKou/bfrb-api']
-        },
-        status: false,
-        comment: `Course: Complete Web Developer in 2023
-        Adapted from Face Recognition Brain project from ZTM
-        Uses Clarifai api for face detection
-        App includes user ranking based on images submitted (mod: no. of faces x images)`,
-        dev: `Status: queued
-        Last 3 iterations in React`
-    },
-    'counting-calculator': {
-        title: 'Counting Calculator',
-        description: 'Based on demo project of react and redux toolkit, counting calculator adapted from counter',
-        keywords: ['react','redux toolkit'],
-        year: 2023,
-        href: {
-            source: ['https://redux-toolkit.js.org/tutorials/quick-start'],
-            view: ['https://smkou.github.io/counting-calculator/', 'https://smkou.github.io/counting-calculator-2/'],
-            inspect: ['https://github.com/SmKou/counting-calculator', 'https://github.com/SmKou/counting-calculator-2']
-        },
-        status: true,
-        comment: `I changed the tutorial counter into a counting calculator, having once heard the comment that there are no calculators for counting for advancing through levels of arithmetic. Namely, this person's child is young and was learning to count, but their child's class was using regular calculators. That was the motivation behind creating this counting calculator.
-        
-        I have iterated this project twice now, so there are two versions available.`,
-        dev: `New version: collapsible instructions, more responsive layout
-        Perhaps only use vanilla js
 
-        Idea: extend project to advance calculator format
-        - counting (addition and subtraction)
-        - arithmetic (incl. multiplication and division)
-        - pemdas
-        - intermediate arithmetic (exponentiation, roots and logarithms)`
-    },
-    'programming-language-suggester': {
-        title: 'Programming Language Suggester',
-        description: 'Programming language form for suggestions based on experience, motivation among other factors',
-        keywords: ['html','javascript', 'vanilla js','css'],
-        year: 2023,
-        href: {
-            source: sources.epi,
-            view: ['https://smkou.github.io/programming-language-suggester/'],
-            inspect: ['https://github.com/SmKou/programming-language-suggester']
-        },
-        status: true,
-        comment: `Code reviewed`,
-        dev: `${messages.basic}
-        ${messages.demo}`
-    },
-    'mr-roboger-neighborhood': {
-        title: "Mr. Roboger's Neighborhood",
-        description: 'Generate number sequences with substitutions for every number containing 1, 2, and 3 similar to fizzbuzz, includes tests based on test-driven development accessible through browser console',
-        keywords: ['html','javascript', 'vanilla js', 'css'],
-        year: 2023,
-        href: {
-            source: sources.epi,
-            view: ['https://smkou.github.io/mr-roboger-neighborhood/'],
-            inspect: ['https://github.com/SmKou/mr-roboger-neighborhood']
-        },
-        status: true,
-        comment: `Code reviewed`,
-        dev: `${messages.basic}
-        ${messages.demo}
-        
-        May split TDD framework away from project.`
-    },
-    'pizza-parlor': {
-        title: 'Pizza Parlor',
-        description: 'Order form and checkout for pizza, includes tests based on TDD principles accessible through browser console (2nd iteration)',
-        keywords: ['html','css','javascript', 'vanilla js'],
-        year: 2023,
-        href: {
-            source: sources.epi,
-            view: ['https://smkou.github.io/pizza-parlor/'],
-            inspect: ['https://github.com/SmKou/pizza-parlor']
-        },
-        status: true,
-        comment: `Code reviewed`,
-        dev: `${messages.basic}
-        ${messages.demo}
 
-        UI: Form always requires scrolling to fill-out
-        
-        May split TDD framework away from project (2nd itr).`
-    },
-    'currency-exchanger': {
-        title: 'Currency Exchanger',
-        description: 'Conversion form for amounts between currencies using ExchangeRate api',
-        keywords: ['node.js','babel','eslint','webpack','jest'],
-        year: 2023,
-        href: {
-            source: sources.epi,
-            inspect: ['https://github.com/SmKou/currency-exchanger']
-        },
-        status: true,
-        comment: `Code reviewed`,
-        dev: `Submission required no deployment
-        API requires an api key
-        Consider: Netlify or render.com`
-    },
-    'super-galactic-age-calculator': {
-        title: 'Super Galactic Age Calculator',
-        description: 'Age calculator for humans and dogs on other planets, generated from my own node template, commit history reflects use red-green workflow',
-        keywords: ['node.js','babel','eslint','webpack','jest'],
-        year: 2023,
-        href: {
-            source: sources.epi,
-            inspect: ['https://github.com/SmKou/super-galactic-age-calculator']
-        },
-        status: false,
-        comment: `Code reviewed`,
-        dev: `Status: queued
-        Scaffold with vite (vanilla), framework not required
-        Add ui: age calculator`
-    },
-    'dino-ipsum': {
-        title: 'Dino Ipsum',
-        description: 'Dinosaur name generator using dino ipsum, choose dinosaur name and get robot avatars',
-        keywords: ['node.js','babel','eslint','webpack','jest'],
-        year: 2023,
-        href: {
-            source: sources.epi,
-            inspect: ['https://github.com/SmKou/dino-ipsum']
-        },
-        status: true,
-        comment: `Pair programming project
-        Uses XMLHttpRequest in Node.js
-        Dino Ipsum does not require api key, use of node.js overcomplicates page`,
-        dev: `Status: queued
-        Redo in HTMX`
-    },
-    'pierre-bakery': {
-        title: "Pierre's Bakery",
-        description: "CLI app for placing an order",
-        keywords: ['c#','cmd','.net 6'],
-        year: 2023,
-        href: { 
-            source: sources.epi,
-            inspect: ['https://github.com/SmKou/PierresBakery.Solution']
-        },
-        status: true,
-        comment: `Code reviewed`,
-        dev: `${messages.cnet_dep}`
-    },
-    'madlibs-clone': {
-        title: 'Madlibs clone',
-        description: 'CLI app for filling in, reading and creating ablibs on local machine',
-        keywords: ['c#','cmd','.net 6'],
-        year: 2023,
-        href: {
-            source: sources.epi,
-            inspect: ['https://github.com/SmKou/Week9.Solutions']
-        },
-        status: true,
-        comment: `Pair programming project (solo dev with supervision)`,
-        dev: `Status: queued
-        Migrate to either Node.js or Go for server
-        
-        ${messages.cnet}`
-    },
-    'hair-salon': {
-        title: 'Hair Salon',
-        description: 'MVC web app for managing stylists and clients in a one-to-one relationship',
-        keywords: ['c#','.net 6','entity framework core','mysql','mvc','sql'],
-        year: 2023,
-        href: {
-            source: sources.epi,
-            inspect: ['https://github.com/SmKou/HairSalon.Solution']
-        },
-        status: true,
-        comment: `Code reviewed`,
-        dev: `${messages.cnet_dep}`
-    },
-    'vendor-order-tracker': {
-        title: 'Vendor Order Tracker',
-        description: 'MVC web app for tracking and managing vendor information and orders in one-to-many relationships',
-        keywords: ['c#','.net 6', 'entity framework core','mysql','mvc','sql'],
-        year: 2023,
-        href: {
-            source: sources.epi,
-            inspect: ['https://github.com/SmKou/VendorOrderTracker.Solution']
-        },
-        status: true,
-        comment: `Code reviewed`,
-        dev: `${messages.cnet_dep}`
-    },
-    'sillystringz-factory': {
-        title: 'Sillystringz Factory',
-        description: 'MVC web app for tracking and managing many-to-many relationships between machines and engineers',
-        keywords: ['c#','.net 6', 'entity framework core','mysql','mvc','sql'],
-        year: 2023,
-        href: {
-            source: sources.epi,
-            inspect: ['https://github.com/SmKou/SillystringzFactory.Solution']
-        },
-        status: true,
-        comment: `Code reviewed
-        Uses migrations for database setup`,
-        dev: `${messages.cnet_dep}`
-    },
-    'pierres-sweet-and-savory-treats': {
-        title: "Pierre's Sweet and Savory Treats",
-        description: 'MVC web app for tracking and managing treats and their flavors in many-to-many relationships with ',
-        keywords: ['c#', '.net 7', 'identity', 'entity framework core', 'mysql', 'sql', 'mvc', 'authentication', 'authorization'],
-        year: 2023,
-        href: {
-            source: sources.epi,
-            inspect: ['https://github.com/SmKou/PierresSweetSavoryTreats']
-        },
-        status: true,
-        comment: `Code reviewed
-        Create, update and delete only allowed with authentication and authorization`,
-        dev: `${messages.cnet_dep}`
-    },
-    'parks-lookup': {
-        title: "Parks Lookup api",
-        description: 'API for looking up national and state parks with user authorization for crud on accounts, makes use of JWT authentication, versioning and pagination',
-        keywords: ['c#', '.net 7', 'identity', 'entity framework core', 'mysql', 'sql', 'mvc', 'authentication', 'versioning', 'pagination', 'jwt', 'api'],
-        year: 2023,
-        href: {
-            source: sources.epi,
-            inspect: ['https://github.com/SmKou/ParksLookup.Solution']
-        },
-        status: true,
-        comment: `Code reviewed`,
-        dev: `${messages.cnet_dep}
-        Use national park api and states' park apis for accurate information - actual use case `
-    },
-    'global-address-formatter': {
-        title: 'Global Address Formatter',
-        description: 'MVC web app and api for formatting addresses for international shipping and mail',
-        keywords: ['c#', '.net 7', 'entity framework core', 'mysql', 'sql', 'javascript', 'vanilla js', 'restsharp', 'newtonsoft.json', 'css', 'html', 'chtml', 'mvc', 'api'],
-        year: 2023,
-        href: {
-            source: sources.epi,
-            inspect: ['https://github.com/SmKou/GlobalAddressFormatter.Solution']
-        },
-        status: true,
-        comment: `Code reviewed
-        Team project
-        My role: Frontend web app & Debugging api`,
-        dev: `${messages.cnet_dep}`
-    },
-    'power-planter': {
-        title: 'Power Planter',
-        description: 'Numbers game using functional programming principles',
-        keywords: ['html', 'css', 'javascript', 'vanilla js', 'responsive design'],
-        year: 2023,
-        href: {
-            source: sources.epi,
-            inspect: ['https://github.com/SmKou/power-planter/']
-        },
-        status: false,
-        comment: `Pair programming project (solo dev with supervision)`,
-        dev: `Status: queued
-        Re-scaffold with vite?
-        Use app with subtree pushes to gh-pages`
-    },
-    'coffee-beans': {
-        title: 'Coffee Beans',
-        description: 'Inventory tracker for coffee beans seller, uses class and function components, prop types, and uuid',
-        keywords: ['react', 'class components', 'function components', 'prop types', 'uuid'],
-        year: 2023,
-        href: {
-            source: sources.epi,
-            view: ['https://smkou.github.io/inventory-tracker/'],
-            inspect: ['https://github.com/SmKou/inventory-tracker']
-        },
-        status: true,
-        comment: `Code reviewed`,
-        dev: `${messages.basic}`
-    },
-    'katadsa': {
-        title: 'KataDSA',
-        description: 'DSA-learning resource focused on theory and applications',
-        keywords: ['godot', 'node.js', 'go', 'cli', 'web app', 'templates', 'vanilla js', 'javascript', 'html', 'css', 'java', 'processing'],
-        year: 2023,
-        href: {
-            source: sources.epi,
-            material: ['https://github.com/SmKou/algorithms'],
-            inspect: ['https://github.com/SmKou/katadsa-spec'],
-            ref: ['https://www.techinterviewhandbook.org/coding-interview-study-plan/', 'https://www.manning.com/books/grokking-algorithms', 'https://www.manning.com/books/advanced-algorithms-and-data-structures', 'https://nostarch.com/Dive-Into-Algorithms', 'https://www.amazon.com/Algorithms-Every-Programmer-Should-Know-ebook/dp/B09QKY6VP9', 'https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/'],
-            docs: ['https://natureofcode.com', 'https://processing.org/reference']
-        },
-        status: false,
-        comment: `Capstone project
-        
-        Template projects (koudblue): UI- and tests-provided app where developers add code for dsa, additional view for comparison of solutions' performance
 
-        Game (Cubitt): Playing a scan and retrieval program, the player's mission is to locate and retrieve a missing cubitt in an infected sector and to identify the virus behind the infection, which manifests as a labyrinth and a humanoid cubitt. As the player guides Cubitt out of the infected sector by speaking to them in the cubitt programming language, the virus attempts to corrupt cubitt's memory and functions.
 
-        Iterations: 2`,
-        dev: `Status: queued
-        
-        Algorithms - DSA practice with LeetCode
-        - NeetCode 150 (paused)
-        - Coding Interview Study Plan`
-    },
-    'mahjong-cards': {
-        title: 'Mahjong Cards',
-        description: `Print & Play designs of mahjong cards`,
-        year: 2024,
-        href: { source: sources.smkou },
-        status: true,
-        comment: `Birthday present for nana
-        Two versions: traditional and cat-themed
-        Intended for Itch.io`,
-        dev: `Status: queued
-
-        Traditional
-        - Clean up images for user printing
-        
-        Cat-themed "meowjong"
-        - circles: yarn balls
-        - sticks: wands or feathers
-        - characters: lucky cat
-        - flowers: [TBD]
-        - seasons: [TBD]
-        - honors: [TBD]`
-    },
-    'jordans-game': {
-        title: "Jordan's Game",
-        description: 'Pokemon-inspired monster collecting and battling game',
-        keywords: ['godot', 'gdscript', 'affinity designer', 'html ', 'css', 'javascript', 'vanilla js'],
-        year: 2023,
-        href: {
-            ref: ['https://github.com/SmKou/godot-rpg'],
-            inspect: ['https://github.com/SmKou/jordans-game']
-        },
-        status: false,
-        comment: `Birthday present for nephew
-        Inspired by Pokemon Red
-        Design decisions by nephew (old spec)
-        Aesthetics style: Sm Kou`,
-        dev: `MVP: First town with interactions, characters and scenes`
-    },
-    'tale-of-kibakhan': {
-        title: 'Tale of Kibakhan',
-        description: 'Text adventure with alternative and adaptive narratives',
-        keywords: ['html', 'css', 'javascript', 'vanilla js'],
-        year: 2024,
-        href: {
-            source: sources.smkou,
-            view: ['https://smkou.github.io/tale-of-kibakhan/'],
-            inspect: ['https://github.com/SmKou/tale-of-kibakhan']
-        },
-        status: false,
-        comment: `Based on Dungeons & Dragons
-        Two narratives: third-person (Seraph) and first-person (Kibakhan)`
-    },
-    'odin-challenge': {
-        title: 'Odin Challenge',
-        description: 'Complete foundations and full-stack javascript paths in given time limit',
-        keywords: ['html', 'css', 'javascript', 'vanilla js', 'node.js'],
-        year: 2025,
-        href: { source: sources.odin },
-        status: false,
-        comment: `Self-designated challenge: 7 courses in 1 month`
-    },
-    'notation-calculator': {
-        title: 'Notation Calculator',
-        description: 'Calculator web app using (reverse) polish and standard notation with memory and collapsible visualization',
-        keywords: ['html', 'css', 'javascript', 'vanilla js', 'responsive design', 'canvas'],
-        year: 2024,
-        href: {
-            source: sources.smkou,
-            ref: ['https://leetcode.ca/2016-04-28-150-Evaluate-Reverse-Polish-Notation/', 'https://math.stackexchange.com/questions/1811628/converting-from-standard-to-functional-polish-and-reverse-polish-notation']
-        },
-        status: false,
-        comment: `Features:
-        - Switch notation mode
-        - View visualization
-        - Use of memory`
-    },
-    'travel-scrapbook': {
-        title: 'Travel Scrapbook',
-        description: 'Travelogue web app for creating and viewing scrapbooks',
-        keywords: ['html', 'css', 'javascript', 'vanilla js'],
-        year: 2025,
-        status: false,
-        comment: `Features:
-        - Upload images to use
-        - Add images, text and maps to pages
-        - Alternative page templates eg. freeform vs form-provided
-        - Designate order of focus
-        - User accounts: images and scrapbooks
-        
-        Requires app and server`
-    },
-    'cattery': {
-        title: 'Angels of Siberia',
-        description: 'Cattery website',
-        keywords: ['html', 'css', 'javascript', 'vanilla js', 'sql', 'node.js', 'api', 'responsive design'],
-        year: 2025,
-        href: {
-            source: sources.smkou,
-            ref: ['http://www.angelofsiberia.com']
-        },
-        status: false,
-        comment: `Requires frontend for display and personal backend for owner
-        - CMS: Wordpress, Wix`
-    },
-    'nudibranch': {
-        title: 'Nudibranch Pages',
-        description: 'Element and page design based on nudibranchs',
-        keywords: ['html', 'css', 'javascript', 'vanilla js'],
-        year: 2023,
-        href: {
-            source: sources.smkou,
-            inspect: ['https://github.com/SmKou/nudibranch']
-        },
-        status: false,
-        comment: `Template page
-        Switch mechanism: css docs
-        
-        Nudibranchs = sea slugs`
-    },
-    '[wwjd]': {
-        title: '[What Would Jesus Do?]',
-        description: 'Rock game',
-        keywords: ['html', 'css', 'javascript', 'vanilla js', 'canvas'],
-        year: 2025,
-        href: { source: sources.smkou },
-        status: false,
-        comment: `Zero-player game?
-
-        Protect a rock from external forces that would crack, break or shrink it
-        - water
-        - snow
-        - fire / magma`
-    },
-    '[farting-mario]': {
-        title: '[Farting Mario]',
-        description: 'Mario-parody game',
-        keywords: ['godot', 'c#'],
-        year: 2025,
-        href: { source: sources.smkou },
-        status: false
-    },
-    '[hernia]': {
-        title: '[Hernia]',
-        description: 'Something to do with the word and concept of hernia',
-        keywords: [],
-        year: 2026,
-        href: { source: sources.smkou },
-        status: false,
-        comment: `Hernia 1 2 3 4 - "sounds like a series"
-        "1 and 2 were great, but after 3, it just went downhill from there."`
-    }
-}
-
-const experiences = {
-    'frontend-intern': {
-        title: 'Frontend Intern',
-        description: 'React web app developmnt',
-        keywords: ['react', 'verbal communication', 'git', 'problem-solving', 'interface design', 'listening', 'adaptability', 'creativity'],
-        year: ['Nov 2023', 'Dec 2023'],
-        href: { source: sources.signed },
-        status: true,
-        comment: `Remote
-        Location: Seattle, WA, USA
-        Referral: Lee Grambush`
-    },
-    'store-clerk': {
-        title: 'Store Clerk',
-        description: 'Part-time store clerk',
-        keywords: ['empathy', 'verbal communication', 'listening', 'attention to detail', 'organization'],
-        year: ['Aug 2021', 'Apr 2023'],
-        href: { source: sources.ph },
-        status: true,
-        comment: `Seattle location, closed in Apr. 2024,
-        Location: Seattle, WA, USA
-        Referral: Ed Marquand, Suzanne Crimmins (no linkedin)`
-    },
-    'head-student-editor': {
-        title: 'Head Student Editor',
-        description: 'Lead team in translating, editing and proofreading course textbook on interaction design',
-        keywords: ['listening', 'creativity', 'leadership', 'attention to detail', 'written communication', 'verbal communication', 'problem-solving', 'documentation', 'analytical reasoning'],
-        year: ['Mar 2018', 'Aug 2019'],
-        href: { source: sources.sjtu },
-        status: true,
-        comment: `Office in Minhang campus, SOD building
-        Location: Shanghai, Shanghai, CN
-        
-        Conduct weekly meetings
-        Manage translation and editing schedule
-        Collect and synthesize weekly student feedback, drafts, edits, notes, and confirmations from professor
-        Proofread and edit chapter drafts each week`
-    },
-    'teacher-assistant': {
-        title: 'Teacher Assistant',
-        description: `Assist professors and manage course schedule, materials and projects`,
-        keywords: ['written communication','creativity','verbal communication','adaptability','adaptability','management','problem-solving','java','service design','interaction design'],
-        year: ['Mar 2018', 'Jun 2019'],
-        href: { source: sources.sod },
-        status: true,
-        comment: `Graduate courses in School of Design, SJTU
-        Location: Shanghai, Shanghai, CN
-        
-        Develop and distribute course curriculumns
-        Develop class presentations and tutorials
-        Develop grading rubric
-        Supervise class time and schedule
-        Collect, grade and review assignments and projects`
-    },
-    'english-teacher': {
-        title: 'Foreign English Teacher',
-        description: `Teacher, trainer and supervisor of operations`,
-        keywords: ['verbal communication','written communication','documentatation','time management','management','adaptability','creativity','analytical reasoning','critical thinking','problem-solving','teaching','training','business counseling','feedback','hiring decisions'],
-        year: ['Aug 2015', 'Nov 2016'],
-        href: {},
-        status: true,
-        comment: `EasyFun, Hampson, Side-by-Side English (simultaneous)
-        Location: Guangzhou, Guangdong, CN
-        
-        Develop curriculums, course plans and class plans
-        Review textbook series
-        Assess student and teacher performance
-        Client consultations
-        Teach students 4-45 years old, 400 students per week
-        Train teachers and teacher assistants
-        Substitution
-        Winter and summer camps
-        Private tutoring`
-    }
-}
-
-const education = {
-    'web-dev': {
-        title: 'Web Development Certificate',
-        description: 'Development in html, css, javscript, Node.js, C# and .Net, and React',
-        keywords: ['react', 'jest', 'babel', 'eslint', 'html', 'css', 'javscript', 'vanilla js', 'c#', '.net 6', '.net 7', 'api', 'node.js', 'tdd', 'red-green workflow', 'pair programming', 'code review', 'scrum', 'dev teams', 'mysql', 'sql', 'authentication', 'authorization', 'jwt', 'frontend', 'json'],
-        year: 'Dec 2023',
-        href: { source: sources.epi },
-        status: true,
-        comment: `Epicodus
-        Location: Portland, OR, USA (remote)
-        Referral: Calvin Will, Jasmine Klein`
-    },
-    'design': {
-        title: 'MA Design',
-        description: 'Design research, practices, processes and fields',
-        keywords: ['java', 'processing', 'adobe illustrator', 'user research', 'user interviews', 'quantitative analysis', 'qualitative analysis', 'low-fidelity prototypes', 'high-fidelity prototypes', 'eye-trackers', 'field research', 'service design', 'design thinking', 'interaction design', 'chinese'],
-        year: 'Mar 2020',
-        href: { source: [sources.sjtu, sources.sod] },
-        status: true,
-        comment: `Shanghai Jiaotong University, School of Design
-        Location: Shanghai, Shanghai, CN
-        Specialized in Interaction design`
-    },
-    'informatics': {
-        title: 'BS Informatics',
-        description: `Information technology, applications, and principles`,
-        keywords: ['java', 'mobile apps', 'web apps', 'responsive design', 'web design and development', 'database modeling', 'database design', 'sql', 'mysql', 'android', 'axure rp', 'adobe illustrator', 'visual design', 'user experience design', 'service design', 'design thinking', 'computer science', 'software entrepreneurship'],
-        year: 'Jun 2014',
-        href: { source: [sources.uw, sources.ischool] },
-        status: true,
-        comment: `University of Washington, Information School
-        Location: Seattle, WA, USA
-        Specialized in User Experience design
-        Referral: Mike Eisenberg (dean emeritus)`
-    },
-    'pre-engineering': {
-        title: 'AS Pre-Engineering',
-        description: `Introduction to engineering sciences, including computer science`,
-        keywords: ['visual basic', 'java'],
-        year: 'Jun 2011',
-        href: { source: sources.edcc },
-        status: true,
-        comment: `Edmonds Community College
-        Location: Edmonds, WA, USA
-        
-        Program: Running Start
-        - AS Pre-Engineering
-        - IB Mathematics, Chinese`
-    }
-}
 
 const calendar = {
     daily: {
@@ -1932,115 +2054,7 @@ const calendar = {
     }
 }
 
-const resources = { manual, calendar, sources }
-const pages = {
-    art: {
-        title: 'Artworks',
-        description: 'A slideshow of image mosaics formed from personal drawings',
-        href: { view: ['art/'] },
-        comment: `I cannot meditate in the traditional sense due in part to my C-PTSD, so drawing acts as a sort of substitute. Rather than clarity and relaxation, drawing provides insight and allows for a nuance of expression when words fail as they often do for me when it comes to self-perception and sensation.`
-    },
-    calendar: {
-        title: 'My Calendar',
-        description: 'A demo of a calendar app',
-        href: { view: ['my-calendar/'] },
-        comment: `The design of the week layout has always annoyed me in apps, requiring a landscape view when a portrait view should still work, so for the calendar app, I made sure there was a portrait layout and an intermediate layout when the width is not long enough for the traditional week view.`
-    },
-    versions: {
-        title: 'The Old TV',
-        description: 'Preview the available portfolios',
-        href: { view: ['versions/'] }
-    }
-}
-const portfolio = { versions, projects, experiences, education, pages }
-
 /* ----------------------------------------------------- Cmd */
-
-const ui = {
-    path: [],
-    host: `${/^localhost:\d+/.test(window.location.host) ? 'http://' : 'https://'}${window.location.host}`,
-    cns: document.querySelector('article section'),
-    ipt: document.querySelector('article input'),
-    aside: {
-        e: document.querySelector('aside'),
-        state: true,
-        tog: document.getElementById('toggle-aside'),
-        ctt: document.getElementById('aside-content')
-    }
-}
-
-const getNode = (path = ui.path.slice(), node = portfolio, shift) => {
-    shift = path.shift()
-    if (!path.length)
-        return node
-
-    if (node.hasOwnProperty(shift))
-        return getNode(path, node[shift])
-    else
-        return { shift }
-}
-
-const addLine = (output, bash = false) => {
-    const line = document.createElement('p')
-    if (bash)
-        line.setAttribute('class', 'bash')
-    line.append(document.createTextNode(output))
-    ui.cns.append(line)
-}
-
-const addLines = output => output.split('\n').forEach(line => addLine(line))
-
-const error = (term, message) => {
-    addLine(`error: ${term}: ${message}`)
-    return false
-}
-
-const non_command = (term) => {
-    addLine(`bash: ${term}: command not found`)
-    return false
-}
-
-const non_node = (term, wrong) => {
-    addLine(`bash: ${term}: ${wrong}: No such item or category`)
-    return false
-}
-
-const invalid_option = (term, wrong) => {
-    addLines(`bash: ${term}: ${wrong.join(', ')}: invalid option
-    ${term}: usage: ${manual[term].help.split('\n')[0]}`)
-    return false
-}
-
-const unknown_option = (term, wrong) => {
-    addLines(`${term}: unknown option -- ${wrong.map(err => {
-        err = err.split('-')
-        return err[err.length - 1]
-    }).join(', ')}
-    Try '${term} --help' for more information.`)
-    return false
-}
-
-const flatten = (arr, flat = []) => {
-    if (!arr.length) return flat
-    arr.forEach(e => {
-        if (Array.isArray(e))
-            flat.concat(flatten(e, flat))
-        else
-            flat.push(e)
-    })
-    return flat
-}
-
-/* Check if array has at least one of given terms */
-const includes = (arr, ...terms) => {
-    terms = flatten(terms)
-    let included = false
-    terms.forEach(term => {
-        if (!included && arr.includes(term))
-            included = true
-    })
-    return included
-}
 
 const cmd = {
     cal: function(args) {
