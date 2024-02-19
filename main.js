@@ -1,3 +1,44 @@
+/*
+globals.data = function() {
+    return {
+        manual: {
+            cal: {
+                page: {
+                    name: 'cal - calendar',
+                    synopsis: [
+                        'cal',
+                        'cal DATE',
+                        'cal FREQUENCY',
+                        'cal DATE FREQUENCY'
+                    ],
+                    description: `Show calendar information.
+                    Default date: today
+                    Default frequency: all (daily, weekly, monthly)
+                    Specify a date and/or frequency for viewing events from calendar.
+                    
+                    --help
+                        display command information`
+                },
+                options: {
+                    flags: ['-g', '-e'],
+                    addGoals: function() {},
+                    addEvents: function() {}
+                },
+                help: 'cal: cal <date> <frequency>',
+                whatis: 'Show calendar information'
+            },
+            cd: {
+                page: {
+                    name: '',
+                    synopsis: [],
+                    description: ``
+                }
+            }
+        }
+    }
+}
+*/
+
 const manual = {
     cal: {
         page: {
