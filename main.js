@@ -32,11 +32,7 @@ function init(calendar) {
                 --help
                     display command information`
             },
-            options: {
-                flags: ['-g', '-e'],
-                add_goals: function() {},
-                add_events: function() {}
-            },
+            options: ['-g', '-e', '--help'],
             help: 'cal: cal <date> <frequency>',
             whatis: 'Show calendar information.',
             helpers: {
@@ -46,27 +42,32 @@ function init(calendar) {
         cd: {
             page: {
                 name: 'cd - change directory',
-                synopsis: [ 'cd PATH' ],
+                synopsis: [ 
+                    'cd PATH',
+                    'cd DIRECTORY',
+                    'cd DIRECTORY PATH'
+                ],
                 description: `Change working path.
                 Root: portfolio
-                Directories: categories, pages, manual, sources
+                Directories: resources, pages, portfolio
                 Items equate to files in standard file system and terminal.
 
-                -d, --dir-only
-                    show only directories
+                Cannot use path to change root.
 
-                -i, --itm-only
+                -d, --directory
+                    show list of categories
+
+                -c, --category-only
+                    show only categories
+
+                -i, --item-only
                     show only items
                 
                 --help
                     display command information`
             },
-            options: {
-                flags: ['-d', '--dir-only', '-i', '--itm-only'],
-                filter_dir: function() {},
-                filter_itm: function() {}
-            },
-            help: 'cd: cd [..][<path>]',
+            options: ['-d', '--directory', '-c', '--category-only', '-i', '--item-only', '--help'],
+            help: 'cd: cd [path]',
             whatis: 'Change working path.'
         },
         cls: {
@@ -82,10 +83,375 @@ function init(calendar) {
                 --help
                     display command information`
             },
+            options: ['-i', '--intro', '--help'],
             help: 'cls: cls',
-            whatis: 'Clear interface'
+            whatis: 'Clear the interface.'
         },
-        
+        clear: {
+            page: {
+                name: 'clear',
+                synopsis: [ 'clear' ],
+                description: `Clear the terminal.
+                    
+                --help
+                    display command information`
+            },
+            options: ['--help'],
+            help: 'clear: clear',
+            whatis: 'Clear the terminal.'
+        },
+        date: {
+            page: {
+                name: 'date',
+                synopsis: [ 
+                    'date', 
+                    'date FREQUENCY QUANTITY', 
+                    'date DATE FREQUENCY QUANTITY',
+                    'date DATE' 
+                ],
+                description: `Show date.
+                Current date is today's date.
+                Dates can be written with forward slashes or hyphens. Shown in format: W M/dd/YY
+    
+                Avoid using leading zeroes in your entered dates, i.e. 12/03/15
+                
+                Determine date in a given amount of time from a given date, or amount of time from today's date to a given date.
+    
+                -s, --short
+                    display result in short form: W Mon. dd, year
+    
+                -l, --long
+                    display result in long form: Weekday Month dd, year
+    
+                -h, --hyphen
+                    display result with hyphens if the result has multiple parts
+                    cannot be used with change of format
+                
+                --help
+                    display command information`
+            },
+            options: ['-s', '--short', '-l', '--long', '-h', '--hyphen', '--help'],
+            help: 'date: date <date> <freq qty>',
+            whatis: 'Show date or time to date.'
+        },
+        dir: {
+            page: {
+                name: 'dir - directory',
+                synopsis: [ 'dir', 'dir CATEGORY' ],
+                description: `Show contained categories and items of category.
+                Root category is portfolio.
+                Only works on categories, not on items and their properties.
+
+                -i, --item-only
+                    show only contained items
+                
+                --help
+                    display command information`
+            },
+            options: ['-i', '--item-only', '--help'],
+            help: 'dir: dir <category>',
+            whatis: 'Show contained categories and items.'
+        },
+        echo: {
+            page: {
+                name: 'echo',
+                synopsis: [ 
+                    'echo ITEM_NAME', 
+                    'echo PATH ITEM_NAME' 
+                ],
+                description: `Show item messages (status, comment, developer remarks)
+                Default: show only status
+    
+                -a, --all
+                    show all messages provided with item
+
+                -c, --comment-only
+                    show only comments
+                
+                -d, --dev-only
+                    show only dev remarks
+    
+                --help
+                    display command information`
+            },
+            options: ['-a', '--all', '-c', '--comment-only', '-d', '--dev-only', '--help'],
+            help: 'echo: echo <path> <item_name>',
+            whatis: 'Show item messages.'
+        },
+        find: {
+            page: {
+                name: 'find',
+                synopsis: [ 
+                    'find ["string"]', 
+                    'find ["string"] CATEGORY' 
+                ],
+                description: `Search a category, or categories, for a string appearing in item properties and their values.
+                Search does not consist of equivalence:
+                If the string consists of spaces, it will be split into individual terms and item properties and values will be tested against each individual term. 
+                
+                -p, --property-only
+                    search only item properties
+    
+                -v, --value-only
+                    search only item values
+                
+                --help
+                    display command information`
+            },
+            options: ['-p', '--property-only', '-v', '--value-only', '--help'],
+            help: 'find: find ["string"] <category>',
+            whatis: 'Search items for property name or value.'
+        },
+        help: {
+            page: {
+                name: 'help',
+                synopsis: [ 'help', 'help COMMAND' ],
+                description: `Display command information.
+                No command: view list of available commands.
+                
+                -o, --open-aside
+                    show aside with commands list
+
+                --help
+                    display command information`
+            },
+            options: ['-o', '--open-aside', '--help'],
+            help: 'help: help <command>',
+            whatis: 'Display command information.'
+        },
+        hostname: {
+            page: {
+                name: 'hostname',
+                synopsis: [ 'hostname' ],
+                description: `Display name of host.
+                
+                --help
+                    display command information`
+            },
+            options: ['--help'],
+            help: 'hostname: hostname',
+            whatis: 'Display name of host.'
+        },
+        ls: {
+            page: {
+                name: 'ls - list',
+                synopsis: [ 
+                    'ls', 
+                    'ls PATH',
+                    'ls DIRECTORY PATH'
+                ],
+                description: `List categories, items, and properties.
+                Default directory: portfolio.
+                Default path: current working path
+                
+                Cannot use path to change root.
+                
+                --help
+                    display command information`
+            },
+            options: ['--help'],
+            help: 'ls: ls <path>',
+            whatis: 'List categories, items and properties.'
+        },
+        lynx: {
+            page: {
+                name: 'lynx',
+                synopsis: [ 
+                    'lynx ITEM_NAME', 
+                    'lynx PATH ITEM_NAME',
+                    'lynx ITEM_NAME LINK_NAME',
+                    'lynx PATH ITEM_NAME LINK_NAME'
+                ],
+                description: `Follow item url
+                Opens url to another host in another tab.
+                Displays list of urls if item has more than one
+    
+                Note: Lynx is a fully-featured www client for the linux terminal
+                
+                -m, --main-only
+                    list all recent urls associated with item
+    
+                -a, --all
+                    list all urls associated with item, include backups and iterations
+                    
+                --help
+                    display command information`
+            },
+            options: ['-m', '--main-only', '-a', '--all', '--help'],
+            help: 'lynx: lynx <path> <item_name> <link_name>',
+            whatis: 'Open item url.'
+        },
+        man: {
+            page: {
+                name: 'man - manual',
+                synopsis: [ 
+                    'man', 
+                    'man COMMAND'
+                ],
+                description: `Show manual page for command.
+    
+                -n, --name-only
+                    show only names from manual pages
+    
+                -s, --synopsis-only
+                    show only synopsis from menaul pages
+    
+                -d, --description-only
+                    show only description from manual pages
+                
+                --help
+                    display command information`
+            },
+            options: ['-n', '--name-only', '-s', '--synopsis-only', '-d', '--description-only', '--help'],
+            help: 'man: man <command>',
+            whatis: 'Show manual page for command.'
+        },
+        more: {
+            page: {
+                name: 'more',
+                synopsis: [ 
+                    'more', 
+                    'more ITEM',
+                    'more PATH ITEM'
+                ],
+                description: `Show item properties, path, and links.
+                Use name of an item as-is.
+                Cannot be used on categories.
+    
+                -m, --messages-included
+                    include item messages
+                
+                --help
+                    display command information`
+            },
+            options: ['-m', '--messages-included', '--help'],
+            help: 'more: more <path> <item_name>',
+            whatis: 'Show item information.'
+        },
+        msg: {
+            page: {
+                name: 'msg - message',
+                synopsis: [ 'msg' ],
+                description: `View contact to send a message to developer.
+                Available preferences: linkedin, github.
+                
+                -l, --linkedin
+                    show only linkedin contact
+    
+                -g, --github
+                    show only github contact
+    
+                --help
+                    display command information`
+            },
+            options: ['-l', '--linkedin', '-g', '--github', '--help'],
+            help: 'msg: msg',
+            whatis: 'View contact information.'
+        },
+        pwd: {
+            page: {
+                name: 'pwd - print working directory',
+                synopsis: [ 'pwd' ],
+                description: `Prints current path.
+                Path consists of categories and items.
+
+                -r, --root
+                    show root directory
+                
+                --help
+                    display command information`
+            },
+            options: ['-r', '--root', '--help'],
+            help: 'pwd: pwd',
+            whatis: 'Print working path.'
+        },
+        stat: {
+            page: {
+                name: 'stat',
+                synopsis: [ 
+                    'stat', 
+                    'stat ITEM' 
+                ],
+                description: `Show details of an item (category, status, year).
+    
+                -c, --category-only
+                    show only category of item
+    
+                -s, --status-only
+                    show only status of item
+    
+                -y, --year-only
+                    show only year of item if item has a year
+                
+                --help
+                    display command information`
+            },
+            options: ['-c', '--category-only', '-s', '--status-only', '-y', '--year-only', '--help'],
+            help: 'stat: stat <item_name>',
+            whatis: 'Show details of item.'
+        },
+        tree: {
+            page: {
+                name: 'tree',
+                synopsis: [ 
+                    'tree', 
+                    'tree DIRECTORY' 
+                ],
+                description: `Prints folder structural representation.
+                Default directory: portfolio
+                Can only use on directories and categories.
+                
+                -i, --item-included
+                    include items
+    
+                --help
+                    display command information`
+            },
+            options: ['-i', '--item-included', '--help'],
+            help: 'tree: tree <directory>',
+            whatis: 'Show path structure.'
+        },
+        whatis: {
+            page: {
+                name: 'whatis - what is',
+                synopsis: [ 'whatis COMMAND' ],
+                description: `Show command action.
+    
+                -m, --manual
+                    show manual page
+    
+                -n, --name-only
+                    show only names from manual page
+    
+                -s, --synopsis-only
+                    show only synopsis from menaul page
+    
+                -d, --description-only
+                    show only description from manual page
+                
+                --help
+                    display command information`
+            },
+            options: ['-m', '--manual', '-n', '--name-only', '-s', '--synopsis-only', '-d', '--description-only', '--help'],
+            help: 'whatis: whatis [command]',
+            whatis: 'Show command action.'
+        },
+        whoami: {
+            page: {
+                name: 'whoami - who am i',
+                synopsis: [ 'whoami' ],
+                description: `Show the name of the developer.
+
+                -a, --all
+                    show all aliases
+                
+                --help
+                    display command information`
+            },
+            options: ['-a', '--all', '--help'],
+            help: 'whoami: whoami',
+            whatis: 'Show developer name.'
+        }
     }
 
     const sources = {
@@ -1149,7 +1515,7 @@ function init(calendar) {
         ${manual[command].whatis}`)
     }))
 
-    const add_intro = (disp = ui.aside.e) => {
+    const print_intro = (disp = ui.aside.e) => {
         const div = document.createElement('div')
         div.setAttribute('class', 'intro')
         div.innerHTML = `<p>This is the Sm Kou portfolio website, where every page has a unique design and purpose. I am introducing it here for those who do not have the time to explore or navigate a cmd interface. But just to note, if you don't have the time for this interface, you probably don't have enough time for this portfolio.</p>
@@ -1158,7 +1524,7 @@ function init(calendar) {
         <p>There are also experimental pages, where I have developed my own version of a tool or interface: <a href="art/">Art</a> featuring rearranging image mosaics, and <a href="my-calendar/">My Calendar</a></p>`
         disp.append(div)
     }
-    add_intro()
+    print_intro()
 
     /* Errors ----------------------------------------------------------------------------- */
 
@@ -1282,7 +1648,7 @@ function init(calendar) {
                     add_sched(f, 'routine')
 
             if (flags.length) {
-                const opt = addr.options
+                const opt = this.options
                 if (includes(flags, '-g'))
                     opt.add_goals(freq, add_sched, weekday, sched)
                 else if (includes(flags, '-e'))
@@ -1291,6 +1657,7 @@ function init(calendar) {
 
             const keys = Object.keys(sched).sort((a, b) => sched[a].n - sched[b].n)
             add_lines(`${keys.map(key => `${sched[key].name} - ${key} for ${sched[key].duration}`).join('\n')}`)
+            
         },
         cd: function(args) {
             if (!args.length) {
@@ -1318,6 +1685,123 @@ function init(calendar) {
                     
                 
             }
+        },
+        cls: function(args) {
+            if (args.length) {
+                const addr = resources.manual.cls
+
+                const flags = []
+                const wrong_input = []
+                const wrong_options = []
+
+                while (args.length) {
+                    const arg = args.pop()
+                    if (arg.includes('-'))
+                        if (addr.options.includes(arg))
+                            flags.push(arg)
+                        else
+                            wrong_options.push(arg)
+                    else
+                        wrong_input.push(arg)
+                }
+
+                if (wrong_input.length) return invalid_option_error('cls', wrong_input)
+                if (wrong_options.length) return unknown_option_error('cls', wrong_options)
+
+                if (flags.includes('--help'))
+                    return cmd.help(['cls'])
+                else if (includes(flags, '-i', '--intro'))
+                    cmd_options.cls.print()
+            }
+            
+            ui.cns.innerHTML = ''
+            ui.aside.tog.click()
+        },
+        clear: function(args) {},
+        date: function(args) {},
+        dir: function(args) {},
+        echo: function(args) {}, 
+        find: function(args) {},
+        help: function(args) {}, 
+        hostname: function(args) {},
+        ls: function(args) {},
+        lynx: function(args) {},
+        man: function(args) {},
+        more: function(args) {},
+        msg: function(args) {},
+        pwd: function(args) {},
+        stat: function(args) {},
+        tree: function(args) {},
+        whatis: function(args) {},
+        whoami: function(args) {}
+    }
+
+    const cmd_options = {
+        cal: {
+            add_goals: () => {},
+            add_events: () => {}
+        },
+        cd: {
+            show_dir: () => {},
+            filter_cat: () => {},
+            filter_itm: () => {}
+        },
+        cls: { print: () => print_intro(ui.cns) },
+        date: {
+            format_short: () => {},
+            format_long: () => {},
+            format_hyphen: () => {}
+        },
+        dir: {
+            filter_items: () => {}
+        },
+        echo: {
+            show_all: () => {},
+            filter_comments: () => {},
+            filter_dev: () => {}
+        },
+        find: {
+            filter_properties: () => {},
+            filter_values: () => {}
+        },
+        help: {
+            show_aside: () => {}
+        },
+        lynx: {
+            get_main: () => {},
+            get_all: () => {}
+        },
+        man: {
+            filter_name: () => {},
+            filter_synopsis: () => {},
+            filter_description: () => {}
+        },
+        more: {
+            get_messages: () => {}
+        },
+        msg: {
+            filter_linkedin: () => {},
+            filter_github: () => {}
+        },
+        pwd: {
+            add_root: () => {}
+        },
+        stat: {
+            filter_category: () => {},
+            filter_status: () => {},
+            filter_year: () => {}
+        },
+        tree: {
+            get_items: () => {}
+        },
+        whatis: {
+            use_manual: () => {},
+            filter_name: () => {},
+            filter_synopsis: () => {},
+            filter_description: () => {}
+        },
+        whoami: {
+            add_aliases: () => {}
         }
     }
 
@@ -1342,7 +1826,7 @@ function init(calendar) {
                 value.split('&&').forEach(val => exec(val.trim()))
             else
                 exec(value)
-            addPath()
+            add_path()
         }
         else if (e.key === 'ArrowUp' && input.i > 0) 
             user_input.i--
