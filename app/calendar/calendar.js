@@ -1,191 +1,163 @@
-const calendar = {
-    daily: {
-        'morning-prep': {
-            title: "Morning Prep",
-            iterations: [
-                {
-                    fst_date: '1-25-24',
-                    last_date: '',
-                    days: ['8:30', 1.5, 0],
-                    notes: `Exercise: 15 min run-in-place
-                    Shower`
-                }
-            ]
-        },
-        'evening-prep': {
-            title: "Evening Prep",
-            iterations: [
-                {
-                    fst_date: '1-25-24',
-                    last_date: '',
-                    days: ['22:30', 1, 0],
-                    notes: `MTh 10:30 Wet hair
-                    15 min hot oil
-                    11:00 Shower
-                    - wash out oil
-                    - face mask done by ~11:30
-                    
-                    ~10:45 Shower
-                    11:15 Face mask`
-                }
-            ]
-        },
-        'night-project': {
-            title: "Night Project",
-            iterations: [
-                {
-                    fst_date: '1-25-24',
-                    last_date: '',
-                    days: ['23:30', 0.5, 0],
-                    notes: `Jordan's Game or DSA reading`
-                }
-            ]
-        }
-    },
-    weekly: {
-        'therapist': {
-            title: "Therapist Appt",
-            iterations: [
-                {
-                    fst_date: '1-29-24',
-                    last_date: '',
-                    days: [
-                        ['10:30', 2],
-                        0, 0, 0, 0, 0, 0
-                    ]
-                }
-            ]
-        },
-        'dsa-practice': {
-            title: "DSA Study and Practice",
-            iterations: [
-                {
-                    fst_date: '1-28-24',
-                    last_date: '',
-                    days: [
-                        0, 0, 0,
-                        ['15:00', 2],
-                        0, 0,
-                        ['15:00', 2]
-                    ]
-                }
-            ]
-        },
-        'dsa-practice-sam': {
-            title: "DSA Practice: Sam",
-            iterations: [
-                {},
-                {
-                    fst_date: '1-8-24',
-                    last_date: '1-30-24',
-                    days: [
-                        ['13:00', 2],
-                        ['17:00', 2],
-                        0, 0, 0, 0,
-                        ['12:30', 2]
-                    ]
+function cal() {
+    return {
+        daily: {
+            routine: { morning: '9:00', night: '22:00' },
+            goals: {
+                walk: { time: 1 },
+                exercise: { 
+                    time: 0.5,
+                    comment: `1 min - 10s x2: lunges, squats, bridges, knee taps
+                    10-20 min: jog
+                    [optional]`
                 },
-                {
-                    fst_date: '12-12-23',
-                    last_date: '1-5-24',
-                    days: [
-                        ['13:00', 2]
-                        ['13:00', 2],
-                        0,
-                        ['13:00', 2],
-                        0, 0,
-                        ['13:00', 2]
-                    ]
+                web_development: {
+                    time: 1,
+                    source: sources.fm,
+                    comment: 'Computer Science'
+                },
+                dsa: {
+                    time: 2,
+                    source: {
+                        title: 'Coding Interview study plan',
+                        href: 'https://www.techinterviewhandbook.org/coding-interview-study-plan/'
+                    },
+                    comment: 'Week 1: Array, String, Hash Table, Recursion'
                 }
-            ]
-        },
-        'dsa-practice-shanay': {
-            title: "DSA Practice: Shanay",
-            iterations: [
-                {
-                    fst_date: '1-24-24',
-                    last_date: '',
-                    days: [
-                        ['15:00', 2],
-                        ['15:00', 2],
-                        ['15:00', 2],
-                        0, 0, 0, 0
-                    ]
-                }
-            ]
-        },
-        'isg': {
-            title: "ISG",
-            fst_date: '10-28-23',
-            last_date: '',
-            days: [ 0, 0, 0, 0, 0, ['13:00', 5.5], 0 ]
-        }
-    },
-    monthly: {
-        'seattle-js': {
-            title: "Seattle JS",
-            fst_date: '10-11-23',
-            last_date: '',
-            days: [[2, 3, '17:30', 2.5]]
-        },
-        'indies-social': {
-            title: "Seattle Indies Social",
-            fst_date: '10-17-23',
-            last_date: '',
-            days: [[3, 2, '20:30', 1.5]]
-        },
-        'code-katas': {
-            title: "Code Katas",
-            fst_date: '10-17-23',
-            last_date: '',
-            days: [[3, 2, '17:30', 2.5]]
-        }
-    },
-    events: {
-        '2/6/2024': [
-            {
-                title: "Pay electric bill",
-                days: ['14:30', 1.5],
-                notes: `Complete Function Report and Work Report (required documentation)
-                List of medications
-                List of physicians`
             }
-        ],
-        '1/30/24': [
-            {
-                title: "DSA Practice Meeting",
-                days: ['17:00', 2],
-                notes: `Introduce Sam and Thomas as leetcode buddies
-                Weekly dsa study session with Sam`
-            }
-        ],
-        '1/26/2024': [
-            {
-                title: "Family Visit",
-                days: ['15:00', 5.5]
+        },
+        weekly: {
+            routine: {
+                therapy: { days: [0, 1, 0, 0, 0, 0, 0], time: ['10:30', 1.5] },
+                isg: { days: [0, 0, 0, 0, 0, 0, 1], time: ['13:00', 5.5] }
             },
-            {
-                title: "Doctor's Appt",
-                days: ['12:45', 0.5],
-                notes: `general check-up
-                - Jaw clicking
-                - Thyroid and vitamin D
-                - Running in place
-                `
+            goals: {
+                algorithms: {
+                    days: [1, 1, 0, 0, 1, 0, 0], time: 1,
+                    comment: 'Make Your Own Neural Network'
+                },
+                golang: {
+                    days: [1, 0, 1, 0, 0, 1, 0], time: 1,
+                    comment: 'Basics of Go []'
+                },
+                nature_of_code: {
+                    days: [1, 0, 0, 1, 0, 0, 1], time: 1,
+                    comment: '0. Randomness',
+                    source: {
+                        title: 'Nature of Code',
+                        href: 'https://natureofcode.com'
+                    }
+                }
             }
-        ]
-    },
-    projects: {
-        '1/29/2024': [
-            "SignedPic",
-            "Re-Portfolio",
-            "Jordan's Game"
-        ],
-        '1/22/2024': [
-            "Re-Portfolio"
-        ]
+        },
+        monthly: {
+            routine: {
+                seattlejs: { week: 2, days: [0, 0, 0, 1, 0, 0, 0], time: ['17:00', 2.5] },
+                code_katas: { week: 3, days: [0, 0, 1, 0, 0, 0, 0], time: ['17:00', 1.5] },
+                seattle_indies_social: { week: 3, days: [0, 0, 1, 0, 0, 0, 0], time: ['20:30', 2.5] }
+            },
+            goals: {
+                frye_art: { week: 1, days: [1, 0, 0, 0, 0, 0, 0], time: ['10:30', 3] },
+                wing_luke: { week: 2, days: [1, 0, 0, 0, 0, 0, 0], time: ['9:30', 3] },
+                henry_art: { week: 3, days: [1, 0, 0, 0, 0, 0, 0], time: ['9:00', 4] },
+                nordic: { week: 4, days: [1, 0, 0, 0, 0, 0, 0], time: ['9:00', 6] }
+            }
+        },
+        events: {
+            '4/4/24': { act: { time: ['19:30', 3.5], attended: false }},
+            '3/22/24': { act: { time: ['19:30', 1.5], attended: false }},
+            '3/8/24': { act: { time: ['19:00', 1.5], attended: false }},
+            '2/21/24': { therapy: { time: ['10:30', 1.5], attended: false }},
+            '2/9/24': { act: { time: ['19:30', 1.5], attended: true } },
+            '2/6/24': {
+                city_light: { time: ['13:30', 0.5], attended: true },
+                gov: { time: ['14:30', 1.5], attended: true }
+            }
+        },
+        projects: ['Re-Portfolio', "Jordan's Game"],
+        record: {
+            '2/19/24': {
+                daily: {
+                    routine: { morning: '12:30', night: false },
+                    goals: {
+                        walk: { done: false },
+                        exercise: { done: false },
+                        dsa: { target: 'Array|String', done: false, completed: false },
+                        web_development: {
+                            target: 'Complete Intro to Computer Science',
+                            done: false, completed: false
+                        }
+                    }
+                },
+                weekly: {
+                    routine: {
+                        therapy: { done: false, comment: 'rescheduled: holiday' }
+                    },
+                    goals: {
+                        algorithms: {
+                            target: 'Make Your Own Neural Network',
+                            done: false, completed: false
+                        }
+                    }
+                },
+                monthly: '',
+                tasks: {
+                    'read: coding standards': { done: '12:41', completed: false },
+                    'read: coding patterns': { done: false, completed: false },
+                    're: career counselor': { done: false },
+                    'godot rpg tutorial': { done: false, completed: false }
+                }
+            },
+            '2/18/24': {
+                daily: {
+                    routine: { morning: '13:00', night: '23:30' },
+                    goals: {
+                        walk: { done: false, comment: 'rain' },
+                        exercise: { done: false },
+                        dsa: { target: 'Array', done: '21:03', completed: false },
+                        web_development: {
+                            target: 'Complete Intro to Computer Science',
+                            done: '20:11', completed: false
+                        }
+                    }
+                },
+                weekly: {
+                    routine: '',
+                    goals: {
+                        algorithms: {
+                            target: 'Make Your Own Neural Network',
+                            comment: 'extra tasks',
+                            done: false, completed: false
+                        },
+                        golang: {
+                            target: 'Basics of Go',
+                            comment: 'extra tasks',
+                            done: false, completed: false
+                        },
+                        nature_of_code: {
+                            target: '0.Randomness',
+                            comment: 'extra tasks',
+                            done: false, completed: false
+                        }
+                    }
+                },
+                monthly: '',
+                tasks: {
+                    'read: coding standards': { done: true, completed: false },
+                    'read: design patterns': { done: false, completed: false }
+                }
+            }
+        }
     }
 }
+
+function init_cal(calendar) {
+
+
+}
+
+init_cal(cal())
+
+
 
 const week = {
     start: '',
