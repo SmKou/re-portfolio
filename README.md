@@ -27,7 +27,6 @@ Homepage
 - more: show contained information in item
 - msg: view contact information
 - pwd: show working path
-- sort items in category shown by dir, ls
 - stat: show details of item
 - tree: show path structure of category
 - whatis: show what a command does
