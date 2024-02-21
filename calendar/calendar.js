@@ -80,17 +80,15 @@ function cal() {
         record: {
             '2/20/24': {
                 daily: {
-                    routine: { morning: false, night: false },
+                    routine: { morning: '13:00', night: false },
                     goals: {
-                        walk: { done: false },
-                        exercise: { done: false },
                         dsa: { 
                             target: 'read: Array, String, Hash Table, Recursion',
-                            done: false, completed: false
+                            done: '12:56', completed: true
                         },
                         web_development: {
                             target: 'Complete Intro to Computer Science',
-                            done: false, completed: false
+                            done: '14:11', completed: false
                         }
                     }
                 },
@@ -99,13 +97,13 @@ function cal() {
                     goals: {
                         golang: {
                             target: 'Basics of Go',
-                            done: false, completed: false
+                            done: '15:17', completed: false
                         }
                     }
                 },
                 monthly: {
                     routine: {
-                        code_katas: { done: false },
+                        code_katas: { done: true },
                         seattle_indies_social: { done: false }
                     },
                     goals: ''
@@ -120,8 +118,6 @@ function cal() {
                 daily: {
                     routine: { morning: '12:30', night: false },
                     goals: {
-                        walk: { done: false },
-                        exercise: { done: false },
                         dsa: { target: 'Array', done: '19:37', completed: false },
                         web_development: {
                             target: 'Complete Intro to Computer Science',
@@ -131,7 +127,7 @@ function cal() {
                 },
                 weekly: {
                     routine: {
-                        therapy: { done: false, comment: 'rescheduled: holiday' }
+                        therapy: { comment: 'rescheduled: holiday' }
                     },
                     goals: {
                         algorithms: {
