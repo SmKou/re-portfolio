@@ -82,8 +82,31 @@ function cal() {
                 daily: {
                     routine: { morning: '8:20', night: false },
                     goals: {
-
+                        exercise: { done: false },
+                        web_development: {
+                            target: 'Complete Intro to Computer Science',
+                            done: false, completed: false
+                        },
+                        dsa: {
+                            target: 'practice: arrays | strings',
+                            done: false, completed: false
+                        }
                     }
+                },
+                weekly: {
+                    routine: '',
+                    goals: {
+                        nature_of_code: {
+                            target: '0. Randomness',
+                            done: false, completed: false
+                        }
+                    }
+                },
+                monthly: '',
+                tasks: {
+                    'read: coding standards': { done: false, completed: false },
+                    'read: coding patterns': { done: false, completed: false },
+                    'godot rpg tutorial': { done: false, completed: false }
                 }
             },
             '2/20/24': {
