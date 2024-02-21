@@ -1,3 +1,4 @@
+/* Used by home/main.js: cal() */
 function cal() {
     return {
         daily: {
