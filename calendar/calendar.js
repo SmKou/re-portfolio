@@ -103,6 +103,10 @@ function cal() {
                     }
                 },
                 monthly: '',
+                projects: {
+                    "Re-Portfolio": [],
+                    "Jordan's Game": []
+                },
                 tasks: {
                     'read: coding standards': { done: false, completed: false },
                     'read: coding patterns': { done: false, completed: false },
@@ -139,6 +143,12 @@ function cal() {
                     },
                     goals: ''
                 },
+                projects: {
+                    "Re-Portfolio": [],
+                    "Jordan's Game": [
+                        'read: gdscript'
+                    ]
+                },
                 tasks: {
                     'read: coding standards': { done: false, completed: false },
                     'read: coding patterns': { done: false, completed: false },
@@ -168,6 +178,22 @@ function cal() {
                     }
                 },
                 monthly: '',
+                projects: {
+                    "Re-Portfolio": [
+                        'setup cmd and cmd_options for terminal',
+                        'move ui into main.js/init()',
+                        'move calendar into calendar/main.js',
+                        'prepare for rewrite: manual and cmd',
+                        'add versions/main.js',
+                        'change versions/main.js to use func instead of global vars',
+                        'rearrange projects, education and experience in data()',
+                        'setup data() and init()',
+                        'data.js experiment: initialize and delete function'
+                    ],
+                    "Jordan's Game": [
+                        'read: gdscript'
+                    ]
+                },
                 tasks: {
                     'read: coding standards': { done: '12:41', completed: false },
                     'read: coding patterns': { done: false, completed: false },
@@ -209,6 +235,14 @@ function cal() {
                     }
                 },
                 monthly: '',
+                projects: {
+                    "Re-Portfolio": [
+                        'add functions: dir and ls'
+                    ],
+                    "Jordan's Game": [
+                        'read: gdscript'
+                    ]
+                },
                 tasks: {
                     'read: coding standards': { done: true, completed: false },
                     'read: design patterns': { done: false, completed: false }
