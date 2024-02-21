@@ -78,9 +78,17 @@ function cal() {
         },
         projects: ['Re-Portfolio', "Jordan's Game"],
         record: {
+            '2/21/24': {
+                daily: {
+                    routine: { morning: '8:20', night: false },
+                    goals: {
+
+                    }
+                }
+            },
             '2/20/24': {
                 daily: {
-                    routine: { morning: '13:00', night: false },
+                    routine: { morning: '13:00', night: '23:00' },
                     goals: {
                         dsa: { 
                             target: 'read: Array, String, Hash Table, Recursion',
@@ -104,7 +112,7 @@ function cal() {
                 monthly: {
                     routine: {
                         code_katas: { done: true },
-                        seattle_indies_social: { done: false }
+                        seattle_indies_social: { done: true }
                     },
                     goals: ''
                 },
