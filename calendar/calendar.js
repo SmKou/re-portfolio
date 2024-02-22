@@ -143,7 +143,8 @@ function cal() {
                         exercise: { done: '8:51' },
                         web_development: {
                             course: 'Complete Intro to Computer Science',
-                            target: 'Merge Sort',
+                            target: 'practice',
+                            practice: ['Merge Sort'],
                             done: '16:45', completed: true
                         },
                         dsa: {
@@ -185,7 +186,8 @@ function cal() {
                         },
                         web_development: {
                             course: 'Complete Intro to Computer Science',
-                            target: 'Insertion sort',
+                            target: 'practice',
+                            practice: ['Insertion sort'],
                             done: '14:11', completed: true
                         }
                     }
@@ -194,7 +196,9 @@ function cal() {
                     routine: '',
                     goals: {
                         golang: {
-                            target: 'Basics of Go',
+                            course: 'Basics of Go',
+                            target: 'watch',
+                            watch: ['Introduction(s)'],
                             done: '15:17', completed: false
                         }
                     }
@@ -208,14 +212,15 @@ function cal() {
                 },
                 projects: {
                     "Re-Portfolio": [],
-                    "Jordan's Game": [
-                        'read: gdscript'
-                    ]
+                    "Jordan's Game": ['read: gdscript']
                 },
                 tasks: {
-                    'read: coding standards': { done: false, completed: false },
-                    'read: coding patterns': { done: false, completed: false },
-                    'godot rpg tutorial': { done: false, completed: false }
+                    'read: coding standards': 
+                    { done: false, completed: false },
+                    'read: coding patterns': 
+                    { done: false, completed: false },
+                    'godot rpg tutorial': 
+                    { done: false, completed: false }
                 }
             },
             '2/19/24': {
@@ -225,7 +230,8 @@ function cal() {
                         dsa: { target: 'Array', done: '19:37', completed: false },
                         web_development: {
                             course: 'Complete Intro to Computer Science',
-                            target: 'Bubble sort',
+                            target: 'practice',
+                            practice: ['Bubble sort'],
                             done: '21:16', completed: true
                         }
                     }
@@ -236,7 +242,8 @@ function cal() {
                     },
                     goals: {
                         algorithms: {
-                            target: 'Make Your Own Neural Network',
+                            book: 'Make Your Own Neural Network',
+                            target: 'read',
                             done: false, completed: false
                         }
                     }
@@ -259,10 +266,13 @@ function cal() {
                     ]
                 },
                 tasks: {
-                    'read: coding standards': { done: '12:41', completed: false },
-                    'read: coding patterns': { done: false, completed: false },
+                    'read: coding standards': 
+                    { done: '12:41', completed: false },
+                    'read: coding patterns': 
+                    { done: false, completed: false },
                     're: career counselor': { done: true },
-                    'godot rpg tutorial': { done: false, completed: false }
+                    'godot rpg tutorial': 
+                    { done: false, completed: false }
                 }
             },
             '2/18/24': {
@@ -274,7 +284,8 @@ function cal() {
                         dsa: { target: 'Array', done: '21:03', completed: false },
                         web_development: {
                             course: 'Complete Intro to Computer Science',
-                            target: 'Introduction',
+                            target: 'watch',
+                            watch: ['Introduction'],
                             done: '20:11', completed: true
                         }
                     }
@@ -283,12 +294,14 @@ function cal() {
                     routine: '',
                     goals: {
                         algorithms: {
-                            target: 'Make Your Own Neural Network',
+                            book: 'Make Your Own Neural Network',
+                            target: 'read',
                             comment: 'extra tasks',
                             done: false, completed: false
                         },
                         golang: {
-                            target: 'Basics of Go',
+                            course: 'Basics of Go',
+                            target: 'watch',
                             comment: 'extra tasks',
                             done: false, completed: false
                         },
@@ -309,8 +322,10 @@ function cal() {
                     ]
                 },
                 tasks: {
-                    'read: coding standards': { done: true, completed: false },
-                    'read: design patterns': { done: false, completed: false }
+                    'read: coding standards': 
+                    { done: '13:30', completed: false },
+                    'read: design patterns': 
+                    { done: false, completed: false }
                 }
             }
         }
