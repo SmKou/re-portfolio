@@ -54,19 +54,19 @@ function init(calendar) {
 
                 Cannot use path to change root.
 
-                -d, --directory
+                -d, --directories
                     show list of categories
 
-                -c, --category-only
+                -c, --categories
                     show only categories
 
-                -i, --item-only
+                -i, --items
                     show only items
                 
                 --help
                     display command information`
             },
-            options: ['-d', '--directory', '-c', '--category-only', '-i', '--item-only', '--help'],
+            options: ['-d', '--directories', '-c', '--categories', '-i', '--items', '--help'],
             help: 'cd: cd [path]',
             whatis: 'Change working path.'
         },
@@ -1452,6 +1452,7 @@ function init(calendar) {
         }
     }
     const portfolio = { versions, experience, education, projects }
+    const directories = { portfolio, resources, pages }
 
     /* UI --------------------------------------------------------------------------------- */
 
@@ -1583,92 +1584,7 @@ function init(calendar) {
     /* Terminal --------------------------------------------------------------------------- */
 
     const cmd = {
-        cal: function(args) {
-            const addr = resources.manual.cal
-
-            let date = new Date()
-            let freq = ''
-
-            const flags = []
-            const wrong_input = []
-            const wrong_options = []
-
-            while (args.length) {
-                const arg = args.pop()
-                if (arg.includes('-'))
-                    if (addr.options.flags.includes(arg) || arg === '--help')
-                        flags.push(arg)
-                    else
-                        wrong_options.push(arg)
-                else if (['daily', 'weekly', 'monthly'].includes(arg))
-                    freq = arg
-                else if (addr.helpers.is_valid_date(arg))
-                    date = new Date(arg)
-                else
-                    wrong_input.push(arg)
-            }
-
-            if (wrong_input.length) return invalid_option_error('cal', wrong_input)
-            if (wrong_options.length) return unknown_option_error('cal', wrong_options)
-            if (flags.includes('--help')) return this.help(['cal'])
-            
-            const sched = {}
-            const weekday = date.getDay()
-            const options = {
-                weekday: 'narrow',
-                day: 'numeric',
-                month: 'numeric',
-                year: '2-digit'
-            }
-
-            let weeks_diff = 1
-            if (date.getDate() > 1) {
-                const [m,,y] = date.toLocaleDateString(undefined, options).split('/')
-                const month_first = new Date(`${m}/1/${y}`)
-                weeks_diff = Math.floor((data.getTime() - month_first.getTime()) / (1000 * 60 * 60 * 24) / 7) + 1
-            }
-
-            const add = (freq, type) => (e, key) => {
-                const [time, dur] = e.time
-                const [hour, half] = time.split(':')
-                sched[time] = {
-                    n: parseInt(hour) * 2 + (parseInt(half) ? 1: 0),
-                    d: dur * 2,
-                    name: key.split('_'.join(' ')),
-                    freq, type,
-                    duration: `${dur} hour${dur !== 1 ? 's' : ''}`
-                }
-            }
-
-            const add_sched = (freq, type) => {
-                const f = calendar[freq][type]
-                for (const key of Object.keys(f)) {
-                    const e = f[key]
-                    if (freq === 'daily'
-                    || (freq === 'weekly' && e.days[weekday])
-                    || (freq === 'monthly' && e.week === weeks_diff && e.days[weekday]))
-                        add(freq, type)(e, key)
-                }
-            }
-
-            if (freq)
-                add_sched(freq, 'routine')
-            else
-                for (const f of ['daily', 'weekly', 'monthly'])
-                    add_sched(f, 'routine')
-
-            if (flags.length) {
-                const opt = this.options
-                if (includes(flags, '-g'))
-                    opt.add_goals(freq, add_sched, weekday, sched)
-                else if (includes(flags, '-e'))
-                    opt.add_events(date, options, calendar.events, add(freq, 'events'))
-            }
-
-            const keys = Object.keys(sched).sort((a, b) => sched[a].n - sched[b].n)
-            add_lines(`${keys.map(key => `${sched[key].name} - ${key} for ${sched[key].duration}`).join('\n')}`)
-            
-        },
+        cal: function(args) { },
         cd: function(args) {
             if (!args.length) {
                 ui.path = []
@@ -1693,6 +1609,11 @@ function init(calendar) {
                         wrong_options.push(arg)
                     continue;
                 }
+
+                if (['portfolio', 'resources', 'pages'].includes(arg)) {
+                    directory = arg
+                    continue;
+                }
                     
                 let subs = arg.split('/')
                 while (subs[0] === '..')
@@ -1708,6 +1629,19 @@ function init(calendar) {
                 if (node.shift)
                     return non_node('cd', node.shift)
             }
+
+            if (wrong_options.length)
+                return invalid_option_error('cd', wrong_options)
+
+            if (flags.includes('--help'))
+                return this.help(['cd'])
+
+            if (includes(flags, '-d', '--directories')) {
+                add_line(`Directories: ${Object.keys(directories).join(', ')}`)
+                return true
+            }
+            else if (includes(flags, '-c', '--categories')) {}
+            else if (includes(flags, '-i', '--items'))
         },
         cls: function(args) {
             if (args.length) {
@@ -1765,8 +1699,13 @@ function init(calendar) {
             add_events: () => {}
         },
         cd: {
-            show_dir: () => {},
-            filter_cat: () => {},
+            show_dir: () => {
+                add_line(`Directories: ${Object.keys(directories).join(', ')}`)
+                return true
+            },
+            filter_cat: (path) => {
+
+            },
             filter_itm: () => {}
         },
         cls: { print: () => print_intro(ui.cns) },
