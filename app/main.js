@@ -770,7 +770,6 @@ function init(calendar) {
             Private tutoring`
         }
     }
-    
 
     const education = {
         'web-dev': {
@@ -1457,7 +1456,7 @@ function init(calendar) {
     /* UI --------------------------------------------------------------------------------- */
 
     const ui = {
-        dir: '',
+        dir: 'portfolio',
         path: [],
         host: `${/^localhost:\d+/.test(window.location.host) ? 'http://' : 'https://'}${window.location.host}`,
         cns: document.querySelector('article section'),
@@ -1471,7 +1470,18 @@ function init(calendar) {
     }
     // ui.ipt handled after cmd initialization
 
-    const get_node = (path = ui.path.slice(), node = portfolio, shift) => {
+    const get_dir = () => {
+        switch (ui.dir) {
+            case 'portfolio':
+                return portfolio
+            case 'resources':
+                return resources
+            case 'pages':
+                return pages
+        }
+    }
+
+    const get_node = (path = ui.path.slice(), node = get_dir(), shift) => {
         shift = path.shift()
         if (!path.length) return node
         if (node.hasOwnProperty(shift)) return get_node(path, node[shift])
@@ -1662,15 +1672,16 @@ function init(calendar) {
         cd: function(args) {
             if (!args.length) {
                 ui.path = []
+                ui.dir = 'portfolio'
                 return true
             }
 
             const addr = resources.manual.cd
 
+            let directory = ui.dir
             let path = ui.path.slice()
 
             const flags = []
-            const wrong_input = []
             const wrong_options = []
 
             while (args.length) {
@@ -1683,7 +1694,19 @@ function init(calendar) {
                     continue;
                 }
                     
-                
+                let subs = arg.split('/')
+                while (subs[0] === '..')
+                    if (path.length) {
+                        subs.shift()
+                        path.pop()
+                    }
+                    else
+                        path = []
+
+                path = path.concat(subs)
+                const node = get_node(path)
+                if (node.shift)
+                    return non_node('cd', node.shift)
             }
         },
         cls: function(args) {
