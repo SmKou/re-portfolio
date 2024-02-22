@@ -70,27 +70,42 @@ function cal() {
             '4/4/24': { act: { time: ['19:30', 3.5], attended: false }},
             '3/22/24': { act: { time: ['19:30', 1.5], attended: false }},
             '3/8/24': { act: { time: ['19:00', 1.5], attended: false }},
-            '2/21/24': { therapy: { time: ['10:30', 1.5], attended: false }},
+            '2/21/24': { therapy: { time: ['10:30', 1.5], attended: true }},
             '2/9/24': { act: { time: ['19:30', 1.5], attended: true } },
             '2/6/24': {
                 city_light: { time: ['13:30', 0.5], attended: true },
                 gov: { time: ['14:30', 1.5], attended: true }
             }
         },
-        projects: ['Re-Portfolio', "Jordan's Game"],
         record: {
+            '2/23/24': {
+                daily: {
+                    routine: { morning: false, night: false },
+                    goals: {}
+                },
+                weekly: {
+                    routine: '',
+                    goals: {
+                        golang: {
+                            target: '',
+                            done: false, completed: false
+                        }
+                    }
+                },
+                monthly: ''
+            },
             '2/21/24': {
                 daily: {
                     routine: { morning: '8:20', night: false },
                     goals: {
-                        exercise: { done: false },
+                        exercise: { done: '8:51' },
                         web_development: {
                             target: 'Complete Intro to Computer Science',
-                            done: false, completed: false
+                            done: '16:45', completed: false
                         },
                         dsa: {
                             target: 'practice: arrays | strings',
-                            done: false, completed: false
+                            done: '17:24', completed: false
                         }
                     }
                 },
@@ -99,7 +114,7 @@ function cal() {
                     goals: {
                         nature_of_code: {
                             target: '0. Randomness',
-                            done: false, completed: false
+                            done: '15:23', completed: false
                         }
                     }
                 },
@@ -109,9 +124,12 @@ function cal() {
                     "Jordan's Game": []
                 },
                 tasks: {
-                    'read: coding standards': { done: false, completed: false },
-                    'read: coding patterns': { done: false, completed: false },
-                    'godot rpg tutorial': { done: false, completed: false }
+                    'read: coding standards': 
+                    { done: false, completed: false },
+                    'read: coding patterns': 
+                    { done: false, completed: false },
+                    'godot rpg tutorial': 
+                    { done: false, completed: false }
                 }
             },
             '2/20/24': {
@@ -119,8 +137,8 @@ function cal() {
                     routine: { morning: '13:00', night: '23:00' },
                     goals: {
                         dsa: { 
-                            target: 'read: Array, String, Hash Table, Recursion',
-                            done: '12:56', completed: true
+                            target: 'read: Array, String, Hash Table',
+                            done: '12:56', completed: false
                         },
                         web_development: {
                             target: 'Complete Intro to Computer Science',
