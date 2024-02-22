@@ -55,7 +55,7 @@ function init(calendar) {
                 Cannot use path to change root.
 
                 -d, --directories
-                    show list of categories
+                    show list of directories
 
                 -c, --categories
                     show only categories
@@ -1581,6 +1581,17 @@ function init(calendar) {
         return included
     }
 
+    const filter = (arr, terms) => {
+        const included = []
+        const not_included = []
+        for (const term of terms)
+            if (!arr.includes(term))
+                not_included.push(term)
+            else
+                included.push(term)
+        return { included, not_included }
+    }
+
     /* Terminal --------------------------------------------------------------------------- */
 
     const cmd = {
@@ -1593,55 +1604,48 @@ function init(calendar) {
             }
 
             const addr = resources.manual.cd
-
-            let directory = ui.dir
-            let path = ui.path.slice()
-
             const flags = []
-            const wrong_options = []
-
+            const input = []
             while (args.length) {
                 const arg = args.pop()
-                if (arg.includes('-')) {
-                    if (addr.options.flags.includes(arg))
-                        flags.push(arg)
-                    else
-                        wrong_options.push(arg)
-                    continue;
+                if (arg.includes('-'))
+                    flags.push(arg)
+                else
+                    input.push(arg)
+            }
+
+            let directory = 'portfolio'
+            let path = ui.path.slice()
+            let node = get_node()
+            for (let i = 0; i < input.length; ++i) {
+                if (Object.keys(directories).includes(input[i])) {
+                    directory = input[i]
+                    continue
                 }
 
-                if (['portfolio', 'resources', 'pages'].includes(arg)) {
-                    directory = arg
-                    continue;
-                }
-                    
-                let subs = arg.split('/')
-                while (subs[0] === '..')
-                    if (path.length) {
-                        subs.shift()
+                let subs = input[i].split('/')
+                while (subs[0] === '..') {
+                    subs.shift()
+                    if (path.length)
                         path.pop()
-                    }
-                    else
-                        path = []
-
-                path = path.concat(subs)
-                const node = get_node(path)
+                }
+                
+                node = get_node(path.concat(subs))
                 if (node.shift)
                     return non_node('cd', node.shift)
+
+                path = path.concat(subs)
             }
 
-            if (wrong_options.length)
-                return invalid_option_error('cd', wrong_options)
+            const { included, not_included } = filter(addr.options, flags)
+            if (not_included.length)
+                return invalid_option_error('cd', not_included)
 
-            if (flags.includes('--help'))
-                return this.help(['cd'])
-
-            if (includes(flags, '-d', '--directories')) {
-                add_line(`Directories: ${Object.keys(directories).join(', ')}`)
-                return true
-            }
-            else if (includes(flags, '-c', '--categories')) {}
-            else if (includes(flags, '-i', '--items'))
+            const opt_addr = cmd_options.cd
+            if (includes(included, '-d', '--directories'))
+                return opt_addr.show_dir()
+            else if (includes(included, '-c', '--categories'))
+                return opt_addr.filter_cat(path)
         },
         cls: function(args) {
             if (args.length) {
@@ -1703,10 +1707,18 @@ function init(calendar) {
                 add_line(`Directories: ${Object.keys(directories).join(', ')}`)
                 return true
             },
-            filter_cat: (path) => {
+            filter_cat: (dir) => {
+                if (dir === 'pages')
+                    return custom_error('cd', 'no categories')
 
+                add_line(`Categories in ${dir}: ${Object.keys(directories[dir])}`)
+                return true
             },
-            filter_itm: () => {}
+            filter_itm: (dir, path) => {
+                if (dir === 'pages') {
+                    add_line(`Items in ${Object.keys(directories[dir])}:`)
+                }
+            }
         },
         cls: { print: () => print_intro(ui.cns) },
         date: {
