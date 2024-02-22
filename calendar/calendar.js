@@ -94,17 +94,60 @@ function cal() {
                 },
                 monthly: ''
             },
+            '2/22/24': {
+                daily: {
+                    routine: { morning: false, night: false },
+                    goals: {
+                        walk: { done: false },
+                        exercise: { done: false },
+                        web_development: {
+                            course: 'Complete Intro to Computer Science',
+                            target: 'Quick sort',
+                            done: false, completed: false
+                        },
+                        dsa: {
+                            target: 'read: recursion',
+                            done: false, completed: false
+                        }
+                    }
+                },
+                weekly: {
+                    routine: '',
+                    goals: {
+                        algorithms: {
+                            book: 'Make Your Own Neural Network',
+                            target: 'read',
+                            read: [],
+                            done: false, completed: false
+                        }
+                    }
+                },
+                monthly: '',
+                projects: {
+                    "Re-Portfolio": [],
+                    "Jordan's Game": []
+                },
+                tasks: {
+                    'read: coding standards': 
+                    { done: false, completed: false },
+                    'read: coding patterns': 
+                    { done: false, completed: false },
+                    'godot rpg tutorial': 
+                    { done: false, completed: false }
+                }
+            },
             '2/21/24': {
                 daily: {
-                    routine: { morning: '8:20', night: false },
+                    routine: { morning: '8:20', night: '23:05' },
                     goals: {
                         exercise: { done: '8:51' },
                         web_development: {
-                            target: 'Complete Intro to Computer Science',
-                            done: '16:45', completed: false
+                            course: 'Complete Intro to Computer Science',
+                            target: 'Merge Sort',
+                            done: '16:45', completed: true
                         },
                         dsa: {
-                            target: 'practice: arrays | strings',
+                            target: 'practice: arrays',
                             done: '17:24', completed: false
                         }
                     }
@@ -141,8 +184,9 @@ function cal() {
                             done: '12:56', completed: false
                         },
                         web_development: {
-                            target: 'Complete Intro to Computer Science',
-                            done: '14:11', completed: false
+                            course: 'Complete Intro to Computer Science',
+                            target: 'Insertion sort',
+                            done: '14:11', completed: true
                         }
                     }
                 },
@@ -180,8 +224,9 @@ function cal() {
                     goals: {
                         dsa: { target: 'Array', done: '19:37', completed: false },
                         web_development: {
-                            target: 'Complete Intro to Computer Science',
-                            done: '21:16', completed: false
+                            course: 'Complete Intro to Computer Science',
+                            target: 'Bubble sort',
+                            done: '21:16', completed: true
                         }
                     }
                 },
@@ -228,8 +273,9 @@ function cal() {
                         exercise: { done: false },
                         dsa: { target: 'Array', done: '21:03', completed: false },
                         web_development: {
-                            target: 'Complete Intro to Computer Science',
-                            done: '20:11', completed: false
+                            course: 'Complete Intro to Computer Science',
+                            target: 'Introduction',
+                            done: '20:11', completed: true
                         }
                     }
                 },
