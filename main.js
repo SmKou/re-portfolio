@@ -53,20 +53,11 @@ function init() {
                 Items equate to files in standard file system and terminal.
 
                 Cannot use path to change root.
-
-                -d, --directories
-                    show list of directories
-
-                -c, --categories
-                    show only categories
-
-                -i, --items
-                    show only items
                 
                 --help
                     display command information`
             },
-            options: ['-d', '--directories', '-c', '--categories', '-i', '--items', '--help'],
+            options: ['--help'],
             help: 'cd: cd [path]',
             whatis: 'Change working path.'
         },
@@ -617,6 +608,17 @@ function init() {
                 ref: ['https://www.paper-hammer.com'],
                 referral: ['https://www.linkedin.com/in/edmarquand/']
             }
+        }
+    }
+
+    const media = {
+        linkedin: {
+            title: 'LinkedIn',
+            href: 'https://www.linkedin.com/in/'
+        },
+        github: {
+            title: 'Github',
+            href: 'https://github.com/'
         }
     }
 
@@ -1687,10 +1689,36 @@ function init() {
         return { included, not_included }
     }
 
+    const filter_input_type = (args) => {
+        const flags = []
+        const values = []
+        while (args.length) {
+            const arg = args.pop()
+            if (arg.includes('-'))
+                flags.push(arg)
+            else
+                values.push(arg)
+        }
+        return { flags, values }
+    }
+
+    const init_no_input = (args, command) => {
+        const { flags, values } = filter_input_type(args)
+        if (values.length)
+            return invalid_option_error(command, values)
+
+        const { included, not_included } = filter(resources.manual[command].options, flags)
+
+        if (not_included.length)
+            return unknown_option_error(command, not_included)
+
+        return included
+    }
+
     /* Terminal --------------------------------------------------------------------------- */
 
     const cmd = {
-        cal: function(args) { },
+        cal: function(args) {},
         cd: function(args) {
             if (!args.length) {
                 ui.path = []
@@ -1699,93 +1727,133 @@ function init() {
             }
 
             const addr = resources.manual.cd
-            const flags = []
-            const input = []
-            while (args.length) {
-                const arg = args.pop()
-                if (arg.includes('-'))
-                    flags.push(arg)
-                else
-                    input.push(arg)
+            const { flags, values } = filter_input_type(args)
+
+            if (flags.length) {
+                const { included, not_included } = filter(addr.options, flags)
+                if (not_included.length)
+                    return invalid_option_error('cd', not_included)
+
+                if (included.length)
+                    return this.help(['cd'])
             }
 
             let directory = 'portfolio'
             let path = ui.path.slice()
             let node = get_node()
-            for (let i = 0; i < input.length; ++i) {
-                if (Object.keys(directories).includes(input[i])) {
-                    directory = input[i]
-                    continue
+            if (values.length)
+                if (values.length > 1)
+                    [directory, path] = values
+                else {
+                    const ipt = values[0]
+                    if (Object.keys(directories).includes(ipt))
+                        directory = values[i]
+                    else {
+                        let subs = values[i].split('/')
+                        while (subs[0] === '..') {
+                            subs.shift()
+                            if (path.length)
+                                path.pop()
+                        }
+                        
+                        node = get_node(path.concat(subs))
+                        if (node.shift)
+                            return non_node('cd', node.shift)
+        
+                        path = path.concat(subs)
+                    }
                 }
 
-                let subs = input[i].split('/')
-                while (subs[0] === '..') {
-                    subs.shift()
-                    if (path.length)
-                        path.pop()
-                }
-                
-                node = get_node(path.concat(subs))
-                if (node.shift)
-                    return non_node('cd', node.shift)
-
-                path = path.concat(subs)
-            }
-
-            const { included, not_included } = filter(addr.options, flags)
-            if (not_included.length)
-                return invalid_option_error('cd', not_included)
-
-            const opt_addr = cmd_options.cd
-            if (includes(included, '-d', '--directories'))
-                return opt_addr.show_dir()
-            else if (includes(included, '-c', '--categories'))
-                return opt_addr.filter_cat(path)
+            ui.dir = directory
+            ui.path = path
         },
         cls: function(args) {
             if (args.length) {
-                const addr = resources.manual.cls
-
-                const flags = []
-                const wrong_input = []
-                const wrong_options = []
-
-                while (args.length) {
-                    const arg = args.pop()
-                    if (arg.includes('-'))
-                        if (addr.options.includes(arg))
-                            flags.push(arg)
-                        else
-                            wrong_options.push(arg)
-                    else
-                        wrong_input.push(arg)
-                }
-
-                if (wrong_input.length) return invalid_option_error('cls', wrong_input)
-                if (wrong_options.length) return unknown_option_error('cls', wrong_options)
-
-                if (flags.includes('--help'))
-                    return cmd.help(['cls'])
-                else if (includes(flags, '-i', '--intro'))
+                const included = init_no_input(args, 'cls')
+                if (included.includes('--help'))
+                    return this.help(['cls'])
+                else if (includes(included, '-i', '--intro'))
                     cmd_options.cls.print()
             }
             
             ui.cns.innerHTML = ''
             ui.aside.tog.click()
         },
-        clear: function(args) {},
+        clear: function(args) {
+            if (args.length) {
+                const included = init_no_input(args, 'clear')
+                if (included.length)
+                    return this.help(['clear'])
+            }
+
+            ui.cns.innerHTML = ''
+        },
         date: function(args) {},
         dir: function(args) {},
         echo: function(args) {}, 
         find: function(args) {},
         help: function(args) {}, 
-        hostname: function(args) {},
+        hostname: function(args) {
+            if (args.length) {
+                const included = init_no_input(args, 'hostname')
+                if (included.length)
+                    return this.help(['hostname'])
+            }
+
+            add_line(ui.host)
+        },
         ls: function(args) {},
         lynx: function(args) {},
         man: function(args) {},
         more: function(args) {},
-        msg: function(args) {},
-        pwd: function(args) {},
+        msg: function(args) {
+            const opt_addr = cmd_options.msg
+
+            const present = {}
+
+            if (args.length) {
+                const included = init_no_input(args, 'msg')
+                if (included.length)
+                    if (included.includes('--help'))
+                        return this.help(['msg'])
+                    else if (includes(included, '-l', '--linkedin'))
+                        present.linkedin =  `${media.linkedin.href}${opt_addr.linkedin()}/`
+                    else if (includes(included, '-g', '--github'))
+                        present.github = `${media.github.href}${opt_addr.github()}`
+                else {
+                    const m = Object.keys(opt_addr)
+                    for (const key of m)
+                        present[key] = `${media[key].href}${opt_addr[key]()}/`
+                }
+            }
+
+            const p = document.createElement('p')
+            const keys = Object.keys(present)
+            for (let i = 0; i < keys.length; ++i) {
+                const a = document.createElement('a')
+                a.href = present[keys[i]]
+                a.append(document.createTextNode(keys[i]))
+                p.append(a)
+
+                if (i < keys.length - 1)
+                    p.append(document.createTextNode(', '))
+            }
+            ui.cns.append(p)
+        },
+        pwd: function(args) {
+            let path = ui.path.slice()
+            if (args.length) {
+                const included = init_no_input(args, 'pwd')
+                if (included.includes('--help'))
+                    return this.help(['pwd'])
+                else if (includes(included, '-r', '--root'))
+                    path = `${ui.dir}:/${path.join('/')}`
+            }
+            else
+                path = path.join('/')
+
+            add_line(path)
+        },
         stat: function(args) {},
         tree: function(args) {},
         whatis: function(args) {},
@@ -1796,24 +1864,6 @@ function init() {
         cal: {
             add_goals: () => {},
             add_events: () => {}
-        },
-        cd: {
-            show_dir: () => {
-                add_line(`Directories: ${Object.keys(directories).join(', ')}`)
-                return true
-            },
-            filter_cat: (dir) => {
-                if (dir === 'pages')
-                    return custom_error('cd', 'no categories')
-
-                add_line(`Categories in ${dir}: ${Object.keys(directories[dir])}`)
-                return true
-            },
-            filter_itm: (dir, path) => {
-                if (dir === 'pages') {
-                    add_line(`Items in ${Object.keys(directories[dir])}:`)
-                }
-            }
         },
         cls: { print: () => print_intro(ui.cns) },
         date: {
@@ -1849,11 +1899,8 @@ function init() {
             get_messages: () => {}
         },
         msg: {
-            filter_linkedin: () => {},
-            filter_github: () => {}
-        },
-        pwd: {
-            add_root: () => {}
+            linkedin: () => 'koudblue',
+            github: () => 'SmKou'
         },
         stat: {
             filter_category: () => {},
@@ -1907,4 +1954,4 @@ function init() {
     })
 }
 
-init(cal())
+init()
