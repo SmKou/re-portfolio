@@ -38,10 +38,10 @@ Art
   - canvas feature
 - Upload recent works (ongoing)
 
-My Calendar
+Calendar
 - auto-population
-- Update recent events (ongoing)
-- Record (ongoing)
+- Sample events
+- Input
 
 Documentation
 

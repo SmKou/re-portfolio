@@ -13,7 +13,7 @@ Use of lower camel case:
 - api
 */
 
-function init(calendar) {
+function init() {
     const manual = {
         cal: {
             page: {
@@ -1428,6 +1428,101 @@ function init(calendar) {
             status: false,
             comment: `Based on Dungeons & Dragons
             Two narratives: third-person (Seraph) and first-person (Kibakhan)`
+        }
+    }
+
+    const calendar = {
+        daily: {
+            routine: { morning: '9:00', night: '22:00' },
+            goals: {
+                walk: { time: 1 },
+                exercise: { time: 0.5, comment: 'optional' },
+                dsa: {
+                    title: 'Data Structures and Algorithms',
+                    time: 2,
+                    source: {
+                        title: 'Coding Interview study plan',
+                        href: 'https://www.techinterviewhandbook.org/coding-interview-study-plan/'
+                    }
+                },
+                web_development: {
+                    title: 'Web Development',
+                    time: 1,
+                    source: sources.fm
+                }
+            }
+        },
+        weekly: {
+            routine: {
+                therapy: {
+                    title: 'C-PTSD therapy',
+                    time: ['10:30', 1.5],
+                    days: [0, 1, 0, 0, 0, 0, 0]
+                },
+                isg: {
+                    title: 'Indie Support Group',
+                    time: ['13:00', 5.5],
+                    days: [0, 0, 0, 0, 0, 0, 1]
+                }
+            },
+            goals: {
+                algorithms: {
+                    title: 'AI & Algorithms',
+                    time: 1,
+                    days: [1, 1, 0, 0, 1, 0, 0]
+                },
+                go: {
+                    title: 'Go',
+                    time: 1,
+                    days: [1, 0, 1, 0, 0, 1, 0]
+                },
+                nature_of_code: {
+                    title: 'Nature of Code',
+                    time: 1,
+                    days: [1, 0, 0, 1, 0, 0, 1]
+                },
+                museum_visit: {
+                    title: 'Museum Visit',
+                    time: 6,
+                    days: [1, 0, 0, 0, 0, 0, 0],
+                    week: [
+                        'Frye Art Museum',
+                        'Wing Luke Museum',
+                        'Henry Art Gallery',
+                        'National Nordic Museum'
+                    ]
+                }
+            }
+        },
+        monthly: {
+            routine: {
+                seattlejs: {
+                    title: 'Seattle JS',
+                    time: ['17:00', 3],
+                    days: [0, 0, 0, 1, 0, 0, 0],
+                    week: 1
+                },
+                code_katas: {
+                    title: 'Code Katas',
+                    time: ['17:30', 2.5],
+                    days: [0, 0, 1, 0, 0, 0, 0],
+                    week: 2
+                },
+                seattle_indies_social: {
+                    title: 'Seattle Indies Social',
+                    time: ['20:30', 1.5],
+                    days: [0, 0, 1, 0, 0, 0, 0],
+                    week: 2
+                }
+            }
+        },
+        projects: ['Re-Portfolio', "Jordan's Game"],
+        events: {
+            '2/9/24': {
+                location: 'ACT Theatre',
+                show: 'Case for Existence of God',
+                time: ['19:30', 1.5]
+            }
         }
     }
 
