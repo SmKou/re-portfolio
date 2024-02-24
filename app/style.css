@@ -121,31 +121,6 @@ aside button {
     transform: rotate(-45deg) translate(0.4rem);
 }
 
-div.intro {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 98%;
-    max-height: 20rem;
-    padding: 1.2rem;
-    border-top: 0.1rem solid var(--hacker-green);
-    font-size: 1.3rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow-y: scroll;
-}
-
-div.intro p { 
-    width: 100%;
-    margin: 0;
-    margin-bottom: 0.8rem;
-}
-
-div.intro a,
-div.intro a:visited { color: var(--uni-mid) }
-div.intro a:hover { color: var(--uni-white) }
-
 @media (max-width: 650px) {
     main { position: relative }
     aside.expanded {
@@ -160,17 +135,35 @@ div.intro a:hover { color: var(--uni-white) }
 footer {
     width: 100%;
     max-width: 84rem;
+    padding: 0 2rem;
     border-top: 0.1rem solid var(--hacker-green);
     background: var(--uni-black);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-footer p { text-align: center }
+footer div { width: 100% }
 
-footer img { margin: 0 0.6rem }
-footer img:first-of-type { margin-left: 1.2rem }
+.intro button {
+    padding: 0;
+    border: none;
+    outline: none;
+    color: var(--uni-mid);
+    background: none;
+    font-family: 'Cutive Mono';
+    font-size: 1.6rem;
+}
+.intro button:hover { color: var(--uni-light) }
 
-footer a { color: var(--hacker-green) }
-footer a:hover { text-decoration: underline }
+.intro a { color: var(--uni-mid) }
+.intro a:hover { color: var(--uni-light) }
+
+.copyright p { text-align: center }
+
+.copyright img { margin: 0 0.6rem }
+.copyright img:first-of-type { margin-left: 1.2rem }
+
+.copyright a { color: var(--hacker-green) }
+.copyright a:hover { text-decoration: underline }

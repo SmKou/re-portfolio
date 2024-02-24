@@ -67,14 +67,11 @@ function init() {
                 synopsis: [ 'cls' ],
                 description: `Clear interface: terminal + aside
                 Collapse aside, hiding command list and introduction.
-
-                -i, --intro
-                    display intro in terminal
                 
                 --help
                     display command information`
             },
-            options: ['-i', '--intro', '--help'],
+            options: ['--help'],
             help: 'cls: cls',
             whatis: 'Clear the interface.'
         },
@@ -338,6 +335,22 @@ function init() {
             options: ['-l', '--linkedin', '-g', '--github', '--help'],
             help: 'msg: msg',
             whatis: 'View contact information.'
+        },
+        print: {
+            page: {
+                name: 'print',
+                synopsis: [ 'print' ],
+                description: `View a pdf resume.
+                
+                -d, --download
+                    download the pdf resume
+                    
+                --help
+                    display command information`
+            },
+            options: ['-d', '--download', '--help'],
+            help: 'print: print',
+            whatis: 'View a pdf resume.'
         },
         pwd: {
             page: {
@@ -1528,7 +1541,7 @@ function init() {
         }
     }
 
-    const resources = { manual, sources, calendar }
+    const resources = { manual, sources }
     const pages = {
         art: {
             title: 'Artworks',
@@ -1622,17 +1635,6 @@ function init() {
         add_lines(`${manual[command].help}
         ${manual[command].whatis}`)
     }))
-
-    const print_intro = (disp = ui.aside.e) => {
-        const div = document.createElement('div')
-        div.setAttribute('class', 'intro')
-        div.innerHTML = `<p>This is the Sm Kou portfolio website, where every page has a unique design and purpose. I am introducing it here for those who do not have the time to explore or navigate a cmd interface. But just to note, if you don't have the time for this interface, you probably don't have enough time for this portfolio.</p>
-        <p><a href="versions/">Versions</a>: An old TV-styled preview of portfolio pages.</p>
-        <p><a href="versions/v0/">The Profile</a><br><a href="versions/v1/">The Magazine</a><br><a href="versions/v2/">The Design Index</a><br><a href="versions/v3/">Slideshows</a><br><a href="versions/v4/">People in Pages</a><br><a href="versions/v5/">Epicodus</a></p>
-        <p>There are also experimental pages, where I have developed my own version of a tool or interface: <a href="art/">Art</a> featuring rearranging image mosaics, and <a href="my-calendar/">My Calendar</a></p>`
-        disp.append(div)
-    }
-    print_intro()
 
     /* Errors ----------------------------------------------------------------------------- */
 
@@ -1772,8 +1774,6 @@ function init() {
                 const included = init_no_input(args, 'cls')
                 if (included.includes('--help'))
                     return this.help(['cls'])
-                else if (includes(included, '-i', '--intro'))
-                    cmd_options.cls.print()
             }
             
             ui.cns.innerHTML = ''
@@ -1840,6 +1840,7 @@ function init() {
             }
             ui.cns.append(p)
         },
+        print: function(args) {},
         pwd: function(args) {
             let path = ui.path.slice()
             if (args.length) {
@@ -1865,7 +1866,6 @@ function init() {
             add_goals: () => {},
             add_events: () => {}
         },
-        cls: { print: () => print_intro(ui.cns) },
         date: {
             format_short: () => {},
             format_long: () => {},
