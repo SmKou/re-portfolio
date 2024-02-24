@@ -1952,6 +1952,22 @@ function init() {
         if (e.key === 'ArrowUp' || e.key === 'ArrowDown')
             ui.ipt.value = user_input.vals[user_input.i]
     })
+
+    const intro = {
+        exp_btn: document.getElementById('experience-btn'),
+        edu_btn: document.getElementById('education-btn'),
+        proj_btn: document.getElementById('projects-btn'),
+        man_btn: document.getElementById('manual-btn'),
+        src_btn: document.getElementById('sources-btn'),
+        print_btn: document.getElementById('print-btn')
+    }
+
+    intro.exp_btn.addEventListener('click', () => {})
+    intro.edu_btn.addEventListener('click', () => {})
+    intro.proj_btn.addEventListener('click', () => {})
+    intro.man_btn.addEventListener('click', () => {})
+    intro.src_btn.addEventListener('click', () => {})
+    intro.print_btn.addEventListener('click', () => {})
 }
 
 init()
