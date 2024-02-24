@@ -1639,7 +1639,7 @@ function init() {
     /* Errors ----------------------------------------------------------------------------- */
 
     const print_error = err => {
-        add_line(err)
+        add_lines(err)
         return false
     }
     const custom_error = (term, message) => print_error(`error: ${term}: ${message}`)
@@ -1845,6 +1845,7 @@ function init() {
             let path = ui.path.slice()
             if (args.length) {
                 const included = init_no_input(args, 'pwd')
+                if (!included) return;
                 if (included.includes('--help'))
                     return this.help(['pwd'])
                 else if (includes(included, '-r', '--root'))
@@ -1853,7 +1854,10 @@ function init() {
             else
                 path = path.join('/')
 
-            add_line(path)
+            if (path === '')
+                add_line('/')
+            else
+                add_line(path)
         },
         stat: function(args) {},
         tree: function(args) {},
@@ -1934,7 +1938,7 @@ function init() {
         if (e.key === 'Enter') {
             add_line(e.target.value)
             user_input.vals.push(e.target.value)
-            user_input.i = input.vals.length - 1
+            user_input.i = user_input.vals.length - 1
     
             const value = e.target.value.slice(2)
             ui.ipt.value = '$ '
@@ -1944,15 +1948,16 @@ function init() {
                 exec(value)
             add_path()
         }
-        else if (e.key === 'ArrowUp' && input.i > 0) 
+        else if (e.key === 'ArrowUp' && user_input.i > 0) 
             user_input.i--
-        else if (e.key === 'ArrowDown' && input.i < input.vals.length - 1) 
+        else if (e.key === 'ArrowDown' && user_input.i < input.vals.length - 1) 
             user_input.i++
         
         if (e.key === 'ArrowUp' || e.key === 'ArrowDown')
             ui.ipt.value = user_input.vals[user_input.i]
     })
 
+    /*
     const intro = {
         exp_btn: document.getElementById('experience-btn'),
         edu_btn: document.getElementById('education-btn'),
@@ -1968,6 +1973,7 @@ function init() {
     intro.man_btn.addEventListener('click', () => {})
     intro.src_btn.addEventListener('click', () => {})
     intro.print_btn.addEventListener('click', () => {})
+    */
 }
 
 init()
