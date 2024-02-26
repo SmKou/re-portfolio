@@ -201,7 +201,9 @@ function init() {
                     show aside with commands list
 
                 --help
-                    display command information`
+                    display command information
+                    
+                The help flag can be used on any command, but will ignore all other input when used. Even if the other input is valid, --help takes precedence after error checking.`
             },
             options: ['-o', '--open-aside', '--help'],
             help: 'help: help <command>',
