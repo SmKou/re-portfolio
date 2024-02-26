@@ -1899,7 +1899,8 @@ function init() {
             if (args.length) {
                 const included = init_no_input(args, 'msg')
                 if (!included)
-                    return;
+                    return
+
                 if (included.length)
                     if (included.includes('--help'))
                         return this.help(['msg'])
@@ -1933,7 +1934,8 @@ function init() {
             if (args.length) {
                 const included = init_no_input(args, 'pwd')
                 if (!included) 
-                    return;
+                    return
+
                 if (included.includes('--help'))
                     return this.help(['pwd'])
                 else if (includes(included, '-r', '--root'))
@@ -1949,7 +1951,41 @@ function init() {
         },
         stat: function(args) {},
         tree: function(args) {},
-        whatis: function(args) {},
+        whatis: function(args) {
+            const { flags, values } = filter_input_type(args)
+            if (!values.length)
+                return custom_error('whatis', 'command required')
+            if (values.length > 1)
+                return custom_error('whatis', 'only 1 arg')
+
+            const command = values[0]
+            if (!Object.keys(resources.manual).includes(command))
+                return command_error(command)
+
+            const { included, not_included } = filter(resources.manual.whatis.options, flags)
+
+            if (not_included.length)
+                return unknown_option_error('whatis', not_included)
+
+            if (!included.length) {
+                add_line(resources.manual[command].whatis)
+                return true
+            }
+
+            const page = resources.manual[command].page
+            if (included.includes('--help'))
+                return this.help(['whatis'])
+            else if (includes(included, '-n', '--name-only'))
+                add_line(page.name)
+            else if (includes(included, '-s', '--synopsis-only'))
+                add_lines(page.synopsis.join('\n'))
+            else if (includes(included, '-d', '--description-only'))
+                add_lines(page.description)
+            else if (includes(included, '-m', '--manual')) {
+                const data = `${page.name}\n${page.synopsis.join('\n')}\n${page.description}`
+                add_lines(data)
+            }
+        },
         whoami: function(args) {}
     }
 
