@@ -1564,7 +1564,7 @@ function init() {
     const portfolio = { versions, experience, education, projects }
     const directories = { portfolio, resources, pages }
 
-    /* UI --------------------------------------------------------------------------------- */
+    /* UI ------------------------------------------- */
 
     const ui = {
         dir: 'portfolio',
@@ -1636,7 +1636,7 @@ function init() {
         ${manual[command].whatis}`)
     }))
 
-    /* Errors ----------------------------------------------------------------------------- */
+    /* Errors --------------------------------------- */
 
     const print_error = err => {
         add_lines(err)
@@ -1657,7 +1657,7 @@ function init() {
     }).join(', ')}
     Try '${term} --help' for more information.`)
 
-    /* Helpers ---------------------------------------------------------------------------- */
+    /* Helpers -------------------------------------- */
 
     const flatten = (arr, flat = []) => {
         if (!arr.length) return flat
@@ -1717,7 +1717,7 @@ function init() {
         return included
     }
 
-    /* Terminal --------------------------------------------------------------------------- */
+    /* Terminal ------------------------------------- */
 
     const cmd = {
         cal: function(args) {},
@@ -1772,8 +1772,9 @@ function init() {
         cls: function(args) {
             if (args.length) {
                 const included = init_no_input(args, 'cls')
-                if (included.includes('--help'))
-                    return this.help(['cls'])
+                if (!included)
+                    return;
+                return this.help(['cls'])
             }
             
             ui.cns.innerHTML = ''
@@ -1782,8 +1783,9 @@ function init() {
         clear: function(args) {
             if (args.length) {
                 const included = init_no_input(args, 'clear')
-                if (included.length)
-                    return this.help(['clear'])
+                if (!included)
+                    return;
+                return this.help(['clear'])
             }
 
             ui.cns.innerHTML = ''
@@ -1792,17 +1794,100 @@ function init() {
         dir: function(args) {},
         echo: function(args) {}, 
         find: function(args) {},
-        help: function(args) {}, 
+        help: function(args) {
+            const { flags, values } = filter_input_type(args)
+            if (!values.length) {
+                add_line(Object.keys(resources.manual).join(' '))
+                return true
+            }
+
+            const wrong = []
+            for (const val of values)
+                if (!resources.manual.hasOwnProperty(val))
+                    wrong.push(val)
+
+            if (wrong.length)
+                return invalid_option_error('help', wrong)
+
+            const { included, not_included } = filter(resources.manual.help.options, flags)
+            if (not_included.length)
+                return unknown_option_error('help', not_included)
+            if (includes(included, '-o', '--open-aside'))
+                if (!ui.aside.state)
+                    ui.aside.tog.click()
+            else if (included.includes('--help'))
+                return this.help(['help'])
+
+            add_lines(`${resources.manual[values[0]].help}\n${resources.manual[values[0]].whatis}`)
+        }, 
         hostname: function(args) {
             if (args.length) {
                 const included = init_no_input(args, 'hostname')
-                if (included.length)
-                    return this.help(['hostname'])
+                if (!included)
+                    return;
+                return this.help(['hostname'])
             }
 
             add_line(ui.host)
         },
-        ls: function(args) {},
+        ls: function(args) {
+            const addr = resources.manual.ls
+
+            let path = ui.path.slice()
+            let dir = ui.dir
+            if (args.length) {
+                const { flags, values } = filter_input_type(args)
+
+                const wrong = []
+                const dirs = Object.keys(directories)
+                if (includes(values, dirs)) {
+                    for (let i = 0; i < values.length; ++i)
+                        if (dirs.includes(values[i])) {
+                            dir = values[i]
+                            values.splice(i, 1)
+                        }
+                }
+
+                
+                    
+                for (const val of values) {
+                    const subs = val.split('/')
+                    const node = get_node(path.concat(subs))
+                    if (!node.shift)
+                        path = path.concat(subs)
+                    else
+                        if (Object.keys(directories).includes(val))
+                            dir = val
+                        else
+                            wrong.push(val)
+                }
+                if (wrong.length)
+                    return invalid_option_error('ls', wrong)
+
+                const { included, not_included } = filter(addr.options, flags)
+                if (not_included.length)
+                    return unknown_option_error('ls', not_included)
+
+                if (included.length)
+                    return this.help(['ls'])
+            }
+
+            if (ui.dir !== dir)
+                ui.dir = dir
+            const node = get_node(path)
+
+            if (typeof node !== 'object')
+                return custom_error('ls', 'cannot list value(s)')
+
+            const props = Object.keys(node)
+            const items = []
+            for (const prop of props)
+                if (typeof node[prop] === 'object')
+                    items.push(prop + '/')
+                else
+                    items.push(prop)
+            add_line()
+        },
         lynx: function(args) {},
         man: function(args) {},
         more: function(args) {},
@@ -1813,6 +1898,8 @@ function init() {
 
             if (args.length) {
                 const included = init_no_input(args, 'msg')
+                if (!included)
+                    return;
                 if (included.length)
                     if (included.includes('--help'))
                         return this.help(['msg'])
@@ -1845,7 +1932,8 @@ function init() {
             let path = ui.path.slice()
             if (args.length) {
                 const included = init_no_input(args, 'pwd')
-                if (!included) return;
+                if (!included) 
+                    return;
                 if (included.includes('--help'))
                     return this.help(['pwd'])
                 else if (includes(included, '-r', '--root'))
