@@ -1798,10 +1798,6 @@ function init() {
         find: function(args) {},
         help: function(args) {
             const { flags, values } = filter_input_type(args)
-            if (!values.length) {
-                add_line(Object.keys(resources.manual).join(' '))
-                return true
-            }
 
             const wrong = []
             for (const val of values)
@@ -1819,6 +1815,11 @@ function init() {
                     ui.aside.tog.click()
             else if (included.includes('--help'))
                 return this.help(['help'])
+
+            if (!values.length) {
+                add_line(Object.keys(resources.manual).join(' '))
+                return true
+            }
 
             add_lines(`${resources.manual[values[0]].help}\n${resources.manual[values[0]].whatis}`)
         }, 
@@ -1988,7 +1989,19 @@ function init() {
                 add_lines(data)
             }
         },
-        whoami: function(args) {}
+        whoami: function(args) {
+            if (args.length) {
+                const included = init_no_input(args, 'whoami')
+                if (!included)
+                    return;
+                if (included.includes('--help'))
+                    return this.help(['whoami'])
+                else if (includes(included, '-a', '--all'))
+                    add_line('Stella Marie: Sm Kou, Sm Joker, Kou.d Blue')
+            }
+            else
+                add_line('Stella Marie')
+        }
     }
 
     const cmd_options = {
