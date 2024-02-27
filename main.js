@@ -228,6 +228,7 @@ function init() {
                 synopsis: [ 
                     'ls', 
                     'ls PATH',
+                    'ls DIRECTORY',
                     'ls DIRECTORY PATH'
                 ],
                 description: `List categories, items, and properties.
@@ -240,7 +241,7 @@ function init() {
                     display command information`
             },
             options: ['--help'],
-            help: 'ls: ls <path>',
+            help: 'ls: ls <dir> <path>',
             whatis: 'List categories, items and properties.'
         },
         lynx: {
@@ -1583,8 +1584,8 @@ function init() {
     }
     // ui.ipt handled after cmd initialization
 
-    const get_dir = () => {
-        switch (ui.dir) {
+    const get_dir = (dir = ui.dir) => {
+        switch (dir) {
             case 'portfolio':
                 return portfolio
             case 'resources':
@@ -1594,11 +1595,15 @@ function init() {
         }
     }
 
-    const get_node = (path = ui.path.slice(), node = get_dir(), shift) => {
+    const get_node = (path = ui.path.slice(), dir = 'portfolio', node = get_dir(dir), shift) => {
+        if (!path.length) 
+            return node
+
         shift = path.shift()
-        if (!path.length) return node
-        if (node.hasOwnProperty(shift)) return get_node(path, node[shift])
-        else return { shift }
+        if (node.hasOwnProperty(shift)) 
+            return get_node(path, dir, node[shift])
+        else 
+            return { shift }
     }
 
     const add_line = (output, bash = false) => {
@@ -1651,7 +1656,7 @@ function init() {
     const node_error = (term, wrong) => print_error(`bash: ${term}: ${wrong}: no such item or directory`)
 
     const invalid_option_error = (term, wrong) => print_error(`bash: ${term}: ${wrong.join(', ')}: invalid option
-    ${term}: usage: ${data.resources.manual[term].help}`)
+    ${term}: usage: ${resources.manual[term].help}`)
 
     const unknown_option_error = (term, wrong) => print_error(`${term}: unknown option -- ${wrong.map(err => {
         err = err.split('-')
@@ -1698,10 +1703,10 @@ function init() {
         const values = []
         while (args.length) {
             const arg = args.pop()
-            if (arg.includes('-'))
-                flags.push(arg)
-            else
+            if (arg.includes('/') || !arg.includes('-'))
                 values.push(arg)
+            else
+                flags.push(arg)
         }
         return { flags, values }
     }
@@ -1723,54 +1728,7 @@ function init() {
 
     const cmd = {
         cal: function(args) {},
-        cd: function(args) {
-            if (!args.length) {
-                ui.path = []
-                ui.dir = 'portfolio'
-                return true
-            }
-
-            const addr = resources.manual.cd
-            const { flags, values } = filter_input_type(args)
-
-            if (flags.length) {
-                const { included, not_included } = filter(addr.options, flags)
-                if (not_included.length)
-                    return invalid_option_error('cd', not_included)
-
-                if (included.length)
-                    return this.help(['cd'])
-            }
-
-            let directory = 'portfolio'
-            let path = ui.path.slice()
-            let node = get_node()
-            if (values.length)
-                if (values.length > 1)
-                    [directory, path] = values
-                else {
-                    const ipt = values[0]
-                    if (Object.keys(directories).includes(ipt))
-                        directory = values[i]
-                    else {
-                        let subs = values[i].split('/')
-                        while (subs[0] === '..') {
-                            subs.shift()
-                            if (path.length)
-                                path.pop()
-                        }
-                        
-                        node = get_node(path.concat(subs))
-                        if (node.shift)
-                            return non_node('cd', node.shift)
-        
-                        path = path.concat(subs)
-                    }
-                }
-
-            ui.dir = directory
-            ui.path = path
-        },
+        cd: function(args) {},
         cls: function(args) {
             if (args.length) {
                 const included = init_no_input(args, 'cls')
@@ -1797,6 +1755,7 @@ function init() {
         echo: function(args) {}, 
         find: function(args) {},
         help: function(args) {
+            const addr = resources.manual.help
             const { flags, values } = filter_input_type(args)
 
             const wrong = []
@@ -1807,7 +1766,7 @@ function init() {
             if (wrong.length)
                 return invalid_option_error('help', wrong)
 
-            const { included, not_included } = filter(resources.manual.help.options, flags)
+            const { included, not_included } = filter(addr.options, flags)
             if (not_included.length)
                 return unknown_option_error('help', not_included)
             if (includes(included, '-o', '--open-aside'))
@@ -1835,61 +1794,55 @@ function init() {
         },
         ls: function(args) {
             const addr = resources.manual.ls
+            const { flags, values } = filter_input_type(args)
 
             let path = ui.path.slice()
             let dir = ui.dir
-            if (args.length) {
-                const { flags, values } = filter_input_type(args)
+            if (values.length) {
+                if (includes(Object.keys(directories), values)) {
+                    const dirs = Object.keys(directories)
+                    const i = values.findIndex(val => dirs.includes(val))
+                    if (i !== -1) {
+                        dir = values[i]
+                        path = []
+                        values.splice(i, 1)
+                    }
+                }
 
                 const wrong = []
-                const dirs = Object.keys(directories)
-                if (includes(values, dirs)) {
-                    for (let i = 0; i < values.length; ++i)
-                        if (dirs.includes(values[i])) {
-                            dir = values[i]
-                            values.splice(i, 1)
-                        }
-                }
-
-                
-                    
-                for (const val of values) {
-                    const subs = val.split('/')
-                    const node = get_node(path.concat(subs))
-                    if (!node.shift)
+                for (let i = 0; i < values.length; ++i) {
+                    const subs = values[i].split('/')
+                    const node = get_node(path.concat(subs), dir)
+                    if (Array.isArray(node))
                         path = path.concat(subs)
                     else
-                        if (Object.keys(directories).includes(val))
-                            dir = val
+                        if (node.shift)
+                            wrong.push(values[i])
                         else
-                            wrong.push(val)
+                            path = path.concat(subs)
                 }
+
                 if (wrong.length)
                     return invalid_option_error('ls', wrong)
-
-                const { included, not_included } = filter(addr.options, flags)
-                if (not_included.length)
-                    return unknown_option_error('ls', not_included)
-
-                if (included.length)
-                    return this.help(['ls'])
             }
 
-            if (ui.dir !== dir)
-                ui.dir = dir
-            const node = get_node(path)
+            const { included, not_included } = filter(addr.options, flags)
 
+            if (not_included.length)
+                return unknown_option_error('ls', not_included)
+
+            if (included.length)
+                return this.help(['ls'])
+
+            const node = get_node(path, dir)
             if (typeof node !== 'object')
-                return custom_error('ls', 'cannot list value(s)')
+                return custom_error('ls', 'cannot list a value')
 
             const props = Object.keys(node)
-            const items = []
-            for (const prop of props)
-                if (typeof node[prop] === 'object')
-                    items.push(prop + '/')
-                else
-                    items.push(prop)
-            add_line()
+            for (let i = 0; i < props.length; ++i)
+                if (typeof node[props] === 'object')
+                    props[i] += '/'
+            add_line(props.join(' '))
         },
         lynx: function(args) {},
         man: function(args) {},
@@ -2052,15 +2005,6 @@ function init() {
         },
         tree: {
             get_items: () => {}
-        },
-        whatis: {
-            use_manual: () => {},
-            filter_name: () => {},
-            filter_synopsis: () => {},
-            filter_description: () => {}
-        },
-        whoami: {
-            add_aliases: () => {}
         }
     }
 
