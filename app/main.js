@@ -1728,7 +1728,51 @@ function init() {
 
     const cmd = {
         cal: function(args) {},
-        cd: function(args) {},
+        cd: function(args) {
+            const addr = resources.manual.cd
+            const { flags, values } = filter_input_type(args)
+
+            let path = ui.path.slice()
+            let dir = ui.dir
+            if (values.length) {
+                if (includes(Object.keys(directories), values)) {
+                    const dirs = Object.keys(directories)
+                    const i = values.findIndex(val => dirs.includes(val))
+                    if (i !== -1) {
+                        dir = values[i]
+                        path = []
+                        values.splice(i, 1)
+                    }
+                }
+
+                const wrong = []
+                for (let i = 0; i < values.length; ++i) {
+                    const subs = values[i].split('/')
+                    const node = get_node(path.concat(subs), dir)
+                    if (Array.isArray(node))
+                        path = path.concat(subs)
+                    else
+                        if (node.shift)
+                            wrong.push(values[i])
+                        else
+                            path = path.concat(subs)
+                }
+
+                if (wrong.length)
+                    return invalid_option_error('cd', wrong)
+            }
+
+            const { included, not_included } = filter(addr.options, flags)
+
+            if (not_included.length)
+                return unknown_option_error('cd', not_included)
+
+            if (included.length)
+                return this.help(['cd'])
+
+            ui.dir = dir 
+            ui.path = path
+        },
         cls: function(args) {
             if (args.length) {
                 const included = init_no_input(args, 'cls')
