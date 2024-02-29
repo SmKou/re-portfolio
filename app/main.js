@@ -1893,27 +1893,26 @@ function init() {
         more: function(args) {},
         msg: function(args) {
             const opt_addr = cmd_options.msg
+            const included = init_no_input(args, 'msg')
+            if (!included)
+                return;
 
-            const present = {}
+            let present = {}
+            const m = Object.keys(opt_addr)
+            for (const key of m)
+                present[key] = `${media[key].href}${opt_addr[key]()}/`
 
-            if (args.length) {
-                const included = init_no_input(args, 'msg')
-                if (!included)
-                    return
-
-                if (included.length)
-                    if (included.includes('--help'))
-                        return this.help(['msg'])
-                    else if (includes(included, '-l', '--linkedin'))
-                        present.linkedin =  `${media.linkedin.href}${opt_addr.linkedin()}/`
-                    else if (includes(included, '-g', '--github'))
-                        present.github = `${media.github.href}${opt_addr.github()}`
-                else {
-                    const m = Object.keys(opt_addr)
-                    for (const key of m)
-                        present[key] = `${media[key].href}${opt_addr[key]()}/`
-                }
-            }
+            if (included.length)
+                if (included.includes('--help'))
+                    return this.help(['msg'])
+                else if (includes(included, '-l', '--linkedin'))
+                    present = {
+                        linkedin: `${media.linkedin.href}${opt_addr.linkedin()}/`
+                    }
+                else if (includes(included, '-g', '--github'))
+                    present = {
+                        github: `${media.github.href}${opt_addr.github()}`
+                    }
 
             const p = document.createElement('p')
             const keys = Object.keys(present)
@@ -1924,7 +1923,7 @@ function init() {
                 p.append(a)
 
                 if (i < keys.length - 1)
-                    p.append(document.createTextNode(', '))
+                    p.append(document.createTextNode(' '))
             }
             ui.cns.append(p)
         },
