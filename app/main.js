@@ -275,10 +275,7 @@ function init() {
         man: {
             page: {
                 name: 'man - manual',
-                synopsis: [ 
-                    'man', 
-                    'man COMMAND'
-                ],
+                synopsis: [ 'man COMMAND' ],
                 description: `Show manual page for command.
     
                 -n, --name-only
@@ -1608,7 +1605,8 @@ function init() {
 
     const add_line = (output, bash = false) => {
         const line = document.createElement('p')
-        if (bash) line.setAttribute('class', 'bash')
+        if (bash) 
+            line.setAttribute('class', 'bash')
         line.append(document.createTextNode(output))
         ui.cns.append(line)
     }
@@ -1889,7 +1887,35 @@ function init() {
             add_line(props.join(' '))
         },
         lynx: function(args) {},
-        man: function(args) {},
+        man: function(args) {
+            const addr = resources.manual.man
+            const { flags, values } = filter_input_type(args)
+            
+            const [ command, ...rest ] = values
+            if (rest.length)
+                return custom_error('man', 'only 1 arg')
+            if (!resources.manual.hasOwnProperty(command))
+                return invalid_option_error('man', [command])
+
+            const { included, not_included } = filter(addr.options, flags)
+            if (not_included.length)
+                return unknown_option_error('man', not_included)
+
+            const { name, synopsis, description } = resources.manual[command].page
+            if (included.length) {
+                if (included.includes('--help'))
+                    return this.help(['man'])
+                else if (includes(included, '-n', '--name-only'))
+                    add_line(name)
+                else if (includes(included, '-s', '--synopsis-only'))
+                    add_lines(synopsis.join('\n'))
+                else if (includes(included, '-d', '--description-only'))
+                    add_lines(description)
+            }
+            else
+                add_lines(`${name}\n${synopsis.join('\n')}\n${description}`)
+            
+        },
         more: function(args) {},
         msg: function(args) {
             const opt_addr = cmd_options.msg
@@ -1897,34 +1923,28 @@ function init() {
             if (!included)
                 return;
 
+            const p = document.createElement('p')
+
             let present = {}
             const m = Object.keys(opt_addr)
             for (const key of m)
                 present[key] = `${media[key].href}${opt_addr[key]()}/`
 
-            if (included.length)
+            if (included.length) {
                 if (included.includes('--help'))
                     return this.help(['msg'])
                 else if (includes(included, '-l', '--linkedin'))
-                    present = {
-                        linkedin: `${media.linkedin.href}${opt_addr.linkedin()}/`
-                    }
+                    p.innerHTML = `<a href="${media.linkedin.href}${opt_addr.linkedin()}/" target="_blank">${opt_addr.linkedin()}</a>`
                 else if (includes(included, '-g', '--github'))
-                    present = {
-                        github: `${media.github.href}${opt_addr.github()}`
-                    }
-
-            const p = document.createElement('p')
-            const keys = Object.keys(present)
-            for (let i = 0; i < keys.length; ++i) {
-                const a = document.createElement('a')
-                a.href = present[keys[i]]
-                a.append(document.createTextNode(keys[i]))
-                p.append(a)
-
-                if (i < keys.length - 1)
-                    p.append(document.createTextNode(' '))
+                    p.innerHTML = `<a href="${media.github.href}${opt_addr.github()}/" target="_blank">${opt_addr.github()}</a>`
             }
+            else {
+                const a = []
+                for (const m of Object.keys(opt_addr))
+                    a.push(`<a href="${media[m].href}${opt_addr[m]()}/" target="_blank">${opt_addr[m]()}</a>`)
+                p.innerHTML = a.join(' ')
+            }
+            
             ui.cns.append(p)
         },
         print: function(args) {},
