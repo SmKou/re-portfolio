@@ -569,7 +569,7 @@ const manual = {
     }
 }
 
-/* cd:
+/* cal:
 const addr = resources.manual.cal
 
 let date = new Date()
@@ -995,3 +995,52 @@ const cmd = {
         addLine('Developer: Stella Marie (Sm Kou)')
     }
 }
+
+/* cd:
+if (!args.length) {
+                ui.path = []
+                ui.dir = 'portfolio'
+                return true
+            }
+
+            const addr = resources.manual.cd
+            const { flags, values } = filter_input_type(args)
+
+            if (flags.length) {
+                const { included, not_included } = filter(addr.options, flags)
+                if (not_included.length)
+                    return invalid_option_error('cd', not_included)
+
+                if (included.length)
+                    return this.help(['cd'])
+            }
+
+            let directory = 'portfolio'
+            let path = ui.path.slice()
+            let node = get_node()
+            if (values.length)
+                if (values.length > 1)
+                    [directory, path] = values
+                else {
+                    const ipt = values[0]
+                    if (Object.keys(directories).includes(ipt))
+                        directory = values[i]
+                    else {
+                        let subs = values[i].split('/')
+                        while (subs[0] === '..') {
+                            subs.shift()
+                            if (path.length)
+                                path.pop()
+                        }
+                        
+                        node = get_node(path.concat(subs))
+                        if (node.shift)
+                            return non_node('cd', node.shift)
+        
+                        path = path.concat(subs)
+                    }
+                }
+
+            ui.dir = directory
+            ui.path = path
+*/
