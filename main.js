@@ -31,10 +31,8 @@
                 ],
                 description: `Change working path.
                 Root: portfolio
-                Directories: resources, pages, portfolio
-                Items equate to files in standard file system and terminal.
 
-                Cannot use path to change root.
+                Requires DIRECTORY to change root.
                 
                 --help
                     display command information`
@@ -107,33 +105,34 @@
         dir: {
             page: {
                 name: 'dir - directory',
-                synopsis: [ 'dir', 'dir CATEGORY' ],
-                description: `Show contained categories and items of category.
-                Root category is portfolio.
-                Only works on categories, not on items and their properties.
+                synopsis: [ 'dir', 'dir DIRECTORY' ],
+                description: `Show contained subdirectories and files.
+                Root: portfolio
+                
+                Requires DIRECTORY to change root.
 
-                -i, --item-only
-                    show only contained items
+                -f, --files-only
+                    show only contained files
                 
                 --help
                     display command information`
             },
-            options: ['-i', '--item-only', '--help'],
-            help: 'dir: dir <category>',
-            whatis: 'Show contained categories and items.'
+            options: ['-f', '--files-only', '--help'],
+            help: 'dir: dir <directory>',
+            whatis: 'Show contained directories and files.'
         },
         echo: {
             page: {
                 name: 'echo',
                 synopsis: [ 
-                    'echo ITEM_NAME', 
-                    'echo PATH ITEM_NAME' 
+                    'echo FILENAME', 
+                    'echo PATH FILENAME' 
                 ],
-                description: `Show item messages (status, comment, developer remarks)
+                description: `Show file messages (status, comment, developer remarks)
                 Default: show only status
     
                 -a, --all
-                    show all messages provided with item
+                    show all messages provided in file
 
                 -c, --comment-only
                     show only comments
@@ -145,32 +144,35 @@
                     display command information`
             },
             options: ['-a', '--all', '-c', '--comment-only', '-d', '--dev-only', '--help'],
-            help: 'echo: echo <path> <item_name>',
-            whatis: 'Show item messages.'
+            help: 'echo: echo <path> <filename>',
+            whatis: 'Show file messages.'
         },
         find: {
             page: {
                 name: 'find',
                 synopsis: [ 
                     'find ["string"]', 
-                    'find ["string"] CATEGORY' 
+                    'find ["string"] DIRECTORY' 
                 ],
-                description: `Search a category, or categories, for a string appearing in item properties and their values.
+                description: `Search a directory for a string appearing in file properties and data.
                 Search does not consist of equivalence:
-                If the string consists of spaces, it will be split into individual terms and item properties and values will be tested against each individual term. 
+                If the string consists of spaces, it will be split into individual terms and file properties and data will be tested against each individual term. 
+
+                Root: portfolio
+                DIRECTORY = root | subdirectory
                 
                 -p, --property-only
-                    search only item properties
+                    search only file properties
     
                 -v, --value-only
-                    search only item values
+                    search only file data
                 
                 --help
                     display command information`
             },
             options: ['-p', '--property-only', '-v', '--value-only', '--help'],
-            help: 'find: find ["string"] <category>',
-            whatis: 'Search items for property name or value.'
+            help: 'find: find ["string"] <directory>',
+            whatis: 'Search files for property name or value.'
         },
         help: {
             page: {
@@ -210,56 +212,54 @@
                 synopsis: [ 
                     'ls', 
                     'ls PATH',
+                    'ls DIRECTORY',
                     'ls DIRECTORY PATH'
                 ],
-                description: `List categories, items, and properties.
-                Default directory: portfolio.
+                description: `List directories and files.
+                Root: portfolio.
                 Default path: current working path
                 
-                Cannot use path to change root.
+                Requires DIRECTORY to change root.
                 
                 --help
                     display command information`
             },
             options: ['--help'],
-            help: 'ls: ls <path>',
-            whatis: 'List categories, items and properties.'
+            help: 'ls: ls <dir> <path>',
+            whatis: 'List directories and files.'
         },
         lynx: {
             page: {
                 name: 'lynx',
                 synopsis: [ 
-                    'lynx ITEM_NAME', 
-                    'lynx PATH ITEM_NAME',
-                    'lynx ITEM_NAME LINK_NAME',
-                    'lynx PATH ITEM_NAME LINK_NAME'
+                    'lynx FILENAME', 
+                    'lynx PATH FILENAME',
+                    'lynx FILENAME LINK_NAME',
+                    'lynx PATH FILENAME LINK_NAME'
                 ],
-                description: `Follow item url
+                description: `Follow file url
                 Opens url to another host in another tab.
-                Displays list of urls if item has more than one
+                Displays list of urls if file has more than one
     
                 Note: Lynx is a fully-featured www client for the linux terminal
                 
                 -m, --main-only
-                    list all recent urls associated with item
+                    list all recent urls associated with file
     
                 -a, --all
-                    list all urls associated with item, include backups and iterations
+                    list all urls associated with file, include backups and iterations
                     
                 --help
                     display command information`
             },
             options: ['-m', '--main-only', '-a', '--all', '--help'],
             help: 'lynx: lynx <path> <item_name> <link_name>',
-            whatis: 'Open item url.'
+            whatis: 'Open file url.'
         },
         man: {
             page: {
                 name: 'man - manual',
-                synopsis: [ 
-                    'man', 
-                    'man COMMAND'
-                ],
+                synopsis: [ 'man COMMAND' ],
                 description: `Show manual page for command.
     
                 -n, --name-only
@@ -283,22 +283,20 @@
                 name: 'more',
                 synopsis: [ 
                     'more', 
-                    'more ITEM',
-                    'more PATH ITEM'
+                    'more FILE',
+                    'more PATH FILE'
                 ],
-                description: `Show item properties, path, and links.
-                Use name of an item as-is.
-                Cannot be used on categories.
+                description: `Show file data.
     
                 -m, --messages-included
-                    include item messages
+                    include file messages
                 
                 --help
                     display command information`
             },
             options: ['-m', '--messages-included', '--help'],
-            help: 'more: more <path> <item_name>',
-            whatis: 'Show item information.'
+            help: 'more: more <path> <filename>',
+            whatis: 'Show file data.'
         },
         msg: {
             page: {
@@ -340,8 +338,7 @@
             page: {
                 name: 'pwd - print working directory',
                 synopsis: [ 'pwd' ],
-                description: `Prints current path.
-                Path consists of categories and items.
+                description: `Prints path of working directory.
 
                 -r, --root
                     show root directory
@@ -351,32 +348,29 @@
             },
             options: ['-r', '--root', '--help'],
             help: 'pwd: pwd',
-            whatis: 'Print working path.'
+            whatis: 'Print working directory.'
         },
         stat: {
             page: {
                 name: 'stat',
                 synopsis: [ 
                     'stat', 
-                    'stat ITEM' 
+                    'stat FILE' 
                 ],
-                description: `Show details of an item (category, status, year).
+                description: `Show file properties.
     
-                -c, --category-only
-                    show only category of item
+                -d, --data-included
+                    include file data
     
-                -s, --status-only
-                    show only status of item
-    
-                -y, --year-only
-                    show only year of item if item has a year
+                -m, --messages-included
+                    include file messages
                 
                 --help
                     display command information`
             },
-            options: ['-c', '--category-only', '-s', '--status-only', '-y', '--year-only', '--help'],
-            help: 'stat: stat <item_name>',
-            whatis: 'Show details of item.'
+            options: ['-d', '--data-included', '-m', '--messages-included', '--help'],
+            help: 'stat: stat <filename>',
+            whatis: 'Show details of file.'
         },
         tree: {
             page: {
@@ -385,17 +379,18 @@
                     'tree', 
                     'tree DIRECTORY' 
                 ],
-                description: `Prints folder structural representation.
-                Default directory: portfolio
-                Can only use on directories and categories.
+                description: `Prints structural representation.
+                Root: portfolio
                 
-                -i, --item-included
-                    include items
+                Requires DIRECTORY to change root
+                
+                -f, --files-included
+                    include files
     
                 --help
                     display command information`
             },
-            options: ['-i', '--item-included', '--help'],
+            options: ['-f', '--files-included', '--help'],
             help: 'tree: tree <directory>',
             whatis: 'Show path structure.'
         },
@@ -1707,8 +1702,8 @@
     }
     // ui.ipt handled after cmd initialization
 
-    const get_dir = () => {
-        switch (ui.dir) {
+    const get_dir = (dir = ui.dir) => {
+        switch (dir) {
             case 'portfolio':
                 return portfolio
             case 'resources':
@@ -1718,7 +1713,10 @@
         }
     }
 
-    const get_node = (path = ui.path.slice(), node = get_dir(), shift) => {
+    const get_node = (path = ui.path.slice(), dir = 'portfolio', node = get_dir(dir), shift) => {
+        if (!path.length) 
+            return node
+
         shift = path.shift()
         if (!path.length) 
             return node
