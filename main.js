@@ -78,12 +78,14 @@
                     'date DATE' 
                 ],
                 description: `Show date.
-                Current date is today's date.
+                Determine date in a given amount of time from a given date, or amount of time from today's date to a given date.
+                Default date: today
+                Default frequency: none (day | week | month | year)
+                Default quantity: 0
+
                 Dates can be written with forward slashes or hyphens. Shown in format: W M/dd/YY
     
                 Avoid using leading zeroes in your entered dates, i.e. 12/03/15
-                
-                Determine date in a given amount of time from a given date, or amount of time from today's date to a given date.
     
                 -s, --short
                     display result in short form: W Mon. dd, year
@@ -1558,22 +1560,59 @@
 
     const calendar = {
         daily: {
-            routine: { morning: '9:00', night: '22:00' },
+            routine: { morning: '9:00', night: '0:00' },
             goals: {
-                walk: { time: 1 },
-                exercise: { time: 0.5, comment: 'optional' },
+                walk: { time: ['9:00', 2] },
+                exercise: { 
+                    time: ['14:30', 0.5], 
+                    comment: 'optional' 
+                },
                 dsa: {
                     title: 'Data Structures and Algorithms',
-                    time: 2,
-                    source: {
-                        title: 'Coding Interview study plan',
-                        href: 'https://www.techinterviewhandbook.org/coding-interview-study-plan/'
-                    }
+                    time: ['11:00', 2],
+                    source: [
+                        {
+                            title: 'Coding Interview study plan',
+                            href: 'https://www.techinterviewhandbook.org/coding-interview-study-plan/'
+                        },
+                        {
+                            title: 'Learning path: Computer Science',
+                            href: 'https://frontendmasters.com/learn/computer-science/'
+                        }
+                    ]
                 },
                 web_development: {
                     title: 'Web Development',
-                    time: 1,
+                    time: ['13:00', 1],
                     source: sources.fm
+                },
+                golang: {
+                    title: 'Go (programming lang)',
+                    time: ['14:00', 1],
+                    source: [
+                        { roadmap: 'https://roadmap.sh/golang' },
+                        {
+                            go_by_example: 'https://gobyexample.com',
+                            effective_go: 'https://go.dev/doc/effective_go',
+                            how_to_write_go: 'https://go.dev/doc/code'
+                        },
+                        {
+                            clis: 'https://pragprog.com/titles/rggo/powerful-command-line-applications-in-go/',
+                            full_stack: [
+                                'https://www.oreilly.com/library/view/full-stack-web-development/9781803234199/',
+                                'https://www.amazon.com/Modern-Web-Development-real-world-programming/dp/9395968362'
+                            ],
+                            networks: 'https://nostarch.com/networkprogrammingwithgo'
+                        }
+                    ]
+                },
+                reading: {
+                    title: 'Reading',
+                    time: ['0:00', 1],
+                    source: {
+                        ai_for_games: 'https://www.amazon.com/AI-Games-Third-Ian-Millington/dp/0367670569',
+                        nature_of_code: 'https://natureofcode.com'
+                    }
                 }
             }
         },
@@ -1591,24 +1630,9 @@
                 }
             },
             goals: {
-                algorithms: {
-                    title: 'AI & Algorithms',
-                    time: 1,
-                    days: [1, 1, 0, 0, 1, 0, 0]
-                },
-                go: {
-                    title: 'Go',
-                    time: 1,
-                    days: [1, 0, 1, 0, 0, 1, 0]
-                },
-                nature_of_code: {
-                    title: 'Nature of Code',
-                    time: 1,
-                    days: [1, 0, 0, 1, 0, 0, 1]
-                },
                 museum_visit: {
                     title: 'Museum Visit',
-                    time: 6,
+                    time: ['9:00', 6],
                     days: [1, 0, 0, 0, 0, 0, 0],
                     week: [
                         'Frye Art Museum',
@@ -1829,7 +1853,7 @@
         while (args.length) {
             const arg = args.pop()
             if (arg.includes('-')) { flags.push(arg) }
-            else { values.push(arg) }
+            else { values.push(arg.toLowerCase()) }
         }
         return { flags, values }
     }
@@ -1846,7 +1870,109 @@
 
     /* CMD ----------------------------------------- */
 
-    const cal = (args) => {}
+    const help = (args) => {
+        const { flags, values } = filter_input_type(args)
+        const wrong = []
+        for (const val of values) {
+            if (!resources.manual.hasOwnProperty(val)) { wrong.push(val) }
+        }
+        if (wrong.length) 
+            return errors.invalid_option('help', wrong)
+        const { included, not_included } = filter(resources.manual.help.options, flags)
+        if (not_included.length) 
+            return errors.unknown_option('help', not_included)
+
+        if (includes(included, '-o', '--open-aside') && !ui.aside.state) { ui.aside.tog.click() }
+        else if (included.includes('--help')) 
+            return help(['help'])
+            
+        if (!values.length) {
+            add_line(Object.keys(resources.manual).join(' '))
+            return true
+        }
+        add_lines(`${resources.manual[values[0]].help}\n${resources.manual[values[0]].whatis}`)
+    }
+
+    const cal = (args) => {
+        const addr = resources.manual.cal
+        let date = new Date()
+        let freq = ['daily', 'weekly', 'monthly']
+        let viewGoals = false
+        
+        if (args.length) {
+            const { flags, values } = filter_input_type(args)
+            const wrong = []
+            for (const v of values) {
+                if (freq.includes(v)) { freq = freq.filter(f => f === v) }
+                else if (is_valid_date(v)) { date = new Date(v) }
+                else { wrong.push(v) }
+            }
+            if (wrong.length)
+                return errors.invalid_option('cal', wrong)
+            const { included, not_included } = filter(addr.options, flags)
+            if (not_included.length)
+                return errors.unknown_option('cal', not_included)
+            if (included.length) {
+                if (included.includes('--help'))
+                    return help(['cal'])
+                else if (included.includes('-e'))  { freq.push('events') }
+                else if (included.includes('-g')) { viewGoals = true }
+            }
+        }
+
+        const sched = {}
+        const weekday = date.getDay()
+        const options = {
+            weekday: 'narrow',
+            day: 'numeric',
+            month: 'numeric',
+            year: '2-digit'
+        }
+        const weeks_diff = (() => {
+            if (date.getDate() > 1) {
+                const [m,,y] = date.toLocaleDateString(undefined, options).split('/')
+                const month_first = new Date(`${m}/1/${y}`)
+                return Math.floor(data.getTime() - month_first.getTime()) / (1000 * 60 * 60 * 24) + 1
+            }
+            return 1
+        })()
+
+        const add = (freq, type) => (e, key) => {
+            const [time, dur] = e.time
+            const [hour, half] = time.split(':')
+            sched[time] = {
+                n: parseInt(hour) * 2 + (parseInt(half) ? 1 : 0),
+                dur: dur * 2,
+                name: key.split('_').join(' '),
+                freq,
+                type,
+                duration: `${dur} hour${dur !== 1 ? 's' : ''}`
+            }
+        }
+
+        const add_sched = (freq, type) => {
+            const f = calendar[freq][type]
+            for (const key of Object.keys(f)) {
+                const e = f[key]
+                if (freq === 'daily'
+                || (freq === 'weekly' && e.days[weekday])
+                || (freq === 'monthly' && e.week === weeks_diff && e.days[weekday])) {
+                    add(freq, type)(e, key)
+                }
+            }
+        }
+
+        for (const f of freq)
+            add_sched(f, 'routine')
+        if (viewGoals) {
+            for (const f of freq)
+                add_sched(f, 'goals')
+        }
+
+        const keys = Object.keys(sched).sort((a, b) => sched[a].n - sched[b].n)
+        const line = (key) => `${sched[key].name} - ${key} for ${sched[key].duration}`
+        add_lines(keys.map(key => line(key)).join('\n'))
+    }
 
     const cd = (args) => {
         if (!args.length) {
@@ -1857,7 +1983,6 @@
 
         const addr = resources.manual.cd
         const { flags, values } = filter_input_type(args)
-
         if (flags.length) {
             const { included, not_included } = filter(addr.options, flags)
             if (not_included.length) 
@@ -1911,36 +2036,62 @@
         ui.cns.innerHTML = ''
     }
 
-    const date = (args) => {}
+    const date = (args) => {
+        const addr = resources.manual.date
+        let date = new Date()
+        let dest_date = ''
+        let freq = ''
+        let qty = 0
+        let format = {
+            weekday: 'narrow',
+            day: 'numeric',
+            month: 'numeric',
+            year: '2-digit'
+        }
+        let divider = '/'
+
+        if (args.length) {
+            const { flags, values } = filter_input_type(args)
+            const wrong = []
+            for (const v of values) {
+                if (is_valid_date(v)) { dest_date = new Date(v) }
+                else if (typeof v === 'number' && v !== 0) { qty = v }
+                else if (['day', 'week', 'month', 'year'].includes(v)) { freq = v }
+                else { wrong.push(v) }
+            }
+            if (wrong.length)
+                return errors.invalid_option('date', wrong)
+            if ((!freq && qty) || (freq && !qty))
+                return errors.custom('date', 'requires frequency and quantity')
+            const { included, not_included } = filter(addr.options, flags)
+            if (not_included.length)
+                return errors.unknown_option('date', not_included)
+            if (included.length) {
+                if (included.includes('--help'))
+                    return help(['date'])
+                else if (includes(included, '-s', '--short')) {
+                    format = {...format, month: 'short', year: 'numeric' }
+                }
+                else if (includes(included, '-l', '--long')) {
+                    format = {...format, weekday: 'long', month: 'long', year: 'numeric' }
+                }
+                else if (includes(included, '-h', '--hyphen')) { divider = '-' }
+            }
+        }
+
+        /*
+        (default) => current date
+        freq qty => current date + (freq * qty)
+        dest freq qty => dest + (freq * qty)
+        dest => dest - current date
+        */
+    }
 
     const dir = (args) => {}
 
     const echo = (args) => {}
 
     const find = (args) => {}
-
-    const help = (args) => {
-        const { flags, values } = filter_input_type(args)
-        const wrong = []
-        for (const val of values) {
-            if (!resources.manual.hasOwnProperty(val)) { wrong.push(val) }
-        }
-        if (wrong.length) 
-            return errors.invalid_option('help', wrong)
-        const { included, not_included } = filter(resources.manual.help.options, flags)
-        if (not_included.length) 
-            return errors.unknown_option('help', not_included)
-
-        if (includes(included, '-o', '--open-aside') && !ui.aside.state) { ui.aside.tog.click() }
-        else if (included.includes('--help')) 
-            return help(['help'])
-            
-        if (!values.length) {
-            add_line(Object.keys(resources.manual).join(' '))
-            return true
-        }
-        add_lines(`${resources.manual[values[0]].help}\n${resources.manual[values[0]].whatis}`)
-    }
 
     const hostname = (args) => {
         if (args.length) {
