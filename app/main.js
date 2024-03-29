@@ -1440,25 +1440,71 @@ function init() {
         }
     }
 
+    const Status = {
+        QUEUED: 'not yet read',
+        PROGRESS: 'in-progress',
+        COMPLETED: 'completed'
+    }
+
+    const reading_list = {
+        "Grokking Simplicity: Taming complex software with functional thinking": Status.PROGRESS,
+        "AI for Games": Status.PROGRESS,
+        "Nature of Code": Status.PROGRESS,
+        "Nature-Inspired Algorithms for Engineers and Scientists": Status.QUEUED,
+        "Algorithmic Thinking": Status.QUEUED,
+        "Dive into Algorithms": Status.QUEUED,
+        "Grokking Algorithms": Status.PROGRESS,
+        "Advanced Algorithms and Data Structures": Status.QUEUED,
+        "Grokking Functional Programming": Status.QUEUED,
+        "50 Algorithms Every Programmer Should Know": Status.QUEUED,
+        "Dark Data: Why What You Don't Know Matters": Status.QUEUED,
+        "Dark Market": Status.QUEUED,
+        "Refactoring UI": Status.QUEUED,
+        "AI and Machine Learning for Coders": Status.QUEUED,
+        "Artificial Intelligence: A Modern Approach": Status.QUEUED,
+        "Bayesian Statistics the Fun Way": Status.QUEUED,
+        "2D Game Development From Zero to Hero": Status.QUEUED,
+        "Learning React: Modern Patterns for Developing React Apps": Status.QUEUED,
+        "How Linux Works": Status.QUEUED,
+        "Effective Software Testing": Status.QUEUED,
+        "How to Design Programs": Status.QUEUED,
+        "Powerful Command-Line Applications in Go": Status.QUEUED,
+        "Full-Stack Web Development with Go": Status.QUEUED,
+        "100 Go Mistakes and How to Avoid Them": Status.QUEUED,
+        "Network Programming with Go": Status.QUEUED,
+    }
+
     const calendar = {
         daily: {
-            routine: { morning: '9:00', night: '22:00' },
+            routine: { morning: '8:00', night: '23:00' },
             goals: {
-                walk: { time: 1 },
-                exercise: { time: 0.5, comment: 'optional' },
-                dsa: {
-                    title: 'Data Structures and Algorithms',
-                    time: 2,
-                    source: {
-                        title: 'Coding Interview study plan',
-                        href: 'https://www.techinterviewhandbook.org/coding-interview-study-plan/'
-                    }
-                },
-                web_development: {
-                    title: 'Web Development',
+                walk: { time: { min: 1, max: 2 }},
+                coding_challenge: {
+                    title: "Coding Challenge",
                     time: 1,
-                    source: sources.fm
-                }
+                    source: [
+                        {
+                            title: "Coding Interview prep",
+                            href: "https://www.freecodecamp.org/learn/coding-interview-prep"
+                        },
+                        {
+                            title: "Exercism: Gleam track",
+                            href: "https://exercism.org/tracks/gleam"
+                        },
+                        {
+                            title: "Exercism: Go track",
+                            href: "https://exercism.org/tracks/go"
+                        },
+                        {
+                            title: "Coding Interview study plan",
+                            href: "https://www.techinterviewhandbook.org/coding-interview-study-plan/"
+                        }
+                    ]
+                },
+                reading: {
+                    title: "Reading",
+                    time: 1,
+                },
             }
         },
         weekly: {
@@ -1472,24 +1518,37 @@ function init() {
                     title: 'Indie Support Group',
                     time: ['13:00', 5.5],
                     days: [0, 0, 0, 0, 0, 0, 1]
+                },
+                computer_science: {
+                    title: "Computer Science",
+                    time: [['10:00', 3], ['13:00', 1]],
+                    days: [1, 2, 1, 2, 1, 2, 0],
+                    source: [
+                        sources.fm,
+                        {
+                            title: "Computer Science roadmap",
+                            href: "https://roadmap.sh/computer-science"
+                        },
+                        {
+                            title: "Coding Interview study plan",
+                            href: "https://www.techinterviewhandbook.org/coding-interview-study-plan/"
+                        }
+                    ]
+                },
+                web_development: {
+                    title: "Web Development",
+                    time: [['10:00', 3], ['13:00', 1]],
+                    days: [2, 0, 2, 1, 2, 1, 1],
+                    source: [
+                        sources.fm,
+                        {
+                            title: "Backend Developer roadmap",
+                            href: "https://roadmap.sh/backend"
+                        }
+                    ]
                 }
             },
             goals: {
-                algorithms: {
-                    title: 'AI & Algorithms',
-                    time: 1,
-                    days: [1, 1, 0, 0, 1, 0, 0]
-                },
-                go: {
-                    title: 'Go',
-                    time: 1,
-                    days: [1, 0, 1, 0, 0, 1, 0]
-                },
-                nature_of_code: {
-                    title: 'Nature of Code',
-                    time: 1,
-                    days: [1, 0, 0, 1, 0, 0, 1]
-                },
                 museum_visit: {
                     title: 'Museum Visit',
                     time: 6,
@@ -1537,18 +1596,6 @@ function init() {
 
     const resources = { manual, sources }
     const pages = {
-        art: {
-            title: 'Artworks',
-            description: 'Slideshow of image mosaics formed from personal drawings',
-            href: 'art/',
-            comment: `I cannot meditate in the traditional sense due in part to my C-PTSD, so drawing acts as a sort of substitute. Rather than clarity and relaxation, drawing provides insight and allows for a nuance of expression.`
-        },
-        calendar: {
-            title: 'My Calendar',
-            description: 'Demo of a calendar app',
-            href: 'calendar/',
-            comment: `The design of the week layout has always annoyed me in apps, requiring a landscape view when a portrait view should still work, so for the calendar app, I made sure there was a portrait layout and an intermediate layout when the width is not long enough for the traditional week view.`
-        },
         versions: {
             title: 'The Old TV',
             description: 'Preview the available portfolios',
