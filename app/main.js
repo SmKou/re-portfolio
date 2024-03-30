@@ -1556,7 +1556,6 @@
         }
     }
 
-<<<<<<< HEAD
     const Status = {
         QUEUED: 'not yet read',
         PROGRESS: 'in-progress',
@@ -1615,72 +1614,13 @@
                         {
                             title: "Coding Interview study plan",
                             href: "https://www.techinterviewhandbook.org/coding-interview-study-plan/"
-=======
-/* ------------------------------------------------------------------------------------------------ PORTFOLIO */
-
-    const calendar = {
-        daily: {
-            routine: { morning: '9:00', night: '0:00' },
-            goals: {
-                walk: { time: ['9:00', 2] },
-                exercise: { 
-                    time: ['14:30', 0.5], 
-                    comment: 'optional' 
-                },
-                dsa: {
-                    title: 'Data Structures and Algorithms',
-                    time: ['11:00', 2],
-                    source: [
-                        {
-                            title: 'Coding Interview study plan',
-                            href: 'https://www.techinterviewhandbook.org/coding-interview-study-plan/'
-                        },
-                        {
-                            title: 'Learning path: Computer Science',
-                            href: 'https://frontendmasters.com/learn/computer-science/'
-                        }
-                    ]
-                },
-                web_development: {
-                    title: 'Web Development',
-                    time: ['13:00', 1],
-                    source: sources.fm
-                },
-                golang: {
-                    title: 'Go (programming lang)',
-                    time: ['14:00', 1],
-                    source: [
-                        { roadmap: 'https://roadmap.sh/golang' },
-                        {
-                            go_by_example: 'https://gobyexample.com',
-                            effective_go: 'https://go.dev/doc/effective_go',
-                            how_to_write_go: 'https://go.dev/doc/code'
-                        },
-                        {
-                            clis: 'https://pragprog.com/titles/rggo/powerful-command-line-applications-in-go/',
-                            full_stack: [
-                                'https://www.oreilly.com/library/view/full-stack-web-development/9781803234199/',
-                                'https://www.amazon.com/Modern-Web-Development-real-world-programming/dp/9395968362'
-                            ],
-                            networks: 'https://nostarch.com/networkprogrammingwithgo'
->>>>>>> 1e46b35522ca88400862eed611c615c1685f59a9
                         }
                     ]
                 },
                 reading: {
-<<<<<<< HEAD
                     title: "Reading",
                     time: 1,
                 },
-=======
-                    title: 'Reading',
-                    time: ['0:00', 1],
-                    source: {
-                        ai_for_games: 'https://www.amazon.com/AI-Games-Third-Ian-Millington/dp/0367670569',
-                        nature_of_code: 'https://natureofcode.com'
-                    }
-                }
->>>>>>> 1e46b35522ca88400862eed611c615c1685f59a9
             }
         },
         weekly: {
