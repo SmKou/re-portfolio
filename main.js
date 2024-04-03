@@ -2160,7 +2160,65 @@
 
     const lynx = (args) => {}
 
-    const man = (args) => {}
+    const man = (args) => {
+        const addr = resources.manual.man
+        if (!args.length)
+            return errors.custom('man', 'requires command name')
+        const { flags, values } = filter_input_type(args)
+        if (values.length > 1)
+            return errors.custom('man', 'enter only one command name')
+        if (!cmd.hasOwnProperty(values[0]))
+            return errors.command(values[0])
+        const { included, not_included } = filter(addr.options, flags)
+        if (not_included.length)
+            return errors.unknown_option('man', not_included)
+
+        if (included.includes('--help'))
+            return help(['man'])
+
+        const page = resources.manual[values[0]].page
+
+        if (includes(included, '-n', '--name-only'))
+            add_line(page.name)
+        else if (includes(included, '-s', '--synopsis-only'))
+            add_lines(page.synopsis.join('\n'))
+        else if (includes(included, 'd', '--description-only'))
+            add_lines(page.description)
+        else {
+            const createDiv = (title, text) => {
+                const div = document.createElement('div')
+                div.setAttribute('class', 'layout')
+
+                const span = document.createElement('span')
+                span.append(document.createTextNode(title))
+                span.style.fontWeight = 'bold'
+                div.append(span)
+
+                if (Array.isArray(text)) {
+                    const ctnr = document.createElement('div')
+                    text.forEach(t => {
+                        const p = document.createElement('p')
+                        p.append(document.createTextNode(t))
+                        p.style.marginTop = 0
+                        ctnr.append(p)
+                    })
+                    div.append(ctnr)
+                }
+                else {
+                    const p = document.createElement('p')
+                    p.append(document.createTextNode(text))
+                    p.style.marginTop = 0
+                    div.append(p)
+                }
+                
+                ui.cns.append(div)
+            }
+
+            createDiv('Name', page.name)
+            createDiv('Synopsis', page.synopsis)
+            createDiv('Description', page.description.split('\n'))
+        }
+    }
 
     const more = (args) => {}
 
