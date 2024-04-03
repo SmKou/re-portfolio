@@ -1747,11 +1747,39 @@
         return res
     }
 
-    const add_line = (output, focus = false) => {
-        const line = document.createElement('p')
-        line.append(document.createTextNode(output))
-        ui.cns.append(line)
+    const create_element = ({ type, content, classname, link }) => {
+        let e = {}
+        switch (type) {
+            case 'div':
+                e = document.createElement('div')
+                break
+            case 'p':
+                e = document.createElement('p')
+                break
+            case 'span':
+                e = document.createElement('span')
+                break
+            case 'a':
+                e = document.createElement('a')
+                e.href = link
+                if (!link.includes(ui.host))
+                    e.target = "_blank"
+                break
+        }
+        if (classname)
+            e.setAttribute('class', classname)
+        if (content) {
+            if (Array.isArray(content))
+                for (const c of content) { e.append(c) }
+            else if (typeof content === 'string')
+                e.append(document.createTextNode(content))
+            else
+                e.append(content)
+        }
+        return e
     }
+
+    const add_line = (output) => ui.cns.append(create_element({ type: 'p', content: output }))
 
     const add_lines = output => output.split('\n').forEach(line => add_line(line))
 
@@ -1761,12 +1789,14 @@
     }
 
     const add_path = () => {
-        const line = document.createElement('p')
-        line.setAttribute('class', 'bash')
-        const span = document.createElement('span')
+        const span = create_element({ type: 'span' })
         span.style.fontWeight = 'bold'
         span.append(document.createTextNode('Re-Portfolio SMKOU ~/'))
-        line.append(span)
+        const line = create_element({ 
+            type: 'p', 
+            classname: 'bash', 
+            content: span
+        })
         line.append(document.createTextNode(ui.path.join('/')))
         ui.cns.append(line)
     }
@@ -2183,28 +2213,34 @@
         else if (includes(included, 'd', '--description-only'))
             add_lines(page.description)
         else {
-            const createDiv = (title, text) => {
-                const div = document.createElement('div')
-                div.setAttribute('class', 'layout')
-
-                const span = document.createElement('span')
-                span.append(document.createTextNode(title))
+            const create_div = (title, text) => {
+                const span = create_element({
+                    type: 'span',
+                    content: title
+                })
                 span.style.fontWeight = 'bold'
-                div.append(span)
+                const div = create_element({ 
+                    type: 'div', 
+                    classname: 'manual-page',
+                    content: span
+                })
 
                 if (Array.isArray(text)) {
-                    const ctnr = document.createElement('div')
-                    text.forEach(t => {
-                        const p = document.createElement('p')
-                        p.append(document.createTextNode(t))
-                        p.style.marginTop = 0
-                        ctnr.append(p)
+                    const ctnr = create_element({
+                        type: 'div',
+                        content: text.map(t => {
+                            const p = create_element({
+                                type: 'p',
+                                content: t
+                            })
+                            p.style.marginTop = 0
+                            return p
+                        })
                     })
                     div.append(ctnr)
                 }
                 else {
-                    const p = document.createElement('p')
-                    p.append(document.createTextNode(text))
+                    const p = create_element({ type: 'p', content: text })
                     p.style.marginTop = 0
                     div.append(p)
                 }
@@ -2212,9 +2248,9 @@
                 ui.cns.append(div)
             }
 
-            createDiv('Name', page.name)
-            createDiv('Synopsis', page.synopsis)
-            createDiv('Description', page.description.split('\n'))
+            create_div('Name', page.name)
+            create_div('Synopsis', page.synopsis)
+            create_div('Description', page.description.split('\n'))
         }
     }
 
@@ -2247,19 +2283,114 @@
         }
         else { present_all() }
 
-        const p = document.createElement('p')
-        const keys = Object.keys(present)
-        for (let i = 0; i < keys.length; ++i) {
-            const a = document.createElement('a')
-            a.href = present[keys[i]]
-            a.append(document.createTextNode(keys[i]))
-            p.append(a)
-            if (i < keys.length - 1) { p.append(document.createTextNode(' ')) }
+        const links = Object.keys(present).map(v => {
+            const a = create_element({
+                type: 'a',
+                content: v,
+                link: present[v]
+            })
+            return a
+        })
+        const content = new Array(links.length * 2 - 1)
+        for (i = 1; i < content.length; i += 2) {
+            content[i] = document.createTextNode(' ')
         }
+        const p = create_element({
+            type: 'p',
+            content
+        })
         ui.cns.append(p)
     }
 
-    const print = (args) => {}
+    const print = (args) => {
+        const included = init_no_input(args, 'print')
+
+        const title = document.createElement('h1')
+        title.append(document.createTextNode('Frontend Web Developer'))
+        const contact_linkedin = create_element({
+            type: 'p',
+            content: [
+                document.createTextNode('LinkedIn: '),
+                create_element({
+                    type: 'a',
+                    content: 'Kou.d Blue',
+                    link: media.linkedin + 'koudblue'
+                })
+            ]
+        })
+        const contact_github = create_element({
+            type: 'p',
+            content: [
+                document.createTextNode('Github: '),
+                create_element({
+                    type: 'a',
+                    content: 'SmKou',
+                    link: media.github + 'smkou'
+                })
+            ]
+        })
+        const header = create_element({
+            type: 'div',
+            classname: 'resume-header',
+            content: [
+                title,
+                create_element({
+                    type: 'div',
+                    content: [ contact_linkedin, contact_github ]
+                })
+            ]
+        })
+        
+        const statement = create_element({
+            type: 'p',
+            content: ''
+        })
+
+        const skills_title = document.createElement('h1')
+        skills_title.append(document.createTextNode('Skills'))
+        const skills_list = document.createElement('ul')
+        const skill_items = [ 
+            'JavaScript/HTML/CSS', 
+            'Node.js', 
+            'React', 
+            'Interaction design', 
+            'User Experience design', 
+            'Service design', 
+            'Design Research' 
+        ]
+        skill_items.map(skill => {
+            console.log(skill)
+            const li = document.createElement('li')
+            li.append(document.createTextNode(skill))
+            return li
+        }).forEach(skill => {
+            console.log(skill)
+            skills_list.append(skill)
+        })
+        const skills = create_element({
+            type: 'div',
+            classname: 'skills-section',
+            content: [
+                skills_title,
+                skills_list
+            ]
+        })
+
+        const resume = [ 
+            header, 
+            statement, 
+            skills
+        ]
+
+        if (included.length) {
+            if (included.includes('--help'))
+                return help(['print'])
+            if (includes(included, '-d', '--download'))
+                return true
+        }
+        
+        resume.forEach(section => ui.cns.append(section))
+    }
 
     const pwd = (args) => {
         let path = ui.path.slice()

@@ -47,11 +47,23 @@ section a {
     text-decoration: underline;
 }
 
-.layout {
+h1 { margin-top: 0 }
+
+.manual-page {
     display: grid;
     grid-template-columns: 10rem 1fr;
     column-gap: 1.2rem;
 }
+
+.resume-header {
+    margin-top: 3.2rem;
+    padding: 0 0.8rem;
+    display: grid;
+    grid-template-columns: 1fr 20rem;
+    column-gap: 0.8rem;
+}
+
+.skills-section { padding: 0.8rem }
 
 input {
     width: 100%;
