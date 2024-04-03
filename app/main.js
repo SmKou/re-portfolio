@@ -1750,7 +1750,7 @@
             return { shift }
     }
 
-    const add_line = (output) => {
+    const add_line = (output, focus = false) => {
         const line = document.createElement('p')
         line.append(document.createTextNode(output))
         ui.cns.append(line)
@@ -2003,9 +2003,9 @@
             if (values.length > 1) { [directory, path] = values }
             else {
                 const ipt = values[0]
-                if (Object.keys(directories).includes(ipt)) { directory = values[i] }
+                if (Object.keys(directories).includes(ipt)) { directory = values[0] }
                 else {
-                    let subs = values[i].split('/')
+                    let subs = values[0].split('/')
                     while (subs[0] === '..') {
                         subs.shift()
                         if (path.length) { path.pop() }
@@ -2347,9 +2347,9 @@
 
     ui.ipt.addEventListener('keydown', e => {
         if (e.key === 'Enter') {
-            add_line(e.target.value)
+            add_line(e.target.value, true)
             user_input.vals.push(e.target.value)
-            user_input.i = user_input.vals.length - 1
+            user_input.i = user_input.vals.length
     
             const value = e.target.value.slice(2)
             ui.ipt.value = '$ '
@@ -2357,12 +2357,16 @@
             else { exec(value) }
             add_empty_line()
             add_path()
+            ui.cns.lastChild.scrollIntoView({ inline: 'end' })
         }
         else if (e.key === 'ArrowUp' && user_input.i > 0) { user_input.i-- }
-        else if (e.key === 'ArrowDown' && user_input.i < user_input.vals.length - 1) { user_input.i++ }
+        else if (e.key === 'ArrowDown' && user_input.i <= user_input.vals.length - 1) { user_input.i++ }
         
-        if (e.key === 'ArrowUp' || e.key === 'ArrowDown') { 
-            ui.ipt.value = user_input.vals[user_input.i] 
+        if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+            if (user_input.i === user_input.vals.length)
+                ui.ipt.value = '$ '
+            else
+                ui.ipt.value = user_input.vals[user_input.i] 
         }
     })
 })()
