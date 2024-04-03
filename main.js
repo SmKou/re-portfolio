@@ -1740,14 +1740,11 @@
     const get_node = (path = ui.path.slice(), dir = 'portfolio', node = get_dir(dir), shift) => {
         if (!path.length) 
             return node
-
         shift = path.shift()
-        if (!path.length) 
-            return node
-        if (node.hasOwnProperty(shift)) 
-            return get_node(path, node[shift])
-        else 
-            return { shift }
+        const res = node.hasOwnProperty(shift) 
+            ? get_node(path, dir, node[shift]) 
+            : { shift }
+        return res
     }
 
     const add_line = (output, focus = false) => {
@@ -2010,8 +2007,9 @@
                         subs.shift()
                         if (path.length) { path.pop() }
                     }
-                    node = get_node(path.concat(subs))
-                    if (node.shift) 
+                    path = path.concat(subs)
+                    node = get_node(path)
+                    if (node.hasOwnProperty('shift')) 
                         return errors.node('cd', node.shift)
                     path = path.concat(subs)
                 }
@@ -2353,7 +2351,14 @@
     
             const value = e.target.value.slice(2)
             ui.ipt.value = '$ '
-            if (value.includes('&&')) { value.split('&&').forEach(val => exec(val.trim())) }
+            if (value.includes('&&')) { 
+                const cmds = value.split('&&').map(val => val.trim())
+                for (const cmd of cmds) {
+                    const res = exec[cmd]
+                    if (!res)
+                        break;
+                }
+            }
             else { exec(value) }
             add_empty_line()
             add_path()
