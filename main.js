@@ -617,7 +617,7 @@
         }
     }
 
-/* ------------------------------------------------------------------------------------------------ RESOURCES */
+/* ------------------------------------------------------------ RESOURCES */
 
     const versions = [
         {
@@ -1562,34 +1562,6 @@
         COMPLETED: 'completed'
     }
 
-    const reading_list = {
-        "Grokking Simplicity: Taming complex software with functional thinking": Status.PROGRESS,
-        "AI for Games": Status.PROGRESS,
-        "Nature of Code": Status.PROGRESS,
-        "Nature-Inspired Algorithms for Engineers and Scientists": Status.QUEUED,
-        "Algorithmic Thinking": Status.QUEUED,
-        "Dive into Algorithms": Status.QUEUED,
-        "Grokking Algorithms": Status.PROGRESS,
-        "Advanced Algorithms and Data Structures": Status.QUEUED,
-        "Grokking Functional Programming": Status.QUEUED,
-        "50 Algorithms Every Programmer Should Know": Status.QUEUED,
-        "Dark Data: Why What You Don't Know Matters": Status.QUEUED,
-        "Dark Market": Status.QUEUED,
-        "Refactoring UI": Status.QUEUED,
-        "AI and Machine Learning for Coders": Status.QUEUED,
-        "Artificial Intelligence: A Modern Approach": Status.QUEUED,
-        "Bayesian Statistics the Fun Way": Status.QUEUED,
-        "2D Game Development From Zero to Hero": Status.QUEUED,
-        "Learning React: Modern Patterns for Developing React Apps": Status.QUEUED,
-        "How Linux Works": Status.QUEUED,
-        "Effective Software Testing": Status.QUEUED,
-        "How to Design Programs": Status.QUEUED,
-        "Powerful Command-Line Applications in Go": Status.QUEUED,
-        "Full-Stack Web Development with Go": Status.QUEUED,
-        "100 Go Mistakes and How to Avoid Them": Status.QUEUED,
-        "Network Programming with Go": Status.QUEUED,
-    }
-
     const calendar = {
         daily: {
             routine: { morning: '8:00', night: '23:00' },
@@ -1702,10 +1674,15 @@
         },
         projects: ['Re-Portfolio', "Jordan's Game"],
         events: {
-            '2/9/24': {
-                location: 'ACT Theatre',
-                show: 'Case for Existence of God',
-                time: ['19:30', 1.5]
+            '4/10/24': {
+                location: 'The Collective',
+                group: 'SeattleJS',
+                time: ['15:30', 2.5]
+            },
+            '4/16/24': {
+                location: ['AWS Skills Center', 'Stoup Brewery'],
+                group: ['Seattle Hackers', 'Seattle Indies'],
+                time: [['18:00', 2], ['20:30', 1.5]]
             }
         }
     }
@@ -1718,7 +1695,7 @@
         }
     }
 
-/* ---------------------------------------------------------------------------------------------------- PAGES */
+/* ---------------------------------------------------------------- PAGES */
 
     const resources = { manual, sources }
     const media = {
@@ -1773,9 +1750,8 @@
             return { shift }
     }
 
-    const add_line = (output, bash = false) => {
+    const add_line = (output) => {
         const line = document.createElement('p')
-        if (bash) { line.setAttribute('class', 'bash') }
         line.append(document.createTextNode(output))
         ui.cns.append(line)
     }
@@ -1788,8 +1764,14 @@
     }
 
     const add_path = () => {
-        const path = `Re-Portfolio SMKOU ~/${ui.path.join('/')}`
-        add_line(path, true)
+        const line = document.createElement('p')
+        line.setAttribute('class', 'bash')
+        const span = document.createElement('span')
+        span.style.fontWeight = 'bold'
+        span.append(document.createTextNode('Re-Portfolio SMKOU ~/'))
+        line.append(span)
+        line.append(document.createTextNode(ui.path.join('/')))
+        ui.cns.append(line)
     }
     add_path()
 
@@ -2126,7 +2108,6 @@
     }
 
     const ls = (args) => {
-        console.log(args, args.length)
         const addr = resources.manual.ls
 
         let path = ui.path.slice()
@@ -2174,7 +2155,7 @@
             if (typeof node[prop] === 'object') { items.push(prop + '/') }
             else { items.push(prop) }
         }
-        add_line()
+        add_line(items.join(' '))
     }
 
     const lynx = (args) => {}
