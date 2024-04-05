@@ -37,6 +37,7 @@ section {
     padding-left: 1.2rem;
     padding-bottom: 1.2rem;
     overflow-y: scroll;
+    /* overflow-x: hidden; */
 }
 
 .bash { color: var(--uni-mid) }
@@ -49,7 +50,16 @@ section a {
     text-decoration: underline;
 }
 
-h1 { margin-top: 0 }
+h1 { 
+    margin: 1.8rem 0.8rem 0;
+    border-bottom: 0.1rem solid var(--hacker-green);
+}
+
+hr {
+    margin-top: 1.2rem;
+    margin-right: 0.8rem;
+    border-top: 0.1rem solid var(--hacker-green);
+}
 
 .manual-page {
     display: grid;
@@ -60,12 +70,13 @@ h1 { margin-top: 0 }
 .resume-header,
 .exp-header,
 .edu-header {
-    margin-top: 3.2rem;
     padding: 0 0.8rem;
     display: grid;
     grid-template-columns: 1fr 22rem;
     column-gap: 0.8rem;
 }
+
+.resume-header { margin-top: 1.8rem }
 
 .exp-title,
 .edu-title,
@@ -75,6 +86,8 @@ h1 { margin-top: 0 }
 .small { font-size: 1.2rem }
 
 .skills-section { padding: 0.8rem }
+
+ul { margin: 0 0.8rem }
 
 .top-btn {
     position: absolute;
@@ -223,3 +236,5 @@ summary {
 
 .copyright a { color: var(--hacker-green) }
 .copyright a:hover { text-decoration: underline }
+
+iframe { display: none }
