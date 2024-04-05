@@ -1708,6 +1708,7 @@
             ctt: document.getElementById('aside-content')
         }
     }
+    const user_input = { vals: [], i: -1 }
     // ui.ipt handled after cmd initialization
 
     const get_dir = (dir = ui.dir) => {
@@ -2502,9 +2503,10 @@
             content: [ edu_title, edu_list ]
         })
 
+        const sections = [ header, statement, skills, exp, edu ]
         const resume = create_element({
             type: 'div',
-            content: [ header, statement, skills, exp, edu ]
+            content: sections
         })
 
         const top_btn = document.createElement('button')
@@ -2517,8 +2519,47 @@
         if (included.length) {
             if (included.includes('--help'))
                 return help(['print'])
-            if (includes(included, '-d', '--download'))
-                return true
+            if (includes(included, '-d', '--download')) {
+                const frame = document.createElement('iframe')
+                frame.name = 'frame'
+                ui.cns.append(frame)
+                
+                const r = resume.innerHTML
+                const a = window.open('', 'frame', 'height=1320, width=1020')
+                const s = `@page { size: auto;  margin: 0mm; }
+                body { width: 95vw }
+                h1 { 
+                    margin: 1.8rem 0.8rem;
+                    border-bottom: 0.1rem solid black;
+                }
+                p { margin: 0 }
+                div { margin: 0.6rem 0 }
+                .resume-header,
+                .exp-header,
+                .edu-header {
+                    padding: 0 0.8rem;
+                    display: grid;
+                    grid-template-columns: 1fr 22rem;
+                    column-gap: 0.8rem;
+                }
+                .resume-header { 
+                    width: 100%;
+                    align-items: center;
+                }
+                .exp-title,
+                .edu-title,
+                .bold { font-weight: bold }
+
+                .text-right { text-align: right }
+                .small { font-size: 1.2rem }
+
+                .skills-section { padding: 0.8rem }
+                `
+                a.document.write(`<html><head><title>Stella Marie - Web Developer Resume</title><style>${s}</style></head><body>${r}</body></html`)
+                a.document.close()
+                a.print()
+                frame.remove()
+            }
         }
         
         ui.cns.append(resume)
@@ -2601,7 +2642,6 @@
         tree, 
         whatis, whoami
     }
-    const user_input = { vals: [], i: -1 }
     const exec = input => {
         const [command, ...ipt] = input.split(' ')
         if (cmd.hasOwnProperty(command)) { cmd[command](ipt) }
