@@ -325,6 +325,9 @@
                 name: 'print',
                 synopsis: [ 'print' ],
                 description: `View a pdf resume.
+
+                -a, --all
+                    show all experience
                 
                 -d, --download
                     download the pdf resume
@@ -332,7 +335,7 @@
                 --help
                     display command information`
             },
-            options: ['-d', '--download', '--help'],
+            options: ['-d', '--download', '-a', '--all', '--help'],
             help: 'print: print',
             whatis: 'View a pdf resume.'
         },
@@ -520,7 +523,7 @@
         edcc: {
             title: 'Edmonds College (formerly Edmonds Community College)',
             href: 'https://www.edmonds.edu',
-            comment: `AS: Pre-engineering grad. 2011
+            credit: `AS: Pre-engineering grad. 2011
             Introduction to Programming - Visual Basic and Java
             
             Program: Running Start
@@ -533,7 +536,7 @@
         uw: {
             title: 'University of Washington',
             href: 'https://www.washington.edu',
-            comment: `BS: Informatics grad. 2014
+            credit: `BS: Informatics grad. 2014
             iSchool
             Specialty: User experience design`
         },
@@ -569,7 +572,7 @@
                 'https://en.sjtu.edu.cn',
                 'https://www.linkedin.com/school/shanghai-jiao-tong-university/'
             ],
-            comment: `MA: Design grad. 2020
+            credit: `MA: Design grad. 2020
             School of Design
             Specialty: HCI design`
         },
@@ -692,34 +695,35 @@
             description: 'React web app developmnt',
             keywords: ['react', 'verbal communication', 'git', 'problem-solving', 'interface design', 'listening', 'adaptability', 'creativity'],
             year: ['Nov 2023', 'Dec 2023'],
-            ref: { source: sources.signed },
+            ref: sources.signed,
             status: true,
-            comment: `Remote
-            Location: Seattle, WA, USA
-            Referral: Lee Grambush`
+            location: 'Seattle, WA, USA',
+            responsibility: `Implement tree visualization for dashboard (d3)
+            Dashboard page for managing firm account's users`,
+            type: 'Remote'
         },
         'store-clerk': {
             title: 'Store Clerk',
             description: 'Part-time store clerk',
             keywords: ['empathy', 'verbal communication', 'listening', 'attention to detail', 'organization'],
             year: ['Aug 2021', 'Apr 2023'],
-            ref: { source: sources.ph },
+            ref: sources.ph,
             status: true,
-            comment: `Seattle location, closed in Apr. 2024,
-            Location: Seattle, WA, USA
-            Referral: Ed Marquand, Suzanne Crimmins (no linkedin)`
+            location: 'Seattle, WA, USA',
+            responsibility: `Cashier
+            Customer service
+            Stock organization`,
+            comment: `Seattle location, closed in Apr. 2024`
         },
         'head-student-editor': {
             title: 'Head Student Editor',
             description: 'Lead team in translating, editing and proofreading course textbook on interaction design',
             keywords: ['listening', 'creativity', 'leadership', 'attention to detail', 'written communication', 'verbal communication', 'problem-solving', 'documentation', 'analytical reasoning'],
             year: ['Mar 2018', 'Aug 2019'],
-            ref: { source: sources.sjtu },
+            ref: sources.sjtu,
             status: true,
-            comment: `Office in Minhang campus, SOD building
-            Location: Shanghai, Shanghai, CN
-            
-            Conduct weekly meetings
+            location: 'Shanghai, Shanghai, CN',
+            responsibility: `Conduct weekly meetings
             Manage translation and editing schedule
             Collect and synthesize weekly student feedback, drafts, edits, notes, and confirmations from professor
             Proofread and edit chapter drafts each week`
@@ -729,27 +733,25 @@
             description: `Assist professors and manage course schedule, materials and projects`,
             keywords: ['written communication','creativity','verbal communication','adaptability','adaptability','management','problem-solving','java','service design','interaction design'],
             year: ['Mar 2018', 'Jun 2019'],
-            ref: { source: sources.sod },
+            ref: sources.sod,
             status: true,
-            comment: `Graduate courses in School of Design, SJTU
-            Location: Shanghai, Shanghai, CN
-            
+            location: 'Shanghai, Shanghai, CN',
+            responsibility: `Service design, Interaction design (School of Design, SJTU)
             Develop and distribute course curriculumns
             Develop class presentations and tutorials
             Develop grading rubric
             Supervise class time and schedule
             Collect, grade and review assignments and projects`
         },
-        'english-teacher': {
-            title: 'Foreign English Teacher',
+        'head-english-teacher': {
+            title: 'Foreign English (Head) Teacher',
             description: `Teacher, trainer and supervisor of operations`,
             keywords: ['verbal communication','written communication','documentatation','time management','management','adaptability','creativity','analytical reasoning','critical thinking','problem-solving','teaching','training','business counseling','feedback','hiring decisions'],
             year: ['Aug 2015', 'Nov 2016'],
             status: true,
-            comment: `EasyFun, Hampson, Side-by-Side English (simultaneous)
-            Location: Guangzhou, Guangdong, CN
-            
-            Develop curriculums, course plans and class plans
+            location: 'Guangzhou, Guangdong, CN',
+            ref: ['EasyFun', 'Hampson', 'Side-by-Side English'],
+            responsibility: `Develop curriculums, course plans and class plans
             Review textbook series
             Assess student and teacher performance
             Client consultations
@@ -767,48 +769,36 @@
             description: 'Development in html, css, javscript, Node.js, C# and .Net, and React',
             keywords: ['react', 'jest', 'babel', 'eslint', 'html', 'css', 'javscript', 'vanilla js', 'c#', '.net 6', '.net 7', 'api', 'node.js', 'tdd', 'red-green workflow', 'pair programming', 'code review', 'scrum', 'dev teams', 'mysql', 'sql', 'authentication', 'authorization', 'jwt', 'frontend', 'json'],
             year: 'Dec 2023',
-            ref: { source: sources.epi },
+            ref: sources.epi,
             status: true,
-            comment: `Epicodus
-            Location: Portland, OR, USA (remote)
-            Referral: Calvin Will, Jasmine Klein`
+            location: 'Portland, OR, USA (remote)'
         },
         'design': {
             title: 'MA Design',
             description: 'Design research, practices, processes and fields',
             keywords: ['java', 'processing', 'adobe illustrator', 'user research', 'user interviews', 'quantitative analysis', 'qualitative analysis', 'low-fidelity prototypes', 'high-fidelity prototypes', 'eye-trackers', 'field research', 'service design', 'design thinking', 'interaction design', 'chinese'],
             year: 'Mar 2020',
-            ref: { source: [sources.sjtu, sources.sod] },
+            ref: [sources.sjtu, sources.sod],
             status: true,
-            comment: `Shanghai Jiaotong University, School of Design
-            Location: Shanghai, Shanghai, CN
-            Specialized in Interaction design`
+            location: 'Shanghai, Shanghai, CN'
         },
         'informatics': {
             title: 'BS Informatics',
             description: `Information technology, applications, and principles`,
             keywords: ['java', 'mobile apps', 'web apps', 'responsive design', 'web design and development', 'database modeling', 'database design', 'sql', 'mysql', 'android', 'axure rp', 'adobe illustrator', 'visual design', 'user experience design', 'service design', 'design thinking', 'computer science', 'software entrepreneurship'],
             year: 'Jun 2014',
-            ref: { source: [sources.uw, sources.ischool] },
+            ref: [sources.uw, sources.ischool],
             status: true,
-            comment: `University of Washington, Information School
-            Location: Seattle, WA, USA
-            Specialized in User Experience design
-            Referral: Mike Eisenberg (dean emeritus)`
+            location: 'Seattle, WA, USA'
         },
         'pre-engineering': {
             title: 'AS Pre-Engineering',
             description: `Introduction to engineering sciences, including computer science`,
             keywords: ['visual basic', 'java', 'desktop apps', 'forms'],
             year: 'Jun 2011',
-            ref: { source: sources.edcc },
+            ref: sources.edcc,
             status: true,
-            comment: `Edmonds Community College
-            Location: Edmonds, WA, USA
-            
-            Program: Running Start
-            - AS Pre-Engineering
-            - IB Mathematics, Chinese`
+            location: 'Edmonds, WA, USA'
         }
     }
 
@@ -1556,12 +1546,6 @@
         }
     }
 
-    const Status = {
-        QUEUED: 'not yet read',
-        PROGRESS: 'in-progress',
-        COMPLETED: 'completed'
-    }
-
     const calendar = {
         daily: {
             routine: { morning: '8:00', night: '23:00' },
@@ -1747,6 +1731,8 @@
         return res
     }
 
+    const add_text = text => document.createTextNode(text)
+
     const create_element = ({ type, content, classname, link }) => {
         let e = {}
         switch (type) {
@@ -1759,11 +1745,17 @@
             case 'span':
                 e = document.createElement('span')
                 break
+            case 'h1':
+                e = document.createElement('h1')
+                break
             case 'a':
                 e = document.createElement('a')
                 e.href = link
                 if (!link.includes(ui.host))
                     e.target = "_blank"
+                break
+            case 'li':
+                e = document.createElement('li')
                 break
         }
         if (classname)
@@ -1772,11 +1764,18 @@
             if (Array.isArray(content))
                 for (const c of content) { e.append(c) }
             else if (typeof content === 'string')
-                e.append(document.createTextNode(content))
+                e.append(add_text(content))
             else
                 e.append(content)
         }
         return e
+    }
+
+    const create_list = items => {
+        const list = document.createElement('ul')
+        for (const item of items)
+            list.append(item)
+        return list
     }
 
     const add_line = (output) => ui.cns.append(create_element({ type: 'p', content: output }))
@@ -2305,8 +2304,10 @@
     const print = (args) => {
         const included = init_no_input(args, 'print')
 
-        const title = document.createElement('h1')
-        title.append(document.createTextNode('Frontend Web Developer'))
+        const title = create_element({ 
+            type: 'h1', 
+            content: 'Frontend Web Developer' 
+        })
         const contact_linkedin = create_element({
             type: 'p',
             content: [
@@ -2346,9 +2347,10 @@
             content: ''
         })
 
-        const skills_title = document.createElement('h1')
-        skills_title.append(document.createTextNode('Skills'))
-        const skills_list = document.createElement('ul')
+        const skills_title = create_element({ 
+            type: 'h1', 
+            content: 'Skills' 
+        })
         const skill_items = [ 
             'JavaScript/HTML/CSS', 
             'Node.js', 
@@ -2358,29 +2360,159 @@
             'Service design', 
             'Design Research' 
         ]
-        skill_items.map(skill => {
-            console.log(skill)
-            const li = document.createElement('li')
-            li.append(document.createTextNode(skill))
-            return li
-        }).forEach(skill => {
-            console.log(skill)
-            skills_list.append(skill)
-        })
+        const skills_list = create_list(skill_items.map(skill => create_element({ 
+            type: 'li', 
+            content: skill 
+        })))
         const skills = create_element({
             type: 'div',
             classname: 'skills-section',
-            content: [
-                skills_title,
-                skills_list
-            ]
+            content: [ skills_title, skills_list ]
         })
 
-        const resume = [ 
-            header, 
-            statement, 
-            skills
-        ]
+        const exp_title = create_element({ 
+            type: 'h1', 
+            content: 'Professional Experience'
+        })
+        const exp_props = Object.keys(portfolio.experience)
+        const exp_shown_props = !included.length || !includes(included, '-a', '--all') 
+            ? exp_props.filter(key => includes(
+                key.split('-'), 
+                ['frontend', 'backend', 'fullstack', 'web']
+            )) 
+            : exp_props
+        const exp_items = exp_shown_props.map(key => {
+            const pos = portfolio.experience[key]
+
+            const pos_source = create_element({ 
+                type: 'p', 
+                classname: 'exp-title', 
+                content: `${Array.isArray(pos.ref) ? 
+                    pos.ref.join(', ') 
+                    : pos.ref.title
+                } / ${pos.location}`
+            })
+            const pos_title = create_element({
+                type: 'p',
+                content: pos.title
+            })
+            const pos_head = create_element({
+                type: 'div',
+                content: [ pos_source, pos_title ]
+            })
+            const exp_head = create_element({
+                type: 'div',
+                classname: 'exp-header',
+                content: [
+                    pos_head,
+                    create_element({ 
+                        type: 'p',
+                        classname: 'text-right',
+                        content: `${pos.year[0]} - ${pos.year[1]}`
+                    })
+                ]
+            })
+
+            const resp_items = pos.responsibility.split('\n').map(line => {
+                line = line.trim()
+                return create_element({ type: 'li', content: line })
+            })
+            const exp_list = create_list(resp_items)
+
+            const exp_section = create_element({ 
+                type: 'div', 
+                content: [exp_head, exp_list] 
+            })
+            return exp_section
+        })
+        const exp_list = create_element({
+            type: 'div',
+            content: exp_items
+        })
+        const exp = create_element({
+            type: 'div',
+            content: [ exp_title, exp_list ]
+        })
+
+        const edu_title = create_element({
+            type: 'h1',
+            content: 'Education'
+        })
+        const edu_props = Object.keys(portfolio.education)
+        const edu_shown_props = !included.length || !includes(included, '-a', '--all')
+            ? edu_props.filter(key => key != 'pre-engineering')
+            : edu_props
+        const edu_items = edu_shown_props.map(key => {
+            const deg = portfolio.education[key]
+            const deg_title = create_element({
+                type: 'p',
+                classname: 'edu-title',
+                content: `${Array.isArray(deg.ref) ? deg.ref.map(r => r.title).join(', ') : deg.ref.title} / ${deg.location}`
+            })
+            const deg_spec = create_element({
+                type: 'p',
+                content: deg.title
+            })
+            const deg_head = create_element({
+                type: 'div',
+                content: [ deg_title, deg_spec ]
+            })
+
+            const deg_grad = create_element({
+                type: 'p',
+                classname: 'text-right',
+                content: deg.year
+            })
+
+            const edu_head = create_element({
+                type: 'div',
+                classname: 'edu-header',
+                content: [ deg_head, deg_grad ]
+            })
+            
+            if (!included.length || !includes(included, '-a', '--all'))
+                return edu_head
+
+            const desc = create_element({
+                type: 'p',
+                content: deg.description
+            })
+            const keywords = create_element({
+                type: 'p',
+                classname: 'small',
+                content: 'Keywords: ' + deg.keywords.join(', ')
+            })
+            const info = create_element({
+                type: 'div',
+                content: [ desc, keywords ]
+            })
+
+            const edu_body = create_element({
+                type: 'div',
+                content: [ edu_head, info ]
+            })
+            return edu_body
+        })
+        const edu_list = create_element({
+            type: 'div',
+            content: edu_items
+        })
+        const edu = create_element({
+            type: 'div',
+            content: [ edu_title, edu_list ]
+        })
+
+        const resume = create_element({
+            type: 'div',
+            content: [ header, statement, skills, exp, edu ]
+        })
+
+        const top_btn = document.createElement('button')
+        top_btn.setAttribute('class', 'top-btn bold')
+        top_btn.append(document.createTextNode('TOP'))
+        top_btn.addEventListener('click', () => {
+            resume.scrollIntoView({ inline: 'start' })
+        })
 
         if (included.length) {
             if (included.includes('--help'))
@@ -2389,7 +2521,9 @@
                 return true
         }
         
-        resume.forEach(section => ui.cns.append(section))
+        ui.cns.append(resume)
+        ui.cns.append(top_btn)
+        setTimeout(() => top_btn.click(), 0.4)
     }
 
     const pwd = (args) => {
