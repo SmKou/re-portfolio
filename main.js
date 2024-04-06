@@ -2305,6 +2305,9 @@
     const print = (args) => {
         const included = init_no_input(args, 'print')
 
+        if (included.length && includes(included, '-a', '--all') && includes(included, '-d', '--download'))
+            return errors.custom('print', 'dev refuses - printed resume is 3pg long with poor formatting')
+
         const title = create_element({ 
             type: 'h1', 
             content: 'Frontend Web Developer' 
@@ -2523,10 +2526,10 @@
                 const frame = document.createElement('iframe')
                 frame.name = 'frame'
                 ui.cns.append(frame)
-                
+
                 const r = resume.innerHTML
                 const a = window.open('', 'frame', 'height=1320, width=1020')
-                const s = `@page { size: auto;  margin: 0mm; }
+                const s = `@page { size: auto;  margin: 1mm; }
                 body { width: 95vw }
                 h1 { 
                     margin: 1.8rem 0.8rem;

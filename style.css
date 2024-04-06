@@ -78,6 +78,10 @@ hr {
 
 .resume-header { margin-top: 1.8rem }
 
+.resume-header + div,
+.exp-header + div,
+.edu-header + div { padding: 0 0.8rem }
+
 .exp-title,
 .edu-title,
 .bold { font-weight: bold }
