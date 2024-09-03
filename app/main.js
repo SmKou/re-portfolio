@@ -1,158 +1,52 @@
-import { education: edu } from 'education/main'
-import { experience: exp } from 'experience/main'
-import { projects: proj } from 'projects/main'
-import { sources: src } from 'sources/main'
-import { manual: man } from 'manual/main'
+import ver from 'versions/main'
+import edu from 'education/main'
+import exp from 'experience/main'
+import proj from 'projects/main'
+import src from 'sources/main'
+import man from 'manual/main'
+
+const portfolio = {
+	versions: ver,
+	education: edu,
+	experience: exp,
+	projects: proj
+}
+
+const resources = {
+	manual: man,
+	sources: src
+}
+
+const directories = {
+	portfolio,
+	resources,
+	pages: {
+		versions: {
+			title: 'The Old TV',
+			description: 'Preview available portfolioes on an old tv-like ui',
+			href: 'versions/'
+		}
+	}
+}
+
+const media = {
+	linkedin: {
+		title: 'LinkedIn',
+		href: 'https://www.linkedin.com/in/'
+	},
+	github: {
+		title: 'Github',
+		href: 'https://github.com/'
+	}
+}
 
 (() => {
 
 
-    const calendar = {
-        daily: {
-            routine: { morning: '8:00', night: '23:00' },
-            goals: {
-                walk: { time: { min: 1, max: 2 }},
-                coding_challenge: {
-                    title: "Coding Challenge",
-                    time: 1,
-                    source: [
-                        {
-                            title: "Coding Interview prep",
-                            href: "https://www.freecodecamp.org/learn/coding-interview-prep"
-                        },
-                        {
-                            title: "Exercism: Gleam track",
-                            href: "https://exercism.org/tracks/gleam"
-                        },
-                        {
-                            title: "Exercism: Go track",
-                            href: "https://exercism.org/tracks/go"
-                        },
-                        {
-                            title: "Coding Interview study plan",
-                            href: "https://www.techinterviewhandbook.org/coding-interview-study-plan/"
-                        }
-                    ]
-                },
-                reading: {
-                    title: "Reading",
-                    time: 1,
-                },
-            }
-        },
-        weekly: {
-            routine: {
-                therapy: {
-                    title: 'C-PTSD therapy',
-                    time: ['10:30', 1.5],
-                    days: [0, 1, 0, 0, 0, 0, 0]
-                },
-                isg: {
-                    title: 'Indie Support Group',
-                    time: ['13:00', 5.5],
-                    days: [0, 0, 0, 0, 0, 0, 1]
-                },
-                computer_science: {
-                    title: "Computer Science",
-                    time: [['10:00', 3], ['13:00', 1]],
-                    days: [1, 2, 1, 2, 1, 2, 0],
-                    source: [
-                        sources.fm,
-                        {
-                            title: "Computer Science roadmap",
-                            href: "https://roadmap.sh/computer-science"
-                        },
-                        {
-                            title: "Coding Interview study plan",
-                            href: "https://www.techinterviewhandbook.org/coding-interview-study-plan/"
-                        }
-                    ]
-                },
-                web_development: {
-                    title: "Web Development",
-                    time: [['10:00', 3], ['13:00', 1]],
-                    days: [2, 0, 2, 1, 2, 1, 1],
-                    source: [
-                        sources.fm,
-                        {
-                            title: "Backend Developer roadmap",
-                            href: "https://roadmap.sh/backend"
-                        }
-                    ]
-                }
-            },
-            goals: {
-                museum_visit: {
-                    title: 'Museum Visit',
-                    time: ['9:00', 6],
-                    days: [1, 0, 0, 0, 0, 0, 0],
-                    week: [
-                        'Frye Art Museum',
-                        'Wing Luke Museum',
-                        'Henry Art Gallery',
-                        'National Nordic Museum'
-                    ]
-                }
-            }
-        },
-        monthly: {
-            routine: {
-                seattlejs: {
-                    title: 'Seattle JS',
-                    time: ['17:00', 3],
-                    days: [0, 0, 0, 1, 0, 0, 0],
-                    week: 1
-                },
-                code_katas: {
-                    title: 'Code Katas',
-                    time: ['17:30', 2.5],
-                    days: [0, 0, 1, 0, 0, 0, 0],
-                    week: 2
-                },
-                seattle_indies_social: {
-                    title: 'Seattle Indies Social',
-                    time: ['20:30', 1.5],
-                    days: [0, 0, 1, 0, 0, 0, 0],
-                    week: 2
-                }
-            }
-        },
-        projects: ['Re-Portfolio', "Jordan's Game"],
-        events: {
-            '4/10/24': {
-                location: 'The Collective',
-                group: 'SeattleJS',
-                time: ['15:30', 2.5]
-            },
-            '4/16/24': {
-                location: ['AWS Skills Center', 'Stoup Brewery'],
-                group: ['Seattle Hackers', 'Seattle Indies'],
-                time: [['18:00', 2], ['20:30', 1.5]]
-            }
-        }
-    }
-
-    const pages = {
-        versions: {
-            title: 'The Old TV',
-            description: 'Preview the available portfolios',
-            href: 'versions/'
-        }
-    }
-
 /* ---------------------------------------------------------------- PAGES */
 
     const resources = { manual, sources }
-    const media = {
-        linkedin: {
-            title: 'LinkedIn',
-            href: 'https://www.linkedin.com/in/'
-        },
-        github: {
-            title: 'Github',
-            href: 'https://github.com/'
-        }
-    }
+
     const portfolio = { versions, experience, education, projects }
     const directories = { portfolio, resources, pages }
 
