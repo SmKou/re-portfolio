@@ -219,7 +219,7 @@ summary {
     border-radius: 0.6rem;
 }
 
-.intro button {
+.left button {
     padding: 0;
     border: none;
     outline: none;
@@ -228,10 +228,10 @@ summary {
     font-family: 'Cutive Mono';
     font-size: 1.6rem;
 }
-.intro button:hover { color: var(--uni-light) }
+.left button:hover { color: var(--uni-light) }
 
-.intro a { color: var(--uni-mid) }
-.intro a:hover { color: var(--uni-light) }
+.left a { color: var(--uni-mid) }
+.left a:hover { color: var(--uni-light) }
 
 .copyright p { text-align: center }
 
@@ -240,5 +240,3 @@ summary {
 
 .copyright a { color: var(--hacker-green) }
 .copyright a:hover { text-decoration: underline }
-
-iframe { display: none }

@@ -10,6 +10,7 @@
 2024.09.03: Move subdirectories into pages
 			Move js files to data for all pages
 
+<!--
 	**In-Development**
 	Homepage
 	- cal: show calendar information
@@ -93,3 +94,32 @@
 	- Working example
 	- Full code
 	- Chunks of code interspersed with explanations
+-->
+
+2024.09.03 Cnt.
+Homepage design: Command line interface
+- Terminal
+- Quick Navigation
+  - left: pages
+  - right: commands
+
+Pages
+- education
+- experience
+- manual
+- projects
+- sources
+- versions
+
+Education: What would be included on an e-learning dashboard?
+```js
+edu = {
+	title: <full_name>,
+	description: <> // need to change: do not be redundant,
+	keywords: <skills...>,
+	year: <m/dd>,
+	ref: <sources...>,
+	status: <graduated>,
+	location: <city, state, country>
+}
+```
