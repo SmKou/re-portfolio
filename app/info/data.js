@@ -153,7 +153,9 @@ const projects = {
 		ref: ["ischool", { carmax: "https://www.carmax.com" }],
 		comment: [
 			"Course: Service Design",
-			"Final submission: Axure RP prototype, Design spec, Presentation",
+			"Final submission: Axure RP prototype, Design spec, Presentation"
+		],
+		reflect: [
 			"If I were to redesign this app, Carmax has since changed their website and provides a mobile app. Being the objective is a service-oriented design, rather than go on hunches and a few impressions, I would need a sense of Carmax's placement in the present market. The data I would like to collect would consist of market research and analysis, scraping carmax reviews and related service-oriented forums, surveys for car buyers (past, present, considering and future), field research of employees and customers, an understanding of business practices, flexibility, and liabilities. I want this much data to identify degrees of resistance and inefficiency throughout the services Carmax offers, and from there, determine what to focus on and what changes at what degree to make per area of focus. Of course, to do it well, services and their features should be addressed one-by-one. If I have the resources, then I would allocate projects based on priority and expertise."
 		]
 	},
@@ -179,7 +181,10 @@ const projects = {
 		comment: [
 			"Alternative title: Art and Execution",
 			"Type: Novel / Text adventure",
-			"The content for this project has been developed, written and drawn since 2013. This project is like a hypertext novel, except that the player can switch between timelines of the characters, as well as use text commands to search and navigate the story. If a reader-player learns the language within the story's world, they can access more context and graphical content. So far, these interactions are speculative, not yet prototyped. There will likely be four interfaces to this project: language simulator, timeline writer, reader-player terminal, extra views organizer. "
+			"Final product: smjoker.com/art-and-execution"
+		],
+		reflect: [
+			"The content for this project has been developed, written and drawn since 2013. This project is like a hypertext novel, except that the player can switch between timelines of the characters, as well as use text commands to search and navigate the story. If a reader-player learns the language within the story's world, they can access more context and graphical content. So far, these interactions are speculative, not yet prototyped. There will likely be four interfaces to this project: language simulator, timeline writer, reader-player terminal, extra views organizer."
 		]
 	},
 	"leto": {
@@ -190,28 +195,55 @@ const projects = {
 		comment: [
 			"Capstone project",
 			"Type: Proof of concept",
-			"Final submission: Android prototype, Mock virtual badges, Team recruitment and Project pages",
-			"The idea for this project definitely needed more rigid scope management. We were not able to focus or decide upon any one feature, or service, meaning we ended up clashing between design and development a lot. In academics and volunteer work, I often try to abstain from assuming leadership, but more often than not, this has meant poor quality, confusion, lack of clarification and common understanding, less working documentation and little to no appropriate (flexible) scheduling for the team."
+			"Final submission: Android prototype, Mock virtual badges, Team recruitment and Project pages"
+		],
+		reflect: [
+			"The idea for this project definitely needed more rigid scope management. We were not able to focus or decide upon any one feature, or service, meaning we ended up clashing between design and development a lot. In academics and volunteer work, I often try to abstain from assuming leadership, but more often than not, this has meant poor quality, confusion, lack of clarification and common understanding, less working documentation and little to no appropriate (flexible) scheduling for the team.",
 			"While I don't know the tools or templates people use for management, I know how to see, listen and organize people. Initially, I will plan according to the project, its requirements and objectives, but I work with my team and each member to improve the plan to work for them, so they can perform well and our milestones can be met. I clarify every step for myself and my teammates as needed and when needed. Since my time in informatics, I've understood that it really is about keeping it simple. The idea can be complicated, but the approach, schedule and teamwork should be simple and straightforward. So if there was one thing I would have changed, it's not the project idea; I would change the plan and enforce some management."
 		]
+	},
+	"ks-health": {
+		title: "KS Healthcare",
+		keywords: ['mobile app', 'adobe illustrator', 'adobe ux', 'paper prototypes', 'mockups', 'wireframes', 'user interviews', 'field study', 'personas', 'user stories'],
+		year: "2018",
+		ref: ["sjtu", "sod"],
+		comment: [
+			"Course: Design Thinking and Process",
+			"Final submission: Design spec, Research report, Presentation"
+		]
+	},
+	"little-red": {
+		title: "Little Red",
+		keywords: ['java', 'processing', 'html', 'css', 'javascript / js', 'canvas'],
+		year: ["2018", "2021", "2024"],
+		ref: [
+			"sod",
+			{ book: "https://www.amazon.com/Picture-This-How-Pictures-Work/dp/1452151997" },
+			{ author: "https://www.mollybang.com/Pages/picture.html" }
+		],
+		inspect: {
+			js: "https://github.com/SmKou/red-riding-hood"
+		}
 	}
 }
 
-export const display = (type, ctn = document.createDocumentFragment()) => {
+export const display = (type, container = document.createDocumentFragment()) => {
 	switch (type) {
 		case "edu":
 			for (const inst of Object.keys(edu)) {
-
+				const title = document.createElement("h2")
+				title.appendChild(document.createTextNode(edu[inst].title))
+				container.appendChild(title)
 			}
-			return { status: true, content: ctn }
+			return { status: true, content: container }
 		case "exp":
-			return { status: true, content: ctn }
+			return { status: true, content: container }
 		case "pro":
-			return { status: true, content: ctn }
+			return { status: true, content: container }
 		case "man":
-			return { status: true, content: ctn }
+			return { status: true, content: container }
 		case "src":
-			return { status: true, content: ctn }
+			return { status: true, content: container }
 		default:
 			return { status: false, msg: `Cannot refer ${type}` }
 	}
