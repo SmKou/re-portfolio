@@ -121,6 +121,82 @@ const exp = {
 	}
 }
 
+const messages = {
+	cnet: [
+		"Status: deprecated",
+		"All C#/.Net projects are not likely to be completed, or deployed."
+	],
+	basic: [
+		"Status: complete",
+		"Basic projects do not require maintenance, such as changes or updates."
+	],
+	demo: [ "Included for demonstration purposes." ],
+	redesign: [ "To be redesigned and developed." ]
+}
+
+const projects = {
+	"husky": {
+		title: "Husky Goals App",
+		keywords: ['axure rp','html','css','javascript / js', 'paper prototypes', 'wireframes', 'mockups', 'user research', 'user testing', 'user interviews', 'user stories', 'personas', 'design process', 'agile methods'],
+		year: ['2012', '2015', '2019', '2021'],
+		ref: ["ischool"],
+		messages: [basic, redesign],
+		comment: [
+			"Course: Design Thinking",
+			"Final submission: Axure RP prototype, Design spec"
+		]
+	},
+	"carmax": {
+		title: "Carmax App Design",
+		keywords: ['axure rp', 'wireframes', 'mockups', 'preesntation', 'teamwork', 'user research', 'business analysis'],
+		year: "2013",
+		ref: ["ischool", { carmax: "https://www.carmax.com" }],
+		comment: [
+			"Course: Service Design",
+			"Final submission: Axure RP prototype, Design spec, Presentation",
+			"If I were to redesign this app, Carmax has since changed their website and provides a mobile app. Being the objective is a service-oriented design, rather than go on hunches and a few impressions, I would need a sense of Carmax's placement in the present market. The data I would like to collect would consist of market research and analysis, scraping carmax reviews and related service-oriented forums, surveys for car buyers (past, present, considering and future), field research of employees and customers, an understanding of business practices, flexibility, and liabilities. I want this much data to identify degrees of resistance and inefficiency throughout the services Carmax offers, and from there, determine what to focus on and what changes at what degree to make per area of focus. Of course, to do it well, services and their features should be addressed one-by-one. If I have the resources, then I would allocate projects based on priority and expertise."
+		]
+	},
+	"booksie": {
+		title: "Booksie Database Model and Management",
+		keywords: ['sql', 'database models', 'mysql', 'flow diagrams', 'relational databases', 'acid principles'],
+		year: "2013",
+		ref: ["ischool", { booksie: "https://www.booksie.com" }],
+		comment: [
+			"Course: Database Models and Design [2-part course]",
+			"Final submission: Database model, Seeded database",
+			"Another project, creative writing platform, can serve as a backend if I were to redesign the booksie website and database, so this project is complete. Refer ULore."
+		]
+	},
+	"ijuum": {
+		title: "Ijuum",
+		keywords: ['html', 'css', 'javascript / js', 'cli', 'desktop', 'writing', 'fiction', 'text adventrue', 'hypertext fiction', 'interface design', 'world-building', 'conlang', 'data mockups', 'js prototype'],
+		year: ["2013", "continuous"],
+		ref: ["smjoker", "smkou"],
+		inspect: [
+			"https://github.com/SmKou/ijuum"
+		],
+		comment: [
+			"Alternative title: Art and Execution",
+			"Type: Novel / Text adventure",
+			"The content for this project has been developed, written and drawn since 2013. This project is like a hypertext novel, except that the player can switch between timelines of the characters, as well as use text commands to search and navigate the story. If a reader-player learns the language within the story's world, they can access more context and graphical content. So far, these interactions are speculative, not yet prototyped. There will likely be four interfaces to this project: language simulator, timeline writer, reader-player terminal, extra views organizer. "
+		]
+	},
+	"leto": {
+		title: "The Leto Project",
+		keywords: ['axure rp', 'adobe illustrator', 'adobe ux', 'java', 'android', 'augmented reality / ar', 'wireframes', 'mockups', 'high-fidelity prototype', 'low-fidelity prototype', 'domain research', 'teamwork', 'design', 'design process', 'presentation'],
+		year: "2014",
+		ref: ["ischool"],
+		comment: [
+			"Capstone project",
+			"Type: Proof of concept",
+			"Final submission: Android prototype, Mock virtual badges, Team recruitment and Project pages",
+			"The idea for this project definitely needed more rigid scope management. We were not able to focus or decide upon any one feature, or service, meaning we ended up clashing between design and development a lot. In academics and volunteer work, I often try to abstain from assuming leadership, but more often than not, this has meant poor quality, confusion, lack of clarification and common understanding, less working documentation and little to no appropriate (flexible) scheduling for the team."
+			"While I don't know the tools or templates people use for management, I know how to see, listen and organize people. Initially, I will plan according to the project, its requirements and objectives, but I work with my team and each member to improve the plan to work for them, so they can perform well and our milestones can be met. I clarify every step for myself and my teammates as needed and when needed. Since my time in informatics, I've understood that it really is about keeping it simple. The idea can be complicated, but the approach, schedule and teamwork should be simple and straightforward. So if there was one thing I would have changed, it's not the project idea; I would change the plan and enforce some management."
+		]
+	}
+}
+
 export const display = (type, ctn = document.createDocumentFragment()) => {
 	switch (type) {
 		case "edu":
