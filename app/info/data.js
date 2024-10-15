@@ -1,3 +1,58 @@
+const med = {
+    linkedin: "https://www.linkedin.com/in/"
+}
+
+const src = {
+    fcc: {
+        title: "freeCodeCamp",
+        href: "https://www.freecodecamp.org",
+        pro: []
+    },
+    ztm: {
+        title: "Zero to Mastery",
+        href: "https://zerotomastery.io",
+        pro: []
+    },
+    epi: {
+        title: "Epicodus",
+        href: "https://www.epicodus.com",
+        ref: [
+            {
+                name: "Calvin Will",
+                rel: "Instructor",
+                href: "calvinwill",
+                href_med: "linkedin"
+            },
+            {
+                name: "Jasmine Klein",
+                rel: "Counselor",
+                href: "jasminemklein",
+                href_med: "linkedin"
+            }
+        ],
+        sum: `Epicodus is a coding bootcamp in the Pacific Northwest. They used to have a campus in Seattle, but since the pandemic, only offer their course remotely or at their Portland campus. The course taken consisted of html, css, js, node.js, C# (CLI, .NET 6 and 7, MySQL, and the Identity Framework), and React (optionally in Typescript).
+        
+        At the beginning of each week, we were assigned dev teams and met for scrum. Every morning, we had standup, broke up into groups of 2-3, and worked on small projects with the practice of pair programming. At the end of the day, we'd meet back up and review our progress and findings. Then on Friday morning, we'd meet for scrum and receive the criteria and requirements for a three-day project to submit for code review.
+        
+        Certificate of Web Development`,
+        pro: []
+    },
+    edcc: {
+        title: "Edmonds College",
+        title_former: "Edmonds Community College",
+        href: "https://www.edmonds.edu",
+        sum: `I attended Edmonds College, formerly Edmonds Community College, the latter two years of high school through a program in my state called Running Start. Every quarter, I filled my schedule and my junior year, attended additional classes in Chinese and Math through the IB program (International Baccaleaurate). When I graduated, I received my high school diploma and an AS degree in Pre-engineering.
+        
+        High school diploma
+        AS Pre-engineering`
+    },
+    uw: {
+        title: "University of Washington",
+        href: "https://www.washington.edu",
+        sum: ``
+    }
+}
+
 const edu = {
 	"web-dev": {
 		title: "Web Development Certificate",
@@ -134,7 +189,7 @@ const messages = {
 	redesign: [ "To be redesigned and developed." ]
 }
 
-const projects = {
+const pro = {
 	"husky": {
 		title: "Husky Goals App",
 		keywords: ['axure rp','html','css','javascript / js', 'paper prototypes', 'wireframes', 'mockups', 'user research', 'user testing', 'user interviews', 'user stories', 'personas', 'design process', 'agile methods'],
