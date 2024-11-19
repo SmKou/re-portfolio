@@ -1,4 +1,7 @@
-# Re-Portfolio Log
+# Log
+
+2024.11.19: Research copyright
+			Remove open source license
 
 --------------------------------------------------------------------------------------
 

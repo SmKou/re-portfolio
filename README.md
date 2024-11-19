@@ -1,6 +1,6 @@
 # Re-Portfolio
 
-By: Stella Marie
+By: Stella Marie (Sm Kou)
 
 Collection of portfolios since 2015
 View on [Github Pages](smkou.github.io/re-portfolio)
@@ -25,6 +25,6 @@ Note: Do not merge from main or checkout the gh-pages branch
 
 
 
-## License
+## Copyright
 
 Re-Portfolio © 2023 by Sm Kou
