@@ -1,7 +1,21 @@
 # Log
 
+2024.11.21: Purpose of writing
+
+The point of definition, research and analysis is to  think without inclinations. I am used to thinking in generics and physical memory (to replicate people if I bother), and then to consider situations by possibilities at each moment, so I think. This is a belief, or story I have formed for myself.
+- How my memory does and doesn't work
+- What constitutes states and factors of stress
+- Character voices and mannerisms extend to people
+- I have little to no personal feelings
+- I have detached myself from caring
+
+However, while I've been noting for a couple months now that my memories are not indicative, aware that recent memory won't be in a few years as well, factoring in people's present perceptions of me and the past, I am having trouble adapting in the moment to a person's awareness, especially with big and lil mama, if their memory has restructured or reduced an interaction we've had. Either not remembering or incorrectly remembering, and then chastising me about something from such loss or modification of memory, I realize I get stuck on remembering and validating what I remember because of the fears and wariness I have (even if I wasn't aware of the triggers involved at the time).
+
+I don't want to correct them, to take the time to know and be known by them. Perhaps I am scared they will have nothing to say, either because they wouldn't know how to modify their perceptions or they would filter their perspective to barely anything. I am also scared to be told I am wrong, or that I don't know myself because of the same reasoning I've used before, they've seen me--they remember at least once. More than a part of me wants to give up. It's not even about approval. It's a mess I'm scared of.
+
 2024.11.19: Research copyright
-			Remove open source license
+			
+            Remove open source license
 
 --------------------------------------------------------------------------------------
 
