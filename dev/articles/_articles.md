@@ -9,10 +9,14 @@ Structure of article:
 5. Reflections: formation of belief
 
 [Structure of a Belief System](#structure-of-a-belief-system)
+
 [Constitution of Human Nature](#constitution-of-human-nature)
+
 [Mechanics of Experience](#mechanics-of-experience)
 [Limits of Language](#limits-of-language)
+
 [Abstraction of Thought, Self and Memory](#abstraction-of-thought-self-and-memory)
+
 [Basis of Adaptability and Resilience](#basis-of-adaptability-and-resilience)
 
 ### Structure of a Belief System
