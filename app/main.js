@@ -2320,10 +2320,15 @@
         tree, 
         whatis, whoami
     }
+
     const exec = input => {
         const [command, ...ipt] = input.split(' ')
-        if (cmd.hasOwnProperty(command)) { cmd[command](ipt) }
-        else { errors.command(command) }
+        if (cmd.hasOwnProperty(command)) {
+			cmd[command](ipt)
+		}
+        else {
+			errors.command(command)
+		}
     }
 
     ui.ipt.addEventListener('keydown', e => {
