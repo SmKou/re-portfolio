@@ -182,13 +182,13 @@
                 synopsis: [ 'help', 'help COMMAND' ],
                 description: `Display command information.
                 No command: view list of available commands.
-                
+
                 -o, --open-aside
                     show aside with commands list
 
                 --help
                     display command information
-                    
+
                 The help flag can be used on any command, but will ignore all other input when used. Even if the other input is valid, --help takes precedence after error checking.`
             },
             options: ['-o', '--open-aside', '--help'],
@@ -200,7 +200,7 @@
                 name: 'hostname',
                 synopsis: [ 'hostname' ],
                 description: `Display name of host.
-                
+
                 --help
                     display command information`
             },
@@ -1723,11 +1723,11 @@
     }
 
     const get_node = (path = ui.path.slice(), dir = 'portfolio', node = get_dir(dir), shift) => {
-        if (!path.length) 
+        if (!path.length)
             return node
         shift = path.shift()
-        const res = node.hasOwnProperty(shift) 
-            ? get_node(path, dir, node[shift]) 
+        const res = node.hasOwnProperty(shift)
+            ? get_node(path, dir, node[shift])
             : { shift }
         return res
     }
@@ -1792,9 +1792,9 @@
         const span = create_element({ type: 'span' })
         span.style.fontWeight = 'bold'
         span.append(document.createTextNode('Re-Portfolio SMKOU ~/'))
-        const line = create_element({ 
-            type: 'p', 
-            classname: 'bash', 
+        const line = create_element({
+            type: 'p',
+            classname: 'bash',
             content: span
         })
         line.append(document.createTextNode(ui.path.join('/')))
@@ -1849,11 +1849,11 @@
     const is_valid_date = str => !isNaN(new Date(str))
 
     const flatten = (arr, flat = []) => {
-        if (!arr.length) return flat 
+        if (!arr.length) return flat
         arr.forEach(e => {
-            if (Array.isArray(e)) 
+            if (Array.isArray(e))
                 flat.concat(flatten(e, flat))
-            else 
+            else
                 flat.push(e)
         })
         return flat
@@ -1892,11 +1892,11 @@
 
     const init_no_input = (args, command) => {
         const { flags, values } = filter_input_type(args)
-        if (values.length) 
-            return errors.invalid_option(command, values) 
+        if (values.length)
+            return errors.invalid_option(command, values)
         const { included, not_included } = filter(resources.manual[command].options, flags)
-        if (not_included.length) 
-            return errors.unknown_option(command, not_included) 
+        if (not_included.length)
+            return errors.unknown_option(command, not_included)
         return included
     }
 
@@ -1908,16 +1908,16 @@
         for (const val of values) {
             if (!resources.manual.hasOwnProperty(val)) { wrong.push(val) }
         }
-        if (wrong.length) 
+        if (wrong.length)
             return errors.invalid_option('help', wrong)
         const { included, not_included } = filter(resources.manual.help.options, flags)
-        if (not_included.length) 
+        if (not_included.length)
             return errors.unknown_option('help', not_included)
 
         if (includes(included, '-o', '--open-aside') && !ui.aside.state) { ui.aside.tog.click() }
-        else if (included.includes('--help')) 
+        else if (included.includes('--help'))
             return help(['help'])
-            
+
         if (!values.length) {
             add_line(Object.keys(resources.manual).join(' '))
             return true
@@ -1930,7 +1930,7 @@
         let date = new Date()
         let freq = ['daily', 'weekly', 'monthly']
         let viewGoals = false
-        
+
         if (args.length) {
             const { flags, values } = filter_input_type(args)
             const wrong = []
@@ -2017,9 +2017,9 @@
         const { flags, values } = filter_input_type(args)
         if (flags.length) {
             const { included, not_included } = filter(addr.options, flags)
-            if (not_included.length) 
+            if (not_included.length)
                 return errors.invalid_option('cd', not_included)
-            if (included.length) 
+            if (included.length)
                 return help(['cd'])
         }
 
@@ -2039,7 +2039,7 @@
                     }
                     path = path.concat(subs)
                     node = get_node(path)
-                    if (node.hasOwnProperty('shift')) 
+                    if (node.hasOwnProperty('shift'))
                         return errors.node('cd', node.shift)
                     path = path.concat(subs)
                 }
@@ -2681,5 +2681,6 @@
             else
                 ui.ipt.value = user_input.vals[user_input.i] 
         }
-    })
+	})
+})
 })()
