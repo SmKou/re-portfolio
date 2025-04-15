@@ -1,0 +1,324 @@
+body { 
+    background: #f5f2e8;
+    font-family: 'League Spartan';
+    font-size: 1.6rem;
+}
+
+header {
+    position: relative;
+    height: 4.8rem;
+    margin-bottom: 0.9rem;
+    border-bottom: 0.3rem solid var(--uni-black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header::before, 
+header::after {
+    position: absolute;
+    width: 100%;
+    background: var(--uni-black);
+    content: '';
+}
+
+header::before { 
+    bottom: 0.2rem;
+    height: 0.1rem;
+}
+
+header::after { 
+    bottom: -1.2rem;
+    height: 0.3rem;
+}
+
+#toggle-nav {
+    position: absolute;
+    left: 1.2rem;
+    padding: 0;
+    border: none;
+    background: transparent;
+}
+
+#toggle-nav .box {
+    position: relative;
+    width: 2.4rem;
+    height: 2.4rem;
+}
+
+#toggle-nav .box::before,
+#toggle-nav .box::after {
+    position: absolute;
+    width: 100%;
+    height: 0.5rem;
+    background: var(--uni-black);
+    content: '';
+    z-index: 5;
+}
+
+#toggle-nav.collapsed .box::before,
+#toggle-nav.collapsed .box::after { left: 0 }
+
+#toggle-nav.collapsed .box::before { top: calc(50% - 0.65rem) }
+#toggle-nav.collapsed .box::after { bottom: calc(50% - 0.65rem) }
+
+#toggle-nav.expanded .box::before,
+#toggle-nav.expanded .box::after { 
+    top: 40%;
+    left: 0;
+}
+
+#toggle-nav.expanded .box::before { transform: rotate(45deg) }
+#toggle-nav.expanded .box::after { transform: rotate(-45deg) }
+
+header a { color: var(--uni-mid) }
+header a:hover { color: var(--uni-black) }
+
+h1 { font-family: 'Bebas Neue' }
+
+h2, h3, p { margin-bottom: 0 }
+
+#back-to-top {
+    position: fixed;
+    bottom: 1.2rem;
+    right: 1.2rem;
+    width: 3.6rem;
+    height: 3.6rem;
+    padding-top: 0.4rem;
+    border-radius: 50%;
+    color: var(--uni-white);
+    background: var(--uni-mid);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#back-to-top:hover { background: var(--uni-black) }
+
+/* ------------------------------------------ VIEW STORY */
+
+#view-story {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #f5f2e8;
+    overflow-y: scroll;
+    z-index: 20;
+}
+
+#view-story .container {
+    width: 85%;
+    max-width: 84rem;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+
+#view-story h1 {
+    font-family: 'League Spartan';
+    font-size: 2.8rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+#view-story p { font-size: 1.8rem }
+
+.story-btns {
+    position: fixed;
+    right: 1.2rem;
+    bottom: 1.2rem;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.story-btns button,
+.story-btns a {
+    margin: 0 0.3rem;
+    padding: 0.5rem 1.0rem;
+    border: 0;
+    border-radius: 0.6rem;
+    outline: 0;
+    color: var(--uni-white);
+    background: var(--uni-mid);
+    font-family: 'Bebas Neue';
+    font-size: 1.6rem;
+    letter-spacing: 0.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.story-btns button:hover,
+.story-btns a:hover { background: var(--uni-black) }
+
+#view-story.collapsed { display: none }
+
+/* -------------------------------------------- SIDE NAV */
+
+nav {
+    width: 100%;
+    max-width: 24rem;
+    min-height: calc(100vh - 4.8rem);
+    opacity: 1;
+    float: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: all;
+}
+
+nav button.read-more {
+    width: 100%;
+    padding: 0.8rem 0 0.8rem 0.8rem;
+    color: var(--uni-white);
+    background: var(--uni-light);
+    text-align: left;
+}
+
+nav button.read-more.nav-head { background: #7C3238 }
+
+nav button.read-more:hover { 
+    color: var(--uni-white);
+    background: #B7245C
+}
+
+nav.collapsed {
+    width: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: width 0.3s, opacity 0.1s;
+}
+
+/* --------------------------------------------- STORIES */
+
+article {
+    padding-top: 4.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+section {
+    width: 92%;
+    max-width: 84rem;
+    margin: 2.4rem auto;
+    border-top: 0.1rem solid var(--uni-black);
+}
+
+section.main-story { border-top: none }
+
+section .left, 
+section .text {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
+section .header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+section .header h2 {
+    display: inline-block;
+}
+
+.sort-options button {
+    padding: 0.4rem 0.6rem;
+    border: none;
+    border-radius: 0.6rem;
+    outline: none;
+    color: var(--uni-white);
+    background: var(--uni-light);
+    font-family: 'Bebas Neue';
+    font-size: 1.6rem;
+    letter-spacing: 0.1rem;
+}
+
+.sort-options button.active,
+.sort-options button:hover { background: var(--uni-mid) }
+
+.container.series,
+.container.prompts {
+    width: 100%;
+    display: grid;
+    gap: 2rem;
+}
+
+.container.series { grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr)) }
+.container.prompts { grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)) }
+
+.container.posts {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+button.read-more {
+    border: none;
+    outline: none;
+    color: var(--uni-mid);
+    background: transparent;
+    font-family: 'League Spartan';
+    font-size: 1.6rem;
+    align-self: flex-end;
+}
+
+button.read-more:hover { color: var(--uni-black) }
+
+.main-story .container {
+    width: 92%;
+    margin: 0 auto;
+    text-align: justify;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(31rem, 1fr))
+}
+
+.main-story .container .left,
+.main-story .container .right { padding: 2rem }
+
+.main-story figure {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.main-story .img {
+    width: 100%;
+    height: 100%;
+    background: url(assets/001-mountains-bw.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden;
+}
+
+.main-story .img:hover {
+    background: url(assets/001-mountains-clr.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.main-story figcaption {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 1.2rem;
+    border: 0.1rem solid var(--uni-black);
+    background: var(--uni-light);
+    font-size: 1.4rem;
+}
+
+.main-story figcaption a { 
+    color: var(--uni-mid);
+    text-decoration: underline;
+}
+.main-story figcaption a:hover { 
+    color: var(--uni-black)
+}

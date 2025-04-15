@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="../../icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v1: The Magazine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=League+Spartan:wght@200;400;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../universal.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a id="back-to-top" href="#">top</a>
+    <header>
+        <button id="toggle-nav" class="collapsed">
+            <div class="box"></div>
+        </button>
+        <a href="../"><h1>Sm Kou Times</h1></a>
+    </header>
+    <article id="view-story" class="collapsed">
+        <div class="story-btns">
+            <button id="close-view">Close</button>
+            <a id="top-view" href="#story-top">Top of Page</a>
+        </div>
+        <div id="story-top" class="container"></div>
+    </article>
+    <main>
+        <nav class="collapsed"></nav>
+        <article>
+            <section class="main-story">
+                <div class="container">
+                    <div class="left">
+                        <h2>My Reconstruction</h2>
+                        <div class="dates"></div>
+                        <h3>The Woman and the Mountain</h3>
+                        <p>I'm aware of you and somehow, to an extent, you are aware of me. By you, dear reader, I mean someone else. In fact, she turns from me and resumes her trek as I address you instead. Perhaps I should enlighten your expectant imaginations. The woman I was talking to is young in both looks and manner but there is no wondering of the capacity she has for thought and reflection for as we watch her, she has none other than that which is shared with me.</p>
+                        <button class="read-more my-reconstruction 0">Read More</button>
+                    </div>
+                    <div class="right">
+                        <figure>
+                            <div class="img"></div>
+                            <figcaption>Image by <a href="https://pixabay.com/users/zachtleven-9577367/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=8108961">Zachtleven fotografie</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=8108961">Pixabay</a></figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="header">
+                    <h2>Series</h2>
+                    <div class="sort-options">
+                        <button class="title series">Title</button>
+                        <button class="newest series">Newest</button>
+                        <button class="oldest series">Oldest</button>
+                    </div>
+                </div>
+                <div class="container series"></div>
+            </section>
+            <section>
+                <div class="header">
+                    <h2>Prompts</h2>
+                    <div class="sort-options">
+                        <button class="title prompts">Title</button>
+                        <button class="newest prompts">Newest</button>
+                        <button class="oldest prompts">Oldest</button>
+                    </div>
+                </div>
+                <div class="container prompts"></div>
+            </section>
+            <section>
+                <div class="header">
+                    <h2>Posts</h2>
+                    <div class="sort-options">
+                        <button class="title posts">Title</button>
+                        <button class="newest posts">Newest</button>
+                        <button class="oldest posts">Oldest</button>
+                    </div>
+                </div>
+                <div class="container posts"></div>
+            </section>
+        </article>
+    </main>
+    <script src="writings.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,244 @@
+:root {
+    --hacker-green: #149414
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    color: var(--hacker-green);
+    background: var(--uni-off-black);
+    font-family: 'Cutive Mono';
+    font-size: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    width: 100%;
+    max-width: 84rem;
+    height: 100%;
+    background: var(--uni-black);
+    display: flex;
+    overflow: hidden;
+}
+
+article {
+    width: 100%;
+    height: 100%;
+}
+
+section {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 3.6rem);
+    padding-left: 1.2rem;
+    padding-bottom: 1.2rem;
+    overflow-y: scroll;
+    /* overflow-x: hidden; */
+}
+
+.bash { color: var(--uni-mid) }
+
+section p { margin: 0 }
+section p:first-of-type { margin-top: 1.2rem }
+
+section a { 
+    color: var(--hacker-green);
+    text-decoration: underline;
+}
+
+h1 { 
+    margin: 1.8rem 0.8rem 0;
+    border-bottom: 0.1rem solid var(--hacker-green);
+}
+
+hr {
+    margin-top: 1.2rem;
+    margin-right: 0.8rem;
+    border-top: 0.1rem solid var(--hacker-green);
+}
+
+.manual-page {
+    display: grid;
+    grid-template-columns: 10rem 1fr;
+    column-gap: 1.2rem;
+}
+
+.resume-header,
+.exp-header,
+.edu-header {
+    padding: 0 0.8rem;
+    display: grid;
+    grid-template-columns: 1fr 22rem;
+    column-gap: 0.8rem;
+}
+
+.resume-header { margin-top: 1.8rem }
+
+.resume-header + div,
+.exp-header + div,
+.edu-header + div { padding: 0 0.8rem }
+
+.exp-title,
+.edu-title,
+.bold { font-weight: bold }
+
+.text-right { text-align: right }
+.small { font-size: 1.2rem }
+
+.skills-section { padding: 0.8rem }
+
+ul { margin: 0 0.8rem }
+
+.top-btn {
+    position: absolute;
+    right: 0.8rem;
+    font-size: 1.8rem;
+}
+
+input {
+    width: 100%;
+    height: 3.6rem;
+    padding: 0.6rem;
+    border: 0;
+    border-top: 0.1rem solid var(--uni-off-black);
+    color: var(--hacker-green);
+    background: transparent;
+    font-family: 'Cutive Mono';
+    font-size: 1.6rem;
+}
+
+input:focus {
+    border-top-color: var(--hacker-green);
+    outline: 0;
+    outline-color: var(--hacker-green);
+}
+
+aside {
+    position: relative;
+    height: 100%;
+    padding-top: 0.6rem;
+    padding-left: 0.6rem;
+    border-left: 0.1rem solid var(--hacker-green);
+    display: flex;
+    flex-direction: column; 
+    transition: width ease-in-out 0.2s;
+}
+
+aside.expanded { width: 30% }
+aside.collapsed { width: 0 }
+
+aside.collapsed #aside-content {
+    opacity: 0;
+    pointer-events: none;
+}
+
+aside button,
+button {
+    border: 0;
+    color: var(--hacker-green);
+    background: transparent;
+    font-family: 'Cutive Mono';
+    font-size: 1.6rem;
+    display: block;
+    cursor: pointer;
+}
+
+#toggle-aside {
+    position: absolute;
+    top: 0;
+    left: -3.6rem;
+    padding: 0.6rem;
+    border: 0;
+    background: var(--uni-black);
+}
+
+#toggle-aside .bar {
+    width: 1.8rem;
+    height: 0.3rem;
+    margin: 0.3rem 0;
+    background: var(--hacker-green);
+    transition: all 0.2s;
+}
+
+.expanded #toggle-aside .bar:first-of-type { 
+    width: 1.6rem;
+    transform: rotate(45deg) translate(0.4rem);
+}
+
+.expanded #toggle-aside .bar:last-of-type { 
+    width: 1.7rem;
+    transform: rotate(-45deg) translate(0.4rem);
+}
+
+@media (max-width: 650px) {
+    main { position: relative }
+    aside.expanded {
+        position: absolute;
+        top: 0;
+        left: 3.6rem;
+        width: 92%;
+        background: var(--uni-black);
+        transition: width ease-in-out 0.4s;
+    }
+}
+
+footer {
+    width: 100%;
+    max-width: 84rem;
+    padding: 0 2rem;
+    border-top: 0.1rem solid var(--hacker-green);
+    background: var(--uni-black);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+details,
+footer div { width: 100% }
+
+details {
+    margin-top: 1.4rem;
+    margin-bottom: 1.4rem;
+    padding: 0.8rem 0;
+}
+
+summary {
+    width: 100%;
+    text-align: right;
+}
+
+.intro {
+    margin-top: 1.2rem;
+    padding: 0.8rem;
+    border: 0.1rem solid var(--hacker-green);
+    border-radius: 0.6rem;
+}
+
+.intro button {
+    padding: 0;
+    border: none;
+    outline: none;
+    color: var(--uni-mid);
+    background: none;
+    font-family: 'Cutive Mono';
+    font-size: 1.6rem;
+}
+.intro button:hover { color: var(--uni-light) }
+
+.intro a { color: var(--uni-mid) }
+.intro a:hover { color: var(--uni-light) }
+
+.copyright p { text-align: center }
+
+.copyright img { margin: 0 0.6rem }
+.copyright img:first-of-type { margin-left: 1.2rem }
+
+.copyright a { color: var(--hacker-green) }
+.copyright a:hover { text-decoration: underline }
+
+iframe { display: none }
