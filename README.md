@@ -1,15 +1,22 @@
 # Re-Portfolio
 
-By: Stella Marie
+By: Stella Marie (SmKou)
 
 Collection of portfolios since 2015
 View on [Github Pages](smkou.github.io/re-portfolio)
 
 ## Description
 
-Re-Portfolio is a static portfolio website where every page has its own design. It features various versions done of my portfolio over the years, grouped by year and interface type.
+Re-Portfolio is a static portfolio website, featuring a collection of portfolios. These portfolios are presented as versions and each version has its own design. For example, one may be in the style of a newspaper and another may be in the style of an index. To avoid redundancy of content, some may seem missing from one version to another. Updates will be noted on the homepage.
 
-
+Homepage: Terminal interface
+Versions: TV channels
+0.	Personality:
+1.	Projects: Newspaper
+2.	Notes: Index
+3.	: Presentations
+4.	Design: Blog
+5.	Resume
 
 ## Complete Setup
 
