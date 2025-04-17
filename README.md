@@ -44,10 +44,38 @@ Note: Do not merge from main or checkout the gh-pages branch
 
 ## Known Bugs
 
-- Homepage commands untested
-  - add support for &&
-  - mod Quick Navigation
-- Versions requires redesign
+**Bug: UI input border-top**
+- Only appears when active
+
+**Bug: Missing Line**
+![Missing line](homepage_bug_missing_line.png)
+- click: ls
+- click: pwd
+- input: pwd
+
+**Implement: Homepage Commands**
+- dir
+- echo
+- find
+- lynx
+- more
+- stat
+- tree
+
+**Bug: Overlapping page text**
+![Overlapping text](homepage_bug_help_text.png)
+- command: man
+
+**Bug: Msg: Not defined error**
+![ReferenceError](homepage_bug_msg_not_defined.png)
+- command: msg
+
+**Test: Homepage Commands**
+- use of &&
+
+**Modify: Quick Navigation**
+
+**Redesign: Versions page**
 
 ## License
 

@@ -1,11 +1,15 @@
 import versions from "./versions/versions"
+import sources from "./data/sources"
+import experience from "./data/experience"
+import education from "./data/education"
+import projects from "./data/projects"
 
 (() => {
     const manual = {
         cd: {
             page: {
                 name: 'cd - change directory',
-                synopsis: [ 
+                synopsis: [
                     'cd PATH',
                     'cd DIRECTORY',
                     'cd DIRECTORY PATH'
@@ -25,7 +29,7 @@ import versions from "./versions/versions"
         cls: {
             page: {
                 name: 'cls - clear screen',
-                synopsis: [ 'cls' ],
+                synopsis: ['cls'],
                 description: `Clear interface: terminal + aside
                 Collapse aside, hiding command list and introduction.
                 
@@ -39,7 +43,7 @@ import versions from "./versions/versions"
         clear: {
             page: {
                 name: 'clear',
-                synopsis: [ 'clear' ],
+                synopsis: ['clear'],
                 description: `Clear the terminal.
                     
                 --help
@@ -52,7 +56,7 @@ import versions from "./versions/versions"
         dir: {
             page: {
                 name: 'dir - directory',
-                synopsis: [ 'dir', 'dir DIRECTORY' ],
+                synopsis: ['dir', 'dir DIRECTORY'],
                 description: `Show contained subdirectories and files.
                 Root: portfolio
                 
@@ -71,9 +75,9 @@ import versions from "./versions/versions"
         echo: {
             page: {
                 name: 'echo',
-                synopsis: [ 
-                    'echo FILENAME', 
-                    'echo PATH FILENAME' 
+                synopsis: [
+                    'echo FILENAME',
+                    'echo PATH FILENAME'
                 ],
                 description: `Show file messages (status, comment, developer remarks)
                 Default: show only status
@@ -97,9 +101,9 @@ import versions from "./versions/versions"
         find: {
             page: {
                 name: 'find',
-                synopsis: [ 
-                    'find ["string"]', 
-                    'find ["string"] DIRECTORY' 
+                synopsis: [
+                    'find ["string"]',
+                    'find ["string"] DIRECTORY'
                 ],
                 description: `Search a directory for a string appearing in file properties and data.
                 Search does not consist of equivalence:
@@ -124,7 +128,7 @@ import versions from "./versions/versions"
         help: {
             page: {
                 name: 'help',
-                synopsis: [ 'help', 'help COMMAND' ],
+                synopsis: ['help', 'help COMMAND'],
                 description: `Display command information.
                 No command: view list of available commands.
 
@@ -143,7 +147,7 @@ import versions from "./versions/versions"
         hostname: {
             page: {
                 name: 'hostname',
-                synopsis: [ 'hostname' ],
+                synopsis: ['hostname'],
                 description: `Display name of host.
 
                 --help
@@ -156,8 +160,8 @@ import versions from "./versions/versions"
         ls: {
             page: {
                 name: 'ls - list',
-                synopsis: [ 
-                    'ls', 
+                synopsis: [
+                    'ls',
                     'ls PATH',
                     'ls DIRECTORY',
                     'ls DIRECTORY PATH'
@@ -178,8 +182,8 @@ import versions from "./versions/versions"
         lynx: {
             page: {
                 name: 'lynx',
-                synopsis: [ 
-                    'lynx FILENAME', 
+                synopsis: [
+                    'lynx FILENAME',
                     'lynx PATH FILENAME',
                     'lynx FILENAME LINK_NAME',
                     'lynx PATH FILENAME LINK_NAME'
@@ -206,7 +210,7 @@ import versions from "./versions/versions"
         man: {
             page: {
                 name: 'man - manual',
-                synopsis: [ 'man COMMAND' ],
+                synopsis: ['man COMMAND'],
                 description: `Show manual page for command.
     
                 -n, --name-only
@@ -228,8 +232,8 @@ import versions from "./versions/versions"
         more: {
             page: {
                 name: 'more',
-                synopsis: [ 
-                    'more', 
+                synopsis: [
+                    'more',
                     'more FILE',
                     'more PATH FILE'
                 ],
@@ -248,7 +252,7 @@ import versions from "./versions/versions"
         msg: {
             page: {
                 name: 'msg - message',
-                synopsis: [ 'msg' ],
+                synopsis: ['msg'],
                 description: `View contact to send a message to developer.
                 Available preferences: linkedin, github.
                 
@@ -268,7 +272,7 @@ import versions from "./versions/versions"
         pwd: {
             page: {
                 name: 'pwd - print working directory',
-                synopsis: [ 'pwd' ],
+                synopsis: ['pwd'],
                 description: `Prints path of working directory.
 
                 -r, --root
@@ -284,9 +288,9 @@ import versions from "./versions/versions"
         stat: {
             page: {
                 name: 'stat',
-                synopsis: [ 
-                    'stat', 
-                    'stat FILE' 
+                synopsis: [
+                    'stat',
+                    'stat FILE'
                 ],
                 description: `Show file properties.
     
@@ -306,9 +310,9 @@ import versions from "./versions/versions"
         tree: {
             page: {
                 name: 'tree',
-                synopsis: [ 
-                    'tree', 
-                    'tree DIRECTORY' 
+                synopsis: [
+                    'tree',
+                    'tree DIRECTORY'
                 ],
                 description: `Prints structural representation.
                 Root: portfolio
@@ -328,7 +332,7 @@ import versions from "./versions/versions"
         whatis: {
             page: {
                 name: 'whatis - what is',
-                synopsis: [ 'whatis COMMAND' ],
+                synopsis: ['whatis COMMAND'],
                 description: `Show command action.
     
                 -m, --manual
@@ -353,7 +357,7 @@ import versions from "./versions/versions"
         whoami: {
             page: {
                 name: 'whoami - who am i',
-                synopsis: [ 'whoami' ],
+                synopsis: ['whoami'],
                 description: `Show the name of the developer.
 
                 -a, --all
@@ -368,1167 +372,7 @@ import versions from "./versions/versions"
         }
     }
 
-    const sources = {
-        fm: {
-            title: 'Frontend Masters',
-            href: 'https://frontendmasters.com',
-            comment: `Learning path: Computer Science
-            - data structures and algorithms
-            - problem solving
-            - web assembly (wasm)
-            - functional programming
-            
-            Learning path: Professional (senior web dev)
-            - html, css and js
-            - react, next.js, and PWAs
-            - web performance
-            - typescript`
-        },
-        odin: {
-            title: 'The Odin Project',
-            href: 'https://www.theodinproject.com',
-            comment: `Personal goal: Complete course
-            - html, css and js
-            - node.js
-            - react`
-        },
-        fcc: {
-            title: 'freeCodeCamp',
-            href: 'https://www.freecodecamp.org/',
-            comment: `Personal goal: Complete curriculum
-            - frontend web dev
-            - backend web dev
-            - databases
-            - python`
-        },
-        ztm: {
-            title: 'Zero to Mastery',
-            href: 'https://zerotomastery.io',
-            comment: `Review of Intro to Web Development
-
-            PROJECTS
-            - First Page
-            - Live in the Wild
-            - Android Journeys
-            - RoboFriends
-            - Face Brain Recognition (redesign: SimpleBrain)`
-        },
-        epi: {
-            title: 'Epicodus',
-            href: 'https://www.epicodus.com',
-            ref: {
-                calvin_will: 'https://www.linkedin.com/in/calvinwill/',
-                jasmine_klein: 'https://www.linkedin.com/in/jasminemklein/'
-            },
-            comment: `Coding Bootcamp: May - Dec 2023
-            - html, css and js
-            - node.js
-            - C# (cli, .NET 6 and 7, databases and Identity Framework)
-            - react (typescript)
-            
-            PROJECTS
-            - Programming Language suggester
-            - Mr. Roboger Neighborhood
-            - Pizza Parlor
-            - Currency Exchanger
-            - Super Galactic Age calculator
-            - Dino Ipsum
-            - Pierre Bakery
-            - Madlibs clone
-            - Hair Salon
-            - Vendor Order Tracker
-            - Sillystringz Factory
-            - Pierre's Sweet and Savory Treats
-            - Parks Lookup api
-            - Coffee Beans
-            
-            TEAM PROJECTS
-            - game (obsolete)
-            - Global Address Formatter`
-        },
-        edcc: {
-            title: 'Edmonds College (formerly Edmonds Community College)',
-            href: 'https://www.edmonds.edu',
-            credit: `AS: Pre-engineering grad. 2011
-            Introduction to Programming - Visual Basic and Java
-            
-            Program: Running Start
-            - acquired associate's degree along with high school diploma
-            - completed 110 credits
-            
-            Program: Partial IB (International Baccaleaurate)
-            - Chinese and Math`
-        },
-        uw: {
-            title: 'University of Washington',
-            href: 'https://www.washington.edu',
-            credit: `BS: Informatics grad. 2014
-            iSchool
-            Specialty: User experience design`
-        },
-        ischool: {
-            title: 'iSchool (Information School)',
-            href: 'https://ischool.uw.edu/',
-            ref: {
-                mike_eisenberg: 'https://www.linkedin.com/in/mike-eisenberg-10b1957/'
-            },
-            comment: `Program: Informatics
-            - java programming and prototyping
-            - axure rp
-            - adobe suite
-            - microsoft|google suite
-            - sql and database modeling
-            - html, css and js
-            - software design and management
-            - design thinking
-            - user experience and service design
-            
-            PROJECTS
-            - Husky Goals
-            - Carmax
-            - Booksie
-            - Graphic design portfolio (Adobe)
-            - Apollo-Artemis in LETO project management
-            
-            Note: Design projects resulted in design spec, portfolios, and Axure prototypes`
-        },
-        sjtu: {
-            title: 'Shanghai Jiaotong University',
-            href: [
-                'https://en.sjtu.edu.cn',
-                'https://www.linkedin.com/school/shanghai-jiao-tong-university/'
-            ],
-            credit: `MA: Design grad. 2020
-            School of Design
-            Specialty: HCI design`
-        },
-        sod: {
-            title: 'School of Design',
-            href: 'https://designschool.sjtu.edu.cn/en-us',
-            comment: `Program: Design
-            - design methods and research
-            - design thinking
-            - design: user experience, service, interaction
-            - java/processing
-            
-            PROJECTS
-            - KS Healthcare app
-            - Little Red game
-            - Storytelling in Design
-            - Interaction Design course
-            - Service Design course
-            - Disney Imaginations Shanghai competition
-            - Creative writing app
-            
-            Note: Design projects resulted in design spec, portfolios, and Java/Processing prototypes`
-        },
-        smkou: {
-            title: 'Sm Kou',
-            href: [
-                'https://smkou.com',
-                'https://smkou.hashnode.dev'
-            ]
-        },
-        signed: {
-            title: 'SignedPic',
-            href: 'https://signedpic.com',
-            ref: {
-                lee_grambush: 'https://www.linkedin.com/in/leegrambush/'
-            },
-            comment: `Worked on react flow and d3 implementation for firm accounts to manage attorneys and clients`
-        },
-        ph: {
-            title: 'Paper Hammer',
-            href: 'https://www.paper-hammer.com',
-            ref: {
-                ed_marquand: 'https://www.linkedin.com/in/edmarquand/'
-            }
-        }
-    }
-
-/* ------------------------------------------------------------ RESOURCES */
-
-    const experience = {
-        'frontend-intern': {
-            title: 'Frontend Intern',
-            description: 'React web app developmnt',
-            keywords: ['react', 'verbal communication', 'git', 'problem-solving', 'interface design', 'listening', 'adaptability', 'creativity'],
-            year: ['Nov 2023', 'Dec 2023'],
-            ref: sources.signed,
-            status: true,
-            location: 'Seattle, WA, USA',
-            responsibility: `Implement tree visualization for dashboard (d3)
-            Dashboard page for managing firm account's users`,
-            type: 'Remote'
-        },
-        'store-clerk': {
-            title: 'Store Clerk',
-            description: 'Part-time store clerk',
-            keywords: ['empathy', 'verbal communication', 'listening', 'attention to detail', 'organization'],
-            year: ['Aug 2021', 'Apr 2023'],
-            ref: sources.ph,
-            status: true,
-            location: 'Seattle, WA, USA',
-            responsibility: `Cashier
-            Customer service
-            Stock organization`,
-            comment: `Seattle location, closed in Apr. 2024`
-        },
-        'head-student-editor': {
-            title: 'Head Student Editor',
-            description: 'Lead team in translating, editing and proofreading course textbook on interaction design',
-            keywords: ['listening', 'creativity', 'leadership', 'attention to detail', 'written communication', 'verbal communication', 'problem-solving', 'documentation', 'analytical reasoning'],
-            year: ['Mar 2018', 'Aug 2019'],
-            ref: sources.sjtu,
-            status: true,
-            location: 'Shanghai, Shanghai, CN',
-            responsibility: `Conduct weekly meetings
-            Manage translation and editing schedule
-            Collect and synthesize weekly student feedback, drafts, edits, notes, and confirmations from professor
-            Proofread and edit chapter drafts each week`
-        },
-        'teacher-assistant': {
-            title: 'Teacher Assistant',
-            description: `Assist professors and manage course schedule, materials and projects`,
-            keywords: ['written communication','creativity','verbal communication','adaptability','adaptability','management','problem-solving','java','service design','interaction design'],
-            year: ['Mar 2018', 'Jun 2019'],
-            ref: sources.sod,
-            status: true,
-            location: 'Shanghai, Shanghai, CN',
-            responsibility: `Service design, Interaction design (School of Design, SJTU)
-            Develop and distribute course curriculumns
-            Develop class presentations and tutorials
-            Develop grading rubric
-            Supervise class time and schedule
-            Collect, grade and review assignments and projects`
-        },
-        'head-english-teacher': {
-            title: 'Foreign English (Head) Teacher',
-            description: `Teacher, trainer and supervisor of operations`,
-            keywords: ['verbal communication','written communication','documentatation','time management','management','adaptability','creativity','analytical reasoning','critical thinking','problem-solving','teaching','training','business counseling','feedback','hiring decisions'],
-            year: ['Aug 2015', 'Nov 2016'],
-            status: true,
-            location: 'Guangzhou, Guangdong, CN',
-            ref: ['EasyFun', 'Hampson', 'Side-by-Side English'],
-            responsibility: `Develop curriculums, course plans and class plans
-            Review textbook series
-            Assess student and teacher performance
-            Client consultations
-            Teach students 4-45 years old, 400 students per week
-            Train teachers and teacher assistants
-            Substitution
-            Winter and summer camps
-            Private tutoring`
-        }
-    }
-
-    const education = {
-        'web-dev': {
-            title: 'Web Development Certificate',
-            description: 'Development in html, css, javscript, Node.js, C# and .Net, and React',
-            keywords: ['react', 'jest', 'babel', 'eslint', 'html', 'css', 'javscript', 'vanilla js', 'c#', '.net 6', '.net 7', 'api', 'node.js', 'tdd', 'red-green workflow', 'pair programming', 'code review', 'scrum', 'dev teams', 'mysql', 'sql', 'authentication', 'authorization', 'jwt', 'frontend', 'json'],
-            year: 'Dec 2023',
-            ref: sources.epi,
-            status: true,
-            location: 'Portland, OR, USA (remote)'
-        },
-        'design': {
-            title: 'MA Design',
-            description: 'Design research, practices, processes and fields',
-            keywords: ['java', 'processing', 'adobe illustrator', 'user research', 'user interviews', 'quantitative analysis', 'qualitative analysis', 'low-fidelity prototypes', 'high-fidelity prototypes', 'eye-trackers', 'field research', 'service design', 'design thinking', 'interaction design', 'chinese'],
-            year: 'Mar 2020',
-            ref: [sources.sjtu, sources.sod],
-            status: true,
-            location: 'Shanghai, Shanghai, CN'
-        },
-        'informatics': {
-            title: 'BS Informatics',
-            description: `Information technology, applications, and principles`,
-            keywords: ['java', 'mobile apps', 'web apps', 'responsive design', 'web design and development', 'database modeling', 'database design', 'sql', 'mysql', 'android', 'axure rp', 'adobe illustrator', 'visual design', 'user experience design', 'service design', 'design thinking', 'computer science', 'software entrepreneurship'],
-            year: 'Jun 2014',
-            ref: [sources.uw, sources.ischool],
-            status: true,
-            location: 'Seattle, WA, USA'
-        },
-        'pre-engineering': {
-            title: 'AS Pre-Engineering',
-            description: `Introduction to engineering sciences, including computer science`,
-            keywords: ['visual basic', 'java', 'desktop apps', 'forms'],
-            year: 'Jun 2011',
-            ref: sources.edcc,
-            status: true,
-            location: 'Edmonds, WA, USA'
-        }
-    }
-
-    const messages = {
-        cnet: `Status: deprecated
-        All C#/.Net projects are not likely to be completed (deployed).`,
-        basic: `Status: complete
-        Does not require maintainence (changes or updates).`,
-        demo: 'Included for demonstration purposes.'
-    }
-
-    const projects = {
-        'husky-goals': {
-            title: 'Husky Goals',
-            description: 'Mobile app for keeping track of goals based on counter, timer, and checklists',
-            keywords: ['axure rp','html','css','javascript', 'paper prototypes', 'wireframes', 'mockups', 'user research', 'user testing', 'user interviews', 'user stories', 'personas'],
-            year: 2012,
-            ref: { source: sources.ischool },
-            status: {
-                completed_before: true,
-                in_progress: false,
-                redesign_due: true,
-                queued: true
-            },
-            comment: `Course: Design Thinking
-            Completed submission: Axure RP prototype and design spec`
-        },
-        'carmax': {
-            title: 'Carmax',
-            description: 'Mobile app for setting up appointment for car viewing, include step-by-step form for entering preferences',
-            keywords: ['axure rp', 'wireframes', 'mockups'],
-            year: 2013,
-            ref: { 
-                source: sources.ischool, 
-                carmax: 'https://www.carmax.com' 
-            },
-            status: {
-                completed_before: true,
-                in_progress: false,
-                redesign_due: true,
-                queued: false
-            },
-            comment: `Course: Service Design
-            Completed submission: Axure RP prototype, design spec and app presentation`,
-            dev: `Research: car market and carmax situation
-            - Carmax mobile app and website
-            Redesign for Carmax corporate design`
-        },
-        'booksie': {
-            title: 'Booksie Database Design',
-            description: 'Database model for Booksie user content and services',
-            keywords: ['sql', 'database models', 'mysql', 'flow diagrams'],
-            year: 2013,
-            ref: {
-                source: sources.ischool,
-                booksie: 'https://www.booksie.com'
-            },
-            status: {
-                completed_before: true,
-                in_progress: false,
-                redesign_due: true,
-                queued: true
-            },
-            comment: `Course: Database Models and Design
-            Completed submission: database model and database with mock data`,
-            dev: `System and service redesign
-            - online writing community
-            - publishing
-            - blogging platforms
-            Requires app, server and database`
-        },
-        'ijuum': {
-            title: 'Ijuum',
-            description: 'Text adventure with AI for NPCs',
-            keywords: ['html', 'css', 'javascript', 'vanilla js', 'golang', 'cli', 'desktop app'],
-            year: 2013,
-            ref: { source: sources.smkou },
-            inspect: 'https://github.com/SmKou/ijuum',
-            status: {
-                completed_before: false,
-                in_progress: true,
-                redesign_due: false,
-                queued: false
-            },
-            comment: `Alternative title: Art and Execution
-            Type: Open-world
-            Mix of procedural-generated and scripted characters, capable of conversation. Timeline navigation. Compiles on language of ijuum.`,
-            dev: `Language construction
-            Interpreters and Compilers
-            Text adventure development`
-        },
-        'leto': {
-            title: 'The Leto Project',
-            description: 'Resource and task management interface for teams, and AR app for conference/meetup recruitment using virtual badges',
-            keywords: ['axure rp', 'adobe illustrator', 'adobe ux', 'java', 'android', 'ar', 'augmented reality', 'wireframes', 'mockups'],
-            year: 2014,
-            ref: { source: sources.ischool },
-            status: {
-                completed_before: false,
-                in_progress: false,
-                redesign_due: true,
-                queued: false
-            },
-            comment: `Capstone project (proof of concept)
-            Completed submission: mock virtual badges, design spec, ar prototype`,
-            dev: `Research: project management options, team recruitment, and project pages
-            - version control
-            - market: Obsidian, Notion, AnyType
-            Perhaps abstract out concept to another project`
-        },
-        'ks-healthcare': {
-            title: 'KS Healthcare',
-            description: 'Mobile app for managing appointments, doctor notes, lab results, and mainly for navigation of Chinese hospitals',
-            keywords: ['adobe illustrator', 'adobe ux', 'paper prototypes', 'mockups', 'wireframes', 'user interviews', 'field study', 'personas', 'user stories'],
-            year: 2018,
-            ref: { source: sources.sod },
-            status: {
-                completed_before: true,
-                in_progress: false,
-                redesign_due: false,
-                queued: false
-            },
-            comment: `Course: Design Thinking and Process
-            Completed submission: design spec, research report and presentation`,
-            dev: `Requires further research, note updates since covid
-            Concept does not apply to American context`
-        },
-        'little-red': {
-            title: 'Little Red',
-            description: 'Prototype for game adaptation of Little Red Riding Hood',
-            keywords: ['java', 'processing', 'html', 'css', 'js', 'canvas', 'vanilla js'],
-            year: 2018,
-            ref: {
-                source: sources.sod,
-                programming_ideas: 'https://inventwithpython.com/blog/2012/02/20/i-need-practice-programming-49-ideas-for-game-clones-to-code/',
-                book: 'https://www.amazon.com/Picture-This-How-Pictures-Work/dp/1452151997',
-                author: 'https://www.mollybang.com/Pages/picture.html'
-            },
-            inspect: 'https://github.com/SmKou/red-riding-hood',
-            status: {
-                completed_before: true,
-                in_progress: false,
-                redesign_due: false,
-                queued: true
-            },
-            comment: `Course: Interaction Design
-            Completed prototype in java/processing
-            - adaptation of Little Red Riding Hood
-            - aesthetics inspired by "Picture This" (Molly Bang)`,
-            dev: `Adapt into different formats for series
-            - learn how game format affects depiction and projection of story
-            Remove references to physics and rendering
-            Create app for easy deployment to gh-pages
-            Homepage: Switch between versions (responsive ui)
-            
-            - Graphic adventure
-            - Match 3
-            - Dress-up / Runway
-            - Platformer or side-scroller`
-        },
-        'ulore': {
-            title: 'Creative Writing Editor',
-            description: 'Browser-based document editor designed for creating writing',
-            keywords: ['html', 'css', 'javascript', 'vanilla js'],
-            year: 2018,
-            ref: { 
-                source: sources.sod,
-                author_websites: 'https://blog.reedsy.com/guide/author-websites/'
-            },
-            status: {
-                completed_before: true,
-                in_progress: false,
-                redesign_due: true,
-                queued: true
-            },
-            comment: `Course: User Experience Design
-            Completed prototype in java/processing
-            - document editor with file and notes management`,
-            dev: `Research:
-            Blogging platforms - Write.as, Medium, Ghost, Wordpress
-            Creative writing resources - Campfire Writing, LivingWriter
-            Reanalyze purpose and intent -> redesign`
-        },
-        'responsive-web': {
-            title: 'Responsive Web Design',
-            description: 'Showcase web app for projects in freeCodeCamp course',
-            keywords: ['html','css','javascript', 'vanilla js'],
-            year: 2021,
-            ref: { source: sources.fcc },
-            status: {
-                completed_before: true,
-                in_progress: false,
-                redesign_due: false,
-                queued: true
-            },
-            comment: `Course: Responsive Web Design`,
-            dev: `Redo based on course redesign
-            - Survey Form
-            - Tribute page
-            - Technical Documentation page
-            - Product Landing page
-            - Personal Portfolio page
-            Note to self: intermediate projects`
-        },
-        'freecodecamp-challenge': {
-            title: 'freeCodeCamp Challenge',
-            description: 'Complete freecodecamp main courses in given time limit',
-            keywords: ['html', 'javascript', 'vanilla js', 'python', 'sql', 'node.js', 'express', 'chai', 'mongodb', 'mongoose', 'd3', 'bootstrap', 'css', 'jqery', 'sass', 'react', 'redux'],
-            year: 2025,
-            ref: { source: sources.fcc },
-            status: {
-                completed_before: false,
-                in_progress: false,
-                redesign_due: false,
-                queued: false,
-            },
-            comment: `Original challenge: Complete main courses in 1 month
-            - new courses added makes this impossible
-            - skip first course
-            Revised to: Complete main courses in 3-4 months (or 1 course per week)`
-        },
-        'first-page': {
-            title: 'First Page',
-            description: 'Scrolling single-page panels to demonstrate anchor links and form submission',
-            keywords: ['html','css'],
-            source: 'ztm',
-            year: 2023,
-            ref: { source: sources.ztm },
-            view: 'https://smkou.github.io/first-page/',
-            inspect: 'https://github.com/SmKou/first-page',
-            status: {
-                completed_before: true,
-                in_progress: false,
-                redesign_due: false,
-                queued: false
-            },
-            comment: `Course: Complete Web Developer in 2023`,
-            dev: `${messages.basic}
-            ${messages.demo}`
-        },
-        'live-in-the-wild': {
-            title: 'Live in the Wild',
-            description: 'Gallery grid using flexbox',
-            keywords: ['html','css'],
-            year: 2023,
-            ref: { source: sources.ztm },
-            view: 'https://smkou.github.io/live-in-the-wild/',
-            inspect: 'https://github.com/SmKou/live-in-the-wild',
-            status: {
-                completed_before: true,
-                in_progress: false,
-                redesign_due: false,
-                queued: false
-            },
-            comment: `Course: Complete Web Developer in 2023`,
-            dev: `${messages.basic}
-            ${messages.demo}`
-        },
-        'android-journeys': {
-            title: 'Android Journeys',
-            description: 'JS slideshow of landscapes featuring css-made android in a pretend travelogue',
-            keywords: ['html','css', 'javascript', 'vanilla js'],
-            year: 2023, 
-            ref: { source: sources.ztm },
-            view: 'https://smkou.github.io/android-journeys/',
-            inspect: 'https://github.com/SmKou/android-journeys',
-            status: {
-                completed_before: true,
-                in_progress: false,
-                redesign_due: false,
-                queued: false
-            },
-            comment: `Course: Complete Web Developer in 2023
-            The original project was the css-only robot with the hover effect. In my implementation, the robot changes between black and white and its size based on the background image.`,
-            dev: `${messages.basic}
-            ${messages.demo}`
-        },
-        'robofriends': {
-            title: 'RoboFriends',
-            description: 'Grid of contact cards for robots with names and emails using api (class components), meant for understanding legacy react code',
-            keywords: ['react','css'],
-            year: 2023,
-            href: { source: sources.ztm },
-            view: [
-                'https://smkou.github.io/robofriends/', 
-                'https://smkou.github.io/robofriends-func/'
-            ],
-            inspect: [
-                'https://github.com/SmKou/robofriends', 
-                'https://github.com/SmKou/robofriends-func'
-            ],
-            status: {
-                completed_before: true,
-                in_progress: false,
-                redesign_due: true,
-                queued: false
-            },
-            comment: `Course: Complete Web Developer in 2023
-            Two versions available: class-based react app and function-based react app`,
-            dev: `Search bar text is too small and placeholder text has poor contrast with header, header text also needs to adjust size based on width`
-        },
-        'simplebrain': {
-            title: 'SimpleBrain',
-            description: 'React web app and express api for image submission with face detection and user accounts',
-            keywords: ['react', 'api', 'express', 'node.js',  'knex.js', 'postgresql', 'sql', 'authentication', 'authorization', 'responsive design'],
-            year: 2023,
-            ref: {
-                source: sources.ztm,
-                clarifai: 'https://www.clarifai.com',
-                project: [
-                    'https://github.com/aneagoie/face-recognition-brain', 
-                    'https://github.com/aneagoie/face-recognition-brain-api'
-                ],
-                old: [
-                    'https://github.com/SmKou/bfrb', 
-                    'https://github.com/SmKou/bfrb-api'
-                ]
-            },
-            status: {
-                completed_before: true,
-                in_progress: false,
-                redesign_due: true,
-                queued: true
-            },
-            comment: `Course: Complete Web Developer in 2023
-            Adapted from Face Recognition Brain project from ZTM
-            Uses Clarifai api for face detection
-            App includes user ranking based on images submitted (mod: no. of faces x images)
-            Last 3 iterations in React`
-        },
-        'counting-calculator': {
-            title: 'Counting Calculator',
-            description: 'Based on demo project of react and redux toolkit, counting calculator adapted from counter',
-            keywords: ['react','redux toolkit'],
-            year: 2023,
-            ref: {
-                project: 'https://redux-toolkit.js.org/tutorials/quick-start'
-            },
-            view: [
-                'https://smkou.github.io/counting-calculator/', 'https://smkou.github.io/counting-calculator-2/'
-            ],
-            inspect: [
-                'https://github.com/SmKou/counting-calculator', 'https://github.com/SmKou/counting-calculator-2'
-            ],
-            status: {
-                completed_before: true,
-                in_progress: false,
-                redesign_due: true,
-                queued: true
-            },
-            comment: `I changed the tutorial counter into a counting calculator, having once heard the comment that there are no calculators for counting for advancing through levels of arithmetic. Namely, this person's child is young and was learning to count, but their child's class was using regular calculators. That was the motivation behind creating this counting calculator.
-            
-            I have iterated this project twice now, so there are two versions available.`,
-            dev: `New version: collapsible instructions, more responsive layout
-            Perhaps only use vanilla js
-    
-            Idea: extend project to advance calculator format
-            - counting (addition and subtraction)
-            - arithmetic (incl. multiplication and division)
-            - pemdas
-            - intermediate arithmetic (exponentiation, roots and logarithms)`
-        },
-        'programming-language-suggester': {
-            title: 'Programming Language Suggester',
-            description: 'Programming language form for suggestions based on experience, motivation among other factors',
-            keywords: ['html','javascript', 'vanilla js','css'],
-            year: 2023,
-            ref: { source: sources.epi },
-            view: 'https://smkou.github.io/programming-language-suggester/',
-            inspect: 'https://github.com/SmKou/programming-language-suggester',
-            status: {
-                completed_before: true,
-                in_progress: false,
-                redesign_due: false,
-                queued: false
-            },
-            comment: `Code reviewed`,
-            dev: `${messages.basic}
-            ${messages.demo}`
-        },
-        'mr-roboger-neighborhood': {
-            title: "Mr. Roboger's Neighborhood",
-            description: 'Generate number sequences with substitutions for every number containing 1, 2, and 3 similar to fizzbuzz, includes tests based on test-driven development accessible through browser console',
-            keywords: ['html','javascript', 'vanilla js', 'css'],
-            year: 2023,
-            ref: { source: sources.epi },
-            view: 'https://smkou.github.io/mr-roboger-neighborhood/',
-            inspect: 'https://github.com/SmKou/mr-roboger-neighborhood',
-            status: {
-                completed_before: true,
-                in_progress: false,
-                redesign_due: false,
-                queued: false
-            },
-            comment: `Code reviewed`,
-            dev: `${messages.basic}
-            ${messages.demo}
-            May split TDD framework away from project.`
-        },
-        'pizza-parlor': {
-            title: 'Pizza Parlor',
-            description: 'Order form and checkout for pizza, includes tests based on TDD principles accessible through browser console (2nd iteration)',
-            keywords: ['html','css','javascript', 'vanilla js'],
-            year: 2023,
-            ref: { source: sources.epi },
-            view: 'https://smkou.github.io/pizza-parlor/',
-            inspect: 'https://github.com/SmKou/pizza-parlor',
-            status: {
-                completed_before: true,
-                in_progress: false,
-                redesign_due: true,
-                queued: false
-            },
-            comment: `Code reviewed`,
-            dev: `${messages.basic}
-            ${messages.demo}
-            UI: Form always requires scrolling to fill-out
-            May split TDD framework away from project (2nd itr).`
-        },
-        'currency-exchanger': {
-            title: 'Currency Exchanger',
-            description: 'Conversion form for amounts between currencies using ExchangeRate api',
-            keywords: ['node.js','babel','eslint','webpack','jest'],
-            year: 2023,
-            ref: { source: sources.epi },
-            inspect: 'https://github.com/SmKou/currency-exchanger',
-            status: {
-                completed_before: true,
-                in_progress: false,
-                redesign_due: false,
-                queued: true
-            },
-            comment: `Code reviewed`,
-            dev: `Submission required no deployment
-            API requires an api key`
-        },
-        'super-galactic-age-calculator': {
-            title: 'Super Galactic Age Calculator',
-            description: 'Age calculator for humans and dogs on other planets, generated from my own node template, commit history reflects use red-green workflow',
-            keywords: ['node.js','babel','eslint','webpack','jest'],
-            year: 2023,
-            ref: { source: sources.epi },
-            inspect: 'https://github.com/SmKou/super-galactic-age-calculator',
-            status: {
-                completed_before: true,
-                in_progress: false,
-                redesign_due: true,
-                queued: true
-            },
-            comment: `Code reviewed`,
-            dev: `Status: queued
-            Scaffold with vite (vanilla), framework not required
-            Add ui: age calculator`
-        },
-        'dino-ipsum': {
-            title: 'Dino Ipsum',
-            description: 'Dinosaur name generator using dino ipsum, choose dinosaur name and get robot avatars',
-            keywords: ['node.js','babel','eslint','webpack','jest'],
-            year: 2023,
-            ref: { source: sources.epi },
-            inspect: 'https://github.com/SmKou/dino-ipsum',
-            status: {
-                completed_before: true,
-                in_progress: false,
-                redesign_due: true,
-                queued: true
-            },
-            comment: `Pair programming project
-            Uses XMLHttpRequest in Node.js
-            Dino Ipsum does not require api key, use of node.js overcomplicates page`
-        },
-        'pierre-bakery': {
-            title: "Pierre's Bakery",
-            description: "CLI app for placing an order",
-            keywords: ['c#','cmd','.net 6'],
-            year: 2023,
-            ref: { source: sources.epi },
-            inspect: 'https://github.com/SmKou/PierresBakery.Solution',
-            status: {
-                completed_before: true,
-                in_progress: false,
-                redesign_due: false,
-                queued: false
-            },
-            comment: `Code reviewed`,
-            dev: messages.cnet
-        },
-        'madlibs-clone': {
-            title: 'Madlibs clone',
-            description: 'CLI app for filling in, reading and creating ablibs on local machine',
-            keywords: ['c#','cmd','.net 6'],
-            year: 2023,
-            ref: { source: sources.epi },
-            inspect: 'https://github.com/SmKou/Week9.Solutions',
-            status: {
-                completed_before: true,
-                in_progress: false,
-                redesign_due: true,
-                queued: false
-            },
-            comment: `Pair programming project (solo dev with supervision)`,
-            dev: messages.cnet
-        },
-        'hair-salon': {
-            title: 'Hair Salon',
-            description: 'MVC web app for managing stylists and clients in a one-to-one relationship',
-            keywords: ['c#','.net 6','entity framework core','mysql','mvc','sql'],
-            year: 2023,
-            ref: { source: sources.epi },
-            inspect: 'https://github.com/SmKou/HairSalon.Solution',
-            status: {
-                completed_before: true,
-                in_progress: false,
-                redesign_due: false,
-                queued: false
-            },
-            comment: `Code reviewed`,
-            dev: messages.cnet
-        },
-        'vendor-order-tracker': {
-            title: 'Vendor Order Tracker',
-            description: 'MVC web app for tracking and managing vendor information and orders in one-to-many relationships',
-            keywords: ['c#','.net 6', 'entity framework core','mysql','mvc','sql'],
-            year: 2023,
-            ref: { source: sources.epi },
-            inspect: 'https://github.com/SmKou/VendorOrderTracker.Solution',
-            status: {
-                completed_before: true,
-                in_progress: false,
-                redesign_due: false,
-                queued: false
-            },
-            comment: `Code reviewed`,
-            dev: messages.cnet
-        },
-        'sillystringz-factory': {
-            title: 'Sillystringz Factory',
-            description: 'MVC web app for tracking and managing many-to-many relationships between machines and engineers',
-            keywords: ['c#','.net 6', 'entity framework core','mysql','mvc','sql'],
-            year: 2023,
-            ref: { source: sources.epi },
-            inspect: 'https://github.com/SmKou/SillystringzFactory.Solution',
-            status: {
-                completed_before: true,
-                in_progress: false,
-                redesign_due: false,
-                queued: false
-            },
-            comment: `Code reviewed
-            Uses migrations for database setup`,
-            dev: messages.cnet
-        },
-        'pierres-sweet-and-savory-treats': {
-            title: "Pierre's Sweet and Savory Treats",
-            description: 'MVC web app for tracking and managing treats and their flavors in many-to-many relationships with ',
-            keywords: ['c#', '.net 7', 'identity', 'entity framework core', 'mysql', 'sql', 'mvc', 'authentication', 'authorization'],
-            year: 2023,
-            ref: { source: sources.epi },
-            inspect: 'https://github.com/SmKou/PierresSweetSavoryTreats',
-            status: {
-                completed_before: true,
-                in_progress: false,
-                redesign_due: false,
-                queued: false
-            },
-            comment: `Code reviewed
-            Create, update and delete only allowed with authentication and authorization`,
-            dev: messages.cnet
-        },
-        'parks-lookup': {
-            title: "Parks Lookup api",
-            description: 'API for looking up national and state parks with user authorization for crud on accounts, makes use of JWT authentication, versioning and pagination',
-            keywords: ['c#', '.net 7', 'identity', 'entity framework core', 'mysql', 'sql', 'mvc', 'authentication', 'versioning', 'pagination', 'jwt', 'api'],
-            year: 2023,
-            ref: { source: sources.epi },
-            inspect: 'https://github.com/SmKou/ParksLookup.Solution',
-            status: {
-                completed_before: true,
-                in_progress: false,
-                redesign_due: true,
-                queued: true
-            },
-            comment: `Code reviewed`,
-            dev: `${messages.cnet}
-            Use national park api and states' park apis for accurate information - actual use case `
-        },
-        'global-address-formatter': {
-            title: 'Global Address Formatter',
-            description: 'MVC web app and api for formatting addresses for international shipping and mail',
-            keywords: ['c#', '.net 7', 'entity framework core', 'mysql', 'sql', 'javascript', 'vanilla js', 'restsharp', 'newtonsoft.json', 'css', 'html', 'chtml', 'mvc', 'api'],
-            year: 2023,
-            ref: { source: sources.epi },
-            inspect: 'https://github.com/SmKou/GlobalAddressFormatter.Solution',
-            status: {
-                completed_before: true,
-                in_progress: false,
-                redesign_due: true,
-                queued: true
-            },
-            comment: `Code reviewed
-            Team project
-            My role: Frontend web app & Debugging api`,
-            dev: messages.cnet
-        },
-        'power-planter': {
-            title: 'Power Planter',
-            description: 'Numbers game using functional programming principles',
-            keywords: ['html', 'css', 'javascript', 'vanilla js', 'responsive design'],
-            year: 2023,
-            ref: { source: sources.epi },
-            inspect: 'https://github.com/SmKou/power-planter/',
-            status: {
-                completed_before: false,
-                in_progress: false,
-                redesign_due: false,
-                queued: true
-            },
-            comment: `Pair programming project (solo dev with supervision)`,
-            dev: `Re-scaffold with vite?
-            Use app with subtree pushes to gh-pages`
-        },
-        'coffee-beans': {
-            title: 'Coffee Beans',
-            description: 'Inventory tracker for coffee beans seller, uses class and function components, prop types, and uuid',
-            keywords: ['react', 'class components', 'function components', 'prop types', 'uuid'],
-            year: 2023,
-            ref: { source: sources.epi },
-            view: 'https://smkou.github.io/inventory-tracker/',
-            inspect: 'https://github.com/SmKou/inventory-tracker',
-            status: {
-                completed_before: true,
-                in_progress: false,
-                redesign_due: false,
-                queued: false
-            },
-            comment: `Code reviewed`,
-            dev: messages.basic
-        },
-        'katadsa': {
-            title: 'KataDSA',
-            description: 'DSA-learning resource focused on theory and applications',
-            keywords: ['godot', 'node.js', 'go', 'cli', 'web app', 'templates', 'vanilla js', 'javascript', 'html', 'css', 'java', 'processing'],
-            year: 2023,
-            ref: {
-                source: sources.epi,
-                material: 'https://github.com/SmKou/algorithms',
-                study_plan: 'https://www.techinterviewhandbook.org/coding-interview-study-plan/',
-                reading: [ 
-                    'https://www.manning.com/books/grokking-algorithms', 
-                    'https://www.manning.com/books/advanced-algorithms-and-data-structures', 
-                    'https://nostarch.com/Dive-Into-Algorithms', 
-                    'https://www.amazon.com/Algorithms-Every-Programmer-Should-Know-ebook/dp/B09QKY6VP9', 
-                    'https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/'
-                ]
-            },
-            inspect: 'https://github.com/SmKou/katadsa-spec',
-            status: {
-                completed_before: false,
-                in_progress: false,
-                redesign_due: false,
-                queued: true
-            },
-            comment: `Capstone project
-            
-            Template projects (koudblue): UI- and tests-provided app where developers add code for dsa, additional view for comparison of solutions' performance
-    
-            Game (Cubitt): Playing a scan and retrieval program, the player's mission is to locate and retrieve a missing cubitt in an infected sector and to identify the virus behind the infection, which manifests as a labyrinth and a humanoid cubitt. As the player guides Cubitt out of the infected sector by speaking to them in the cubitt programming language, the virus attempts to corrupt cubitt's memory and functions.
-    
-            Iterations: 2`,
-            dev: `Algorithms - DSA practice with LeetCode
-            - NeetCode 150 (paused)
-            - Coding Interview Study Plan
-            - Learning path: Computer Science (Frontend Masters)`
-        },
-        'mahjong-cards': {
-            title: 'Mahjong Cards',
-            description: `Print & Play designs of mahjong cards`,
-            year: 2024,
-            ref: { source: sources.smkou },
-            status: {
-                completed_before: true,
-                in_progress: false,
-                redesign_due: true,
-                queued: true
-            },
-            comment: `Birthday present for nana
-            Two versions: traditional and cat-themed
-            Intended for Itch.io`,
-            dev: `Status: queued
-    
-            Traditional
-            - Clean up images for user printing
-            
-            Cat-themed "meowjong"
-            - circles: yarn balls
-            - sticks: wands or feathers
-            - characters: lucky cat
-            - flowers: [TBD]
-            - seasons: [TBD]
-            - honors: [TBD]`
-        },
-        'jordans-game': {
-            title: "Jordan's Game",
-            description: 'Pokemon-inspired monster collecting and battling game',
-            keywords: ['godot', 'gdscript', 'affinity designer', 'html ', 'css', 'javascript', 'vanilla js'],
-            year: 2023,
-            ref: { 
-                learning: 'https://github.com/SmKou/godot-rpg' 
-            },
-            inspect: 'https://github.com/SmKou/jordans-game',
-            status: {
-                completed_before: false,
-                in_progress: true,
-                redesign_due: true,
-                queued: false
-            },
-            comment: `Birthday present for nephew
-            Inspired by Pokemon Red
-            Design decisions by nephew (old spec)
-            Aesthetics style: Sm Kou`,
-            dev: `MVP: First town with interactions, characters and scenes`
-        },
-        'tale-of-ki': {
-            title: 'Tales of Ki',
-            description: 'Text adventure with alternative and adaptive narratives, featuring family of gremlins',
-            keywords: ['html', 'css', 'javascript', 'vanilla js'],
-            year: 2024,
-            ref: { source: sources.smkou },
-            view: [
-                'https://smkou.github.io/tale-of-kibakhan/',
-                'https://smkou.github.io/tale-of-ki/'
-            ],
-            inspect: [
-                'https://github.com/SmKou/tale-of-kibakhan', 
-                'https://github.com/SmKou/tale-of-ki'
-            ],
-            status: {
-                completed_before: false,
-                in_progress: false,
-                redesign_due: false,
-                queued: true
-            },
-            comment: `Based on Dungeons & Dragons
-            Two narratives: third-person (Seraph) and first-person (Kibakhan)`
-        }
-    }
-
-    const calendar = {
-        daily: {
-            routine: { morning: '8:00', night: '23:00' },
-            goals: {
-                walk: { time: { min: 1, max: 2 }},
-                coding_challenge: {
-                    title: "Coding Challenge",
-                    time: 1,
-                    source: [
-                        {
-                            title: "Coding Interview prep",
-                            href: "https://www.freecodecamp.org/learn/coding-interview-prep"
-                        },
-                        {
-                            title: "Exercism: Gleam track",
-                            href: "https://exercism.org/tracks/gleam"
-                        },
-                        {
-                            title: "Exercism: Go track",
-                            href: "https://exercism.org/tracks/go"
-                        },
-                        {
-                            title: "Coding Interview study plan",
-                            href: "https://www.techinterviewhandbook.org/coding-interview-study-plan/"
-                        }
-                    ]
-                },
-                reading: {
-                    title: "Reading",
-                    time: 1,
-                },
-            }
-        },
-        weekly: {
-            routine: {
-                therapy: {
-                    title: 'C-PTSD therapy',
-                    time: ['10:30', 1.5],
-                    days: [0, 1, 0, 0, 0, 0, 0]
-                },
-                isg: {
-                    title: 'Indie Support Group',
-                    time: ['13:00', 5.5],
-                    days: [0, 0, 0, 0, 0, 0, 1]
-                },
-                computer_science: {
-                    title: "Computer Science",
-                    time: [['10:00', 3], ['13:00', 1]],
-                    days: [1, 2, 1, 2, 1, 2, 0],
-                    source: [
-                        sources.fm,
-                        {
-                            title: "Computer Science roadmap",
-                            href: "https://roadmap.sh/computer-science"
-                        },
-                        {
-                            title: "Coding Interview study plan",
-                            href: "https://www.techinterviewhandbook.org/coding-interview-study-plan/"
-                        }
-                    ]
-                },
-                web_development: {
-                    title: "Web Development",
-                    time: [['10:00', 3], ['13:00', 1]],
-                    days: [2, 0, 2, 1, 2, 1, 1],
-                    source: [
-                        sources.fm,
-                        {
-                            title: "Backend Developer roadmap",
-                            href: "https://roadmap.sh/backend"
-                        }
-                    ]
-                }
-            },
-            goals: {
-                museum_visit: {
-                    title: 'Museum Visit',
-                    time: ['9:00', 6],
-                    days: [1, 0, 0, 0, 0, 0, 0],
-                    week: [
-                        'Frye Art Museum',
-                        'Wing Luke Museum',
-                        'Henry Art Gallery',
-                        'National Nordic Museum'
-                    ]
-                }
-            }
-        },
-        monthly: {
-            routine: {
-                seattlejs: {
-                    title: 'Seattle JS',
-                    time: ['17:00', 3],
-                    days: [0, 0, 0, 1, 0, 0, 0],
-                    week: 1
-                },
-                code_katas: {
-                    title: 'Code Katas',
-                    time: ['17:30', 2.5],
-                    days: [0, 0, 1, 0, 0, 0, 0],
-                    week: 2
-                },
-                seattle_indies_social: {
-                    title: 'Seattle Indies Social',
-                    time: ['20:30', 1.5],
-                    days: [0, 0, 1, 0, 0, 0, 0],
-                    week: 2
-                }
-            }
-        },
-        projects: ['Re-Portfolio', "Jordan's Game"],
-        events: {
-            '4/10/24': {
-                location: 'The Collective',
-                group: 'SeattleJS',
-                time: ['15:30', 2.5]
-            },
-            '4/16/24': {
-                location: ['AWS Skills Center', 'Stoup Brewery'],
-                group: ['Seattle Hackers', 'Seattle Indies'],
-                time: [['18:00', 2], ['20:30', 1.5]]
-            }
-        }
-    }
+/* END MANUAL ------------------------------------------------- */
 
     const pages = {
         versions: {
@@ -1537,8 +381,6 @@ import versions from "./versions/versions"
             href: 'versions/'
         }
     }
-
-/* ---------------------------------------------------------------- PAGES */
 
     const resources = { manual, sources }
     const media = {
@@ -1569,6 +411,9 @@ import versions from "./versions/versions"
     }
     const user_input = { vals: [], i: -1 }
     // ui.ipt handled after cmd initialization
+
+/* UI DATA ---------------------------------------------------- */
+
 
     const get_dir = (dir = ui.dir) => {
         switch (dir) {
@@ -1683,7 +528,7 @@ import versions from "./versions/versions"
         ${manual[command].whatis}`)
     }))
 
-    /* ERRORS -------------------------------------- */
+/* ERRORS ----------------------------------------------------- */
 
     const print_error = err => {
         add_lines(err)
@@ -1695,7 +540,7 @@ import versions from "./versions/versions"
         command: (term) => print_error(`bash: ${term}: command not found`),
         node: (term, wrong) => print_error(`bash: ${term}: ${wrong}: no such item or directory`),
         invalid_option: (term, wrong) => print_error(`bash: ${term}: ${wrong.join(', ')}: invalid option
-        ${term}: usage: ${data.resources.manual[term].help}`),
+        ${term}: usage: ${manual[term].help}`),
         unknown_option: (term, wrong) => print_error(`${term}: unknown option -- ${wrong.map(err => {
             err = err.split('-')
             return err[err.length - 1]
@@ -1703,9 +548,7 @@ import versions from "./versions/versions"
         Try '${term} --help' for more information.`)
     }
 
-    /* HELPERS ------------------------------------- */
-
-    const is_valid_date = str => !isNaN(new Date(str))
+/* HELPERS ---------------------------------------------------- */
 
     const flatten = (arr, flat = []) => {
         if (!arr.length) return flat
@@ -1753,356 +596,326 @@ import versions from "./versions/versions"
         const { flags, values } = filter_input_type(args)
         if (values.length)
             return errors.invalid_option(command, values)
-        const { included, not_included } = filter(resources.manual[command].options, flags)
+        const { included, not_included } = filter(manual[command].options, flags)
         if (not_included.length)
             return errors.unknown_option(command, not_included)
         return included
     }
 
-    /* CMD ----------------------------------------- */
+/* CMD -------------------------------------------------------- */
+    
+    const cmd = {
+        cd: (args) => {
+            if (!args.length) {
+                ui.path = []
+                ui.dir = 'portfolio'
+                return true
+            }
 
-    const help = (args) => {
-        const { flags, values } = filter_input_type(args)
-        const wrong = []
-        for (const val of values) {
-            if (!resources.manual.hasOwnProperty(val)) { wrong.push(val) }
-        }
-        if (wrong.length)
-            return errors.invalid_option('help', wrong)
-        const { included, not_included } = filter(resources.manual.help.options, flags)
-        if (not_included.length)
-            return errors.unknown_option('help', not_included)
+            const addr = manual.cd
+            const { flags, values } = filter_input_type(args)
+            if (flags.length) {
+                const { included, not_included } = filter(addr.options, flags)
+                if (not_included.length)
+                    return errors.invalid_option('cd', not_included)
+                if (included.length)
+                    return help(['cd'])
+            }
 
-        if (includes(included, '-o', '--open-aside') && !ui.aside.state) { ui.aside.tog.click() }
-        else if (included.includes('--help'))
-            return help(['help'])
-
-        if (!values.length) {
-            add_line(Object.keys(resources.manual).join(' '))
-            return true
-        }
-        add_lines(`${resources.manual[values[0]].help}\n${resources.manual[values[0]].whatis}`)
-    }
-
-    const cd = (args) => {
-        if (!args.length) {
-            ui.path = []
-            ui.dir = 'portfolio'
-            return true
-        }
-
-        const addr = resources.manual.cd
-        const { flags, values } = filter_input_type(args)
-        if (flags.length) {
-            const { included, not_included } = filter(addr.options, flags)
-            if (not_included.length)
-                return errors.invalid_option('cd', not_included)
-            if (included.length)
-                return help(['cd'])
-        }
-
-        let directory = 'portfolio'
-        let path = ui.path.slice()
-        let node = get_node()
-        if (values.length) {
-            if (values.length > 1) { [directory, path] = values }
-            else {
-                const ipt = values[0]
-                if (Object.keys(directories).includes(ipt)) { directory = values[0] }
+            let directory = 'portfolio'
+            let path = ui.path.slice()
+            let node = get_node()
+            if (values.length) {
+                if (values.length > 1) { [directory, path] = values }
                 else {
-                    let subs = values[0].split('/')
-                    while (subs[0] === '..') {
-                        subs.shift()
-                        if (path.length) { path.pop() }
+                    const ipt = values[0]
+                    if (Object.keys(directories).includes(ipt)) { directory = values[0] }
+                    else {
+                        let subs = values[0].split('/')
+                        while (subs[0] === '..') {
+                            subs.shift()
+                            if (path.length) { path.pop() }
+                        }
+                        path = path.concat(subs)
+                        node = get_node(path)
+                        if (node.hasOwnProperty('shift'))
+                            return errors.node('cd', node.shift)
+                        path = path.concat(subs)
                     }
-                    path = path.concat(subs)
-                    node = get_node(path)
-                    if (node.hasOwnProperty('shift'))
-                        return errors.node('cd', node.shift)
-                    path = path.concat(subs)
                 }
             }
-        }
-
-        ui.dir = directory
-        ui.path = path
-    }
-
-    const cls = (args) => {
-        if (args.length) {
-            const included = init_no_input(args, 'cls')
-            if (!included) return;
-            return help(['cls'])
-        }
-        ui.cns.innerHTML = ''
-        ui.aside.tog.click()
-    }
-
-    const clear = (args) => {
-        if (args.length) {
-            const included = init_no_input(args, 'clear')
-            if (!included) return;
-            return help(['clear'])
-        }
-        ui.cns.innerHTML = ''
-    }
-
-    const dir = (args) => {}
-
-    const echo = (args) => {}
-
-    const find = (args) => {}
-
-    const hostname = (args) => {
-        if (args.length) {
-            const included = init_no_input(args, 'hostname')
-            if (!included) return;
-            return help(['hostname'])
-        }
-        add_line(ui.host)
-    }
-
-    const ls = (args) => {
-        const addr = resources.manual.ls
-
-        let path = ui.path.slice()
-        let dir = ui.dir
-        if (args.length) {
+            ui.dir = directory
+            ui.path = path
+        },
+        cls: (args) => {
+            if (args.length) {
+                const included = init_no_input(args, 'cls')
+                if (!included) return;
+                return help(['cls'])
+            }
+            ui.cns.innerHTML = ''
+            ui.aside.tog.click()
+        },
+        clear: (args) => {
+            if (args.length) {
+                const included = init_no_input(args, 'clear')
+                if (!included) return;
+                return help(['clear'])
+            }
+            ui.cns.innerHTML = ''
+        },
+        dir: (args) => { },
+        echo: (args) => { },
+        find: (args) => { },
+        help: (args) => {
             const { flags, values } = filter_input_type(args)
             const wrong = []
-            const dirs = Object.keys(directories)
-            if (includes(values, dirs)) {
-                for (let i = 0; i < values.length; ++i) {
-                    if (dirs.includes(values[i])) {
-                        dir = values[i]
-                        values.splice(i, 1)
+            for (const val of values) {
+                if (!manual.hasOwnProperty(val)) { wrong.push(val) }
+            }
+            if (wrong.length)
+                return errors.invalid_option('help', wrong)
+            const { included, not_included } = filter(manual.help.options, flags)
+            if (not_included.length)
+                return errors.unknown_option('help', not_included)
+
+            if (includes(included, '-o', '--open-aside') && !ui.aside.state) { ui.aside.tog.click() }
+            else if (included.includes('--help'))
+                return help(['help'])
+
+            if (!values.length) {
+                add_line(Object.keys(manual).join(' '))
+                return true
+            }
+            add_lines(`${manual[values[0]].help}\n${manual[values[0]].whatis}`)
+        },
+        hostname: (args) => {
+            if (args.length) {
+                const included = init_no_input(args, 'hostname')
+                if (!included) return;
+                return help(['hostname'])
+            }
+            add_line(ui.host)
+        },
+        ls: (args) => {
+            const addr = manual.ls
+
+            let path = ui.path.slice()
+            let dir = ui.dir
+            if (args.length) {
+                const { flags, values } = filter_input_type(args)
+                const wrong = []
+                const dirs = Object.keys(directories)
+                if (includes(values, dirs)) {
+                    for (let i = 0; i < values.length; ++i) {
+                        if (dirs.includes(values[i])) {
+                            dir = values[i]
+                            values.splice(i, 1)
+                        }
                     }
                 }
-            }
-                
-            for (const val of values) {
-                const subs = val.split('/')
-                const node = get_node(path.concat(subs))
-                if (!node.shift) { path = path.concat(subs) }
-                else {
-                    if (Object.keys(directories).includes(val)) { dir = val }
-                    else { wrong.push(val) }
+
+                for (const val of values) {
+                    const subs = val.split('/')
+                    const node = get_node(path.concat(subs))
+                    if (!node.shift) { path = path.concat(subs) }
+                    else {
+                        if (Object.keys(directories).includes(val)) { dir = val }
+                        else { wrong.push(val) }
+                    }
                 }
+
+                if (wrong.length)
+                    return errors.invalid_option('ls', wrong)
+                const { included, not_included } = filter(addr.options, flags)
+                if (not_included.length)
+                    return errors.unknown_option('ls', not_included)
+                if (included.length)
+                    return help(['ls'])
             }
 
-            if (wrong.length)
-                return errors.invalid_option('ls', wrong)
+            if (ui.dir !== dir) { ui.dir = dir }
+            const node = get_node(path)
+            if (typeof node !== 'object')
+                return errors.custom('ls', 'cannot list value(s)')
+
+            const props = Object.keys(node)
+            const items = []
+            for (const prop of props) {
+                if (typeof node[prop] === 'object') { items.push(prop + '/') }
+                else { items.push(prop) }
+            }
+            add_line(items.join(' '))
+        },
+        lynx: (args) => { },
+        man: (args) => {
+            const addr = manual.man
+            if (!args.length)
+                return errors.custom('man', 'requires command name')
+            const { flags, values } = filter_input_type(args)
+            if (values.length > 1)
+                return errors.custom('man', 'enter only one command name')
+            if (!cmd.hasOwnProperty(values[0]))
+                return errors.command(values[0])
             const { included, not_included } = filter(addr.options, flags)
             if (not_included.length)
-                return errors.unknown_option('ls', not_included)
-            if (included.length)
-                return help(['ls'])
-        }
+                return errors.unknown_option('man', not_included)
 
-        if (ui.dir !== dir) { ui.dir = dir }
-        const node = get_node(path)
-        if (typeof node !== 'object')
-            return errors.custom('ls', 'cannot list value(s)')
+            if (included.includes('--help'))
+                return help(['man'])
 
-        const props = Object.keys(node)
-        const items = []
-        for (const prop of props) {
-            if (typeof node[prop] === 'object') { items.push(prop + '/') }
-            else { items.push(prop) }
-        }
-        add_line(items.join(' '))
-    }
+            const page = manual[values[0]].page
 
-    const lynx = (args) => {}
-
-    const man = (args) => {
-        const addr = resources.manual.man
-        if (!args.length)
-            return errors.custom('man', 'requires command name')
-        const { flags, values } = filter_input_type(args)
-        if (values.length > 1)
-            return errors.custom('man', 'enter only one command name')
-        if (!cmd.hasOwnProperty(values[0]))
-            return errors.command(values[0])
-        const { included, not_included } = filter(addr.options, flags)
-        if (not_included.length)
-            return errors.unknown_option('man', not_included)
-
-        if (included.includes('--help'))
-            return help(['man'])
-
-        const page = resources.manual[values[0]].page
-
-        if (includes(included, '-n', '--name-only'))
-            add_line(page.name)
-        else if (includes(included, '-s', '--synopsis-only'))
-            add_lines(page.synopsis.join('\n'))
-        else if (includes(included, 'd', '--description-only'))
-            add_lines(page.description)
-        else {
-            const create_div = (title, text) => {
-                const span = create_element({
-                    type: 'span',
-                    content: title
-                })
-                span.style.fontWeight = 'bold'
-                const div = create_element({ 
-                    type: 'div', 
-                    classname: 'manual-page',
-                    content: span
-                })
-
-                if (Array.isArray(text)) {
-                    const ctnr = create_element({
-                        type: 'div',
-                        content: text.map(t => {
-                            const p = create_element({
-                                type: 'p',
-                                content: t
-                            })
-                            p.style.marginTop = 0
-                            return p
-                        })
+            if (includes(included, '-n', '--name-only'))
+                add_line(page.name)
+            else if (includes(included, '-s', '--synopsis-only'))
+                add_lines(page.synopsis.join('\n'))
+            else if (includes(included, 'd', '--description-only'))
+                add_lines(page.description)
+            else {
+                const create_div = (title, text) => {
+                    const span = create_element({
+                        type: 'span',
+                        content: title
                     })
-                    div.append(ctnr)
+                    span.style.fontWeight = 'bold'
+                    const div = create_element({
+                        type: 'div',
+                        classname: 'manual-page',
+                        content: span
+                    })
+
+                    if (Array.isArray(text)) {
+                        const ctnr = create_element({
+                            type: 'div',
+                            content: text.map(t => {
+                                const p = create_element({
+                                    type: 'p',
+                                    content: t
+                                })
+                                p.style.marginTop = 0
+                                return p
+                            })
+                        })
+                        div.append(ctnr)
+                    }
+                    else {
+                        const p = create_element({ type: 'p', content: text })
+                        p.style.marginTop = 0
+                        div.append(p)
+                    }
+
+                    ui.cns.append(div)
                 }
-                else {
-                    const p = create_element({ type: 'p', content: text })
-                    p.style.marginTop = 0
-                    div.append(p)
-                }
-                
-                ui.cns.append(div)
+
+                create_div('Name', page.name)
+                create_div('Synopsis', page.synopsis)
+                create_div('Description', page.description.split('\n'))
             }
-
-            create_div('Name', page.name)
-            create_div('Synopsis', page.synopsis)
-            create_div('Description', page.description.split('\n'))
-        }
-    }
-
-    const more = (args) => {}
-
-    const msg = (args) => {
-        const opt = {
-            linkedin: () => 'koudblue',
-            github: () => 'SmKou'
-        }
-        const present = {}
-        const present_all = () => {
-            const m = Object.keys(opt)
-            for (const key of m) { present[key] = `${media[key].href}${opt[key]()}/` }
-        }
-        if (args.length) {
-            const included = init_no_input(args, 'msg')
-            if (!included) return;
-            if (included.length) {
-                if (included.includes('--help'))
-                    return help(['msg'])
-                else if (includes(included, '-l', '--linkedin')) {
-                    present.linkedin =  `${media.linkedin.href}${opt.linkedin()}/`
+        },
+        more: (args) => { },
+        msg: (args) => {
+            const opt = {
+                linkedin: () => 'koudblue',
+                github: () => 'SmKou'
+            }
+            const present = {}
+            const present_all = () => {
+                const m = Object.keys(opt)
+                for (const key of m) { present[key] = `${media[key].href}${opt[key]()}/` }
+            }
+            if (args.length) {
+                const included = init_no_input(args, 'msg')
+                if (!included) return;
+                if (included.length) {
+                    if (included.includes('--help'))
+                        return help(['msg'])
+                    else if (includes(included, '-l', '--linkedin')) {
+                        present.linkedin = `${media.linkedin.href}${opt.linkedin()}/`
+                    }
+                    else if (includes(included, '-g', '--github')) {
+                        present.github = `${media.github.href}${opt.github()}`
+                    }
                 }
-                else if (includes(included, '-g', '--github')) {
-                    present.github = `${media.github.href}${opt.github()}`
-                }
+                else { present_all() }
             }
             else { present_all() }
-        }
-        else { present_all() }
 
-        const links = Object.keys(present).map(v => {
-            const a = create_element({
-                type: 'a',
-                content: v,
-                link: present[v]
+            const links = Object.keys(present).map(v => {
+                const a = create_element({
+                    type: 'a',
+                    content: v,
+                    link: present[v]
+                })
+                return a
             })
-            return a
-        })
-        const content = new Array(links.length * 2 - 1)
-        for (i = 1; i < content.length; i += 2) {
-            content[i] = document.createTextNode(' ')
-        }
-        const p = create_element({
-            type: 'p',
-            content
-        })
-        ui.cns.append(p)
-    }
+            const content = new Array(links.length * 2 - 1)
+            for (i = 1; i < content.length; i += 2) {
+                content[i] = document.createTextNode(' ')
+            }
+            const p = create_element({
+                type: 'p',
+                content
+            })
+            ui.cns.append(p)
+        },
+        pwd: (args) => {
+            let path = ui.path.slice()
+            if (args.length) {
+                const included = init_no_input(args, 'pwd')
+                if (!included) return;
 
-    const pwd = (args) => {
-        let path = ui.path.slice()
-        if (args.length) {
-            const included = init_no_input(args, 'pwd')
-            if (!included) return;
+                if (included.includes('--help'))
+                    return help(['pwd'])
+                else if (includes(included, '-r', '--root')) { path = `${ui.dir}:/${path.join('/')}` }
+            }
+            else { path = path.join('/') }
 
+            if (path === '') { add_line('/') }
+            else { add_line(path) }
+        },
+        stat: (args) => { },
+        tree: (args) => { },
+        whatis: (args) => {
+            const { flags, values } = filter_input_type(args)
+            if (!values.length)
+                return custom_error('whatis', 'command required')
+            if (values.length > 1)
+                return custom_error('whatis', 'only 1 arg')
+
+            const command = values[0]
+            if (!Object.keys(manual).includes(command))
+                return command_error(command)
+            const { included, not_included } = filter(manual.whatis.options, flags)
+            if (not_included.length)
+                return unknown_option_error('whatis', not_included)
+
+            if (!included.length) {
+                add_line(manual[command].whatis)
+                return true
+            }
+
+            const page = manual[command].page
             if (included.includes('--help'))
-                return help(['pwd'])
-            else if (includes(included, '-r', '--root')) { path = `${ui.dir}:/${path.join('/')}`}
+                return help(['whatis'])
+            else if (includes(included, '-n', '--name-only')) { add_line(page.name) }
+            else if (includes(included, '-s', '--synopsis-only')) { add_lines(page.synopsis.join('\n')) }
+            else if (includes(included, '-d', '--description-only')) { add_lines(page.description) }
+            else if (includes(included, '-m', '--manual')) {
+                const data = `${page.name}\n${page.synopsis.join('\n')}\n${page.description}`
+                add_lines(data)
+            }
+        },
+        whoami: (args) => {
+            if (args.length) {
+                const included = init_no_input(args, 'whoami')
+                if (!included) return;
+                if (included.includes('--help'))
+                    return help(['whoami'])
+                else if (includes(included, '-a', '--all')) { add_line('Stella Marie: Sm Kou, Sm Joker, Kou.d Blue') }
+            }
+            else { add_line('Stella Marie') }
         }
-        else { path = path.join('/') }
-
-        if (path === '') { add_line('/') }
-        else { add_line(path) }
-    }
-
-    const stat = (args) => {}
-
-    const tree = (args) => {}
-
-    const whatis = (args) => {
-        const { flags, values } = filter_input_type(args)
-        if (!values.length)
-            return custom_error('whatis', 'command required')
-        if (values.length > 1)
-            return custom_error('whatis', 'only 1 arg')
-
-        const command = values[0]
-        if (!Object.keys(resources.manual).includes(command))
-            return command_error(command)
-        const { included, not_included } = filter(resources.manual.whatis.options, flags)
-        if (not_included.length)
-            return unknown_option_error('whatis', not_included)
-
-        if (!included.length) {
-            add_line(resources.manual[command].whatis)
-            return true
-        }
-
-        const page = resources.manual[command].page
-        if (included.includes('--help'))
-            return help(['whatis'])
-        else if (includes(included, '-n', '--name-only')) { add_line(page.name) }
-        else if (includes(included, '-s', '--synopsis-only')) { add_lines(page.synopsis.join('\n')) }
-        else if (includes(included, '-d', '--description-only')) { add_lines(page.description) }
-        else if (includes(included, '-m', '--manual')) {
-            const data = `${page.name}\n${page.synopsis.join('\n')}\n${page.description}`
-            add_lines(data)
-        }
-    }
-
-    const whoami = (args) => {
-        if (args.length) {
-            const included = init_no_input(args, 'whoami')
-            if (!included) return;
-            if (included.includes('--help'))
-                return help(['whoami'])
-            else if (includes(included, '-a', '--all')) { add_line('Stella Marie: Sm Kou, Sm Joker, Kou.d Blue') }
-        }
-        else { add_line('Stella Marie') }
-    }
-
-    const cmd = { 
-        cd, cls, clear,
-        dir,
-        echo, 
-        find, 
-        help, hostname, 
-        ls, lynx, 
-        man, more, msg, 
-        pwd,
-        stat, 
-        tree, 
-        whatis, whoami
     }
 
     const exec = input => {
