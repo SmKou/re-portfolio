@@ -44,7 +44,10 @@ Note: Do not merge from main or checkout the gh-pages branch
 
 ## Known Bugs
 
-Site in development.
+- Homepage commands untested
+  - add support for &&
+  - mod Quick Navigation
+- Versions requires redesign
 
 ## License
 
