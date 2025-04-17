@@ -1,3 +1,5 @@
+import versions from "./versions/versions"
+
 (() => {
     const manual = {
         cd: {
@@ -262,25 +264,6 @@
             options: ['-l', '--linkedin', '-g', '--github', '--help'],
             help: 'msg: msg',
             whatis: 'View contact information.'
-        },
-        print: {
-            page: {
-                name: 'print',
-                synopsis: [ 'print' ],
-                description: `View a pdf resume.
-
-                -a, --all
-                    show all experience
-                
-                -d, --download
-                    download the pdf resume
-                    
-                --help
-                    display command information`
-            },
-            options: ['-d', '--download', '-a', '--all', '--help'],
-            help: 'print: print',
-            whatis: 'View a pdf resume.'
         },
         pwd: {
             page: {
@@ -564,73 +547,6 @@
     }
 
 /* ------------------------------------------------------------ RESOURCES */
-
-    const versions = [
-        {
-            title: 'The Profile',
-            href: 'v0/',
-            ref: 'https://www.kamranhughes.com/how-to-tailor-designs-using-the-big-5-personality-traits/',
-            description: 'Re-Portfolio 2015-2017 features a questionnaire that changes page content and layout based on user answers. It is divided into visual preferences, graphic and text preferences, answer sections and question preferences.',
-            dev: `Add user questionnaire
-
-            Content:
-            - chart or bar graph
-            - progress bars
-            - stock image, credit and source
-            - bullet points
-            - personal fact(s)
-            - statement(s)
-            - summary
-            - analysis
-            
-            Basis of concept: User Interfaces with Big-5 Personality Traits (refer: ref)`
-        },
-        {
-            title: 'The Magazine',
-            href: 'v1/',
-            ref: 'https://www.nytimes.com/section/magazine',
-            description: 'Re-Portfolio 2015-2022 features a magazine-layout of flash fiction, short stories, and series. Though the writing is reflective of mental state at time of writing, do not take them at face value. Assume impressionism.',
-            dev: `Add images for stories (use 640 optimized on clr, gen bw)
-            Edit and redesign smjoker.com (slated)`
-        },
-        {
-            title: 'The Design Index',
-            href: 'v2/',
-            description: 'Re-Portfolio 2018-2021 features a book index layout. The index consists of concepts in html and css, which can be further sorted into tags, fonts, shapes, layouts, ui elements, programming, and resources.',
-            dev: `Content:
-            - tags
-            - shapes
-            - layouts
-            - ui elements
-            - programming ie. variables and expressions
-            - resources
-            
-            Work out code interfaces for shapes, layouts and ui elements`
-        },
-        {
-            title: 'The Show',
-            href: 'v3/',
-            ref: 'https://codepen.io/dodozhang21/pen/kMoXZz',
-            description: 'Re-Portfolio 2020-2022 features four slideshows on portfolio, different page designs, and favorite shows.',
-            dev: `Determine switch mechanism between slideshows
-            Include back and home
-            Add slideshows:
-            - navigation
-            - portfolio
-            - favorite movies
-            - favorite shows`
-        },
-        {
-            title: 'The People in Pages',
-            href: 'v4/',
-            description: 'Re-Portfolio 2021-2022 features page designs based on observations of people. When I see a combination of clothing that catches my attention, since I cannot draw or take a photograph, I turn their clothing combination into the layout for a webpage.'
-        },
-        {
-            title: 'Epicodus Resume',
-            href: 'v5/',
-            description: 'Re-Portfolio 2023 features a resume and profile format, done for portfolio review as part of a bootcamp code review (Epicodus).'
-        }
-    ]
 
     const experience = {
         'frontend-intern': {
@@ -1868,87 +1784,6 @@
         add_lines(`${resources.manual[values[0]].help}\n${resources.manual[values[0]].whatis}`)
     }
 
-    const cal = (args) => {
-        const addr = resources.manual.cal
-        let date = new Date()
-        let freq = ['daily', 'weekly', 'monthly']
-        let viewGoals = false
-
-        if (args.length) {
-            const { flags, values } = filter_input_type(args)
-            const wrong = []
-            for (const v of values) {
-                if (freq.includes(v)) { freq = freq.filter(f => f === v) }
-                else if (is_valid_date(v)) { date = new Date(v) }
-                else { wrong.push(v) }
-            }
-            if (wrong.length)
-                return errors.invalid_option('cal', wrong)
-            const { included, not_included } = filter(addr.options, flags)
-            if (not_included.length)
-                return errors.unknown_option('cal', not_included)
-            if (included.length) {
-                if (included.includes('--help'))
-                    return help(['cal'])
-                else if (included.includes('-e'))  { freq.push('events') }
-                else if (included.includes('-g')) { viewGoals = true }
-            }
-        }
-
-        const sched = {}
-        const weekday = date.getDay()
-        const options = {
-            weekday: 'narrow',
-            day: 'numeric',
-            month: 'numeric',
-            year: '2-digit'
-        }
-        const weeks_diff = (() => {
-            if (date.getDate() > 1) {
-                const [m,,y] = date.toLocaleDateString(undefined, options).split('/')
-                const month_first = new Date(`${m}/1/${y}`)
-                return Math.floor(data.getTime() - month_first.getTime()) / (1000 * 60 * 60 * 24) + 1
-            }
-            return 1
-        })()
-
-        const add = (freq, type) => (e, key) => {
-            const [time, dur] = e.time
-            const [hour, half] = time.split(':')
-            sched[time] = {
-                n: parseInt(hour) * 2 + (parseInt(half) ? 1 : 0),
-                dur: dur * 2,
-                name: key.split('_').join(' '),
-                freq,
-                type,
-                duration: `${dur} hour${dur !== 1 ? 's' : ''}`
-            }
-        }
-
-        const add_sched = (freq, type) => {
-            const f = calendar[freq][type]
-            for (const key of Object.keys(f)) {
-                const e = f[key]
-                if (freq === 'daily'
-                || (freq === 'weekly' && e.days[weekday])
-                || (freq === 'monthly' && e.week === weeks_diff && e.days[weekday])) {
-                    add(freq, type)(e, key)
-                }
-            }
-        }
-
-        for (const f of freq)
-            add_sched(f, 'routine')
-        if (viewGoals) {
-            for (const f of freq)
-                add_sched(f, 'goals')
-        }
-
-        const keys = Object.keys(sched).sort((a, b) => sched[a].n - sched[b].n)
-        const line = (key) => `${sched[key].name} - ${key} for ${sched[key].duration}`
-        add_lines(keys.map(key => line(key)).join('\n'))
-    }
-
     const cd = (args) => {
         if (!args.length) {
             ui.path = []
@@ -2010,57 +1845,6 @@
             return help(['clear'])
         }
         ui.cns.innerHTML = ''
-    }
-
-    const date = (args) => {
-        const addr = resources.manual.date
-        let date = new Date()
-        let dest_date = ''
-        let freq = ''
-        let qty = 0
-        let format = {
-            weekday: 'narrow',
-            day: 'numeric',
-            month: 'numeric',
-            year: '2-digit'
-        }
-        let divider = '/'
-
-        if (args.length) {
-            const { flags, values } = filter_input_type(args)
-            const wrong = []
-            for (const v of values) {
-                if (is_valid_date(v)) { dest_date = new Date(v) }
-                else if (typeof v === 'number' && v !== 0) { qty = v }
-                else if (['day', 'week', 'month', 'year'].includes(v)) { freq = v }
-                else { wrong.push(v) }
-            }
-            if (wrong.length)
-                return errors.invalid_option('date', wrong)
-            if ((!freq && qty) || (freq && !qty))
-                return errors.custom('date', 'requires frequency and quantity')
-            const { included, not_included } = filter(addr.options, flags)
-            if (not_included.length)
-                return errors.unknown_option('date', not_included)
-            if (included.length) {
-                if (included.includes('--help'))
-                    return help(['date'])
-                else if (includes(included, '-s', '--short')) {
-                    format = {...format, month: 'short', year: 'numeric' }
-                }
-                else if (includes(included, '-l', '--long')) {
-                    format = {...format, weekday: 'long', month: 'long', year: 'numeric' }
-                }
-                else if (includes(included, '-h', '--hyphen')) { divider = '-' }
-            }
-        }
-
-        /*
-        (default) => current date
-        freq qty => current date + (freq * qty)
-        dest freq qty => dest + (freq * qty)
-        dest => dest - current date
-        */
     }
 
     const dir = (args) => {}
