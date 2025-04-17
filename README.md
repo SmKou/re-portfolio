@@ -72,10 +72,12 @@ Note: Do not merge from main or checkout the gh-pages branch
 
 **Test: Homepage Commands**
 - use of &&
+- may be bug
 
-**Modify: Quick Navigation**
-
-**Redesign: Versions page**
+### To-Do
+- **Modify: Quick Navigation**
+- **Review data (note: description, dev, etc)**
+- **Redesign: Versions page**
 
 ## License
 
