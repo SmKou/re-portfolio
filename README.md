@@ -11,12 +11,24 @@ Re-Portfolio is a static portfolio website, featuring a collection of portfolios
 
 Homepage: Terminal interface
 Versions: TV channels
-0.	Profile (identity)
-1.	Magazine (projects)
-2.	Design Index (notes)
-3.	Presentations (interests, work ethic, why me)
-4.	Pages (aesthetic)
-5.	Resume (overview)
+0.	The Profile
+    - personality
+    - appearance
+    - stats
+    - favorites
+1.	The Magazine
+    - projects
+2.	Design Index
+    - notes
+3.	Presentation
+    - intro
+    - interests
+    - work ethic
+    - why
+4.	Pages
+    - aesthetic
+5.	Resume
+    - overview
 
 ## Complete Setup
 
