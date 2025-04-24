@@ -3,6 +3,7 @@ import sources from "./data/sources"
 import experience from "./data/experience"
 import education from "./data/education"
 import projects from "./data/projects"
+import { flatten, includes, filter, filter_ipt } from './fn.js'
 
 (() => {
     const manual = {
@@ -415,16 +416,7 @@ import projects from "./data/projects"
 /* UI DATA ---------------------------------------------------- */
 
 
-    const get_dir = (dir = ui.dir) => {
-        switch (dir) {
-            case 'portfolio':
-                return portfolio
-            case 'resources':
-                return resources
-            case 'pages':
-                return pages
-        }
-    }
+	const get_dir = (dir = ui.dir) => directories[dir]
 
     const get_node = (path = ui.path.slice(), dir = 'portfolio', node = get_dir(dir), shift) => {
         if (!path.length)
@@ -436,74 +428,65 @@ import projects from "./data/projects"
         return res
     }
 
-    const add_text = text => document.createTextNode(text)
+    const html = {
+		div: () => document.createElement("div"),
+		p: () => document.createElement("p"),
+		span: () => document.createElement("span"),
+		h1: () => document.createElement("h1"),
+		a: () => document.createElement("a"),
+		li: () => document.createElement("li"),
+		txt: (text) => document.createTextNode(text)
+	}
 
-    const create_element = ({ type, content, classname, link }) => {
-        let e = {}
-        switch (type) {
-            case 'div':
-                e = document.createElement('div')
-                break
-            case 'p':
-                e = document.createElement('p')
-                break
-            case 'span':
-                e = document.createElement('span')
-                break
-            case 'h1':
-                e = document.createElement('h1')
-                break
-            case 'a':
-                e = document.createElement('a')
-                e.href = link
-                if (!link.includes(ui.host))
-                    e.target = "_blank"
-                break
-            case 'li':
-                e = document.createElement('li')
-                break
-        }
-        if (classname)
-            e.setAttribute('class', classname)
-        if (content) {
-            if (Array.isArray(content))
-                for (const c of content) { e.append(c) }
-            else if (typeof content === 'string')
-                e.append(add_text(content))
-            else
-                e.append(content)
-        }
-        return e
-    }
+	// items{string|htmlElement}
+	const list = ({ type, items }) => {
+		const e = type === "ul"
+			? document.createElement("ul")
+			: document.createElement("ol")
+		items.forEach(item => {
+			const li = html.li()
+			li.append(html.txt(item))
+			e.append(li)
+		})
+		return e
+	}
 
-    const create_list = items => {
-        const list = document.createElement('ul')
-        for (const item of items)
-            list.append(item)
-        return list
-    }
+	const element = ({ type, content, classname, link }) => {
+		const e = html[type]()
+		if (classname)
+			e.setAttribute("class", classname)
+		if (content)
+			if (Array.isArray(content))
+				content.forEach(c => e.append(c))
+			else if (typeof content === "string")
+				e.append(html.txt(content))
+			else
+				e.append(content)
+		return e
+	}
 
-    const add_line = (output) => ui.cns.append(create_element({ type: 'p', content: output }))
+    const add_line = (output = "") => {
+		if (!output.length)
+			ui.cns.append(document.createElement("br"))
+		output = output.split("\n")
+		output.forEach(line => {
+			const p = element({ type: "p", content: line })
+			ui.cns.append(p)
+		})
+	}
 
-    const add_lines = output => output.split('\n').forEach(line => add_line(line))
-
-    const add_empty_line = () => {
-        const line = document.createElement('br')
-        ui.cns.append(line)
-    }
-
-    const add_path = () => {
-        const span = create_element({ type: 'span' })
-        span.style.fontWeight = 'bold'
-        span.append(document.createTextNode('Re-Portfolio SMKOU ~/'))
-        const line = create_element({
-            type: 'p',
-            classname: 'bash',
-            content: span
-        })
-        line.append(document.createTextNode(ui.path.join('/')))
-        ui.cns.append(line)
-    }
+	const add_path = () => {
+		const span = html_element("span")
+		span.style.fontWeight = "bold"
+		span.append(html.txt('Re-Portfolio SMKOU ~/'))
+		const line = element({
+			type; "p",
+			classname: "bash",
+			content: span
+		})
+		line.append(html.txt(ui.path.join("/")))
+		ui.cns.append(line)
+	}
     add_path()
 
     ui.aside.tog.addEventListener('click', () => {
@@ -530,67 +513,35 @@ import projects from "./data/projects"
 
 /* ERRORS ----------------------------------------------------- */
 
-    const print_error = err => {
-        add_lines(err)
-        return false
-    }
-
-    const errors = {
-        custom: (term, message) => print_error(`error: ${term}: ${message}`),
-        command: (term) => print_error(`bash: ${term}: command not found`),
-        node: (term, wrong) => print_error(`bash: ${term}: ${wrong}: no such item or directory`),
-        invalid_option: (term, wrong) => print_error(`bash: ${term}: ${wrong.join(', ')}: invalid option
-        ${term}: usage: ${manual[term].help}`),
-        unknown_option: (term, wrong) => print_error(`${term}: unknown option -- ${wrong.map(err => {
-            err = err.split('-')
-            return err[err.length - 1]
-        }).join(', ')}
-        Try '${term} --help' for more information.`)
-    }
+	const errors = {
+		custom: function(term, message) {
+			const text = `error: ${term}: ${message}`
+			add_line(cns, text)
+		},
+		command: function(term) {
+			const text = `bash: ${term}: command not found`
+			add_line(text)
+		},
+		node: function(term, wrong) {
+			const text = `bash: ${term}: ${wrong}: no such item or directory`
+			add_line(text)
+		},
+		invalid_option: function(cns, term, wrong, manual) {
+			const text = `bash: ${term}: ${wrong.join(', ')}: invalid option
+			${term}: usage: ${manual[term].help}`
+			add_line(text)
+		},
+		unknown_option: function(cns, term, wrong) {
+			const text = `${term}: unknown option -- ${wrong.map(err => {
+				err = err.split('-')
+				return err[err.length - 1]
+			}).join(', ')}
+			Try '${term} --help' for more information.`
+			add_line(text)
+		}
+	}
 
 /* HELPERS ---------------------------------------------------- */
-
-    const flatten = (arr, flat = []) => {
-        if (!arr.length) return flat
-        arr.forEach(e => {
-            if (Array.isArray(e))
-                flat.concat(flatten(e, flat))
-            else
-                flat.push(e)
-        })
-        return flat
-    }
-
-    const includes = (arr, ...terms) => {
-        terms = flatten(terms)
-        let included = false
-        let i = -1
-        while (++i < terms.length && !included) {
-            if (arr.includes(terms[i])) { included = true }
-        }
-        return included
-    }
-
-    const filter = (arr, terms) => {
-        const included = []
-        const not_included = []
-        for (const term of terms) {
-            if (!arr.includes(term)) { not_included.push(term) }
-            else { included.push(term) }
-        }
-        return { included, not_included }
-    }
-
-    const filter_input_type = (args) => {
-        const flags = []
-        const values = []
-        while (args.length) {
-            const arg = args.pop()
-            if (arg.includes('-')) { flags.push(arg) }
-            else { values.push(arg.toLowerCase()) }
-        }
-        return { flags, values }
-    }
 
     const init_no_input = (args, command) => {
         const { flags, values } = filter_input_type(args)
