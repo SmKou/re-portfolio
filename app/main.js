@@ -3,7 +3,12 @@ import sources from "./data/sources"
 import experience from "./data/experience"
 import education from "./data/education"
 import projects from "./data/projects"
-import { flatten, includes, filter, filter_ipt } from './fn.js'
+import {
+	flatten,
+	includes,
+	filter,
+	filter_ipt
+} from './fn.js'
 
 (() => {
     const manual = {
@@ -32,12 +37,22 @@ import { flatten, includes, filter, filter_ipt } from './fn.js'
                 name: 'cls - clear screen',
                 synopsis: ['cls'],
                 description: `Clear interface: terminal + aside
-                Collapse aside, hiding command list and introduction.
+                May also be used to toggle view of the aside.
+
+                -o, --open
+                Show command list only
+
+                -c, --close
+                Hide command list only
                 
                 --help
                     display command information`
             },
-            options: ['--help'],
+            options: [
+				'-o', '--open',
+				'c', '--close'
+				'--help'
+			],
             help: 'cls: cls',
             whatis: 'Clear the interface.'
         },
@@ -57,7 +72,10 @@ import { flatten, includes, filter, filter_ipt } from './fn.js'
         dir: {
             page: {
                 name: 'dir - directory',
-                synopsis: ['dir', 'dir DIRECTORY'],
+                synopsis: [
+					'dir',
+					'dir DIRECTORY'
+				],
                 description: `Show contained subdirectories and files.
                 Root: portfolio
                 
@@ -69,7 +87,10 @@ import { flatten, includes, filter, filter_ipt } from './fn.js'
                 --help
                     display command information`
             },
-            options: ['-f', '--files-only', '--help'],
+            options: [
+				'-f', '--files-only',
+				'--help'
+			],
             help: 'dir: dir <directory>',
             whatis: 'Show contained directories and files.'
         },
@@ -95,7 +116,12 @@ import { flatten, includes, filter, filter_ipt } from './fn.js'
                 --help
                     display command information`
             },
-            options: ['-a', '--all', '-c', '--comment-only', '-d', '--dev-only', '--help'],
+            options: [
+				'-a', '--all',
+				'-c', '--comment-only',
+				'-d', '--dev-only',
+				'--help'
+			],
             help: 'echo: echo <path> <filename>',
             whatis: 'Show file messages.'
         },
@@ -122,14 +148,21 @@ import { flatten, includes, filter, filter_ipt } from './fn.js'
                 --help
                     display command information`
             },
-            options: ['-p', '--property-only', '-v', '--value-only', '--help'],
+            options: [
+				'-p', '--property-only',
+				'-v', '--value-only',
+				'--help'
+			],
             help: 'find: find ["string"] <directory>',
             whatis: 'Search files for property name or value.'
         },
         help: {
             page: {
                 name: 'help',
-                synopsis: ['help', 'help COMMAND'],
+                synopsis: [
+					'help',
+					'help COMMAND'
+				],
                 description: `Display command information.
                 No command: view list of available commands.
 
@@ -141,7 +174,10 @@ import { flatten, includes, filter, filter_ipt } from './fn.js'
 
                 The help flag can be used on any command, but will ignore all other input when used. Even if the other input is valid, --help takes precedence after error checking.`
             },
-            options: ['-o', '--open-aside', '--help'],
+            options: [
+				'-o', '--open-aside',
+				'--help'
+			],
             help: 'help: help <command>',
             whatis: 'Display command information.'
         },
@@ -330,11 +366,26 @@ import { flatten, includes, filter, filter_ipt } from './fn.js'
             help: 'tree: tree <directory>',
             whatis: 'Show path structure.'
         },
+		whatcanido: {
+			page: {
+				name: 'whatcanido - what can i do',
+				synopsis: ['whatcanido'],
+				description: `Show terminal commands available for the current directory or file
+
+				--help
+					display command information`
+			},
+			options: ['--help']
+		},
         whatis: {
             page: {
                 name: 'whatis - what is',
-                synopsis: ['whatis COMMAND'],
+                synopsis: [
+					'whatis COMMAND',
+					'whatis WORD'
+				],
                 description: `Show command action.
+                May be used to lookup definitions of terms used in this manual.
     
                 -m, --manual
                     show manual page
@@ -347,6 +398,9 @@ import { flatten, includes, filter, filter_ipt } from './fn.js'
     
                 -d, --description-only
                     show only description from manual page
+
+				-v, --vocab
+					show definition of term
                 
                 --help
                     display command information`
@@ -476,11 +530,11 @@ import { flatten, includes, filter, filter_ipt } from './fn.js'
 	}
 
 	const add_path = () => {
-		const span = html_element("span")
+		const span = html.span()
 		span.style.fontWeight = "bold"
 		span.append(html.txt('Re-Portfolio SMKOU ~/'))
 		const line = element({
-			type; "p",
+			type: "p",
 			classname: "bash",
 			content: span
 		})
@@ -553,7 +607,48 @@ import { flatten, includes, filter, filter_ipt } from './fn.js'
         return included
     }
 
+    const input_no_flags = (args, command) => {
+		const { flags, values } = filter_ipt(args)
+		if (flags.length) {
+			const { included, not_included } = filter(manual[command].options, flags)
+			if (not_included.length)
+				return errors.invalid_option(command, not_included)
+			if (included.length)
+				return help([command])
+		}
+		return included
+	}
+
 /* CMD -------------------------------------------------------- */
+
+	const help = (args) => {
+		const { flags, values } = filter_ipt(args)
+		const wrong = []
+		for (const val of values)
+			if (!manual.hasOwnProperty(val))
+				wrong.push(val)
+			if (wrong.length)
+				return errors.invalid_option('help', wrong)
+			const { included, not_included } = filter(manual.help.options, flags)
+			if (not_included.length)
+				return errors.unknown_option('help', not_included)
+
+			if (includes(included, '-o', '--open-aside') && !ui.aside.state)
+				ui.aside.tog.click()
+			else if (included.includes('--help'))
+				return help(['help'])
+
+			if (!values.length) {
+				add_line(Object.keys(manual).join(' '))
+				return true
+			}
+			add_lines(`${manual[values[0]].help}\n${manual[values[0]].whatis}`)
+	}, // status: help:
+
+	const dict = {
+		directory: "",
+		file: "",
+	}
     
     const cmd = {
         cd: (args) => {
@@ -563,10 +658,9 @@ import { flatten, includes, filter, filter_ipt } from './fn.js'
                 return true
             }
 
-            const addr = manual.cd
-            const { flags, values } = filter_input_type(args)
+            const { flags, values } = filter_ipt(args)
             if (flags.length) {
-                const { included, not_included } = filter(addr.options, flags)
+                const { included, not_included } = filter(manual.cd.options, flags)
                 if (not_included.length)
                     return errors.invalid_option('cd', not_included)
                 if (included.length)
@@ -577,15 +671,21 @@ import { flatten, includes, filter, filter_ipt } from './fn.js'
             let path = ui.path.slice()
             let node = get_node()
             if (values.length) {
-                if (values.length > 1) { [directory, path] = values }
+                if (values.length > 1) {
+					[directory, path] = values
+				}
                 else {
                     const ipt = values[0]
-                    if (Object.keys(directories).includes(ipt)) { directory = values[0] }
+                    if (Object.keys(directories).includes(ipt)) {
+						directory = values[0]
+					}
                     else {
                         let subs = values[0].split('/')
                         while (subs[0] === '..') {
                             subs.shift()
-                            if (path.length) { path.pop() }
+                            if (path.length) {
+								path.pop()
+							}
                         }
                         path = path.concat(subs)
                         node = get_node(path)
@@ -597,49 +697,30 @@ import { flatten, includes, filter, filter_ipt } from './fn.js'
             }
             ui.dir = directory
             ui.path = path
-        },
+        }, // status: cd: [x]
         cls: (args) => {
             if (args.length) {
                 const included = init_no_input(args, 'cls')
-                if (!included) return;
+                if (!included)
+					return;
                 return help(['cls'])
             }
             ui.cns.innerHTML = ''
             ui.aside.tog.click()
-        },
+        }, // status: cls: change functionality
         clear: (args) => {
             if (args.length) {
                 const included = init_no_input(args, 'clear')
-                if (!included) return;
+                if (!included)
+					return;
                 return help(['clear'])
             }
             ui.cns.innerHTML = ''
-        },
-        dir: (args) => { },
-        echo: (args) => { },
-        find: (args) => { },
-        help: (args) => {
-            const { flags, values } = filter_input_type(args)
-            const wrong = []
-            for (const val of values) {
-                if (!manual.hasOwnProperty(val)) { wrong.push(val) }
-            }
-            if (wrong.length)
-                return errors.invalid_option('help', wrong)
-            const { included, not_included } = filter(manual.help.options, flags)
-            if (not_included.length)
-                return errors.unknown_option('help', not_included)
-
-            if (includes(included, '-o', '--open-aside') && !ui.aside.state) { ui.aside.tog.click() }
-            else if (included.includes('--help'))
-                return help(['help'])
-
-            if (!values.length) {
-                add_line(Object.keys(manual).join(' '))
-                return true
-            }
-            add_lines(`${manual[values[0]].help}\n${manual[values[0]].whatis}`)
-        },
+        }, // status: clear: [x]
+        dir: (args) => { }, // status: dir:
+        echo: (args) => { }, // status: echo:
+        find: (args) => { }, // status: find:
+		help,
         hostname: (args) => {
             if (args.length) {
                 const included = init_no_input(args, 'hostname')
@@ -647,7 +728,7 @@ import { flatten, includes, filter, filter_ipt } from './fn.js'
                 return help(['hostname'])
             }
             add_line(ui.host)
-        },
+        }, // status: hostname:
         ls: (args) => {
             const addr = manual.ls
 
@@ -697,7 +778,7 @@ import { flatten, includes, filter, filter_ipt } from './fn.js'
                 else { items.push(prop) }
             }
             add_line(items.join(' '))
-        },
+        }, // status: ls:
         lynx: (args) => { },
         man: (args) => {
             const addr = manual.man
@@ -763,8 +844,8 @@ import { flatten, includes, filter, filter_ipt } from './fn.js'
                 create_div('Synopsis', page.synopsis)
                 create_div('Description', page.description.split('\n'))
             }
-        },
-        more: (args) => { },
+        }, // status: lynx:
+        more: (args) => { }, // status: more:
         msg: (args) => {
             const opt = {
                 linkedin: () => 'koudblue',
@@ -809,7 +890,7 @@ import { flatten, includes, filter, filter_ipt } from './fn.js'
                 content
             })
             ui.cns.append(p)
-        },
+        }, // status: msg:
         pwd: (args) => {
             let path = ui.path.slice()
             if (args.length) {
@@ -824,9 +905,10 @@ import { flatten, includes, filter, filter_ipt } from './fn.js'
 
             if (path === '') { add_line('/') }
             else { add_line(path) }
-        },
-        stat: (args) => { },
-        tree: (args) => { },
+        }, // status: pwd:
+        stat: (args) => { }, // status: stat:
+        tree: (args) => { }, // status: tree:
+		whatcanido: (args) => {}, // status: whatcanido:
         whatis: (args) => {
             const { flags, values } = filter_input_type(args)
             if (!values.length)
@@ -856,7 +938,7 @@ import { flatten, includes, filter, filter_ipt } from './fn.js'
                 const data = `${page.name}\n${page.synopsis.join('\n')}\n${page.description}`
                 add_lines(data)
             }
-        },
+        }, // status: whatis:
         whoami: (args) => {
             if (args.length) {
                 const included = init_no_input(args, 'whoami')
@@ -866,7 +948,7 @@ import { flatten, includes, filter, filter_ipt } from './fn.js'
                 else if (includes(included, '-a', '--all')) { add_line('Stella Marie: Sm Kou, Sm Joker, Kou.d Blue') }
             }
             else { add_line('Stella Marie') }
-        }
+        } // status: whoami:
     }
 
     const exec = input => {
