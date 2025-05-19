@@ -50,7 +50,7 @@ import {
             },
             options: [
 				'-o', '--open',
-				'c', '--close'
+				'c', '--close',
 				'--help'
 			],
             help: 'cls: cls',
@@ -643,7 +643,7 @@ import {
 				return true
 			}
 			add_lines(`${manual[values[0]].help}\n${manual[values[0]].whatis}`)
-	}, // status: help:
+	} // status: help:
 
 	const dict = {
 		directory: "",
