@@ -469,7 +469,6 @@ import {
 
 /* UI DATA ---------------------------------------------------- */
 
-
 	const get_dir = (dir = ui.dir) => directories[dir]
 
     const get_node = (path = ui.path.slice(), dir = 'portfolio', node = get_dir(dir), shift) => {
@@ -571,34 +570,39 @@ import {
 		custom: function(term, message) {
 			const text = `error: ${term}: ${message}`
 			add_line(cns, text)
+            return false
 		},
 		command: function(term) {
 			const text = `bash: ${term}: command not found`
 			add_line(text)
+            return false
 		},
 		node: function(term, wrong) {
 			const text = `bash: ${term}: ${wrong}: no such item or directory`
 			add_line(text)
+            return false
 		},
-		invalid_option: function(cns, term, wrong, manual) {
+		invalid_option: function(term, wrong, manual) {
 			const text = `bash: ${term}: ${wrong.join(', ')}: invalid option
 			${term}: usage: ${manual[term].help}`
 			add_line(text)
+            return false
 		},
-		unknown_option: function(cns, term, wrong) {
+		unknown_option: function(term, wrong) {
 			const text = `${term}: unknown option -- ${wrong.map(err => {
 				err = err.split('-')
 				return err[err.length - 1]
 			}).join(', ')}
 			Try '${term} --help' for more information.`
 			add_line(text)
+            return false
 		}
 	}
 
 /* HELPERS ---------------------------------------------------- */
 
     const init_no_input = (args, command) => {
-        const { flags, values } = filter_input_type(args)
+        const { flags, values } = filter_ipt(args)
         if (values.length)
             return errors.invalid_option(command, values)
         const { included, not_included } = filter(manual[command].options, flags)
@@ -642,7 +646,7 @@ import {
 				add_line(Object.keys(manual).join(' '))
 				return true
 			}
-			add_lines(`${manual[values[0]].help}\n${manual[values[0]].whatis}`)
+			add_line(`${manual[values[0]].help}\n${manual[values[0]].whatis}`)
 	} // status: help:
 
 	const dict = {
@@ -699,13 +703,18 @@ import {
             ui.path = path
         }, // status: cd: [x]
         cls: (args) => {
-            if (args.length) {
-                const included = init_no_input(args, 'cls')
-                if (!included)
-					return;
+            // -o, --open: show command list
+            // -c, --close: close command list
+            const included = init_no_input(args, 'cls')
+            if (!included)
+                return;
+
+            if (included.includes('--help'))
                 return help(['cls'])
-            }
+            
             ui.cns.innerHTML = ''
+            if ((includes(included, '-o', '--open') && ui.aside.e.classList.contains('expanded')) || (includes(included, '-c', '--close') && !ui.aside.e.classList.contains('expanded')))
+                return;
             ui.aside.tog.click()
         }, // status: cls: change functionality
         clear: (args) => {
@@ -963,7 +972,7 @@ import {
 
     ui.ipt.addEventListener('keydown', e => {
         if (e.key === 'Enter') {
-            add_line(e.target.value, true)
+            add_line(e.target.value)
             user_input.vals.push(e.target.value)
             user_input.i = user_input.vals.length
     
@@ -978,7 +987,7 @@ import {
                 }
             }
             else { exec(value) }
-            add_empty_line()
+            add_line()
             add_path()
             ui.cns.lastChild.scrollIntoView({ inline: 'end' })
         }
