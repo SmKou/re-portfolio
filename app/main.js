@@ -788,7 +788,7 @@ import {
             }
             add_line(items.join(' '))
         }, // status: ls:
-        lynx: (args) => { },
+        lynx: (args) => { }, // status: lynx:
         man: (args) => {
             const addr = manual.man
             if (!args.length)
@@ -853,7 +853,7 @@ import {
                 create_div('Synopsis', page.synopsis)
                 create_div('Description', page.description.split('\n'))
             }
-        }, // status: lynx:
+        }, // status: man:
         more: (args) => { }, // status: more:
         msg: (args) => {
             const opt = {
