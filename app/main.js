@@ -134,7 +134,7 @@ import {
                 ],
                 description: `Search a directory for a string appearing in file properties and data.
                 Search does not consist of equivalence:
-                If the string consists of spaces, it will be split into individual terms and file properties and data will be tested against each individual term. 
+                If the string consists of commas, it will be split into individual terms and file properties and data will be tested against each individual term.
 
                 Root: portfolio
                 DIRECTORY = root | subdirectory

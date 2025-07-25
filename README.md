@@ -55,12 +55,19 @@ Note: Do not merge from main or checkout the gh-pages branch
 
 **Implement: Homepage Commands**
 - dir
+  Show contained subdirectories and files, root: portfolio, req. dir DIRECTORY to change root, uses --f to only show contained files
 - echo
+  Show file messages (status, comment, dev remarks), default: show only status
 - find
+  Search a directory for a string appearing in file properties and data, does not consist of equivalence, may use --p to search only file props and --v to only search file data
 - lynx
+  Follow file url, opens url in another host in another tab, displays list of urls if file has more than one (note: -m for listing all recent urls associated with file and -a for listing all urls, including backups and iterations)
 - more
+  Show file data, use -m to include file messages
 - stat
+  Show file properties, use -d to include file data and -m to include file messages
 - tree
+  Print structural representation of directories and files
 
 **Bug: Overlapping page text**
 ![Overlapping text](homepage_bug_help_text.png)
