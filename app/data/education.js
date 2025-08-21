@@ -1,6 +1,35 @@
 import sources from "./sources"
 
 const education = {
+	'frontend': [
+		{
+			title: 'Beginner learning path',
+			description: 'Introduction to web development, JavaScript, and modern CSS layout techniques to have the skills to be a professional web developer.',
+			keywords: ['html', 'css', 'javascript', 'web accessibility', 'chrome dev tools', 'linux', 'command line', 'vscode'],
+			year: '2025',
+			ref: sources.fm,
+			status: false,
+			location: 'remote'
+		},
+		{
+			title: 'Professional learning path',
+			description: 'Deep dive into JavaScript, the most popular framework React, web performance, CSS, deploying websites, TypeScript, and functional JavaScript to become a professional web developer.',
+			keywords: ['javascript', 'typescript', 'react', 'vite', 'eslint', 'prettier', 'tanstack', 'spa routing', 'core web vitals', 'largest contentful paint (LCP)', 'cumulative layout shift (CLS)', 'responsive design', 'server', 'unit testing', 'integration testing', 'functional programming', 'redux', 'javascript patterns', 'react patterns', 'subgrid', 'container queries', 'responsive image', 'tailwind', 'next.js', 'pwa', 'frontend design'],
+			year: '2025',
+			ref: sources.fm,
+			status: false,
+			location: 'remote'
+		},
+		{
+			title: 'Expert learning path',
+			description: 'Learn mind-expanding techniques and emerging APIs to solve even the most complex challenges top-level engineers face.',
+			keywords: ['performance', 'web security', 'http protocols', 'javascript', 'es6+', 'unit testing', 'continuous integration', 'accessibility testing', 'mocking', 'coding standards reinforcement', 'code scalability', 'webpack', 'cdn', 'javascript optimization', 'data binding', 'ui composition', 'templating', 'virtual dom', 'reconciliation', 'hooks', 'system design', 'dom apis', 'virtualization', 'state management', 'functional programming', 'state machines', 'statecharts', 'git', 'branching', 'conflict resolution', 'real-time', 'vanilla programming', 'service workers', 'enterprise architecture patterns', 'monorepos'],
+			year: '2025',
+			ref: sources.fm,
+			status: false,
+			location: 'remote'
+		}
+	],
     'web-dev': {
         title: 'Web Development Certificate',
         description: 'Development in html, css, javscript, Node.js, C# and .Net, and React',
