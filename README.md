@@ -18,6 +18,7 @@ Versions: TV channels
     - favorites
 1.	The Magazine
     - projects
+    - art
 2.	Design Index
     - notes
 3.	Presentation
