@@ -1,59 +1,194 @@
-import sources from "./sources"
+export default {
+	"workshops-organizer": {
+		title: "Workshops Organizer",
+		description: "SeattleJS volunteer rep for workshops",
+		keywords: [
+			"presentation",
+			"written communication",
+			"discord",
+			"social media/networking"
+		],
+		year: ["24-10"],
+		ref: "seattlejs",
+		location: "Seattle, WA, USA",
+		responsibility: [
+			"Review workshop topic submissions",
+			"Arrange venue and sponsor",
+			"Introduce SeattleJS and speaker to participants",
+			"Review and administer participant feedback",
+			"Check-in attendees at SeattleJS events"
+		],
+		type: "in=person"
+	},
+	"support-group-volunteer": {
+		title: "Indies Support Group (ISG) volunteer",
+		description: "ISG volunteer",
+		keywords: [
+			"presentation",
+			"spoken communication",
+			"discord",
+			"teamwork",
+			"game design and development",
+			"playtesting",
+			"writing"
+		],
+		year: ["24-10"],
+		ref: "seattle-indies",
+		location: "Seattle, WA, USA",
+		responsibility: [
+			"Open/Close space for ISG participants",
+			"Introduce Seattle Indies and Indies Support Group",
+			"Monitor space for participants' safety",
+			"Group participation"
+		],
+		type: "in-person"
+	},
+	"frontend-intern": {
+		title: "Frontend Intern",
+		description: "React web development for signed photo app",
+		keywords: [
+			"react web",
+			"verbal communication",
+			"git and github",
+			"problem-solving",
+			"interface design (UI)",
+			"listening",
+			"adaptability",
+			"creativity"
+		],
+		year: ["23-11", "23-12"],
+		ref: "signed-pic",
+		location: "Seattle, WA, USA",
+		responsibility: [
+			"Implement tree visualization for dashboard (d3)",
+			"Dashboard page for managing firm account users"
+		],
+		type: "remote",
+		comment: {
+			end_reason: "Health condition: PTSD-related depression"
+		}
+	},
+	"store-clerk": {
+		title: "Store clerk",
+		description: "Part-time clerk at stationary store",
+		keywords: [
+			"empathy",
+			"sales",
+			"verbal communication",
+			"teamwork",
+			"listening",
+			"attention to detail",
+			"organization and sorting",
+			"stock and inventory"
+		],
+		year: ["21-8", "23-8"],
+		ref: "paper-hammer",
+		location: "Seattle, WA, USA",
+		responsibility: [
+			"Cashier",
+			"Night Audit",
+			"Store open/close",
+			"Customer service",
+			"Stock organization",
+			"Re-stock",
+			"Service promotions"
+		],
+		type: "in-person",
+		comment: {
+			end_reason: "Seattle location closed in Apr. 2023",
+			disability_condition: "Worked twice a week at five hours per day, allowed for rest and recovery"
+		}
+	},
+	"head-student-editor": {
+		title: "Head Student editor",
+		description: "Lead team in translation, editing, and proofreading of course textbook",
+		keywords: [
+			"listening",
+			"creativity",
+			"time management",
+			"problem-solving",
+			"research",
+			"attention to detail",
+			"leadership",
+			"written commuication",
+			"verbal communication",
+			"documentation",
+			"analytical reasoning"
+		],
+		year: ["18-3", "19-8"],
+		ref: "sjtu",
+		location: "Shanghai, Shanghai, CN",
+		responsibility: [
+			"Conduct weekly meetings",
+			"Manage translation and editing schedule",
+			"Collect and synthesize weekly student feedback, drafts, edits, notes, and confirmations from professor",
+			"Proofread and edit chapter drafts weekly",
+			"Apply last-minute edits and notes",
+			"Review diagrams, annotations, and citations"
+		],
+		type: "in-person",
+		comment: {
+			end_reason: "Last year of master's degree to work on thesis"
+		}
+	},
+	"teacher-assistant": {
+		title: "Teacher assistant",
+		description: "Assist professors to write and manage course schedule, materials, and projects",
+		keywords: [
+			"adaptability",
+			"written communication",
+			"verbal communication",
+			"time management",
+			"problem-solving",
+			"class management",
+			"java",
+			"service design",
+			"interaction design",
+			"prototyping",
+			"creativity",
+			"listening",
+			"conflict resolution",
+			"analytical reasoning"
+		],
+		year: ["18-3", "19-6"],
+		ref: "sjtu-sod",
+		location: "Shanghai, Shanghai, CN",
+		responsibility: [
+			"Develop and distribute course curriculums",
+			"Create class presentations and tutorials",
+			"Develop and apply grading rubric",
+			"Supervise class time and schedule",
+			"Collect, grade, and review assignments and projects",
+			"Tutor students during office hours",
+			"Collect and incorporate student feedback",
+			"Review and synthesize textbooks and articles",
+			"Service design",
+			"Interaction design"
+		],
+		type: "in-person"
+	},
+	"receptionist": {
+		title: "Hotel receptionist",
+		description: "Manage hotel front desk",
+		keywords: [
+			"verbal communication",
+			"customer service",
+			"night audit",
+			"sales"
+		],
+		year: ["17-1", "17-4"],
+		ref: "holiday",
+		location: "Lynnwood, WA, USA",
+		responsibility: [],
+		type: "in-person",
+		comment: {
+			end_reason: "Hotel undergoing service changes and knowing would leave soon for master's study"
+		}
+	},
+	"head-english-teacher": {}
+}
 
 const experience = {
-    'frontend-intern': {
-        title: 'Frontend Intern',
-        description: 'React web app developmnt',
-        keywords: ['react', 'verbal communication', 'git', 'problem-solving', 'interface design', 'listening', 'adaptability', 'creativity'],
-        year: ['Nov 2023', 'Dec 2023'],
-        ref: sources.signed,
-        status: true,
-        location: 'Seattle, WA, USA',
-        responsibility: `Implement tree visualization for dashboard (d3)
-            Dashboard page for managing firm account's users`,
-        type: 'Remote'
-    },
-    'store-clerk': {
-        title: 'Store Clerk',
-        description: 'Part-time store clerk',
-        keywords: ['empathy', 'verbal communication', 'listening', 'attention to detail', 'organization'],
-        year: ['Aug 2021', 'Apr 2023'],
-        ref: sources.ph,
-        status: true,
-        location: 'Seattle, WA, USA',
-        responsibility: `Cashier
-            Customer service
-            Stock organization`,
-        comment: `Seattle location, closed in Apr. 2024`
-    },
-    'head-student-editor': {
-        title: 'Head Student Editor',
-        description: 'Lead team in translating, editing and proofreading course textbook on interaction design',
-        keywords: ['listening', 'creativity', 'leadership', 'attention to detail', 'written communication', 'verbal communication', 'problem-solving', 'documentation', 'analytical reasoning'],
-        year: ['Mar 2018', 'Aug 2019'],
-        ref: sources.sjtu,
-        status: true,
-        location: 'Shanghai, Shanghai, CN',
-        responsibility: `Conduct weekly meetings
-            Manage translation and editing schedule
-            Collect and synthesize weekly student feedback, drafts, edits, notes, and confirmations from professor
-            Proofread and edit chapter drafts each week`
-    },
-    'teacher-assistant': {
-        title: 'Teacher Assistant',
-        description: `Assist professors and manage course schedule, materials and projects`,
-        keywords: ['written communication', 'creativity', 'verbal communication', 'adaptability', 'adaptability', 'management', 'problem-solving', 'java', 'service design', 'interaction design'],
-        year: ['Mar 2018', 'Jun 2019'],
-        ref: sources.sod,
-        status: true,
-        location: 'Shanghai, Shanghai, CN',
-        responsibility: `Service design, Interaction design (School of Design, SJTU)
-            Develop and distribute course curriculumns
-            Develop class presentations and tutorials
-            Develop grading rubric
-            Supervise class time and schedule
-            Collect, grade and review assignments and projects`
-    },
     'head-english-teacher': {
         title: 'Foreign English (Head) Teacher',
         description: `Teacher, trainer and supervisor of operations`,
@@ -73,5 +208,3 @@ const experience = {
             Private tutoring`
     }
 }
-
-export default experience
