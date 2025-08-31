@@ -757,7 +757,58 @@ export const projects = {
 			known_bugs: "Search bar text is too small and placeholder text has poor contrast with header, header text also needs to adjust size based on width"
 		}
 	},
-	simplebrain: {}
+	simplebrain: {
+		title: "SimpleBrain",
+		description: "React web app and express api for image submission with face detection and user accounts",
+		keywords: [
+			"react",
+			"api",
+			"express",
+			"node.js",
+			"knex.js",
+			"postgresql",
+			"sql",
+			"authentication",
+			"authorization",
+			"responsive design"
+		],
+		year: 2023,
+		ref: "ztm",
+		status: {
+			completed_before: true,
+			in_progress: false,
+			redesign: true,
+			queued: true
+		},
+		comment: {
+			completed_before: "Course: Complete Web Developer in 2023 - adapted from Face Recognition Brain project",
+			completed_before_note: [
+				,
+			],
+			dev: "Uses Clarifai api for face detection, app includes user ranking based on images submitted (mod: no. of faces x images)",
+			dev_2: {
+				clarifai_api: "https://www.clarifai.com",
+				project_1: [
+					"https://github.com/aneagoie/face-recognition-brain",
+					"https://github.com/aneagoie/face-recognition-brain-api"
+				],
+				project_2: [
+					"https://github.com/SmKou/bfrb",
+					"https://github.com/SmKou/bfrb-api"
+				]
+			}
+		}
+	},
+	counting_calculator: {
+		title: "Counting Calculator",
+		description: "Based on demo project of react and redux toolkit, counting calculator adapted from counter",
+		keywords: [
+			"react",
+			"redux toolkit"
+		],
+		year: 2023,
+
+	}
 }
 
 export default {

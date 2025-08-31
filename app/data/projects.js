@@ -131,9 +131,9 @@ const projects = {
         year: 2018,
         ref: {
             source: sources.sod,
-            programming_ideas: 'https://inventwithpython.com/blog/2012/02/20/i-need-practice-programming-49-ideas-for-game-clones-to-code/',
-            book: 'https://www.amazon.com/Picture-This-How-Pictures-Work/dp/1452151997',
-            author: 'https://www.mollybang.com/Pages/picture.html'
+            programming_ideas: '',
+            book: '',
+            author: ''
         },
         inspect: 'https://github.com/SmKou/red-riding-hood',
         status: {
@@ -179,44 +179,6 @@ const projects = {
             Blogging platforms - Write.as, Medium, Ghost, Wordpress
             Creative writing resources - Campfire Writing, LivingWriter
             Reanalyze purpose and intent -> redesign`
-    },
-    'responsive-web': {
-        title: 'Responsive Web Design',
-        description: 'Showcase web app for projects in freeCodeCamp course',
-        keywords: ['html', 'css', 'javascript', 'vanilla js'],
-        year: 2021,
-        ref: { source: sources.fcc },
-        status: {
-            completed_before: true,
-            in_progress: false,
-            redesign_due: false,
-            queued: true
-        },
-        comment: `Course: Responsive Web Design`,
-        dev: `Redo based on course redesign
-            - Survey Form
-            - Tribute page
-            - Technical Documentation page
-            - Product Landing page
-            - Personal Portfolio page
-            Note to self: intermediate projects`
-    },
-    'freecodecamp-challenge': {
-        title: 'freeCodeCamp Challenge',
-        description: 'Complete freecodecamp main courses in given time limit',
-        keywords: ['html', 'javascript', 'vanilla js', 'python', 'sql', 'node.js', 'express', 'chai', 'mongodb', 'mongoose', 'd3', 'bootstrap', 'css', 'jqery', 'sass', 'react', 'redux'],
-        year: 2025,
-        ref: { source: sources.fcc },
-        status: {
-            completed_before: false,
-            in_progress: false,
-            redesign_due: false,
-            queued: false,
-        },
-        comment: `Original challenge: Complete main courses in 1 month
-            - new courses added makes this impossible
-            - skip first course
-            Revised to: Complete main courses in 3-4 months (or 1 course per week)`
     },
     'first-page': {
         title: 'First Page',
