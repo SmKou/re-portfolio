@@ -36,7 +36,7 @@ const education = {
 		location: 'Portland, OR, USA (remote)'
 	},
 	'design': {
-		title: 'MA Design',
+		title: 'M.A. Design',
 		description: 'Design research, practices, processes and fields',
 		keywords: [
 			'adobe illustrator',
@@ -63,7 +63,7 @@ const education = {
 		location: 'Shanghai, Shanghai, CN'
 	},
 	'informatics': {
-		title: 'BS Informatics',
+		title: 'B.S. Informatics',
 		description: `Information technology, applications, and principles`,
 		keywords: [
 			'adaptive design',
@@ -97,11 +97,10 @@ const education = {
 		year: 2014,
 		grad: '2014-6',
 		ref: 'uw',
-		status: true,
 		location: 'Seattle, WA, USA'
 	},
 	'pre-engineering': {
-		title: 'AS Pre-Engineering',
+		title: 'A.S. Pre-Engineering',
 		description: `Introduction to engineering sciences with a focus on computer science`,
 		keywords: [
 			'desktop applications',
@@ -114,9 +113,32 @@ const education = {
 		year: 2011,
 		grad: '2011-6',
 		ref: 'edcc',
-		status: true,
 		location: 'Edmonds, WA, USA'
 	}
 }
 
-export default {}
+const keys = Object.keys(education)
+
+const add_edu_row = ({ title, description, year, location }) => `<tr>
+	<th>${title}</th>
+	<td>
+		<span>${description}</span>
+		<span>Grad. ${year}</span>
+		<span>${location}</span>
+	</td>
+</tr>`
+
+const get_edu = (key_or_title) => education[key_or_title]
+	|| keys.find(key => education[key].title == key_or_title)
+
+export default {
+	source: (key_or_title) => get_edu(key_or_title).ref,
+	details: (key_or_title) => {
+		const table = document.createElement("table")
+		const row = !key_or_title
+			? keys.map(key => add_edu_row(education[key])).join("")
+			: add_edu_row(get_edu(key_or_title))
+		table.innerHTML = row
+		return table
+	}
+}
