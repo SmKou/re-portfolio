@@ -1,3 +1,5 @@
+import { create, text } from "./fn"
+
 const sources = {
 	edcc: {
 		title: 'Edmonds College (formerly Edmonds Community College)',
@@ -89,28 +91,30 @@ const sources = {
 		ref: {
 			ed_marquand: 'https://www.linkedin.com/in/edmarquand/'
 		}
-	}
+	},
 	signed: {
 		title: 'SignedPic',
 		href: 'https://signedpic.com',
 		ref: {
 			lee_grambush: 'https://www.linkedin.com/in/leegrambush/'
 		},
-		comment: `Worked on react flow and d3 implementation for firm accounts to manage attorneys and clients`
+		credits: [{
+			name: "internship",
+			credit: "Implemented d3 in react flow for firm accounts to manage attorneys and clients"
+		}]
 	},
 	sjtu: {
 		title: 'Shanghai Jiaotong University',
-		href: [
-			'https://en.sjtu.edu.cn',
-			'https://www.linkedin.com/school/shanghai-jiao-tong-university/'
-		],
+		href: 'https://en.sjtu.edu.cn',
+		alt: ['https://www.linkedin.com/school/shanghai-jiao-tong-university/'],
 		school: {
 			title: 'School of Design',
 			href: 'https://designschool.sjtu.edu.cn/en-us',
 		},
-		credit: `MA: Design grad. 2020
-		School of Design
-		Specialty: HCI design`,
+		credit: [{
+			name: "Design",
+			credit: "Master's of Art in Design, specialized in Human-Computer Interaction (HCI) design",
+		}],
 		projects: [
 			{
 				title: "KS Healthcare"
@@ -138,10 +142,8 @@ const sources = {
 	},
 	smkou: {
 		title: 'Sm Kou',
-		href: [
-			'https://smkou.com',
-			'https://smkou.hashnode.dev'
-		]
+		href: 'https://smkou.com',
+		alt: ['https://smkou.hashnode.dev']
 	},
 	uw: {
 		title: 'University of Washington',
@@ -205,4 +207,34 @@ const sources = {
 	},
 }
 
-export default {}
+const add_url = (url, txt) => `<a href="${url}" target="_blank">${txt}</a>`
+
+const add_alternatives = (alts) => ` (${alts.map((alt, idx) => add_url(alt, "alt-" + (idx + 1)).join(", ")})`
+
+const add_source = (source) => {
+	const { title, href } = source
+	const source_url = add_url(href, title)
+	const source_alts = Object.has(source, "alt")
+		? add_alternatives(source.alt)
+		: ""
+	const school_url = Object.has(source, "school")
+	? `<br>
+		${add_url(source.school.href, source.school.title)}
+		${Object.has(source.school, "alt")
+			? add_alternatives(source.school.alt)
+			: ""
+		}`
+		: ""
+	return `<p>${source_url}${source_alts}${school_url}</p>`
+}
+
+export default {
+	direct(key_or_title) {
+		if (!key_or_title)
+			return Object.keys(sources).map((key) => add_source(sources[key]))
+		if (Object.has(sources, key_or_title))
+			return add_source(sources[key_or_title])
+		const source = Object.keys(sources).find((key) => sources[key].title == key_or_title)
+		return add_source(source)
+	}
+}
