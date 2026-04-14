@@ -1,3 +1,5 @@
+import sources from "./sources"
+
 const education = {
 	'web-dev': {
 		title: 'Web Development Certificate',
@@ -119,6 +121,15 @@ const education = {
 
 const keys = Object.keys(education)
 
+const has = (search_term) => keys
+	.find((key) => {
+
+	})
+	.map((key) => education[key].title)
+
+const get = (key_or_title) => education[key_or_title]
+	|| keys.find(key => education[key].title == key_or_title)
+
 const add_edu_row = ({ title, description, year, location }) => `<tr>
 	<th>${title}</th>
 	<td>
@@ -128,13 +139,11 @@ const add_edu_row = ({ title, description, year, location }) => `<tr>
 	</td>
 </tr>`
 
-const get_edu = (key_or_title) => education[key_or_title]
-	|| keys.find(key => education[key].title == key_or_title)
-
 export default {
+	has,
+	get,
 	source: (key_or_title) => get_edu(key_or_title).ref,
-	details: (key_or_title) => {
-		const table = document.createElement("table")
+	details: (key_or_title, table = document.createElement("table")) => {
 		const row = !key_or_title
 			? keys.map(key => add_edu_row(education[key])).join("")
 			: add_edu_row(get_edu(key_or_title))

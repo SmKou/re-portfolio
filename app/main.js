@@ -79,12 +79,17 @@ const manual = {
 			'echo FILENAME',
 			'echo PATH FILENAME'
 		],
-		description: ``,
+		description: `The curl utility is a tool for transferring data from or to a server using URLs`,
 		options: [],
 		help: 'echo: echo <path> <filename>',
 		whatis: 'display a line of text'
 	},
-	find: {},
+	find: {
+		synopsis: [
+			'find [starting-point...] [expression]'
+		],
+		whatis: 'search for files in a directory hierarchy'
+	},
 	help: {},
 	hostname: {},
 	less: {},
